@@ -1,4 +1,4 @@
-﻿namespace TurtleLib
+﻿namespace AMCP
 {
     using System;
     using System.Collections.Generic;
@@ -11,9 +11,9 @@
     
     public class Turtle
     {
-
-        Vector2 position = new Vector2(0, 0);
-        double orientation = 0f;
+/*
+        public Vector2 Position { get; set; } = new Vector2(0, 0);
+        public float Orientation { get; set; }  = 0f;
 
         /// <summary>
         /// Turtle empty constructor
@@ -30,7 +30,7 @@
         /// <param name="posY"></param>
         public Turtle(int posX, int posY)
         {
-            this.position = new Vector2(posX, posY);
+            this.Position = new Vector2(posX, posY);
         }
 
         /// <summary>
@@ -39,10 +39,10 @@
         /// <param name="posX"></param>
         /// <param name="posY"></param>
         /// <param name="orientation"></param>
-        public Turtle(int posX, int posY, double orientation)
+        public Turtle(int posX, int posY, float orientation)
         {
-            this.position = new Vector2(posX, posY);
-            this.orientation = orientation;
+            this.Position = new Vector2(posX, posY);
+            this.Orientation = orientation;
         }
 
         /// <summary>
@@ -51,32 +51,34 @@
         /// <param name="distance"></param>
         public void Forward(int distance)
         {
-            double orientationRadian = this.orientation * Math.PI / 180f;
-
-            int finalPositionX = (int)(this.position.X + (distance * Math.Cos(orientationRadian)));
-            int finalPositionY = (int)(this.position.Y + (distance * Math.Sin(orientationRadian)));
+            double orientationRadian = this.Orientation * Math.PI / 180f;
+            
+            int finalPositionX = (int)(this.Position.X + (distance * Math.Cos(orientationRadian)));
+            int finalPositionY = (int)(this.Position.Y + (distance * Math.Sin(orientationRadian)));
+            Console.WriteLine(this.Position.X + (distance * Math.Cos(orientationRadian)));
+            Console.WriteLine((int)(this.Position.X + (distance * Math.Cos(orientationRadian))));
 
             Vector2 finalPosition = new Vector2(finalPositionX, finalPositionY);
-            Window.instance.DrawLine(this.position, finalPosition);
-            this.position = finalPosition;
+            Window.Instance.DrawLine(this.Position, finalPosition);            
+            this.Position = finalPosition;
         }
 
         /// <summary>
         /// Turn the turtle left of "angle" degrees
         /// </summary>
         /// <param name="angle"></param>
-        public void TurnLeft(double angle)
+        public void TurnLeft(float angle)
         {
-            this.orientation -= angle;
+            this.Orientation += angle;
         }
 
         /// <summary>
         /// Turn the turtle right of "angle" degrees
         /// </summary>
         /// <param name="angle"></param>
-        public void TurnRight(double angle)
+        public void TurnRight(float angle)
         {
-            this.orientation += angle;
-        }
+            this.Orientation -= angle;
+        }*/
     }
 }

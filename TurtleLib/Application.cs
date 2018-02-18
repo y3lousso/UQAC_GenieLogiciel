@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace CEGEP_Student
+namespace AMCP
 {
-    class Program
+    internal class Application
     {
-        static void Main(string[] args)
+        public void Démarrer()
         {
-           
 
         }
     }

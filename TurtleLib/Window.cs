@@ -1,4 +1,4 @@
-﻿namespace TurtleLib
+﻿namespace AMCP
 {
     using System;
     using System.Collections.Generic;
@@ -8,11 +8,12 @@
     using System.Windows.Forms;
     using System.Drawing;
     using System.Numerics;
+    using System.Drawing.Drawing2D;
 
     public class Window : Form
     {
-        public static Window instance;
-        private Graphics graphic;
+       /* public static Window Instance { get; set; }
+        private Graphics Graphic { get; set; }
 
         /// <summary>
         /// Create the windows and the drawing area.
@@ -21,12 +22,14 @@
         /// <param name="sizeY"></param>
         public Window(int sizeX, int sizeY)
         {
-            if (instance == null)
+            if (Instance == null)
             {
-                instance = this;
+                Instance = this;
                 this.Size = new Size(sizeX, sizeY);
-                this.graphic = this.CreateGraphics();
+                this.Graphic = this.CreateGraphics();
+                this.Graphic.SmoothingMode = SmoothingMode.AntiAlias;
                 this.Show();
+
             }
         }
 
@@ -45,7 +48,7 @@
             Point point2 = new Point((int)finalPosition.X, (int)finalPosition.Y);
 
             // Draw line to screen.
-            this.graphic.DrawLine(blackPen, point1, point2);
+            this.Graphic.DrawLine(blackPen, point1, point2);
         }
 
         /// <summary>
@@ -55,7 +58,7 @@
         {
             Console.WriteLine("Press any key to exit ...");
             Console.ReadKey();
-        }
+        }*/
 
     }
 }

@@ -52,9 +52,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TurtleLib\TurtleLib.csproj">
+    <ProjectReference Include="..\TurtleLib\AMCP.csproj">
       <Project>{348e82b0-7a29-4282-a400-10b79cc386e9}</Project>
-      <Name>TurtleLib</Name>
+      <Name>AMCP</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

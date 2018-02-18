@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CEGEP_Student", "CEGEP_Student.csproj", "{4A9B685E-3092-41CA-A204-1F24630B3A2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurtleLib", "..\TurtleLib\TurtleLib.csproj", "{348E82B0-7A29-4282-A400-10B79CC386E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMCP", "..\TurtleLib\AMCP.csproj", "{348E82B0-7A29-4282-A400-10B79CC386E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

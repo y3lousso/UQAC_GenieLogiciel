@@ -4,15 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace CEGEP_Student
+namespace AMCP
 {
-    class Program
+    public class InterfaceSequenciel : ModeInterface
     {
-        static void Main(string[] args)
-        {
-           
-
-        }
+        
     }
 }

@@ -4,15 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace CEGEP_Student
+namespace AMCP
 {
-    class Program
+    public class Vector2
     {
-        static void Main(string[] args)
-        {
-           
-
-        }
+        int X { get; set; }
+        int Y { get; set; }
     }
 }

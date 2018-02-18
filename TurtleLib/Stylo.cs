@@ -4,15 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace CEGEP_Student
+namespace AMCP
 {
-    class Program
+    class Stylo : Pointeur
     {
-        static void Main(string[] args)
-        {
-           
 
-        }
     }
+
 }
