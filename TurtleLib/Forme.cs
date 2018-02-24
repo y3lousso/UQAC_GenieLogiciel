@@ -6,37 +6,32 @@ using System.Threading.Tasks;
 
 namespace AMCP
 {
-    internal class Forme
+    public class Forme
     {
         int Id { get; set; }
         List<Vector2> Points { get; set; }
 
-        protected void Dessiner()
+        public void Dupliquer(Vector2 position)
         {
 
         }
 
-        protected void Tourner(float angle)
+        public void Colorier(int r, int g, int b)
         {
 
         }
 
-        protected void Translater(Vector2[] points)
+        public void Tourner(int angle)
         {
 
         }
 
-        protected void Homothetie(Vector2[] points, int taille)
+        public void Deplacer(Vector2 position)
         {
 
         }
 
-        protected void ColorierForme(string color)
-        {
-
-        }
-
-        protected void ColorierForme(int r, int g, int b)
+        public void Dimensionner(float taille)
         {
 
         }

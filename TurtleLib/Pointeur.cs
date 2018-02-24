@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AMCP
 {
-    abstract class Pointeur
+    internal class Pointeur
     {
 
         int Id { get; set; }

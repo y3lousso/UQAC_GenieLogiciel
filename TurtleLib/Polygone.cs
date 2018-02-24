@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AMCP
 {
-    internal class Polygone
+    internal class Polygone : Forme
     {
         public Polygone DessinerCarre()
         {

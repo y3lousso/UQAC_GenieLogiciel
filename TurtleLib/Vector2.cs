@@ -8,7 +8,13 @@ namespace AMCP
 {
     public class Vector2
     {
-        int X { get; set; }
-        int Y { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public Vector2(int x, int y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
     }
 }
