@@ -57,9 +57,13 @@ namespace AMCP
 
         }
 
-        public void DessinerEllipse(Vector2 position, int rayon1, int rayon2)
+        public Ellipse DessinerEllipse(Vector2 position, int rayon1, int rayon2)
         {
-
+                Ellipse e = new Ellipse(position, rayon1, rayon2);
+                Canvas.Formes.Add(e);
+                Canvas.Graphic.DrawEllipse(new Pen(Color.Black), position.X, position.Y, rayon1, rayon2);
+                Console.WriteLine("Une éllipse a été dessiné.");
+                return e;
         }
 
     }

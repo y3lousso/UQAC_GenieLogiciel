@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace AMCP
 {
-    class Ellipse
+    public class Ellipse : Forme
     {
+        public Vector2 position { get; set; }
         float PetitRayon { get; set; }
         float GrandRayon { get; set; }
-
-        public Ellipse DessinerCercle(Vector2 centre, float rayon)
+            
+        internal Ellipse(Vector2 position, int rayon1, int rayon2)
         {
-            return new Ellipse();
-        }
-
-        public Ellipse DessinerEllipse(Vector2 centre, float rayon1, float rayon2)
-        {
-            return new Ellipse();
+            this.position = position;
+            this.PetitRayon = rayon1;
+            this.GrandRayon = rayon2;
         }
     }
 }
