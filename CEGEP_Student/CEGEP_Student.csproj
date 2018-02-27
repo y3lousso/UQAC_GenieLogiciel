@@ -52,7 +52,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TurtleLib\AMCP.csproj">
+    <ProjectReference Include="..\AMCP\AMCP.csproj">
       <Project>{d9c7a04c-f953-4c52-a7e7-2201aa93d880}</Project>
       <Name>AMCP</Name>
     </ProjectReference>
