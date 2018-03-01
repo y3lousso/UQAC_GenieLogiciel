@@ -8,9 +8,9 @@ namespace AMCP
 {
     public class Rectangle : Forme
     {
-        public Vector2 Position { get; set; }
-        public int Largeur { get; set; }
-        public int Hauteur { get; set; }
+        public Vector2 Position { get; set; } //TODO pas de majuscule cf 6.6
+        public int Largeur { get; set; } //TODO pas de majuscule cf 6.6
+        public int Hauteur { get; set; } //TODO pas de majuscule cf 6.6
 
         internal Rectangle(Vector2 position, int largeur, int hauteur)
         {
