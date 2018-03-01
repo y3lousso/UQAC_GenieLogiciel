@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Threading;
 
 namespace AMCP
 {
@@ -42,7 +43,7 @@ namespace AMCP
 
         }
 
-        public void ChagerImage(string chemin, Vector2 position)
+        public void ChagerImage(string chemin, int positionX, int positionY)
         {
 
         }
@@ -51,6 +52,32 @@ namespace AMCP
         {
             Canvas.Size = new Size(tailleX, tailleY);
             //Canvas.Update();
+        }
+
+        /// <summary>
+        /// Permet d'afficher toutes les formes précédements créer. Le paramètre d'entrée permet d'ajouter une pause entre l'affichage de chaque forme. (en millisecondes)
+        /// </summary>
+        /// <param name="pasDeTemps"></param>
+        public virtual void Afficher(int pasDeTemps = 0)
+        {
+            foreach(Forme f in Canvas.Formes)
+            {             
+                System.Windows.Forms.Application.DoEvents();
+                f.Afficher();
+                Thread.Sleep(pasDeTemps);
+            }        
+        }
+
+        public virtual void NettoyerEcran()
+        {
+            Canvas.instance.Graphic.Clear(Color.White);
+        }
+
+        public virtual void Pause()
+        {
+            Console.WriteLine("Press any key to continue ...");
+            Console.ReadLine();
+            Console.WriteLine("Starting");
         }
 
     }

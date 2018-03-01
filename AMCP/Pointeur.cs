@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace AMCP
     {
 
         int Id { get; set; }
-        Vector2 Position { get; set; }
+        Point Position { get; set; }
         int TaillePointeur { get; set; }
         string Couleur { get; set; }
 

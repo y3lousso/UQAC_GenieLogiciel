@@ -15,56 +15,75 @@ namespace AMCP
         /// <param name="positionX"></param>
         /// <param name="positionY"></param>
         /// <param name="taille"></param>
-        public Rectangle DessinerCarre(Vector2 position, int taille)
+        public Polygone DessinerCarre(int positionX, int positionY, int taille)
         {
-            Rectangle r = new Rectangle(position, taille, taille);
-            Canvas.Formes.Add(r);
-            Canvas.Graphic.DrawRectangle(new Pen(Color.Black), position.X, position.Y, taille, taille);
-            Console.WriteLine("Un carré a été dessiné.");
-            return r;
+            Polygone p = new Polygone();
+            p.SetRectangle(new Point(positionX, positionY), taille, taille);
+            Canvas.Formes.Add(p);
+            return p;
         }
 
-        public Rectangle DessinerRectangle(Vector2 position, int largeur, int hauteur )
+        public Polygone DessinerRectangle(int positionX, int positionY, int largeur, int hauteur )
         {
-            Rectangle r = new Rectangle(position, largeur, hauteur);
-            Canvas.Formes.Add(r);
-            Canvas.Graphic.DrawRectangle(new Pen(Color.Black), position.X, position.Y, largeur, hauteur);
-            Console.WriteLine("Un rectangle a été dessiné.");
-            return r;
+            Polygone p = new Polygone();
+            p.SetRectangle(new Point(positionX, positionY), largeur, hauteur);
+            Canvas.Formes.Add(p);
+            return p;
         }
 
-        public Cercle DessinerCercle(Vector2 position, int rayon)
+        public Ellipse DessinerCercle(int positionX, int positionY, int rayon)
         {
-            Cercle c = new Cercle(position, rayon);
-            Canvas.Formes.Add(c);
-            Canvas.Graphic.DrawEllipse(new Pen(Color.Black), position.X, position.Y, rayon, rayon);
-            Console.WriteLine("Un cercle a été dessiné.");
-            return c;
+            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon);
+            Canvas.Formes.Add(p);           
+            return p;
         }
 
-        public void DessinerTriangle(Vector2 position, int taille)
+        public Polygone DessinerTriangle(int positionX, int positionY, int taille)
         {
-            
+            Polygone p = new Polygone();
+            p.SetTriangle(new Point(positionX, positionY), taille);
+            Canvas.Formes.Add(p);
+            return p;
         }
 
-        public void DessinerLosange(Vector2 position, int largeur, int hauteur)
+        public Polygone DessinerLosange(int positionX, int positionY, int largeur, int hauteur)
         {
-
+            Polygone p = new Polygone();
+            p.SetLosange(new Point(positionX, positionY), largeur, hauteur);
+            Canvas.Formes.Add(p);
+            return p;
         }
 
-        public void DessinerEtoile(Vector2 position, int taille, int nbSommet)
+        public Polygone DessinerEtoile(int positionX, int positionY,int rayonInterieur, int rayonExterieur, int nbSommet)
         {
-
+            Polygone p = new Polygone();
+            p.SetEtoile(new Point(positionX, positionY), rayonInterieur, rayonExterieur, nbSommet);
+            Canvas.Formes.Add(p);
+            return p;
         }
 
-        public Ellipse DessinerEllipse(Vector2 position, int rayon1, int rayon2)
+        public Ellipse DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
         {
-                Ellipse e = new Ellipse(position, rayon1, rayon2);
-                Canvas.Formes.Add(e);
-                Canvas.Graphic.DrawEllipse(new Pen(Color.Black), position.X, position.Y, rayon1, rayon2);
-                Console.WriteLine("Une éllipse a été dessiné.");
-                return e;
+            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon1, rayon2);
+            Canvas.Formes.Add(p);
+            return p;
         }
+
+        public override void Afficher(int pasDeTemps = 0)
+        {
+            base.Afficher(pasDeTemps);
+        }
+
+        public override void NettoyerEcran()
+        {
+            base.NettoyerEcran();
+        }
+
+        public override void Pause()
+        {
+            base.Pause();
+        }
+
 
     }
 }

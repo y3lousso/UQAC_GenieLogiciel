@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
 
 using AMCP;
 
@@ -14,37 +12,104 @@ namespace CEGEP_Student
     {
         static void Main(string[] args)
         {
-            /*
-            InterfaceSequenciel i = new InterfaceSequenciel();
 
-            for (int x = 0; x < 20; x++)
+            // 0 -> démo séquenciel
+            // 1 -> démo OOP
+            // 2 -> sequenciel rotation
+            // 3 -> opp rotation
+
+            int test = 2;
+
+            switch (test)
             {
-                int posX = 20 * x;
-                int posY = (20 * x) + x;
-                i.DessinerRectangle(posX, posY, 50, 70);
-                i.DessinerCercle(posX, posY+50, 20);
-                Thread.Sleep(500);
-                Canvas.instance.Show();
+                case 0:
+                    {
+                        Console.WriteLine("------ Sequenciel -------");
+                        InterfaceSequenciel i = new InterfaceSequenciel();
+
+                        for (int x = 0; x < 5; x++)
+                        {
+                            int posX = 20 * x + 80;
+                            int posY = (20 * x) + x + 80;
+                            i.DessinerRectangle(posX, posY, 50, 70);
+                            i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
+                            i.DessinerCercle(100 + posX, posY, 20);
+                            i.DessinerEllipse(posX, posY + 250, 20, 50);
+                        }
+
+                        i.Afficher(200);
+                        break;
+                    }
+
+                case 1:
+                    {
+                        Console.WriteLine("------ OOP -------");
+                        InterfaceOrienteObjet i = new InterfaceOrienteObjet();
+
+                        for (int x = 0; x < 5; x++)
+                        {
+                            int posX = 20 * x + 80;
+                            int posY = (20 * x) + x + 80;
+                            i.DessinerRectangle(posX, posY, 50, 70);
+                            i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
+                            i.DessinerCercle(100 + posX, posY, 20);
+                            i.DessinerEllipse(posX, posY + 250, 20, 50);
+                        }
+
+                        i.Afficher(200);
+
+                        break;
+                    }
+
+                case 2:
+                    {
+                        Console.WriteLine("------ Sequentiel : rotation -------");
+                        InterfaceSequenciel i = new InterfaceSequenciel();
+
+                        i.Pause();
+
+                        int posX = 250;
+                        int posY = 250;
+
+                        int etoileID = i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
+
+                        for (int j = 0; j < 100; j++)
+                        {
+                            i.Tourner(etoileID, 20);
+                            i.Afficher(100);
+                            i.NettoyerEcran();
+                        }
+
+                        i.Pause();
+
+                        break;
+                    }
+
+                case 3:
+                    {
+                        Console.WriteLine("------ OOP : rotation -------");
+                        InterfaceOrienteObjet i = new InterfaceOrienteObjet();
+
+                        i.Pause();
+
+                        int posX = 250;
+                        int posY = 250;
+                        Polygone p1 = i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
+                        for (int j = 0; j < 100; j++)
+                        {                       
+                            p1.Tourner(20);
+                            i.Afficher(100);
+                            i.NettoyerEcran();
+                        } 
+
+                        i.Pause();
+                        break;
+                    }
+
+                default:
+                    Console.WriteLine("Select a correct test");
+                    break;
             }
-
-            Console.ReadLine();
-            */
-
-            InterfaceOrienteObjet i = new InterfaceOrienteObjet();
-
-            for (int x = 0; x < 5; x++)
-            {
-                int posX = 20 * x;
-                int posY = (20 * x) + x;               
-                i.DessinerRectangle(new Vector2(posX,posY), 50, 70); 
-                i.DessinerCercle(new Vector2(100+posX,posY), 20);
-                i.DessinerCarre(new Vector2(posX, posY + 150), 30);
-                i.DessinerEllipse(new Vector2(posX, posY + 250), 20, 50);
-                Thread.Sleep(500);
-                Canvas.instance.Show();
-            }
-
-            Console.ReadLine();
             
         }
     }

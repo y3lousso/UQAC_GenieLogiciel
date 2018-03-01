@@ -11,7 +11,7 @@ namespace AMCP
 {
     public class Canvas : Form
     {
-        public static Canvas instance;
+        internal static Canvas instance;
 
         public Graphics Graphic { get; set; }
         public List<Forme> Formes { get; set; }
@@ -24,6 +24,8 @@ namespace AMCP
                 this.Size = new Size(sizeX, sizeY);
                 this.Graphic = this.CreateGraphics();              
                 this.Graphic.SmoothingMode = SmoothingMode.AntiAlias;
+                this.Graphic.Clear(Color.White);
+                this.CenterToScreen();
                 this.Formes = new List<Forme>();
                 this.Show();
             }
@@ -32,7 +34,6 @@ namespace AMCP
                 throw new Exception("Can't create multiple instance of Canvas");
             }
         }
-
 
         public void ChangerDimension(int sizeX, int sizeY)
         {

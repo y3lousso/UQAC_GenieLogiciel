@@ -9,56 +9,51 @@ namespace AMCP
 {
     public class InterfaceSequenciel : IMode
     {
-        public int DessinerCarre(int positionX, int positionY, int taille)
-        {
-            Rectangle r = new Rectangle(new Vector2(positionX, positionY), taille, taille);
-            Canvas.Formes.Add(r);
-            Canvas.Graphic.DrawRectangle(new Pen(Color.Black), positionX, positionY, taille, taille);
-            Console.WriteLine("Un carré a été dessiné.");
-            return Canvas.Formes.IndexOf(r);
-        }
 
         public int DessinerRectangle(int positionX, int positionY, int largeur, int hauteur)
         {
-            Vector2 position = new Vector2(positionX, positionY);
-            Rectangle r = new Rectangle(position, largeur, hauteur);
-            Canvas.Formes.Add(r);
-            Canvas.Graphic.DrawRectangle(new Pen(Color.Black), position.X, position.Y, largeur, hauteur);
-            Console.WriteLine("Un rectangle a été dessiné.");
-            return Canvas.Formes.IndexOf(r);
+            Polygone p = new Polygone();
+            p.SetRectangle(new Point(positionX, positionY), largeur, hauteur);
+            Canvas.Formes.Add(p);
+            return Canvas.Formes.IndexOf(p);
         }
 
         public int DessinerCercle(int positionX, int positionY, int rayon)
         {
-            Cercle c = new Cercle(new Vector2(positionX, positionY), rayon);
-            Canvas.Formes.Add(c);
-            Canvas.Graphic.DrawEllipse(new Pen(Color.Black), positionX, positionY, rayon, rayon);
-            Console.WriteLine("Un cercle a été dessiné.");
-            return Canvas.Formes.IndexOf(c);
+            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon);
+            Canvas.Formes.Add(p);
+            return Canvas.Formes.IndexOf(p);
         }
 
         public int DessinerTriangle(int positionX, int positionY, int taille)
         {
-            return 0;
+            Polygone p = new Polygone();
+            p.SetTriangle(new Point(positionX, positionY), taille);
+            Canvas.Formes.Add(p);
+            return Canvas.Formes.IndexOf(p);
         }
 
         public int DessinerLosange(int positionX, int positionY, int largeur, int hauteur)
         {
-            return 0;
+            Polygone p = new Polygone();
+            p.SetLosange(new Point(positionX, positionY), largeur, hauteur);
+            Canvas.Formes.Add(p);
+            return Canvas.Formes.IndexOf(p);
         }
 
-        public int DessinerEtoile(int positionX, int positionY, int taille, int nbSommet)
+        public int DessinerEtoile(int positionX, int positionY, int rayonInterieur, int rayonExterieur, int nbSommet)
         {
-            return 0;
+            Polygone p = new Polygone();
+            p.SetEtoile(new Point(positionX, positionY), rayonInterieur, rayonExterieur, nbSommet);
+            Canvas.Formes.Add(p);
+            return Canvas.Formes.IndexOf(p);
         }
 
         public int DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
         {
-            Ellipse e = new Ellipse(new Vector2(positionX, positionY), rayon1, rayon2);
-            Canvas.Formes.Add(e);
-            Canvas.Graphic.DrawEllipse(new Pen(Color.Black), positionX, positionY, rayon1, rayon2);
-            Console.WriteLine("Une éllipse a été dessiné.");
-            return Canvas.Formes.IndexOf(e);
+            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon1, rayon2);
+            Canvas.Formes.Add(p);
+            return Canvas.Formes.IndexOf(p);
         }
 
         public int Dupliquer(int idForme, int positionX, int positionY)
@@ -73,7 +68,14 @@ namespace AMCP
         
         public void Tourner(int idForme, int angle)
         {
+            if(Canvas.Formes[idForme] is Polygone)
+            {
+                ((Polygone)Canvas.Formes[idForme]).Tourner(angle);
+            }
+            else if (Canvas.Formes[idForme] is Ellipse)
+            {
 
+            }
         }
 
         public void Deplacer(int idForme, int positionX, int positionY)
@@ -84,6 +86,21 @@ namespace AMCP
         public void Dimensionner(int idForme, float taille)
         {
 
+        }
+
+        public override void Afficher(int pasDeTemps = 0)
+        {
+            base.Afficher(pasDeTemps);
+        }
+
+        public override void NettoyerEcran()
+        {
+            base.NettoyerEcran();
+        }
+
+        public override void Pause()
+        {
+            base.Pause();
         }
     }
 }
