@@ -8,8 +8,8 @@ namespace AMCP
 {
     public class Vector2
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public int X { get; set; } //TODO pas de majuscule cf 6.6
+        public int Y { get; set; } //TODO pas de majuscule cf 6.6
 
         public Vector2(int x, int y)
         {
