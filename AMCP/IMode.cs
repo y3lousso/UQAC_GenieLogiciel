@@ -42,6 +42,7 @@ namespace AMCP
 
         }
 
+        //TODO faute - Charger
         public void ChagerImage(string chemin, Vector2 position)
         {
 
