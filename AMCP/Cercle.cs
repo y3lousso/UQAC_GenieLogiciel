@@ -8,8 +8,8 @@ namespace AMCP
 {
     public class Cercle : Forme
     {
-        public Vector2 Position { get; set; } //TODO pas de majuscule cf 6.6
-        public int Rayon { get; set; } //TODO pas de majuscule cf 6.6
+        public Vector2 Position { get; set; } 
+        public int Rayon { get; set; } 
 
         internal Cercle(Vector2 position, int rayon)
         {

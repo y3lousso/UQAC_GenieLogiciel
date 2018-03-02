@@ -9,10 +9,10 @@ namespace AMCP
     internal class Pointeur
     {
 
-        int Id { get; set; } //TODO pas de majuscule cf 6.6
-        Vector2 Position { get; set; } //TODO pas de majuscule cf 6.6
-        int TaillePointeur { get; set; } //TODO pas de majuscule cf 6.6
-        string Couleur { get; set; } //TODO pas de majuscule cf 6.6
+        int Id { get; set; } 
+        Vector2 Position { get; set; } 
+        int TaillePointeur { get; set; } 
+        string Couleur { get; set; } 
 
         protected void Dessiner()
         {

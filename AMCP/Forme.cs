@@ -8,8 +8,8 @@ namespace AMCP
 {
     public class Forme
     {
-        int Id { get; set; } //TODO pas de majuscule cf 6.6
-        List<Vector2> Points { get; set; } //TODO pas de majuscule cf 6.6
+        int Id { get; set; } 
+        List<Vector2> Points { get; set; } 
 
         public void Dupliquer(Vector2 position)
         {

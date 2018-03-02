@@ -13,8 +13,8 @@ namespace AMCP
     {
         public static Canvas instance;
 
-        public Graphics Graphic { get; set; } //TODO pas de majuscule cf 6.6
-        public List<Forme> Formes { get; set; } //TODO pas de majuscule cf 6.6
+        public Graphics Graphic { get; set; } 
+        public List<Forme> Formes { get; set; } 
 
         public Canvas(int sizeX, int sizeY)
         {

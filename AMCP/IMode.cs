@@ -10,9 +10,9 @@ namespace AMCP
     public abstract class IMode
     {
         private static IMode instance;
-        protected Canvas Canvas { get; set; } //TODO pas de majuscule cf 6.6
-        protected bool HistoriqueActions { get; set; } //TODO pas de majuscule cf 6.6  
-        private Pointeur Pointeur { get; set; } //TODO pas de majuscule cf 6.6
+        protected Canvas Canvas { get; set; } 
+        protected bool HistoriqueActions { get; set; }  
+        private Pointeur Pointeur { get; set; } 
 
         public IMode()
         {
