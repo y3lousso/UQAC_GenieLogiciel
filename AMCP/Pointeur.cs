@@ -12,6 +12,7 @@ namespace AMCP
         int Id { get; set; } 
         //TODO deux int dans le CON
         Vector2 Position { get; set; } 
+         //TODO n'est pas le même nom que dans le CON, manque le paramètre
         int TaillePointeur { get; set; } 
         string Couleur { get; set; } 
 
