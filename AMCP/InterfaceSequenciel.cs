@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace AMCP
 {
+    //TODO typo : InterfaceSequentielle
     public class InterfaceSequenciel : IMode
     {
         public int DessinerCarre(int positionX, int positionY, int taille)

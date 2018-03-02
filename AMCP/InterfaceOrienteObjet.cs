@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace AMCP
 {
+    //TODO typo : InterfaceOrienteeObjet
     public class InterfaceOrienteObjet : IMode
     {
         /// <summary>
         /// Permet de dessiner un carré en prennant comme origine l'arrete supérieure gauche du carré.
         /// </summary>
+        //TODO param Vector2 plutot que positionX et Y ?
         /// <param name="positionX"></param>
         /// <param name="positionY"></param>
         /// <param name="taille"></param>
@@ -59,6 +61,7 @@ namespace AMCP
 
         public Ellipse DessinerEllipse(Vector2 position, int rayon1, int rayon2)
         {
+            //TODO mauvaise indentation
                 Ellipse e = new Ellipse(position, rayon1, rayon2);
                 Canvas.Formes.Add(e);
                 Canvas.Graphic.DrawEllipse(new Pen(Color.Black), position.X, position.Y, rayon1, rayon2);
