@@ -15,22 +15,25 @@ namespace AMCP
         {
 
         }
-
+//TODO n'est pas le même nom que dans le CON
         public void Colorier(int r, int g, int b)
         {
 
         }
 
+//TODO n'est pas le même nom que dans le CON
         public void Tourner(int angle)
         {
 
         }
 
+//TODO n'est pas le même nom que dans le CON
         public void Deplacer(Vector2 position)
         {
 
         }
 
+//TODO n'est pas le même nom que dans le CON
         public void Dimensionner(float taille)
         {
 
