@@ -38,7 +38,7 @@ namespace AMCP
         {
 
         }
-
+        //TODO pas dans le CON à ne développer que si nécessaire pour le reste
         public void ObtenirHistoriqueActions()
         {
 
