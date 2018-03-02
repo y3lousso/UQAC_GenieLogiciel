@@ -23,7 +23,6 @@ namespace AMCP
             }
             else
             {
-                //TODO chaine de description en Anglais
                 throw new Exception("Can't create multiple instance of IMode");
             }
         }
