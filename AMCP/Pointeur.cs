@@ -10,6 +10,7 @@ namespace AMCP
     {
 
         int Id { get; set; } 
+        //TODO deux int dans le CON
         Vector2 Position { get; set; } 
         int TaillePointeur { get; set; } 
         string Couleur { get; set; } 
@@ -28,7 +29,8 @@ namespace AMCP
         {
 
         }
-
+        
+//TODO n'est pas le même nom que dans le CON, manque le paramètre
         protected void Avant()
         {
 
