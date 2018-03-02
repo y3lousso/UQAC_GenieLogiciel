@@ -29,13 +29,8 @@ namespace AMCP
         {
 
         }
-<<<<<<< HEAD
 
-        //TODO Avancer dans le CON 
-=======
-        
-//TODO n'est pas le même nom que dans le CON, manque le paramètre
->>>>>>> acef569e1f375b7440f23621d090749096b6b55f
+        //TODO n'est pas le même nom que dans le CON, manque le paramètre
         protected void Avant()
         {
 
