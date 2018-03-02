@@ -12,7 +12,7 @@ namespace AMCP
     public class Canvas : Form
     {
         public static Canvas instance;
-
+        //TODO attribut int x, int y
         public Graphics Graphic { get; set; } 
         public List<Forme> Formes { get; set; } 
 
@@ -33,12 +33,13 @@ namespace AMCP
             }
         }
 
-
+    
         public void ChangerDimension(int sizeX, int sizeY)
         {
             this.Size = new Size(sizeX, sizeY);
         }
-
+        
+        //TODO manque position
         public void ChargerImage(string cheminImage)
         {
 
