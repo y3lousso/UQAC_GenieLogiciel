@@ -55,8 +55,9 @@
     </Compile>
     <Compile Include="Formes\Ellipse.cs" />
     <Compile Include="Formes\Forme.cs" />
-    <Compile Include="InterfaceOrienteObjet.cs" />
-    <Compile Include="InterfaceSequenciel.cs" />
+    <Compile Include="Formes\FormeLibre.cs" />
+    <Compile Include="InterfaceOrienteeObjet.cs" />
+    <Compile Include="InterfaceSequencielle.cs" />
     <Compile Include="IMode.cs" />
     <Compile Include="Formes\Polygone.cs" />
     <Compile Include="Pointeur.cs" />

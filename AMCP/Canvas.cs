@@ -15,10 +15,15 @@ namespace AMCP
 
         public Graphics Graphic { get; set; }
         public List<Forme> Formes { get; set; }
+        public int tailleX { get;set;}
+        public int tailleY { get; set; }
 
         public Canvas(int sizeX, int sizeY)
         {
-            if(instance == null)
+            this.tailleX = sizeX;
+            this.tailleY = sizeY;
+
+            if (instance == null)
             {
                 instance = this;
                 this.Size = new Size(sizeX, sizeY);
@@ -39,8 +44,8 @@ namespace AMCP
         {
             this.Size = new Size(sizeX, sizeY);
         }
-
-        public void ChargerImage(string cheminImage)
+        
+        public void ChargerImage(string cheminImage, int positionX, int positionY)
         {
 
         }

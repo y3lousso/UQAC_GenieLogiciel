@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 
 namespace AMCP.Formes
 {
-    public class FormeLibre:Forme
+    public class FormeLibre : Forme
     {
-
         List<Point> Points { get; set; } = new List<Point>();
         int taille { get; set; }
         Color color { get; set; }
 
 
-        public FormeLibre(List<Point> Points,int r,int g, int b, int taille)
+        public FormeLibre(List<Point> Points, int r, int g, int b, int taille)
         {
             this.Points = Points;
             this.color = Color.FromArgb(r, g, b);
@@ -24,7 +23,7 @@ namespace AMCP.Formes
 
         public override void Colorier(int r, int g, int b)
         {
-            
+
         }
 
         public override void Deplacer(int positionX, int positionY)
@@ -38,7 +37,7 @@ namespace AMCP.Formes
             for (int i = 0; i < Points.Count; i++)
             {
                 Point tmpPoint = new Point();
-                tmpPoint.X= (int)(Points[i].X + distance * Math.Cos(angle));
+                tmpPoint.X = (int)(Points[i].X + distance * Math.Cos(angle));
                 tmpPoint.Y = (int)(Points[i].Y + distance * Math.Sin(angle));
                 Points[i] = tmpPoint;
             }
@@ -60,7 +59,7 @@ namespace AMCP.Formes
             {
                 tmpPoints.Add(new Point(point.X, point.Y));
             }
-            Forme forme = new FormeLibre(tmpPoints,r,g,b,taille);
+            Forme forme = new FormeLibre(tmpPoints, r, g, b, taille);
             forme.Deplacer(positionX, positionY);
             Canvas.instance.Formes.Add(forme);
         }
@@ -90,7 +89,7 @@ namespace AMCP.Formes
             Pen pen = new Pen(color, taille);
             for (int i = 1; i < Points.Count; i++)
             {
-                Canvas.instance.Graphic.DrawLine(pen, Points.ElementAt(i-1),Points.ElementAt(i)) ;
+                Canvas.instance.Graphic.DrawLine(pen, Points.ElementAt(i - 1), Points.ElementAt(i));
             }
         }
     }

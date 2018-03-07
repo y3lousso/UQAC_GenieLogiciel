@@ -11,9 +11,9 @@ namespace AMCP
     public abstract class IMode
     {
         private static IMode instance;
-        protected Canvas Canvas { get; set; }
-        protected bool HistoriqueActions { get; set; }       
-        private Pointeur Pointeur { get; set; }
+        protected Canvas Canvas { get; set; } 
+        protected bool HistoriqueActions { get; set; }  
+        private Pointeur Pointeur { get; set; } 
 
         public IMode()
         {
@@ -43,7 +43,7 @@ namespace AMCP
 
         }
 
-        public void ChagerImage(string chemin, int positionX, int positionY)
+        public void ChargerImage(string chemin, int positionX, int positionY)
         {
 
         }

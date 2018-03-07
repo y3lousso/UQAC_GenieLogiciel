@@ -25,7 +25,7 @@ namespace CEGEP_Student
                 case 0:
                     {
                         Console.WriteLine("------ Sequenciel -------");
-                        InterfaceSequenciel i = new InterfaceSequenciel();
+                        InterfaceSequencielle i = new InterfaceSequencielle();
 
                         for (int x = 0; x < 5; x++)
                         {
@@ -44,7 +44,7 @@ namespace CEGEP_Student
                 case 1:
                     {
                         Console.WriteLine("------ OOP -------");
-                        InterfaceOrienteObjet i = new InterfaceOrienteObjet();
+                        InterfaceOrienteeObjet i = new InterfaceOrienteeObjet();
 
                         for (int x = 0; x < 5; x++)
                         {
@@ -64,7 +64,7 @@ namespace CEGEP_Student
                 case 2:
                     {
                         Console.WriteLine("------ Sequentiel : rotation -------");
-                        InterfaceSequenciel i = new InterfaceSequenciel();
+                        InterfaceSequencielle i = new InterfaceSequencielle();
 
                         i.Pause();
 
@@ -88,7 +88,7 @@ namespace CEGEP_Student
                 case 3:
                     {
                         Console.WriteLine("------ OOP : rotation -------");
-                        InterfaceOrienteObjet i = new InterfaceOrienteObjet();
+                        InterfaceOrienteeObjet i = new InterfaceOrienteeObjet();
 
                         i.Pause();
 
