@@ -17,8 +17,10 @@ namespace CEGEP_Student
             // 1 -> démo OOP
             // 2 -> sequenciel rotation
             // 3 -> opp rotation
+            // 4 -> reverse Y axis test
+            // 5 -> car demo
 
-            int test = 2;
+            int test = 5;
 
             switch (test)
             {
@@ -94,7 +96,7 @@ namespace CEGEP_Student
 
                         int posX = 250;
                         int posY = 250;
-                        Polygone p1 = i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
+                        Forme p1 = i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
                         for (int j = 0; j < 100; j++)
                         {                       
                             p1.Tourner(20);
@@ -102,6 +104,70 @@ namespace CEGEP_Student
                             i.NettoyerEcran();
                         } 
 
+                        i.Pause();
+                        break;
+                    }
+                case 4:
+                    {
+                        Console.WriteLine("------ Reverse Y Axis Test -------");
+                        InterfaceOrienteeObjet i = new InterfaceOrienteeObjet();
+
+                        int posX = 0;
+                        int posY = 0;
+
+                        Forme rectangle = i.DessinerCarre(50+posX, 50+posY, 100);
+                        Forme cercle = i.DessinerCercle(posX+100, posY+100, 50);
+
+                        i.Afficher();
+                        i.Pause();
+                        break;
+                    }
+
+                case 5:
+                    {
+                        Console.WriteLine("------ Car demo -------");
+                        InterfaceOrienteeObjet i = new InterfaceOrienteeObjet();
+
+                        int posX = 100;
+                        int posY = 100;
+
+                        i.Pause();
+
+                        Forme background = i.DessinerRectangle(600, 600, 1500, 1500);
+                        background.Colorier(0,255, 255);                       
+                        Forme road = i.DessinerRectangle(600, 25, 1500, 50);
+                        road.Colorier(50, 50, 50);
+                        Forme car = i.DessinerRectangle(posX, posY, 200, 50);
+                        car.Colorier(255, 0, 0);
+                        Forme wheel1 = i.DessinerCercle(posX - 85, posY - 50, 50);
+                        wheel1.Colorier(0, 0, 0);
+                        Ellipse wheel2 = (Ellipse)wheel1.Dupliquer(posX + 85, posY - 50);
+                        wheel2.Colorier(0, 0, 0);
+
+                        // Toit de la voiture
+                        i.Pointeur.Deplacer(posX-50, posY+20);
+                        i.Pointeur.DescendrePointeur();
+                        i.Pointeur.Tourner(45);
+                        i.Pointeur.Avancer(50);
+                        i.Pointeur.Tourner(-45);
+                        i.Pointeur.Avancer(50);
+                        i.Pointeur.Tourner(-45);
+                        i.Pointeur.Avancer(50);
+                        i.Pointeur.LeverPointeur();
+                        Forme toit = i.Pointeur.Dessiner();
+
+                        for (int j = 0; j < 50; j++)
+                        {
+                            i.AfficherTout(100);
+                            posX += 10;
+                            car.Deplacer(posX, posY);
+                            wheel1.Deplacer(posX - 85, posY - 50);
+                            wheel2.Deplacer(posX + 85, posY - 50);
+                            toit.Deplacer(posX-50, posY + 20);
+                            i.NettoyerEcran();
+                        }
+
+                        i.AfficherTout();
                         i.Pause();
                         break;
                     }

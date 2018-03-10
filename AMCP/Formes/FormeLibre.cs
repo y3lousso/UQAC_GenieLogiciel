@@ -10,37 +10,46 @@ namespace AMCP.Formes
     public class FormeLibre : Forme
     {
         List<Point> Points { get; set; } = new List<Point>();
-        int taille { get; set; }
-        Color color { get; set; }
+        int Taille { get; set; }
 
-
-        public FormeLibre(List<Point> Points, int r, int g, int b, int taille)
+        internal FormeLibre(List<Point> points, int taille)
         {
-            this.Points = Points;
-            this.color = Color.FromArgb(r, g, b);
-            this.taille = taille;
+            this.Position = points[0];
+            this.Points = points;
+            this.Color = Color.Black;
+            this.Taille = taille;
+        }
+
+        internal FormeLibre(List<Point> points, int taille, Color color )
+        {
+            this.Points = points;
+            this.Color = color;
+            this.Taille = taille;
         }
 
         public override void Colorier(int r, int g, int b)
         {
-
+            this.Color = Color.FromArgb(1, r, g, b);
         }
 
         public override void Deplacer(int positionX, int positionY)
         {
+            this.Position = new Point(positionX, positionY);
+            /*
             Point target = new Point(positionX, positionY);
-            Point origin = Points[0];
+            Point origin = this.Points[0];
 
+            
             double distance = (Math.Sqrt(Math.Pow(target.X - origin.X, 2) + Math.Pow(target.X - origin.Y, 2)));
             double angle = Math.Atan2(target.X - origin.X, target.Y - origin.Y);
 
-            for (int i = 0; i < Points.Count; i++)
+            for (int i = 0; i < this.Points.Count; i++)
             {
                 Point tmpPoint = new Point();
-                tmpPoint.X = (int)(Points[i].X + distance * Math.Cos(angle));
-                tmpPoint.Y = (int)(Points[i].Y + distance * Math.Sin(angle));
+                tmpPoint.X = (int)(this.Points[i].X + distance * Math.Cos(angle));
+                tmpPoint.Y = (int)(this.Points[i].Y + distance * Math.Sin(angle));
                 Points[i] = tmpPoint;
-            }
+            }*/
         }
 
         public override void Dimensionner(float taille)
@@ -48,33 +57,26 @@ namespace AMCP.Formes
             throw new NotImplementedException();
         }
 
-        public override void Dupliquer(int positionX, int positionY)
+        public override Forme Dupliquer(int positionX, int positionY)
         {
-            List<Point> tmpPoints = new List<Point>();
-            int r = this.color.R;
-            int g = this.color.G;
-            int b = this.color.B;
-            int taille = this.taille;
-            foreach (Point point in Points)
-            {
-                tmpPoints.Add(new Point(point.X, point.Y));
-            }
-            Forme forme = new FormeLibre(tmpPoints, r, g, b, taille);
+            Forme forme = new FormeLibre(new List<Point>(this.Points), this.Taille, this.Color);
             forme.Deplacer(positionX, positionY);
             Canvas.instance.Formes.Add(forme);
+
+            return forme;
         }
 
         public override void Tourner(int angle)
         {
 
             double angleRadian = angle * Math.PI / 180f;
-            Point rotationAxe = Points[0];
+            Point rotationAxe = this.Points[0];
             Point tmpPoint;
 
             for (int i = 1; i < Points.Count; i++)
             {
-                int X = Points[i].X - rotationAxe.X;
-                int Y = Points[i].Y - rotationAxe.Y;
+                int X = this.Points[i].X - rotationAxe.X;
+                int Y = this.Points[i].Y - rotationAxe.Y;
 
                 tmpPoint = new Point();
                 tmpPoint.X = (int)(rotationAxe.X + X * Math.Cos(angleRadian) - Y * Math.Sin(angleRadian));
@@ -86,10 +88,14 @@ namespace AMCP.Formes
 
         internal override void Afficher()
         {
-            Pen pen = new Pen(color, taille);
-            for (int i = 1; i < Points.Count; i++)
+            Pen pen = new Pen(this.Color, this.Taille);
+            Point point1;
+            Point point2;
+            for (int i = 0; i < this.Points.Count-1; i++)
             {
-                Canvas.instance.Graphic.DrawLine(pen, Points.ElementAt(i - 1), Points.ElementAt(i));
+                point1 = new Point(this.Position.X + this.Points[i].X, this.Position.Y + this.Points[i].Y);
+                point2 = new Point(this.Position.X + this.Points[i + 1].X, this.Position.Y + this.Points[i + 1].Y);
+                Canvas.instance.Graphic.DrawLine(pen, point1, point2);
             }
         }
     }

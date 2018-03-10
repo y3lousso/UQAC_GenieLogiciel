@@ -12,35 +12,28 @@ namespace AMCP
     public class Pointeur
     {
         protected int Id { get; set; }
-        protected int PositionX { get; set; }
-        protected int PositionY { get; set; }
+        protected Point Position { get; set; }
         protected int TailleBrosse { get; set; }
-        protected int R { get; set; }
-        protected int G { get; set; }
-        protected int B { get; set; }
+        protected Color Color { get; set; }
         protected Boolean PointeurBas { get; set; }
         protected float Angle { get; set; }
         protected List<Point> Points { get; set; }
 
-        public Pointeur(Point position, int taille, int angle, int r, int g, int b)
+        private Point StartPosition { get; set; }
+
+        public Pointeur(Point position, int taille, int angle, Color color)
         {
-            this.PositionX = position.X;
-            this.PositionY = position.Y;
+            this.Position = position;
             this.TailleBrosse = taille;
             this.Angle = angle;
-            this.R = r;
-            this.B = b;
-            this.G = g;
+            this.Color = color;
         }
 
         public Pointeur()
         {
-            this.PositionX = Canvas.instance.Width / 2;
-            this.PositionX = Canvas.instance.Height / 2;
-            this.TailleBrosse = 1;
-            R = 0;
-            G = 0;
-            B = 0;
+            this.Position = new Point(Canvas.instance.Width / 2, Canvas.instance.Height / 2);
+            this.TailleBrosse = 10;
+            this.Color = Color.FromArgb(0, 0, 0);
             this.Angle = 0;
         }
 
@@ -48,8 +41,9 @@ namespace AMCP
         {
             if (Points != null)
             {
-                FormeLibre forme = new FormeLibre(Points, R, G, B, TailleBrosse);
+                FormeLibre forme = new FormeLibre(this.Points, this.TailleBrosse, this.Color);
                 Canvas.instance.Formes.Add(forme);
+                Points = null;
                 return forme;
             }
             else
@@ -61,29 +55,33 @@ namespace AMCP
 
         public void LeverPointeur()
         {
-            Points.Add(new Point(PositionX, PositionY));
-            Points = null;
+            Points.Add(new Point(this.Position.X - StartPosition.X, this.Position.Y - StartPosition.Y));            
             PointeurBas = false;
         }
 
         public void DescendrePointeur()
         {
-            PointeurBas = true;
+            StartPosition = this.Position;
             Points = new List<Point>();
-            Points.Add(new Point(PositionX, PositionY));
+            Points.Add(new Point(0, 0));
         }
 
         public void Avancer(int pas)
         {
             double angleRadian = Angle * Math.PI / 180f;
-            PositionX = (int)(PositionX + pas * Math.Cos(angleRadian));
-            PositionY = (int)(PositionY + pas * Math.Sin(angleRadian));
+            this.Position = new Point((int)(this.Position.X + pas * Math.Cos(angleRadian)), (int)(this.Position.Y + pas * Math.Sin(angleRadian)));
         }
 
         public void Tourner(int angle)
         {
-            Points.Add( new Point(PositionX,PositionY) );
+            Points.Add(new Point(this.Position.X - StartPosition.X, this.Position.Y - StartPosition.Y));
             this.Angle += angle;
+        }
+
+        public void Deplacer(int positionX, int positionY)
+        {
+            this.Position = new Point(positionX, positionY);
+
         }
     }
 }

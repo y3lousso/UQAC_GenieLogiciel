@@ -27,10 +27,14 @@ namespace AMCP
             {
                 instance = this;
                 this.Size = new Size(sizeX, sizeY);
-                this.Graphic = this.CreateGraphics();              
+                this.Graphic = this.CreateGraphics();
                 this.Graphic.SmoothingMode = SmoothingMode.AntiAlias;
                 this.Graphic.Clear(Color.White);
                 this.CenterToScreen();
+
+                this.Graphic.ScaleTransform(1, -1);
+                this.Graphic.TranslateTransform(0, -Height+45);
+
                 this.Formes = new List<Forme>();
                 this.Show();
             }

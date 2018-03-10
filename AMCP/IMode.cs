@@ -13,14 +13,15 @@ namespace AMCP
         private static IMode instance;
         protected Canvas Canvas { get; set; } 
         protected bool HistoriqueActions { get; set; }  
-        private Pointeur Pointeur { get; set; } 
+        public Pointeur Pointeur { get; set; } 
 
         public IMode()
         {
             if(instance == null)
             {
                 instance = this;
-                Canvas = new Canvas(500, 500);
+                Canvas = new Canvas(1280, 720);
+                Pointeur = new Pointeur();
             }
             else
             {
@@ -66,6 +67,16 @@ namespace AMCP
                 f.Afficher();
                 Thread.Sleep(pasDeTemps);
             }        
+        }
+
+        public virtual void AfficherTout(int pasDeTemps = 0)
+        {
+            foreach(Forme f in Canvas.Formes)
+            {             
+                System.Windows.Forms.Application.DoEvents();
+                f.Afficher();               
+            }
+            Thread.Sleep(pasDeTemps);
         }
 
         public virtual void NettoyerEcran()

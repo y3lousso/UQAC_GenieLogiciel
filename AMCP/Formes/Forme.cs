@@ -10,11 +10,12 @@ namespace AMCP
     public abstract class Forme
     {
         int Id { get; set; }
-        protected Point Position { get; set; }        
+        public Point Position { get; internal set; }
+        public Color Color { get; internal set; }
 
         internal abstract void Afficher();
 
-        public abstract void Dupliquer(int positionX, int positionY);
+        public abstract Forme Dupliquer(int positionX, int positionY);
 
         public abstract void Colorier(int r, int g, int b);
 

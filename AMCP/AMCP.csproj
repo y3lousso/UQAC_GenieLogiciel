@@ -61,7 +61,6 @@
     <Compile Include="IMode.cs" />
     <Compile Include="Formes\Polygone.cs" />
     <Compile Include="Pointeur.cs" />
-    <Compile Include="Stylo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

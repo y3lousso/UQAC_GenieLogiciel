@@ -69,21 +69,5 @@ namespace AMCP
             return p;
         }
 
-        public override void Afficher(int pasDeTemps = 0)
-        {
-            base.Afficher(pasDeTemps);
-        }
-
-        public override void NettoyerEcran()
-        {
-            base.NettoyerEcran();
-        }
-
-        public override void Pause()
-        {
-            base.Pause();
-        }
-
-
     }
 }
