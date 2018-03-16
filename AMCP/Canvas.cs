@@ -15,8 +15,8 @@ namespace AMCP
 
         public Graphics Graphic { get; set; }
         public List<Forme> Formes { get; set; }
-        public int tailleX { get;set;}
-        public int tailleY { get; set; }
+        public int tailleX { get;set;} //TODO Pascal pas Camel
+        public int tailleY { get; set; } //TODO Pascal pas Camel
 
         public Canvas(int sizeX, int sizeY)
         {
