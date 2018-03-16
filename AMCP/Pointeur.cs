@@ -11,13 +11,13 @@ namespace AMCP
 {
     public class Pointeur
     {
-        protected int Id { get; set; }
-        protected Point Position { get; set; }
-        protected int TailleBrosse { get; set; }
-        protected Color Color { get; set; }
-        protected Boolean PointeurBas { get; set; }
-        protected float Angle { get; set; }
-        protected List<Point> Points { get; set; }
+        protected int Id { get; set; } // TODO Les abréviation sont en UPPER
+        protected Point Position { get; set; } // TODO Les protected sont en Camel
+        protected int TailleBrosse { get; set; } // TODO Les protected sont en Camel
+        protected Color Color { get; set; } // TODO Les protected sont en Camel
+        protected Boolean PointeurBas { get; set; } // TODO Les protected sont en Camel
+        protected float Angle { get; set; } // TODO Les protected sont en Camel
+        protected List<Point> Points { get; set; } // TODO Les protected sont en Camel
 
         private Point StartPosition { get; set; }
 
