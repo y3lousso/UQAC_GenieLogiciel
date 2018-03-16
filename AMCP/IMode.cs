@@ -11,8 +11,8 @@ namespace AMCP
     public abstract class IMode
     {
         private static IMode instance;
-        protected Canvas Canvas { get; set; } //Les variables protected sont en Camel
-        protected bool HistoriqueActions { get; set; }  //Les variables protected sont en Camel
+        protected Canvas Canvas { get; set; } // TODO Les variables protected sont en Camel
+        protected bool HistoriqueActions { get; set; }  // TODO Les variables protected sont en Camel
         public Pointeur Pointeur { get; set; } 
 
         public IMode()
