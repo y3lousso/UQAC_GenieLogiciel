@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace AMCP
 {
+    // TODO : Refactor to InterfaceSequentielle
     public class InterfaceSequencielle : IMode
     {
 
