@@ -96,6 +96,7 @@ namespace AMCP
             }
         }
 
+        // TODO CON : méthode en français
         public void SetRectangle(Point position, int largeur, int hauteur)
         {
             this.Position = position;
@@ -105,6 +106,7 @@ namespace AMCP
             this.Points.Add(new Point(largeur / 2, -hauteur / 2));  // bottom right           
         }
 
+        // TODO CON : méthode en français
         public void SetTriangle(Point position, int taille)
         {
             this.Position = position;
@@ -113,6 +115,7 @@ namespace AMCP
             this.Points.Add(new Point(taille / 2, taille / 2));   // bottom right
         }
 
+        // TODO CON : méthode en français
         public void SetLosange(Point position, int largeur, int hauteur)
         {
             this.Position = position;
@@ -122,6 +125,7 @@ namespace AMCP
             this.Points.Add(new Point(0, -hauteur / 2)); // bottom
         }
 
+        // TODO CON : méthode en français
         public void SetEtoile(Point position, int rayonInterieur, int rayonExterieur, int nbSommet)
         {
             this.Position = position;
