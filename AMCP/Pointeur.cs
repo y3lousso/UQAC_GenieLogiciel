@@ -9,12 +9,12 @@ using AMCP.Formes;
 
 namespace AMCP
 {
-    public class Pointeur
+    public class Pointeur // TODO CON: est censée être une classe abstraite implémentée par la classe Stylo
     {
         protected int Id { get; set; } // TODO Les abréviation sont en UPPER
         protected Point Position { get; set; } // TODO Les protected sont en Camel
         protected int TailleBrosse { get; set; } // TODO Les protected sont en Camel
-        protected Color Color { get; set; } // TODO Les protected sont en Camel
+        protected Color Color { get; set; } // TODO Les protected sont en Camel + CON : à mettre en français
         protected Boolean PointeurBas { get; set; } // TODO Les protected sont en Camel
         protected float Angle { get; set; } // TODO Les protected sont en Camel
         protected List<Point> Points { get; set; } // TODO Les protected sont en Camel
