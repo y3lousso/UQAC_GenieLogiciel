@@ -10,21 +10,21 @@ namespace AMCP.Formes
     public class FormeLibre : Forme
     {
         List<Point> Points { get; set; } = new List<Point>();
-        int Taille { get; set; }
+        int TailleStylo { get; set; }
 
         internal FormeLibre(List<Point> points, int taille)
         {
             this.Position = points[0];
             this.Points = points;
             this.Color = Color.Black;
-            this.Taille = taille;
+            this.TailleStylo = taille;
         }
 
         internal FormeLibre(List<Point> points, int taille, Color color )
         {
             this.Points = points;
             this.Color = color;
-            this.Taille = taille;
+            this.TailleStylo = taille;
         }
 
         public override void Colorier(int r, int g, int b)
@@ -35,21 +35,6 @@ namespace AMCP.Formes
         public override void Deplacer(int positionX, int positionY)
         {
             this.Position = new Point(positionX, positionY);
-            /*
-            Point target = new Point(positionX, positionY);
-            Point origin = this.Points[0];
-
-            
-            double distance = (Math.Sqrt(Math.Pow(target.X - origin.X, 2) + Math.Pow(target.X - origin.Y, 2)));
-            double angle = Math.Atan2(target.X - origin.X, target.Y - origin.Y);
-
-            for (int i = 0; i < this.Points.Count; i++)
-            {
-                Point tmpPoint = new Point();
-                tmpPoint.X = (int)(this.Points[i].X + distance * Math.Cos(angle));
-                tmpPoint.Y = (int)(this.Points[i].Y + distance * Math.Sin(angle));
-                Points[i] = tmpPoint;
-            }*/
         }
 
         public override void Dimensionner(float taille)
@@ -59,7 +44,7 @@ namespace AMCP.Formes
 
         public override Forme Dupliquer(int positionX, int positionY)
         {
-            Forme forme = new FormeLibre(new List<Point>(this.Points), this.Taille, this.Color);
+            Forme forme = new FormeLibre(new List<Point>(this.Points), this.TailleStylo, this.Color);
             forme.Deplacer(positionX, positionY);
             Canvas.instance.Formes.Add(forme);
 
@@ -88,7 +73,7 @@ namespace AMCP.Formes
 
         internal override void Afficher()
         {
-            Pen pen = new Pen(this.Color, this.Taille);
+            Pen pen = new Pen(this.Color, this.TailleStylo);
             Point point1;
             Point point2;
             for (int i = 0; i < this.Points.Count-1; i++)

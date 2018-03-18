@@ -12,17 +12,12 @@ namespace AMCP
     public class Canvas : Form
     {
         internal static Canvas instance;
+        internal Graphics Graphic { get; set; }
 
-        public Graphics Graphic { get; set; }
-        public List<Forme> Formes { get; set; }
-        public int tailleX { get;set;}
-        public int tailleY { get; set; }
+        internal List<Forme> Formes { get; set; }
 
         public Canvas(int sizeX, int sizeY)
         {
-            this.tailleX = sizeX;
-            this.tailleY = sizeY;
-
             if (instance == null)
             {
                 instance = this;
@@ -33,6 +28,7 @@ namespace AMCP
                 this.CenterToScreen();
 
                 this.Graphic.ScaleTransform(1, -1);
+                // TODO : trouver un fix à ce truc de merde :)
                 this.Graphic.TranslateTransform(0, -Height+45);
 
                 this.Formes = new List<Forme>();

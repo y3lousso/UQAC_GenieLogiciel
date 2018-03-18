@@ -1,0 +1,109 @@
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AMCP;
+using AMCP.Formes;
+
+namespace AMCP
+{
+    public class Stylo
+    {
+        private int Id { get; set; }
+        private Point Position { get; set; }
+        private float Orientation { get; set; }
+        private int Taille { get; set; }
+
+        private Color Couleur { get; set; }
+        private Boolean IsWriting { get; set; }
+
+        private Point StartPosition { get; set; }
+        private List<Point> Points { get; set; }
+        
+        public Stylo()
+        {
+            this.Position = new Point(Canvas.instance.Width / 2, Canvas.instance.Height / 2);
+            this.Taille = 10;
+            this.Couleur = Color.FromArgb(0, 0, 0);
+            this.Orientation = 0;
+        }
+
+        public Stylo(Point position, int size, int orientation, Color color)
+        {
+            this.Position = position;
+            this.Taille = size;
+            this.Orientation = orientation;
+            this.Couleur = color;
+        }
+
+        public FormeLibre Dessiner()
+        {
+            if (Points != null)
+            {
+                FormeLibre forme = new FormeLibre(this.Points, this.Taille, this.Couleur);
+                Canvas.instance.Formes.Add(forme);
+                Points = null;
+                return forme;
+            }
+            else
+            {
+                Console.WriteLine("Abaisser le pointeur pour commencer a dessiner");
+                return null;
+            }
+        }
+
+        public void LeverPointeur()
+        {
+            Points.Add(new Point(this.Position.X - StartPosition.X, this.Position.Y - StartPosition.Y));
+            IsWriting = false;
+        }
+
+        public void DescendrePointeur()
+        {
+            StartPosition = this.Position;
+            Points = new List<Point>();
+            Points.Add(new Point(0, 0));
+            IsWriting = true;
+        }
+
+        public void Avancer(int pas)
+        {
+            if (IsWriting)
+            {
+                double angleRadian = Orientation * Math.PI / 180f;
+                this.Position = new Point((int)(this.Position.X + pas * Math.Cos(angleRadian)), (int)(this.Position.Y + pas * Math.Sin(angleRadian)));
+            }
+            else
+            {
+                throw new Exception("Le stylo doit être descendu pour utiliser 'Avancer'.");
+            }
+        }
+
+        public void Tourner(int angle)
+        {
+            if (IsWriting)
+            {
+                Points.Add(new Point(this.Position.X - StartPosition.X, this.Position.Y - StartPosition.Y));
+                this.Orientation += angle;
+            }
+            else
+            {
+                throw new Exception("Le stylo doit être descendu pour utiliser 'Tourner'.");
+            }
+        }
+
+        public void Deplacer(int positionX, int positionY)
+        {
+            if (!IsWriting)
+            {
+                this.Position = new Point(positionX, positionY);
+            }
+            else
+            {
+                throw new Exception("Le stylo doit être levé pour utiliser 'Tourner'.");
+            }
+        }
+    }
+}

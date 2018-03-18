@@ -96,7 +96,7 @@ namespace AMCP
             }
         }
 
-        public void SetRectangle(Point position, int largeur, int hauteur)
+        internal void SetRectangle(Point position, int largeur, int hauteur)
         {
             this.Position = position;
             this.Points.Add(new Point(-largeur / 2, -hauteur / 2)); // bottom left
@@ -105,7 +105,7 @@ namespace AMCP
             this.Points.Add(new Point(largeur / 2, -hauteur / 2));  // bottom right           
         }
 
-        public void SetTriangle(Point position, int taille)
+        internal void SetTriangle(Point position, int taille)
         {
             this.Position = position;
             this.Points.Add(new Point(-taille / 2, -taille / 2)); // bottom left
@@ -113,7 +113,7 @@ namespace AMCP
             this.Points.Add(new Point(taille / 2, taille / 2));   // bottom right
         }
 
-        public void SetLosange(Point position, int largeur, int hauteur)
+        internal void SetLosange(Point position, int largeur, int hauteur)
         {
             this.Position = position;
             this.Points.Add(new Point(-largeur / 2, 0)); // left
@@ -122,7 +122,7 @@ namespace AMCP
             this.Points.Add(new Point(0, -hauteur / 2)); // bottom
         }
 
-        public void SetEtoile(Point position, int rayonInterieur, int rayonExterieur, int nbSommet)
+        internal void SetEtoile(Point position, int rayonInterieur, int rayonExterieur, int nbSommet)
         {
             this.Position = position;
             for (int i = 0; i < nbSommet; i++)

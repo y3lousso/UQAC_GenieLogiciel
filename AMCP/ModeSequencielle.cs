@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AMCP
 {
-    public class InterfaceSequencielle : IMode
+    public class ModeSequencielle : IMode
     {
 
         public int DessinerRectangle(int positionX, int positionY, int largeur, int hauteur)

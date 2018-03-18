@@ -56,11 +56,11 @@
     <Compile Include="Formes\Ellipse.cs" />
     <Compile Include="Formes\Forme.cs" />
     <Compile Include="Formes\FormeLibre.cs" />
-    <Compile Include="InterfaceOrienteeObjet.cs" />
-    <Compile Include="InterfaceSequencielle.cs" />
+    <Compile Include="ModeOrienteeObjet.cs" />
+    <Compile Include="ModeSequencielle.cs" />
     <Compile Include="IMode.cs" />
     <Compile Include="Formes\Polygone.cs" />
-    <Compile Include="Pointeur.cs" />
+    <Compile Include="Stylo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

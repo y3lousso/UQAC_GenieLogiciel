@@ -27,7 +27,7 @@ namespace CEGEP_Student
                 case 0:
                     {
                         Console.WriteLine("------ Sequenciel -------");
-                        InterfaceSequencielle i = new InterfaceSequencielle();
+                        ModeSequencielle i = new ModeSequencielle();
 
                         for (int x = 0; x < 5; x++)
                         {
@@ -39,14 +39,15 @@ namespace CEGEP_Student
                             i.DessinerEllipse(posX, posY + 250, 20, 50);
                         }
 
-                        i.Afficher(200);
+                        i.Afficher();
+                        i.Pause();
                         break;
                     }
 
                 case 1:
                     {
                         Console.WriteLine("------ OOP -------");
-                        InterfaceOrienteeObjet i = new InterfaceOrienteeObjet();
+                        ModeOrienteeObjet i = new ModeOrienteeObjet();
 
                         for (int x = 0; x < 5; x++)
                         {
@@ -58,7 +59,8 @@ namespace CEGEP_Student
                             i.DessinerEllipse(posX, posY + 250, 20, 50);
                         }
 
-                        i.Afficher(200);
+                        i.Afficher();
+                        i.Pause();
 
                         break;
                     }
@@ -66,19 +68,20 @@ namespace CEGEP_Student
                 case 2:
                     {
                         Console.WriteLine("------ Sequentiel : rotation -------");
-                        InterfaceSequencielle i = new InterfaceSequencielle();
+                        ModeSequencielle i = new ModeSequencielle();
 
                         i.Pause();
 
                         int posX = 250;
                         int posY = 250;
 
-                        int etoileID = i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
+                        int etoileId = i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
 
                         for (int j = 0; j < 100; j++)
                         {
-                            i.Tourner(etoileID, 20);
-                            i.Afficher(100);
+                            i.Tourner(etoileId, 20);
+                            i.Afficher();
+                            i.Attendre(0.1f);
                             i.NettoyerEcran();
                         }
 
@@ -90,7 +93,7 @@ namespace CEGEP_Student
                 case 3:
                     {
                         Console.WriteLine("------ OOP : rotation -------");
-                        InterfaceOrienteeObjet i = new InterfaceOrienteeObjet();
+                        ModeOrienteeObjet i = new ModeOrienteeObjet();
 
                         i.Pause();
 
@@ -100,7 +103,8 @@ namespace CEGEP_Student
                         for (int j = 0; j < 100; j++)
                         {                       
                             p1.Tourner(20);
-                            i.Afficher(100);
+                            i.Afficher();
+                            i.Attendre(0.1f);
                             i.NettoyerEcran();
                         } 
 
@@ -110,7 +114,7 @@ namespace CEGEP_Student
                 case 4:
                     {
                         Console.WriteLine("------ Reverse Y Axis Test -------");
-                        InterfaceOrienteeObjet i = new InterfaceOrienteeObjet();
+                        ModeOrienteeObjet i = new ModeOrienteeObjet();
 
                         int posX = 0;
                         int posY = 0;
@@ -126,7 +130,7 @@ namespace CEGEP_Student
                 case 5:
                     {
                         Console.WriteLine("------ Car demo -------");
-                        InterfaceOrienteeObjet i = new InterfaceOrienteeObjet();
+                        ModeOrienteeObjet i = new ModeOrienteeObjet();
 
                         int posX = 100;
                         int posY = 100;
@@ -141,24 +145,25 @@ namespace CEGEP_Student
                         car.Colorier(255, 0, 0);
                         Forme wheel1 = i.DessinerCercle(posX - 85, posY - 50, 50);
                         wheel1.Colorier(0, 0, 0);
-                        Ellipse wheel2 = (Ellipse)wheel1.Dupliquer(posX + 85, posY - 50);
+                        Forme wheel2 = wheel1.Dupliquer(posX + 85, posY - 50);
                         wheel2.Colorier(0, 0, 0);
 
                         // Toit de la voiture
-                        i.Pointeur.Deplacer(posX-50, posY+20);
-                        i.Pointeur.DescendrePointeur();
-                        i.Pointeur.Tourner(45);
-                        i.Pointeur.Avancer(50);
-                        i.Pointeur.Tourner(-45);
-                        i.Pointeur.Avancer(50);
-                        i.Pointeur.Tourner(-45);
-                        i.Pointeur.Avancer(50);
-                        i.Pointeur.LeverPointeur();
-                        Forme toit = i.Pointeur.Dessiner();
+                        i.Stylo.Deplacer(posX-50, posY+20);
+                        i.Stylo.DescendrePointeur();
+                        i.Stylo.Tourner(45);
+                        i.Stylo.Avancer(50);
+                        i.Stylo.Tourner(-45);
+                        i.Stylo.Avancer(50);
+                        i.Stylo.Tourner(-45);
+                        i.Stylo.Avancer(50);
+                        i.Stylo.LeverPointeur();
+                        Forme toit = i.Stylo.Dessiner();
 
                         for (int j = 0; j < 50; j++)
                         {
-                            i.AfficherTout(100);
+                            i.Afficher();
+                            i.Attendre(0.1f);
                             posX += 10;
                             car.Deplacer(posX, posY);
                             wheel1.Deplacer(posX - 85, posY - 50);
@@ -167,7 +172,7 @@ namespace CEGEP_Student
                             i.NettoyerEcran();
                         }
 
-                        i.AfficherTout();
+                        i.Afficher();
                         i.Pause();
                         break;
                     }

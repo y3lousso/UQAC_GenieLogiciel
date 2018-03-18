@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AMCP
 {
-    public class InterfaceOrienteeObjet : IMode
+    public class ModeOrienteeObjet : IMode
     {
         /// <summary>
         /// Permet de dessiner un carré en prennant comme origine l'arrete supérieure gauche du carré.
