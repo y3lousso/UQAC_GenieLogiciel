@@ -27,7 +27,7 @@ namespace CEGEP_Student
                 case 0:
                     {
                         Console.WriteLine("------ Sequenciel -------");
-                        ModeSequencielle i = new ModeSequencielle();
+                        ModeSequenciel i = new ModeSequenciel();
 
                         /*for (int x = 0; x < 5; x++)
                         {
@@ -55,7 +55,7 @@ namespace CEGEP_Student
                 case 1:
                     {
                         Console.WriteLine("------ OOP -------");
-                        ModeOrienteeObjet i = new ModeOrienteeObjet();
+                        ModeOrienteObjet i = new ModeOrienteObjet();
 
                         for (int x = 0; x < 5; x++)
                         {
@@ -76,7 +76,7 @@ namespace CEGEP_Student
                 case 2:
                     {
                         Console.WriteLine("------ Sequentiel : rotation -------");
-                        ModeSequencielle i = new ModeSequencielle();
+                        ModeSequenciel i = new ModeSequenciel();
 
                         i.Pause();
 
@@ -101,7 +101,7 @@ namespace CEGEP_Student
                 case 3:
                     {
                         Console.WriteLine("------ OOP : rotation -------");
-                        ModeOrienteeObjet i = new ModeOrienteeObjet();
+                        ModeOrienteObjet i = new ModeOrienteObjet();
 
                         i.Pause();
 
@@ -122,7 +122,7 @@ namespace CEGEP_Student
                 case 4:
                     {
                         Console.WriteLine("------ Reverse Y Axis Test -------");
-                        ModeOrienteeObjet i = new ModeOrienteeObjet();
+                        ModeOrienteObjet i = new ModeOrienteObjet();
 
                         int posX = 0;
                         int posY = 0;
@@ -138,7 +138,7 @@ namespace CEGEP_Student
                 case 5:
                     {
                         Console.WriteLine("------ Car demo -------");
-                        ModeOrienteeObjet i = new ModeOrienteeObjet();
+                        ModeOrienteObjet i = new ModeOrienteObjet();
 
                         int posX = 100;
                         int posY = 100;
