@@ -1,6 +1,7 @@
 ﻿using System;
 using AMCP;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace AMCPTest
 {
@@ -9,25 +10,36 @@ namespace AMCPTest
     {
         InterfaceOrienteeObjet i;
 
-        /*[TestMethod]
+        [TestInitialize()]
+        public void Initialize()
+        {
+            new PrivateType(typeof(IMode)).SetStaticField("instance", null);
+            new PrivateType(typeof(Canvas)).SetStaticField("instance", null);
+        }
+
+
+        [TestMethod]
         public void POODessinerCercle()
         {
-            InterfaceOrienteeObjet i = new InterfaceOrienteeObjet();
+            i = new InterfaceOrienteeObjet();
             int posX = 20;
             int posY = 20;
             Ellipse testEllipse = null;
             testEllipse = i.DessinerCercle(0 + posX, posY, -1);
-            Assert.AreNotEqual(null, testEllipse);
-        }*/
-        /*[TestMethod]
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(null, testEllipse);
+            
+        }
+
+        [TestMethod]
         public void POODessinerRectangle50x70()
         {
+            i = new InterfaceOrienteeObjet();
             int posX = 20;
             int posY = 20;
             i.DessinerRectangle(posX, posY, 50, 70);
-        }*/
+        }
 
-        [TestMethod]
+        /*[TestMethod]
         public void POOTestAll()
         {
             i = new InterfaceOrienteeObjet();
@@ -50,7 +62,7 @@ namespace AMCPTest
             Ellipse testEllipse = null;
             testEllipse = i.DessinerCercle(0 + posX, posY, -1);
             Assert.AreNotEqual(null, testEllipse);
-        }
+        }*/
 
 
     }
