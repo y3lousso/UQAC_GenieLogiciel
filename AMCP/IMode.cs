@@ -26,7 +26,6 @@ namespace AMCP
             else
             {
                 throw new Exception("Can't create multiple instance of IMode");
-                
             }
         }
 
