@@ -13,16 +13,24 @@ namespace AMCP
         public int DessinerRectangle(int positionX, int positionY, int largeur, int hauteur)
         {
             Polygone p = new Polygone();
-            p.SetRectangle(new Point(positionX, positionY), largeur, hauteur);
-            Canvas.Formes.Add(p);
-            return Canvas.Formes.IndexOf(p);
+            if (!EstDehors(positionX, positionY, largeur, hauteur))
+            {
+                p.SetRectangle(new Point(positionX, positionY), largeur, hauteur);
+                Canvas.Formes.Add(p);
+                return Canvas.Formes.IndexOf(p);
+            }
+            else return -1;
         }
 
         public int DessinerCercle(int positionX, int positionY, int rayon)
         {
-            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon);
-            Canvas.Formes.Add(p);
-            return Canvas.Formes.IndexOf(p);
+            if (!EstDehors(positionX, positionY, rayon, rayon))
+            {
+                Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon);
+                Canvas.Formes.Add(p);
+                return Canvas.Formes.IndexOf(p);
+            }
+            else return -1;
         }
 
         public int DessinerTriangle(int positionX, int positionY, int taille)
@@ -36,24 +44,36 @@ namespace AMCP
         public int DessinerLosange(int positionX, int positionY, int largeur, int hauteur)
         {
             Polygone p = new Polygone();
-            p.SetLosange(new Point(positionX, positionY), largeur, hauteur);
-            Canvas.Formes.Add(p);
-            return Canvas.Formes.IndexOf(p);
+            if (!EstDehors(positionX, positionY, largeur, hauteur))
+            {
+                p.SetLosange(new Point(positionX, positionY), largeur, hauteur);
+                Canvas.Formes.Add(p);
+                return Canvas.Formes.IndexOf(p);
+            }
+            else return -1;
         }
 
         public int DessinerEtoile(int positionX, int positionY, int rayonInterieur, int rayonExterieur, int nbSommet)
         {
             Polygone p = new Polygone();
-            p.SetEtoile(new Point(positionX, positionY), rayonInterieur, rayonExterieur, nbSommet);
-            Canvas.Formes.Add(p);
-            return Canvas.Formes.IndexOf(p);
+            if (!EstDehors(positionX, positionY, rayonExterieur, rayonExterieur / 2))
+            {
+                p.SetEtoile(new Point(positionX, positionY), rayonInterieur, rayonExterieur, nbSommet);
+                Canvas.Formes.Add(p);
+                return Canvas.Formes.IndexOf(p);
+            }
+            else return -1;
         }
 
         public int DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
         {
             Ellipse p = new Ellipse(new Point(positionX, positionY), rayon1, rayon2);
-            Canvas.Formes.Add(p);
-            return Canvas.Formes.IndexOf(p);
+            if (!EstDehors(positionX, positionY, rayon1, rayon2 / 2))
+            {
+                Canvas.Formes.Add(p);
+                return Canvas.Formes.IndexOf(p);
+            }
+            else return -1;
         }
 
         public int Dupliquer(int idForme, int positionX, int positionY)
@@ -86,6 +106,20 @@ namespace AMCP
         public void Dimensionner(int idForme, float taille)
         {
 
+        }
+
+        public Boolean EstDehors(float positionX, float positionY, float coteX, float coteY)
+        {
+            Console.WriteLine(Canvas.Right - Canvas.Left);
+            Console.WriteLine(Canvas.Top - (-Canvas.Bottom));
+            if (positionX - coteX / 2 < 0 || positionX + coteX / 2 > Canvas.Right-Canvas.Left || positionY - coteY / 2 < 0 || positionY + coteY / 2 > Canvas.Top-(-Canvas.Bottom))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace CEGEP_Student
             // 4 -> reverse Y axis test
             // 5 -> car demo
 
-            int test = 5;
+            int test = 0;
 
             switch (test)
             {
@@ -29,7 +29,7 @@ namespace CEGEP_Student
                         Console.WriteLine("------ Sequenciel -------");
                         ModeSequencielle i = new ModeSequencielle();
 
-                        for (int x = 0; x < 5; x++)
+                        /*for (int x = 0; x < 5; x++)
                         {
                             int posX = 20 * x + 80;
                             int posY = (20 * x) + x + 80;
@@ -37,7 +37,15 @@ namespace CEGEP_Student
                             i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
                             i.DessinerCercle(100 + posX, posY, 20);
                             i.DessinerEllipse(posX, posY + 250, 20, 50);
-                        }
+                        }*/
+
+                        i.DessinerLosange(320, 540, 640, 360);
+                        i.DessinerLosange(960, 540, 640, 360);
+                        i.DessinerLosange(320, 180, 640, 360);
+                        i.DessinerLosange(960, 180, 640, 360);
+                        //i.DessinerEllipse(640, 360, 1280, 720);
+                        //i.DessinerCercle(640, 360, 720);
+                        //i.DessinerEtoile(640, 360, 180, 360, 8);
 
                         i.Afficher();
                         i.Pause();
