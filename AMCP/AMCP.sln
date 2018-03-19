@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CEGEP_Student", "..\CEGEP_S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMCP", "AMCP.csproj", "{D9C7A04C-F953-4C52-A7E7-2201AA93D880}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMCPTest", "..\AMCPTest\AMCPTest.csproj", "{F03159CE-F366-4E27-A744-21E6DBAAA414}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D9C7A04C-F953-4C52-A7E7-2201AA93D880}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9C7A04C-F953-4C52-A7E7-2201AA93D880}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9C7A04C-F953-4C52-A7E7-2201AA93D880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F03159CE-F366-4E27-A744-21E6DBAAA414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F03159CE-F366-4E27-A744-21E6DBAAA414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F03159CE-F366-4E27-A744-21E6DBAAA414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F03159CE-F366-4E27-A744-21E6DBAAA414}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
