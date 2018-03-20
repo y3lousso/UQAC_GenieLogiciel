@@ -50,7 +50,11 @@ namespace AMCP
                 Canvas.Formes.Add(p);
                 return Canvas.Formes.IndexOf(p);
             }
-            else return -1;
+            else
+            {
+                Console.WriteLine("Le losange est hors du canvas.");
+                return -1;
+            }
         }
 
         public int DessinerEtoile(int positionX, int positionY, int rayonInterieur, int rayonExterieur, int nbSommet)

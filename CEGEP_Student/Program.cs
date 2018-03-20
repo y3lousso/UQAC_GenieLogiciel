@@ -20,7 +20,7 @@ namespace CEGEP_Student
             // 4 -> reverse Y axis test
             // 5 -> car demo
 
-            int test = 5;
+            int test = 0;
 
             switch (test)
             {
