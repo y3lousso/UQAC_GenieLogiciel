@@ -110,9 +110,9 @@ namespace AMCP
 
         public Boolean EstDehors(float positionX, float positionY, float coteX, float coteY)
         {
-            Console.WriteLine(Canvas.Right - Canvas.Left);
-            Console.WriteLine(Canvas.Top - (-Canvas.Bottom));
-            if (positionX - coteX / 2 < 0 || positionX + coteX / 2 > Canvas.Right-Canvas.Left || positionY - coteY / 2 < 0 || positionY + coteY / 2 > Canvas.Top-(-Canvas.Bottom))
+            Console.WriteLine(Canvas.Graphic.VisibleClipBounds);
+
+            if (positionX - coteX / 2 < 0 || positionX + coteX / 2 > Canvas.Graphic.VisibleClipBounds.Width || positionY - coteY / 2 < 0 || positionY + coteY / 2 > Canvas.Graphic.VisibleClipBounds.Height)
             {
                 return true;
             }

@@ -39,12 +39,14 @@ namespace CEGEP_Student
                             i.DessinerEllipse(posX, posY + 250, 20, 50);
                         }*/
 
-                        i.DessinerLosange(320, 540, 640, 360);
-                        i.DessinerLosange(960, 540, 640, 360);
-                        i.DessinerLosange(320, 180, 640, 360);
-                        i.DessinerLosange(960, 180, 640, 360);
-                        //i.DessinerEllipse(640, 360, 1280, 720);
+                        //i.DessinerLosange(320, 540, 640, 360);
+                        //i.DessinerLosange(960, 540, 640, 360);
+                        //i.DessinerLosange(320, 180, 640, 360);
+                        //i.DessinerLosange(960, 180, 640, 360);
+                        //i.DessinerEllipse(631, 380, 1262, 680);
                         //i.DessinerCercle(640, 360, 720);
+                        i.DessinerLosange(632, 340, 1264, 680);
+                        //i.DessinerLosange(640, 360, 1280, 720);
                         //i.DessinerEtoile(640, 360, 180, 360, 8);
 
                         i.Afficher();

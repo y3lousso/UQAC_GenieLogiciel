@@ -29,7 +29,7 @@ namespace AMCP
 
                 this.Graphic.ScaleTransform(1, -1);
                 // TODO : trouver un fix à ce truc de merde :)
-                this.Graphic.TranslateTransform(0, -Height);
+                this.Graphic.TranslateTransform(0, -Height+39);
 
                 this.Formes = new List<Forme>();
                 this.Show();
