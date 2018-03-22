@@ -8,6 +8,7 @@ namespace AMCPTest
     public class SEQTEST
     {
         InterfaceSequencielle i;
+        Int32 displayTime = 2000;
 
         [TestInitialize()]
         public void Initialize()
@@ -24,6 +25,7 @@ namespace AMCPTest
             int testEllipse = -1;
             testEllipse = i.DessinerCercle(20, 20, -1);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(-1, testEllipse);
+            i.Afficher(displayTime);
         }
 
         [TestMethod]
@@ -33,6 +35,7 @@ namespace AMCPTest
             int testPolygone = -1;
             testPolygone = i.DessinerRectangle(20, 20, 50, 70);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(-1, testPolygone);
+            i.Afficher(displayTime);
         }
 
         [TestMethod]
@@ -42,6 +45,7 @@ namespace AMCPTest
             int testPolygone = -1;
             testPolygone = i.DessinerEtoile(20, 120, 40, 80, 5);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(-1, testPolygone);
+            i.Afficher(displayTime);
         }
 
         [TestMethod]
@@ -51,6 +55,7 @@ namespace AMCPTest
             int testEllipse = -1;
             testEllipse = i.DessinerEllipse(20, 270, 20, 50);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(-1, testEllipse);
+            i.Afficher(displayTime);
         }
 
         [TestMethod]
@@ -60,7 +65,8 @@ namespace AMCPTest
             int testPolygone = -1;
             testPolygone = i.DessinerTriangle(100, 100, 200);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(-1, testPolygone);
-            
+            i.Afficher(displayTime);
+
         }
 
         [TestMethod]
@@ -70,6 +76,7 @@ namespace AMCPTest
             int testPolygone = -1;
             testPolygone = i.DessinerTriangle(20, 20, 20);
             i.Tourner(testPolygone, -300000);
+            i.Afficher(displayTime);
         }
 
     }
