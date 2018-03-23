@@ -58,6 +58,7 @@ namespace AMCP.Formes
             Point rotationAxe = this.Points[0];
             Point tmpPoint;
             //TODO : Préférer while et foreach plutôt que for
+            //TODO portée indicatrice non respectée
             for (int i = 1; i < Points.Count; i++)
             {
                 int X = this.Points[i].X - rotationAxe.X;
