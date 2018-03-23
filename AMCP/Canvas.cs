@@ -12,9 +12,9 @@ namespace AMCP
     public class Canvas : Form
     {
         internal static Canvas instance;
-        internal Graphics Graphic { get; set; }
+        internal Graphics Graphic { get; set; } // TODO : Les internal sont en Camel
 
-        internal List<Forme> Formes { get; set; }
+        internal List<Forme> Formes { get; set; } // TODO : Les internal sont en Camel
 
         public Canvas(int sizeX, int sizeY)
         {

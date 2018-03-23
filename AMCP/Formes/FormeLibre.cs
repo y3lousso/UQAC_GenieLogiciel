@@ -9,8 +9,8 @@ namespace AMCP.Formes
 {
     public class FormeLibre : Forme
     {
-        List<Point> Points { get; set; } = new List<Point>();
-        int TailleStylo { get; set; }
+        List<Point> Points { get; set; } = new List<Point>(); // TODO : Camel case
+        int TailleStylo { get; set; } // TODO : Camel case
 
         internal FormeLibre(List<Point> points, int taille)
         {

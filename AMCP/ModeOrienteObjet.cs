@@ -33,7 +33,7 @@ namespace AMCP
 
         public Ellipse DessinerCercle(int positionX, int positionY, int rayon)
         {
-            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon);
+            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon); // TODO : une ellipse "p" ?
             Canvas.Formes.Add(p);           
             return p;
         }

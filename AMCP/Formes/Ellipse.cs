@@ -9,9 +9,9 @@ namespace AMCP
 {
     public class Ellipse : Forme
     {
-        int PetitRayon { get; set; }
-        int GrandRayon { get; set; }
-            
+        int PetitRayon { get; set; } // TODO : Camel case
+        int GrandRayon { get; set; } // TODO : Camel case
+
         internal Ellipse(Point position, int rayon1, int rayon2)
         {
             Point center = new Point(position.X - rayon1 / 2, position.Y - rayon2 / 2);

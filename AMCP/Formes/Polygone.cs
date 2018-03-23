@@ -11,7 +11,7 @@ namespace AMCP
     public class Polygone : Forme
     {
         // local position of each point
-        List<Point> Points { get; set; } = new List<Point>();
+        List<Point> Points { get; set; } = new List<Point>(); // TODO : Camel case
 
         internal Polygone()
         {

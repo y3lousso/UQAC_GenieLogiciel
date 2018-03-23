@@ -26,7 +26,7 @@ namespace AMCP
         {
             if (!EstDehors(positionX, positionY, rayon, rayon))
             {
-                Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon);
+                Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon); // TODO : une ellipse "p" ? à renommer 
                 Canvas.Formes.Add(p);
                 return Canvas.Formes.IndexOf(p);
             }
