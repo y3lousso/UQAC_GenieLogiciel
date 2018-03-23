@@ -28,6 +28,7 @@ namespace AMCP
         {
             Point point1;
             Point point2;
+            //TODO : Préférer while et foreach plutôt que for
             for (int i = 0; i < Points.Count - 1; i++)
             {
                 point1 = new Point(this.Position.X + this.Points[i].X, this.Position.Y + this.Points[i].Y);
@@ -73,7 +74,7 @@ namespace AMCP
             double v10 = Math.Sin(angleRadian); double v11 = Math.Cos(angleRadian);
 
             Point tmpPoint = new Point();
-
+            //TODO : Préférer while et foreach plutôt que for
             for (int i = 0; i < Points.Count; i++)
             {
                 tmpPoint.X = (int)(v00 * this.Points[i].X + v01 * this.Points[i].Y);
@@ -89,6 +90,7 @@ namespace AMCP
 
         public override void Dimensionner(float taille)
         {
+            //TODO : Préférer while et foreach plutôt que for
             for (int i = 0; i < Points.Count; i++)
             {
                 Point newPoint = new Point((int)(this.Points[i].X * taille), (int)(this.Points[i].Y * taille));
@@ -125,6 +127,7 @@ namespace AMCP
         internal void SetEtoile(Point position, int rayonInterieur, int rayonExterieur, int nbSommet)
         {
             this.Position = position;
+            //TODO : Préférer while et foreach plutôt que for
             for (int i = 0; i < nbSommet; i++)
             {
                 double halfAngle = 2 * Math.PI / (2 * nbSommet); // the angle between outside and inside Points

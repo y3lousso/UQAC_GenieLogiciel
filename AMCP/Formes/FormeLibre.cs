@@ -57,7 +57,7 @@ namespace AMCP.Formes
             double angleRadian = angle * Math.PI / 180f;
             Point rotationAxe = this.Points[0];
             Point tmpPoint;
-
+            //TODO : Préférer while et foreach plutôt que for
             for (int i = 1; i < Points.Count; i++)
             {
                 int X = this.Points[i].X - rotationAxe.X;
@@ -76,6 +76,7 @@ namespace AMCP.Formes
             Pen pen = new Pen(this.Color, this.TailleStylo);
             Point point1;
             Point point2;
+            //TODO : Préférer while et foreach plutôt que for
             for (int i = 0; i < this.Points.Count-1; i++)
             {
                 point1 = new Point(this.Position.X + this.Points[i].X, this.Position.Y + this.Points[i].Y);
