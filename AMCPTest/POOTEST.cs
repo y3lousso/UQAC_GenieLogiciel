@@ -12,6 +12,8 @@ namespace AMCPTest
     {
         ModeOrienteObjet i;
         Int32 displayTime = 2;
+        int posXMid = 1280 / 2;
+        int posYMid = 720 / 2;
 
         [TestInitialize()]
         public void Initialize()
@@ -21,61 +23,61 @@ namespace AMCPTest
         }
 
         [TestMethod]
-        public void POODessinerCercle()
+        public void POODessinerCarree100x100()
         {
             i = new ModeOrienteObjet();
-            int posX = 20;
-            int posY = 20;
-            Ellipse testEllipse = null;
-            testEllipse = i.DessinerCercle(0 + posX, posY, 20);
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(null, testEllipse);
-            i.Afficher(displayTime);
-        }
-
-        [TestMethod]
-        public void POODessinerRectangle()
-        {
-            i = new ModeOrienteObjet();
-            int posX = 20;
-            int posY = 20;
             Polygone testPolygone = null;
-            testPolygone = i.DessinerRectangle(posX, posY, 50, 70);
+            testPolygone = i.DessinerRectangle(posXMid, posYMid, 100, 100);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(null, testPolygone);
             i.Afficher(displayTime);
         }
 
         [TestMethod]
-        public void POODessinerEtoile()
+        public void POODessinerCercleR20()
         {
             i = new ModeOrienteObjet();
-            int posX = 20;
-            int posY = 20;
-            Polygone testPolygone = null;
-            testPolygone = i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(null, testPolygone);
-            i.Afficher(displayTime);
-        }
-
-        [TestMethod]
-        public void POODessinerEllipse()
-        {
-            i = new ModeOrienteObjet();
-            int posX = 20;
-            int posY = 20;
             Ellipse testEllipse = null;
-            testEllipse = i.DessinerEllipse(posX, posY + 250, 20, 50);
+            testEllipse = i.DessinerCercle(posXMid, posYMid, 20);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(null, testEllipse);
             i.Afficher(displayTime);
         }
 
         [TestMethod]
-        public void POODessinerTriangle()
+        public void POODessinerRectangle50x100()
         {
             i = new ModeOrienteObjet();
-            int posX = 20;
-            int posY = 20;
             Polygone testPolygone = null;
-            testPolygone = i.DessinerTriangle(posX, posY, 20);
+            testPolygone = i.DessinerRectangle(posXMid, posYMid, 50, 100);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(null, testPolygone);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POODessinerEtoileS5()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerEtoile(posXMid, posYMid, 40, 80, 5);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(null, testPolygone);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POODessinerEllipseR50x80()
+        {
+            i = new ModeOrienteObjet();
+            Ellipse testEllipse = null;
+            testEllipse = i.DessinerEllipse(posXMid, posYMid, 50, 80);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(null, testEllipse);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POODessinerTriangle20()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerTriangle(posXMid, posYMid, 20);
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(null, testPolygone);
             i.Afficher(displayTime);
         }
