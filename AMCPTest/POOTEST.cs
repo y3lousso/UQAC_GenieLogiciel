@@ -10,8 +10,8 @@ namespace AMCPTest
     [TestClass]
     public class POOTEST
     {
-        InterfaceOrienteeObjet i;
-        Int32 displayTime = 2000;
+        ModeOrienteObjet i;
+        Int32 displayTime = 2;
 
         [TestInitialize()]
         public void Initialize()
@@ -23,7 +23,7 @@ namespace AMCPTest
         [TestMethod]
         public void POODessinerCercle()
         {
-            i = new InterfaceOrienteeObjet();
+            i = new ModeOrienteObjet();
             int posX = 20;
             int posY = 20;
             Ellipse testEllipse = null;
@@ -35,7 +35,7 @@ namespace AMCPTest
         [TestMethod]
         public void POODessinerRectangle()
         {
-            i = new InterfaceOrienteeObjet();
+            i = new ModeOrienteObjet();
             int posX = 20;
             int posY = 20;
             Polygone testPolygone = null;
@@ -47,7 +47,7 @@ namespace AMCPTest
         [TestMethod]
         public void POODessinerEtoile()
         {
-            i = new InterfaceOrienteeObjet();
+            i = new ModeOrienteObjet();
             int posX = 20;
             int posY = 20;
             Polygone testPolygone = null;
@@ -59,7 +59,7 @@ namespace AMCPTest
         [TestMethod]
         public void POODessinerEllipse()
         {
-            i = new InterfaceOrienteeObjet();
+            i = new ModeOrienteObjet();
             int posX = 20;
             int posY = 20;
             Ellipse testEllipse = null;
@@ -71,7 +71,7 @@ namespace AMCPTest
         [TestMethod]
         public void POODessinerTriangle()
         {
-            i = new InterfaceOrienteeObjet();
+            i = new ModeOrienteObjet();
             int posX = 20;
             int posY = 20;
             Polygone testPolygone = null;

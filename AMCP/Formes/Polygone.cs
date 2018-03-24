@@ -11,7 +11,7 @@ namespace AMCP
     public class Polygone : Forme
     {
         // local position of each point
-        List<Point> Points { get; set; } = new List<Point>();
+        List<Point> Points { get; set; } = new List<Point>(); // TODO : Camel case
 
         internal Polygone()
         {
@@ -28,6 +28,7 @@ namespace AMCP
         {
             Point point1;
             Point point2;
+            //TODO : Préférer while et foreach plutôt que for
             for (int i = 0; i < Points.Count - 1; i++)
             {
                 point1 = new Point(this.Position.X + this.Points[i].X, this.Position.Y + this.Points[i].Y);
@@ -73,7 +74,7 @@ namespace AMCP
             double v10 = Math.Sin(angleRadian); double v11 = Math.Cos(angleRadian);
 
             Point tmpPoint = new Point();
-
+            //TODO : Préférer while et foreach plutôt que for
             for (int i = 0; i < Points.Count; i++)
             {
                 tmpPoint.X = (int)(v00 * this.Points[i].X + v01 * this.Points[i].Y);
@@ -89,6 +90,7 @@ namespace AMCP
 
         public override void Dimensionner(float taille)
         {
+            //TODO : Préférer while et foreach plutôt que for
             for (int i = 0; i < Points.Count; i++)
             {
                 Point newPoint = new Point((int)(this.Points[i].X * taille), (int)(this.Points[i].Y * taille));
@@ -96,8 +98,7 @@ namespace AMCP
             }
         }
 
-        // TODO CON : méthode en français
-        public void SetRectangle(Point position, int largeur, int hauteur)
+        internal void SetRectangle(Point position, int largeur, int hauteur)
         {
             this.Position = position;
             this.Points.Add(new Point(-largeur / 2, -hauteur / 2)); // bottom left
@@ -106,8 +107,7 @@ namespace AMCP
             this.Points.Add(new Point(largeur / 2, -hauteur / 2));  // bottom right           
         }
 
-        // TODO CON : méthode en français
-        public void SetTriangle(Point position, int taille)
+        internal void SetTriangle(Point position, int taille)
         {
             this.Position = position;
             this.Points.Add(new Point(-taille / 2, -taille / 2)); // bottom left
@@ -115,8 +115,7 @@ namespace AMCP
             this.Points.Add(new Point(taille / 2, taille / 2));   // bottom right
         }
 
-        // TODO CON : méthode en français
-        public void SetLosange(Point position, int largeur, int hauteur)
+        internal void SetLosange(Point position, int largeur, int hauteur)
         {
             this.Position = position;
             this.Points.Add(new Point(-largeur / 2, 0)); // left
@@ -125,10 +124,10 @@ namespace AMCP
             this.Points.Add(new Point(0, -hauteur / 2)); // bottom
         }
 
-        // TODO CON : méthode en français
-        public void SetEtoile(Point position, int rayonInterieur, int rayonExterieur, int nbSommet)
+        internal void SetEtoile(Point position, int rayonInterieur, int rayonExterieur, int nbSommet)
         {
             this.Position = position;
+            //TODO : Préférer while et foreach plutôt que for
             for (int i = 0; i < nbSommet; i++)
             {
                 double halfAngle = 2 * Math.PI / (2 * nbSommet); // the angle between outside and inside Points

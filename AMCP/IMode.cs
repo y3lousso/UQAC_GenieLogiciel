@@ -11,9 +11,9 @@ namespace AMCP
     public abstract class IMode
     {
         private static IMode instance;
-        protected Canvas Canvas { get; set; } // TODO Les variables protected sont en Camel
-        protected bool HistoriqueActions { get; set; }  // TODO Les variables protected sont en Camel
-        public Pointeur Pointeur { get; set; } 
+        protected Canvas Canvas { get; set; } // TODO : Les variables protected sont en Camel
+        protected bool HistoriqueActions { get; set; } // TODO : Les variables protected sont en Camel 
+        public Stylo Stylo { get; set; } 
 
         public IMode()
         {
@@ -21,12 +21,11 @@ namespace AMCP
             {
                 instance = this;
                 Canvas = new Canvas(1280, 720);
-                Pointeur = new Pointeur();
+                Stylo = new Stylo();
             }
             else
             {
                 throw new Exception("Can't create multiple instance of IMode");
-                
             }
         }
 
@@ -36,11 +35,6 @@ namespace AMCP
         }
 
         public void ListerContributeur()
-        {
-
-        }
-
-        public void IdentifierForme(int id)
         {
 
         }
@@ -57,34 +51,50 @@ namespace AMCP
         }
 
         /// <summary>
-        /// Permet d'afficher toutes les formes précédements créer. Le paramètre d'entrée permet d'ajouter une pause entre l'affichage de chaque forme. (en millisecondes)
+        /// Permet d'afficher toutes les formes précédements créer.
+        /// </summary>
+        public virtual void Afficher()
+        {
+            foreach (Forme f in Canvas.Formes)
+            {
+                f.Afficher();
+            }
+        }
+
+        /// <summary>
+        /// Permet d'afficher toutes les formes précédements créer avec une pause entre chaque.
         /// </summary>
         /// <param name="pasDeTemps"></param>
-        public virtual void Afficher(int pasDeTemps = 0)
+        public virtual void Afficher(int temps)
         {
             foreach(Forme f in Canvas.Formes)
             {             
                 System.Windows.Forms.Application.DoEvents();
                 f.Afficher();
-                Thread.Sleep(pasDeTemps);
+                Thread.Sleep((int)(temps * 1000));
             }        
         }
 
-        public virtual void AfficherTout(int pasDeTemps = 0)
+        /// <summary>
+        /// Permet d'attendre X secondes.
+        /// </summary>
+        /// <param name="temps"></param>
+        public virtual void Attendre(float temps)
         {
-            foreach(Forme f in Canvas.Formes)
-            {             
-                System.Windows.Forms.Application.DoEvents();
-                f.Afficher();               
-            }
-            Thread.Sleep(pasDeTemps);
+            Thread.Sleep((int)(temps * 1000));
         }
 
+        /// <summary>
+        /// Permet d'enlever tous les dessins de l'écran.
+        /// </summary>
         public virtual void NettoyerEcran()
         {
             Canvas.instance.Graphic.Clear(Color.White);
         }
 
+        /// <summary>
+        /// Permet de mettre en pause l'execution du programme, appuyez sur une touche pour relancer.
+        /// </summary>
         public virtual void Pause()
         {
             Console.WriteLine("Press any key to continue ...");

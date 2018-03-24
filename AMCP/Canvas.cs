@@ -12,17 +12,12 @@ namespace AMCP
     public class Canvas : Form
     {
         internal static Canvas instance;
+        internal Graphics Graphic { get; set; } // TODO : Les internal sont en Camel
 
-        public Graphics Graphic { get; set; }
-        public List<Forme> Formes { get; set; }
-        public int tailleX { get;set;} //TODO Pascal pas Camel
-        public int tailleY { get; set; } //TODO Pascal pas Camel
+        internal List<Forme> Formes { get; set; } // TODO : Les internal sont en Camel
 
         public Canvas(int sizeX, int sizeY)
         {
-            this.tailleX = sizeX;
-            this.tailleY = sizeY;
-
             if (instance == null)
             {
                 instance = this;
@@ -33,7 +28,8 @@ namespace AMCP
                 this.CenterToScreen();
 
                 this.Graphic.ScaleTransform(1, -1);
-                this.Graphic.TranslateTransform(0, -Height+45);
+                // TODO : trouver un fix à ce truc de merde :)
+                this.Graphic.TranslateTransform(0, -Height+39);
 
                 this.Formes = new List<Forme>();
                 this.Show();
