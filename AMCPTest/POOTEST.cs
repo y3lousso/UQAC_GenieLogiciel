@@ -22,6 +22,10 @@ namespace AMCPTest
             new PrivateType(typeof(Canvas)).SetStaticField("instance", null);
         }
 
+        /************************************************************************************************************
+         * ************************************** Dessiner Formes ***************************************************
+         * *********************************************************************************************************/
+
         [TestMethod]
         public void POODessinerCarree100x100()
         {
@@ -81,5 +85,71 @@ namespace AMCPTest
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreNotEqual(null, testPolygone);
             i.Afficher(displayTime);
         }
+
+        /************************************************************************************************************
+         * ************************************** Hors Canvas *******************************************************
+         * *********************************************************************************************************/
+
+        [TestMethod]
+        public void POODessinerCarreeHorsCanvas()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerRectangle(posXMid, posYMid, 10000, 10000);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(null, testPolygone);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POODessinerCercleHorsCanvas()
+        {
+            i = new ModeOrienteObjet();
+            Ellipse testEllipse = null;
+            testEllipse = i.DessinerCercle(posXMid, posYMid, 20000);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(null, testEllipse);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POODessinerRectangleHorsCanvas()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerRectangle(posXMid, posYMid, 50000, 100000);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(null, testPolygone);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POODessinerEtoileHorsCanvas()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerEtoile(posXMid, posYMid, 40000, 80000, 5);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(null, testPolygone);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POODessinerEllipseHorsCanvas()
+        {
+            i = new ModeOrienteObjet();
+            Ellipse testEllipse = null;
+            testEllipse = i.DessinerEllipse(posXMid, posYMid, 50000, 80000);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(null, testEllipse);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POODessinerTriangleHorsCanvas()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerTriangle(posXMid, posYMid, 20000);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(null, testPolygone);
+            i.Afficher(displayTime);
+        }
+
+
     }
 }
