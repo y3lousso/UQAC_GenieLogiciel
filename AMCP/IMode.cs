@@ -44,12 +44,6 @@ namespace AMCP
 
         }
 
-        public void ChangerDimension(int tailleX, int tailleY)
-        {
-            Canvas.Size = new Size(tailleX, tailleY);
-            //Canvas.Update();
-        }
-
         /// <summary>
         /// Permet d'afficher toutes les formes précédements créer.
         /// </summary>

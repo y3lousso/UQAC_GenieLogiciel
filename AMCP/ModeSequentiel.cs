@@ -9,6 +9,17 @@ namespace AMCP
 {
     public class ModeSequentiel : IMode
     {
+        public int DessinerCarre(int positionX, int positionY, int taille)
+        {
+            Polygone p = new Polygone();
+            if (!EstDehors(positionX, positionY, taille, taille))
+            {
+                p.SetRectangle(new Point(positionX, positionY), taille, taille);
+                Canvas.Formes.Add(p);
+                return p.getId();
+            }
+            else return -1;
+        }
 
         public int DessinerRectangle(int positionX, int positionY, int largeur, int hauteur)
         {
@@ -17,7 +28,7 @@ namespace AMCP
             {
                 p.SetRectangle(new Point(positionX, positionY), largeur, hauteur);
                 Canvas.Formes.Add(p);
-                return Canvas.Formes.IndexOf(p);
+                return p.getId();
             }
             else return -1;
         }
@@ -28,7 +39,7 @@ namespace AMCP
             {
                 Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon);
                 Canvas.Formes.Add(p);
-                return Canvas.Formes.IndexOf(p);
+                return p.getId();
             }
             else return -1;
         }
@@ -38,7 +49,7 @@ namespace AMCP
             Polygone p = new Polygone();
             p.SetTriangle(new Point(positionX, positionY), taille);
             Canvas.Formes.Add(p);
-            return Canvas.Formes.IndexOf(p);
+            return p.getId();
         }
 
         public int DessinerLosange(int positionX, int positionY, int largeur, int hauteur)
@@ -48,7 +59,7 @@ namespace AMCP
             {
                 p.SetLosange(new Point(positionX, positionY), largeur, hauteur);
                 Canvas.Formes.Add(p);
-                return Canvas.Formes.IndexOf(p);
+                return p.getId();
             }
             else
             {
@@ -64,7 +75,7 @@ namespace AMCP
             {
                 p.SetEtoile(new Point(positionX, positionY), rayonInterieur, rayonExterieur, nbSommet);
                 Canvas.Formes.Add(p);
-                return Canvas.Formes.IndexOf(p);
+                return p.getId();
             }
             else return -1;
         }
@@ -75,18 +86,31 @@ namespace AMCP
             if (!EstDehors(positionX, positionY, rayon1, rayon2 / 2))
             {
                 Canvas.Formes.Add(p);
-                return Canvas.Formes.IndexOf(p);
+                return p.getId();
             }
             else return -1;
         }
 
         public int Dupliquer(int idForme, int positionX, int positionY)
         {
-            return 0;
+            Forme origin = IdentifierForme(idForme);
+            if (origin != null)
+            {
+                Forme copy = origin.Dupliquer(positionX, positionY);
+                return copy.getId();
+            }else
+            {
+                return -1;
+            }
         }
 
         public void Colorier(int idForme, int r, int g, int b)
         {
+            Forme f = IdentifierForme(idForme);
+            if (f != null)
+            {
+                f.Colorier(r, g, b);
+            }
 
         }
         
@@ -125,5 +149,22 @@ namespace AMCP
                 return false;
             }
         }
+        ///<summary>
+        /// Retourne une forme a partir de son id. Retourne null si la forme correspondante n'a pas été trouvée.
+        ///</summary>
+        private Forme IdentifierForme(int id)
+        {
+            foreach (Forme f in Canvas.Formes) {
+                if (f.getId() == id)
+                {
+                    return f;
+                }
+            }
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("L'id donné: " + id + " ne correspond a aucune Forme dans le Canvas!");
+            Console.ResetColor();
+            throw new Exception("L'id donné: " + id + " ne correspond a aucune Forme dans le Canvas!");
+        }
+
     }
 }

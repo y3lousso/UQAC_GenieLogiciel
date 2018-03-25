@@ -19,8 +19,9 @@ namespace CEGEP_Student
             // 3 -> opp rotation
             // 4 -> reverse Y axis test
             // 5 -> car demo
+            // 6 -> test pour les id
 
-            int test = 0;
+            int test = 6;
 
             switch (test)
             {
@@ -183,6 +184,26 @@ namespace CEGEP_Student
                         }
 
                         i.Afficher();
+                        i.Pause();
+                        break;
+                    }
+
+                case 6:
+                    {
+                        Console.WriteLine("------ ID Form Test -------");
+                        ModeSequentiel i = new ModeSequentiel();
+
+                        int posX = 0;
+                        int posY = 0;
+
+                        int rectangle = i.DessinerCarre(50 + posX, 50 + posY, 100);
+                        int cercle = i.DessinerCercle(posX + 100, posY + 100, 50);
+
+                        i.Afficher();
+                         
+                        int r2 = i.Dupliquer(rectangle, 125, 125);
+                        i.Colorier(r2,255,0,0);// Doit sortir une Exeception
+
                         i.Pause();
                         break;
                     }

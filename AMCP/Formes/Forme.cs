@@ -27,6 +27,9 @@ namespace AMCP
 
         //public abstract void Supprimer();
 
-        
+        public int getId()
+        {
+            return Id;
+        }
     }
 }
