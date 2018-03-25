@@ -156,5 +156,16 @@ namespace AMCPTest
             throw new Exception("Pas encore développé");
         }
 
+        [TestMethod]
+        public void POONettoyerCanvas()
+        {
+            throw new Exception("Pas encore développé");
+        }
+
+        [TestMethod]
+        public void POOReinitialiserCanvas()
+        {
+            throw new Exception("Pas encore développé");
+        }
     }
 }

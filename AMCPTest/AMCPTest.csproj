@@ -55,6 +55,7 @@
     <Compile Include="SEQTEST.cs" />
     <Compile Include="POOTEST.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="COMTEST.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -183,20 +183,9 @@ namespace AMCPTest
             i.Afficher(displayTime);
         }
 
-        [TestMethod]
-        public void SEQListerContributeur()
-        {
-            throw new Exception("Pas encore développé");
-        }
 
         [TestMethod]
-        public void SEQEcrireTexte()
-        {
-            throw new Exception("Pas encore développé");
-        }
-
-        [TestMethod]
-        public void SEQReinitialiserCanvas()
+        public void SEQNettoyerCanvas()
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
@@ -205,6 +194,12 @@ namespace AMCPTest
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Attendre(displayTime);
+        }
+
+        [TestMethod]
+        public void SEQReinitialiserCanvas()
+        {
+            throw new Exception("Pas encore développé");
         }
     }
 }
