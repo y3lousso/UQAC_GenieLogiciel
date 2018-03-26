@@ -108,9 +108,9 @@ namespace AMCP
         internal void SetTriangle(Point position, int taille)
         {
             this.Position = position;
-            this.Points.Add(new Point(-taille / 2, -taille / 2)); // bottom left
-            this.Points.Add(new Point(0, taille / 2));            // top
-            this.Points.Add(new Point(taille / 2, taille / 2));   // bottom right
+            this.Points.Add(new Point(-taille  , -taille )); // bottom left
+            this.Points.Add(new Point(0, taille));            // top
+            this.Points.Add(new Point(taille , -taille));   // bottom right
         }
 
         internal void SetLosange(Point position, int largeur, int hauteur)

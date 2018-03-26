@@ -18,7 +18,11 @@ namespace AMCP
                 Canvas.Formes.Add(p);
                 return p.getId();
             }
-            else return -1;
+            else
+            {
+                Console.WriteLine("Le carré est hors du canvas.");
+                return -1;
+            }
         }
 
         public int DessinerRectangle(int positionX, int positionY, int largeur, int hauteur)
@@ -30,7 +34,11 @@ namespace AMCP
                 Canvas.Formes.Add(p);
                 return p.getId();
             }
-            else return -1;
+            else
+            {
+                Console.WriteLine("Le rectangle est hors du canvas.");
+                return -1;
+            }
         }
 
         public int DessinerCercle(int positionX, int positionY, int rayon)
@@ -41,15 +49,27 @@ namespace AMCP
                 Canvas.Formes.Add(p);
                 return p.getId();
             }
-            else return -1;
+            else
+            {
+                Console.WriteLine("Le cercle est hors du canvas.");
+                return -1;
+            }
         }
 
         public int DessinerTriangle(int positionX, int positionY, int taille)
         {
             Polygone p = new Polygone();
-            p.SetTriangle(new Point(positionX, positionY), taille);
-            Canvas.Formes.Add(p);
-            return p.getId();
+            if (!EstDehors(positionX, positionY, taille*2, taille*2))
+            {
+                p.SetTriangle(new Point(positionX, positionY), taille);
+                Canvas.Formes.Add(p);
+                return p.getId();
+            }
+            else
+            {
+                Console.WriteLine("Le triangle est hors du canvas.");
+                return -1;
+            }
         }
 
         public int DessinerLosange(int positionX, int positionY, int largeur, int hauteur)
@@ -71,13 +91,17 @@ namespace AMCP
         public int DessinerEtoile(int positionX, int positionY, int rayonInterieur, int rayonExterieur, int nbSommet)
         {
             Polygone p = new Polygone();
-            if (!EstDehors(positionX, positionY, rayonExterieur, rayonExterieur / 2))
+            if (!EstDehors(positionX, positionY, rayonExterieur/2, rayonExterieur))
             {
-                p.SetEtoile(new Point(positionX, positionY), rayonInterieur, rayonExterieur, nbSommet);
+                p.SetEtoile(new Point(positionX, positionY), rayonInterieur/2, rayonExterieur/2, nbSommet);
                 Canvas.Formes.Add(p);
                 return p.getId();
             }
-            else return -1;
+            else
+            {
+                Console.WriteLine("L'étoile est hors du canvas.");
+                return -1;
+            }
         }
 
         public int DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
@@ -88,7 +112,11 @@ namespace AMCP
                 Canvas.Formes.Add(p);
                 return p.getId();
             }
-            else return -1;
+            else
+            {
+                Console.WriteLine("L'ellipse est hors du canvas.");
+                return -1;
+            }
         }
 
         public int Dupliquer(int idForme, int positionX, int positionY)
@@ -138,8 +166,6 @@ namespace AMCP
 
         public Boolean EstDehors(float positionX, float positionY, float coteX, float coteY)
         {
-            Console.WriteLine(Canvas.Graphic.VisibleClipBounds);
-
             if (positionX - coteX / 2 < 0 || positionX + coteX / 2 > Canvas.Graphic.VisibleClipBounds.Width || positionY - coteY / 2 < 0 || positionY + coteY / 2 > Canvas.Graphic.VisibleClipBounds.Height)
             {
                 return true;
