@@ -9,7 +9,7 @@ namespace AMCP
 {
     public class ModeSequentiel : IMode
     {
-        public int DessinerCarre(int positionX, int positionY, int taille)
+        public virtual int DessinerCarre(int positionX, int positionY, int taille)
         {
             Polygone p = new Polygone();
             if (!EstDehors(positionX, positionY, taille, taille))
@@ -25,7 +25,7 @@ namespace AMCP
             }
         }
 
-        public int DessinerRectangle(int positionX, int positionY, int largeur, int hauteur)
+        public virtual int DessinerRectangle(int positionX, int positionY, int largeur, int hauteur)
         {
             Polygone p = new Polygone();
             if (!EstDehors(positionX, positionY, largeur, hauteur))
@@ -41,7 +41,7 @@ namespace AMCP
             }
         }
 
-        public int DessinerCercle(int positionX, int positionY, int rayon)
+        public virtual int DessinerCercle(int positionX, int positionY, int rayon)
         {
             if (!EstDehors(positionX, positionY, rayon, rayon))
             {
@@ -56,7 +56,7 @@ namespace AMCP
             }
         }
 
-        public int DessinerTriangle(int positionX, int positionY, int taille)
+        public virtual int DessinerTriangle(int positionX, int positionY, int taille)
         {
             Polygone p = new Polygone();
             if (!EstDehors(positionX, positionY, taille*2, taille*2))
@@ -72,7 +72,7 @@ namespace AMCP
             }
         }
 
-        public int DessinerLosange(int positionX, int positionY, int largeur, int hauteur)
+        public virtual int DessinerLosange(int positionX, int positionY, int largeur, int hauteur)
         {
             Polygone p = new Polygone();
             if (!EstDehors(positionX, positionY, largeur, hauteur))
@@ -88,7 +88,7 @@ namespace AMCP
             }
         }
 
-        public int DessinerEtoile(int positionX, int positionY, int rayonInterieur, int rayonExterieur, int nbSommet)
+        public virtual int DessinerEtoile(int positionX, int positionY, int rayonInterieur, int rayonExterieur, int nbSommet)
         {
             Polygone p = new Polygone();
             if (!EstDehors(positionX, positionY, rayonExterieur/2, rayonExterieur))
@@ -104,7 +104,7 @@ namespace AMCP
             }
         }
 
-        public int DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
+        public virtual int DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
         {
             Ellipse p = new Ellipse(new Point(positionX, positionY), rayon1, rayon2);
             if (!EstDehors(positionX, positionY, rayon1, rayon2 / 2))
@@ -119,7 +119,7 @@ namespace AMCP
             }
         }
 
-        public int Dupliquer(int idForme, int positionX, int positionY)
+        public virtual int Dupliquer(int idForme, int positionX, int positionY)
         {
             Forme origin = IdentifierForme(idForme);
             if (origin != null)
@@ -132,7 +132,7 @@ namespace AMCP
             }
         }
 
-        public void Colorier(int idForme, int r, int g, int b)
+        public virtual void Colorier(int idForme, int r, int g, int b)
         {
             Forme f = IdentifierForme(idForme);
             if (f != null)
@@ -142,7 +142,7 @@ namespace AMCP
 
         }
         
-        public void Tourner(int idForme, int angle)
+        public virtual void Tourner(int idForme, int angle)
         {
             if(Canvas.Formes[idForme] is Polygone)
             {
@@ -154,17 +154,17 @@ namespace AMCP
             }
         }
 
-        public void Deplacer(int idForme, int positionX, int positionY)
+        public virtual void Deplacer(int idForme, int positionX, int positionY)
         {
 
         }
 
-        public void Dimensionner(int idForme, float taille)
+        public virtual void Dimensionner(int idForme, float taille)
         {
 
         }
 
-        public Boolean EstDehors(float positionX, float positionY, float coteX, float coteY)
+        public virtual Boolean EstDehors(float positionX, float positionY, float coteX, float coteY)
         {
             if (positionX - coteX / 2 < 0 || positionX + coteX / 2 > Canvas.Graphic.VisibleClipBounds.Width || positionY - coteY / 2 < 0 || positionY + coteY / 2 > Canvas.Graphic.VisibleClipBounds.Height)
             {
@@ -175,10 +175,11 @@ namespace AMCP
                 return false;
             }
         }
+
         ///<summary>
         /// Retourne une forme a partir de son id. Retourne null si la forme correspondante n'a pas été trouvée.
         ///</summary>
-        private Forme IdentifierForme(int id)
+        protected virtual Forme IdentifierForme(int id)
         {
             foreach (Forme f in Canvas.Formes) {
                 if (f.getId() == id)

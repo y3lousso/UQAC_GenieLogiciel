@@ -21,7 +21,7 @@ namespace CEGEP_Student
             // 5 -> car demo
             // 6 -> test pour les id
 
-            int test = 0;
+            int test = 2;
 
             switch (test)
             {
