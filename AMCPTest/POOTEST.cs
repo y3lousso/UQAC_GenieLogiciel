@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Diagnostics;
 using System.Threading;
 using AMCP;
@@ -19,6 +20,84 @@ namespace AMCPTest
         {
             new PrivateType(typeof(IMode)).SetStaticField("instance", null);
             new PrivateType(typeof(Canvas)).SetStaticField("instance", null);
+        }
+
+        /************************************************************************************************************
+         * ********************************************* Pointeur ***************************************************
+         * *********************************************************************************************************/
+
+        [TestMethod]
+        public void POOBaisserLeverPointeur()
+        {
+            i = new ModeOrienteObjet();
+            i.Stylo.DescendrePointeur();
+            i.Stylo.LeverPointeur();
+            AMCP.Formes.FormeLibre testFormeLibre = i.Stylo.Dessiner();
+            Assert.AreNotEqual(null, testFormeLibre);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POOAvancerPointeurDe50()
+        {
+            i = new ModeOrienteObjet();
+            i.Stylo = new Stylo(new Point(posXMid, posYMid), 30, 0, Color.Black);
+            i.Stylo.DescendrePointeur();
+            i.Stylo.Avancer(50);
+            i.Stylo.LeverPointeur();
+            AMCP.Formes.FormeLibre testFormeLibre = i.Stylo.Dessiner();
+            Assert.AreNotEqual(null, testFormeLibre);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POOAvancerPointeurDe50SansBaisser()
+        {
+            i = new ModeOrienteObjet();
+            i.Stylo.Avancer(50);
+        }
+
+        [TestMethod]
+        public void POOTournerPointeurDe90()
+        {
+            i = new ModeOrienteObjet();
+            i.Stylo = new Stylo(new Point(posXMid, posYMid), 30, 0, Color.Black);
+            i.Stylo.DescendrePointeur();
+            i.Stylo.Avancer(50);
+            i.Stylo.Tourner(90);
+            i.Stylo.Avancer(50);
+            i.Stylo.LeverPointeur();
+            AMCP.Formes.FormeLibre testFormeLibre = i.Stylo.Dessiner();
+            Assert.AreNotEqual(null, testFormeLibre);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POOTournerPointeurDe450()
+        {
+            i = new ModeOrienteObjet();
+            i.Stylo = new Stylo(new Point(posXMid, posYMid), 30, 0, Color.Black);
+            i.Stylo.DescendrePointeur();
+            i.Stylo.Avancer(50);
+            i.Stylo.Tourner(450);
+            i.Stylo.Avancer(50);
+            i.Stylo.LeverPointeur();
+            AMCP.Formes.FormeLibre testFormeLibre = i.Stylo.Dessiner();
+            Assert.AreNotEqual(null, testFormeLibre);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POOChangerCouleurPointeur()
+        {
+            i = new ModeOrienteObjet();
+            i.Stylo = new Stylo(new Point(posXMid, posYMid), 30, 0, Color.Red);
+            i.Stylo.DescendrePointeur();
+            i.Stylo.Avancer(50);
+            i.Stylo.LeverPointeur();
+            AMCP.Formes.FormeLibre testFormeLibre = i.Stylo.Dessiner();
+            Assert.AreNotEqual(null, testFormeLibre);
+            i.Afficher(displayTime);
         }
 
         /************************************************************************************************************
@@ -150,7 +229,19 @@ namespace AMCPTest
         }
 
         [TestMethod]
-        public void POODupliquerPolyhone()
+        public void POODessinerFormeLibreHorsCanvas()
+        {
+            i = new ModeOrienteObjet();
+            i.Stylo.DescendrePointeur();
+            i.Stylo.Avancer(20000);
+            i.Stylo.LeverPointeur();
+            AMCP.Formes.FormeLibre testFormeLibre = i.Stylo.Dessiner();
+            Assert.AreEqual(null, testFormeLibre);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POODupliquerPolygone()
         {
             i = new ModeOrienteObjet();
             throw new Exception("Pas encore développé");

@@ -20,6 +20,74 @@ namespace AMCPTest
         }
 
         /************************************************************************************************************
+         * ********************************************* Pointeur ***************************************************
+         * *********************************************************************************************************/
+
+        [TestMethod]
+        public void SEQBaisserLeverPointeur()
+        {
+            i = new ModeSequentiel();
+            int testFormeLibre = -1;
+            i.Stylo.DescendrePointeur();
+            i.Stylo.LeverPointeur();
+
+            throw new Exception("Dessin libre pas encore implémenté");
+        }
+
+        [TestMethod]
+        public void SEQAvancerPointeurDe50()
+        {
+            i = new ModeSequentiel();
+            int testFormeLibre = -1;
+            i.Stylo.DescendrePointeur();
+            i.Stylo.Avancer(50);
+            i.Stylo.LeverPointeur();
+
+            throw new Exception("Dessin libre pas encore implémenté");
+        }
+
+        [TestMethod]
+        public void SEQAvancerPointeurDe50SansBaisser()
+        {
+            i = new ModeSequentiel();
+            i.Stylo.Avancer(50);
+        }
+
+        [TestMethod]
+        public void SEQTournerPointeurDe90()
+        {
+            i = new ModeSequentiel();
+            int testFormeLibre = -1;
+            i.Stylo.DescendrePointeur();
+            i.Stylo.Avancer(50);
+            i.Stylo.Tourner(90);
+            i.Stylo.Avancer(50);
+            i.Stylo.LeverPointeur();
+
+            throw new Exception("Dessin libre pas encore implémenté");
+        }
+
+        [TestMethod]
+        public void SEQTournerPointeurDe450()
+        {
+            i = new ModeSequentiel();
+            int testFormeLibre = -1;
+            i.Stylo.DescendrePointeur();
+            i.Stylo.Avancer(50);
+            i.Stylo.Tourner(450);
+            i.Stylo.Avancer(50);
+            i.Stylo.LeverPointeur();
+
+            throw new Exception("Dessin libre pas encore implémenté");
+        }
+
+        [TestMethod]
+        public void SEQChangerCouleurPointeur()
+        {
+            throw new Exception("Pas encore implémenté");
+        }
+
+        /************************************************************************************************************
          * ************************************** Dessiner Formes ***************************************************
          * *********************************************************************************************************/
 
@@ -154,6 +222,17 @@ namespace AMCPTest
 
         }
 
+        [TestMethod]
+        public void SEQDessinerFormeLibreHorsCanvas()
+        {
+            i = new ModeSequentiel();
+            int testFormeLibre = -1;
+            i.Stylo.DescendrePointeur();
+            i.Stylo.Avancer(20000);
+            i.Stylo.LeverPointeur();
+
+            throw new Exception("Dessin libre pas encore implémenté");
+        }
 
         /************************************************************************************************************
          * ************************************** Tourner ***********************************************************
