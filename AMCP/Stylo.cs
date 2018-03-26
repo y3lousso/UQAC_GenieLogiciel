@@ -64,7 +64,7 @@ namespace AMCP
         {
             StartPosition = this.Position;
             Points = new List<Point>();
-            Points.Add(new Point(0, 0));
+            Points.Add(StartPosition);
             IsWriting = true;
         }
 
