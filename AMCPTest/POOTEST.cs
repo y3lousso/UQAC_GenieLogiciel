@@ -258,5 +258,95 @@ namespace AMCPTest
         {
             throw new Exception("Pas encore développé");
         }
+
+
+        /************************************************************************************************************
+ * ************************************** Rotation/translation/homothétie d'une forme *******************************************************
+ * *********************************************************************************************************/
+
+        [TestMethod]
+        public void POORotationPolygone()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerRectangle(posXMid, posYMid, 100, 100);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testPolygone.Tourner(40);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POORotationPolygone2()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerTriangle(posXMid, posYMid, 30);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testPolygone.Tourner(40);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POORotationEllipse()
+        {
+            i = new ModeOrienteObjet();
+            Ellipse testEllipse = null;
+            testEllipse = i.DessinerEllipse(posXMid, posYMid, 50, 80);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testEllipse.Tourner(40);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POOTranslationPolygone()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerRectangle(posXMid, posYMid, 100, 100);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testPolygone.Deplacer(200,200);
+            i.Afficher(displayTime);
+
+        }
+
+        [TestMethod]
+        public void POOTranslationEllipse()
+        {
+            i = new ModeOrienteObjet();
+            Ellipse testEllipse = null;
+            testEllipse = i.DessinerEllipse(posXMid, posYMid, 50, 80);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testEllipse.Deplacer(200, 200);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POOHomothetiePolygone()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerRectangle(posXMid, posYMid, 100, 100);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testPolygone.Dimensionner(2);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POOHomothetieEllipse()
+        {
+            i = new ModeOrienteObjet();
+            Ellipse testEllipse = null;
+            testEllipse = i.DessinerEllipse(posXMid, posYMid, 50, 80);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testEllipse.Dimensionner(2);
+            i.Afficher(displayTime);
+        }
     }
 }

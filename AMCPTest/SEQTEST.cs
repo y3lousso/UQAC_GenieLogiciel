@@ -235,18 +235,8 @@ namespace AMCPTest
         }
 
         /************************************************************************************************************
-         * ************************************** Tourner ***********************************************************
+         * ************************************** Dupliquer ***********************************************************
          * *********************************************************************************************************/
-
-        [TestMethod]
-        public void SEQTournerPolygone()
-        {
-            i = new ModeSequentiel();
-            int testPolygone = -1;
-            testPolygone = i.DessinerTriangle(posXMid, posYMid, 20);
-            i.Tourner(testPolygone, -300000);
-            i.Afficher(displayTime);
-        }
 
         
         [TestMethod]
@@ -279,6 +269,83 @@ namespace AMCPTest
         public void SEQReinitialiserCanvas()
         {
             throw new Exception("Pas encore développé");
+        }
+
+        /************************************************************************************************************
+* ************************************** Rotation/translation/homothétie d'une forme *******************************************************
+* *********************************************************************************************************/
+
+        [TestMethod]
+        public void SEQRotationPolygone()
+        {
+            i = new ModeSequentiel();
+            int testPolygone = -1;
+            testPolygone = i.DessinerTriangle(posXMid, posYMid, 20);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            i.Tourner(testPolygone, -300000);
+            i.Afficher(displayTime);
+
+        }
+
+        [TestMethod]
+        public void SEQRotationEllipse()
+        {
+            i = new ModeSequentiel();
+            int testEllipse = -1;
+            testEllipse = i.DessinerEllipse(posXMid, posYMid, 50, 80);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            i.Tourner(testEllipse, -30);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void SEQTranslationPolygone()
+        {
+            i = new ModeSequentiel();
+            int testPolygone = -1;
+            testPolygone = i.DessinerTriangle(posXMid, posYMid, 20);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            i.Deplacer(testPolygone, 200, 200);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void SEQTranslationEllipse()
+        {
+            i = new ModeSequentiel();
+            int testEllipse = -1;
+            testEllipse = i.DessinerEllipse(posXMid, posYMid, 50, 80);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            i.Deplacer(testEllipse, 200, 200);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void SEQHomothetiePolygone()
+        {
+            i = new ModeSequentiel();
+            int testPolygone = -1;
+            testPolygone = i.DessinerTriangle(posXMid, posYMid, 90);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            i.Dimensionner(testPolygone, 200f);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void SEQHomothetieEllipse()
+        {
+            i = new ModeSequentiel();
+            int testEllipse = -1;
+            testEllipse = i.DessinerEllipse(posXMid, posYMid, 50, 80);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            i.Dimensionner(testEllipse, 30);
+            i.Afficher(displayTime);
         }
     }
 }
