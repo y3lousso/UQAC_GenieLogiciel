@@ -102,7 +102,7 @@ namespace AMCP
             }
             else
             {
-                throw new Exception("Le stylo doit être levé pour utiliser 'Tourner'.");
+                throw new Exception("Le stylo doit être levé pour utiliser 'Tourner'."); // TODO : "Deplacer" et pas "Tourner"
             }
         }
     }

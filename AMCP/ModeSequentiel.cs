@@ -179,7 +179,7 @@ namespace AMCP
         ///<summary>
         /// Retourne une forme a partir de son id. Retourne null si la forme correspondante n'a pas été trouvée.
         ///</summary>
-        protected virtual Forme IdentifierForme(int id)
+        protected virtual Forme IdentifierForme(int id) // TODO : Ne devrait elle pas etre dans IMode en accord avec le CON ? 
         {
             foreach (Forme f in Canvas.Formes) {
                 if (f.getId() == id)

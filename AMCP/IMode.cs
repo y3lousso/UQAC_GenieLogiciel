@@ -81,7 +81,7 @@ namespace AMCP
         /// <summary>
         /// Permet d'enlever tous les dessins de l'écran.
         /// </summary>
-        public virtual void NettoyerEcran()
+        public virtual void NettoyerEcran() // TODO : Ne devrait il pas etre dans ModeSequentiel en accord avec le CON ?
         {
             Canvas.instance.Graphic.Clear(Color.White);
         }
