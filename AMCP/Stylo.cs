@@ -64,7 +64,7 @@ namespace AMCP
         {
             StartPosition = this.Position;
             Points = new List<Point>();
-            Points.Add(new Point(0, 0));
+            Points.Add(StartPosition);
             IsWriting = true;
         }
 
@@ -102,7 +102,7 @@ namespace AMCP
             }
             else
             {
-                throw new Exception("Le stylo doit être levé pour utiliser 'Tourner'.");
+                throw new Exception("Le stylo doit être levé pour utiliser 'Tourner'."); // TODO : "Deplacer" et pas "Tourner"
             }
         }
     }

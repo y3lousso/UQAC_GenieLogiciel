@@ -9,46 +9,77 @@ namespace AMCP
 {
     public class ModeSequentiel : IMode
     {
+        public virtual int DessinerCarre(int positionX, int positionY, int taille)
+        {
+            Polygone p = new Polygone();
+            if (!EstDehors(positionX, positionY, taille, taille))
+            {
+                p.SetRectangle(new Point(positionX, positionY), taille, taille);
+                Canvas.Formes.Add(p);
+                return p.getId();
+            }
+            else
+            {
+                Console.WriteLine("Le carré est hors du canvas.");
+                return -1;
+            }
+        }
 
-        public int DessinerRectangle(int positionX, int positionY, int largeur, int hauteur)
+        public virtual int DessinerRectangle(int positionX, int positionY, int largeur, int hauteur)
         {
             Polygone p = new Polygone();
             if (!EstDehors(positionX, positionY, largeur, hauteur))
             {
                 p.SetRectangle(new Point(positionX, positionY), largeur, hauteur);
                 Canvas.Formes.Add(p);
-                return Canvas.Formes.IndexOf(p);
+                return p.getId();
             }
-            else return -1;
+            else
+            {
+                Console.WriteLine("Le rectangle est hors du canvas.");
+                return -1;
+            }
         }
 
-        public int DessinerCercle(int positionX, int positionY, int rayon)
+        public virtual int DessinerCercle(int positionX, int positionY, int rayon)
         {
             if (!EstDehors(positionX, positionY, rayon, rayon))
             {
                 Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon); // TODO : une ellipse "p" ? à renommer 
                 Canvas.Formes.Add(p);
-                return Canvas.Formes.IndexOf(p);
+                return p.getId();
             }
-            else return -1;
+            else
+            {
+                Console.WriteLine("Le cercle est hors du canvas.");
+                return -1;
+            }
         }
 
-        public int DessinerTriangle(int positionX, int positionY, int taille)
+        public virtual int DessinerTriangle(int positionX, int positionY, int taille)
         {
             Polygone p = new Polygone();
-            p.SetTriangle(new Point(positionX, positionY), taille);
-            Canvas.Formes.Add(p);
-            return Canvas.Formes.IndexOf(p);
+            if (!EstDehors(positionX, positionY, taille*2, taille*2))
+            {
+                p.SetTriangle(new Point(positionX, positionY), taille);
+                Canvas.Formes.Add(p);
+                return p.getId();
+            }
+            else
+            {
+                Console.WriteLine("Le triangle est hors du canvas.");
+                return -1;
+            }
         }
 
-        public int DessinerLosange(int positionX, int positionY, int largeur, int hauteur)
+        public virtual int DessinerLosange(int positionX, int positionY, int largeur, int hauteur)
         {
             Polygone p = new Polygone();
             if (!EstDehors(positionX, positionY, largeur, hauteur))
             {
                 p.SetLosange(new Point(positionX, positionY), largeur, hauteur);
                 Canvas.Formes.Add(p);
-                return Canvas.Formes.IndexOf(p);
+                return p.getId();
             }
             else
             {
@@ -57,40 +88,61 @@ namespace AMCP
             }
         }
 
-        public int DessinerEtoile(int positionX, int positionY, int rayonInterieur, int rayonExterieur, int nbSommet)
+        public virtual int DessinerEtoile(int positionX, int positionY, int rayonInterieur, int rayonExterieur, int nbSommet)
         {
             Polygone p = new Polygone();
-            if (!EstDehors(positionX, positionY, rayonExterieur, rayonExterieur / 2))
+            if (!EstDehors(positionX, positionY, rayonExterieur/2, rayonExterieur))
             {
-                p.SetEtoile(new Point(positionX, positionY), rayonInterieur, rayonExterieur, nbSommet);
+                p.SetEtoile(new Point(positionX, positionY), rayonInterieur/2, rayonExterieur/2, nbSommet);
                 Canvas.Formes.Add(p);
-                return Canvas.Formes.IndexOf(p);
+                return p.getId();
             }
-            else return -1;
+            else
+            {
+                Console.WriteLine("L'étoile est hors du canvas.");
+                return -1;
+            }
         }
 
-        public int DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
+        public virtual int DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
         {
             Ellipse p = new Ellipse(new Point(positionX, positionY), rayon1, rayon2);
             if (!EstDehors(positionX, positionY, rayon1, rayon2 / 2))
             {
                 Canvas.Formes.Add(p);
-                return Canvas.Formes.IndexOf(p);
+                return p.getId();
             }
-            else return -1;
+            else
+            {
+                Console.WriteLine("L'ellipse est hors du canvas.");
+                return -1;
+            }
         }
 
-        public int Dupliquer(int idForme, int positionX, int positionY)
+        public virtual int Dupliquer(int idForme, int positionX, int positionY)
         {
-            return 0;
+            Forme origin = IdentifierForme(idForme);
+            if (origin != null)
+            {
+                Forme copy = origin.Dupliquer(positionX, positionY);
+                return copy.getId();
+            }else
+            {
+                return -1;
+            }
         }
 
-        public void Colorier(int idForme, int r, int g, int b)
+        public virtual void Colorier(int idForme, int r, int g, int b)
         {
+            Forme f = IdentifierForme(idForme);
+            if (f != null)
+            {
+                f.Colorier(r, g, b);
+            }
 
         }
         
-        public void Tourner(int idForme, int angle)
+        public virtual void Tourner(int idForme, int angle)
         {
             if(Canvas.Formes[idForme] is Polygone)
             {
@@ -102,20 +154,18 @@ namespace AMCP
             }
         }
 
-        public void Deplacer(int idForme, int positionX, int positionY)
+        public virtual void Deplacer(int idForme, int positionX, int positionY)
         {
 
         }
 
-        public void Dimensionner(int idForme, float taille)
+        public virtual void Dimensionner(int idForme, float taille)
         {
 
         }
 
-        public Boolean EstDehors(float positionX, float positionY, float coteX, float coteY)
+        public virtual Boolean EstDehors(float positionX, float positionY, float coteX, float coteY)
         {
-            Console.WriteLine(Canvas.Graphic.VisibleClipBounds);
-
             if (positionX - coteX / 2 < 0 || positionX + coteX / 2 > Canvas.Graphic.VisibleClipBounds.Width || positionY - coteY / 2 < 0 || positionY + coteY / 2 > Canvas.Graphic.VisibleClipBounds.Height)
             {
                 return true;
@@ -125,5 +175,23 @@ namespace AMCP
                 return false;
             }
         }
+
+        ///<summary>
+        /// Retourne une forme a partir de son id. Retourne null si la forme correspondante n'a pas été trouvée.
+        ///</summary>
+        protected virtual Forme IdentifierForme(int id) // TODO : Ne devrait elle pas etre dans IMode en accord avec le CON ? 
+        {
+            foreach (Forme f in Canvas.Formes) {
+                if (f.getId() == id)
+                {
+                    return f;
+                }
+            }
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("L'id donné: " + id + " ne correspond a aucune Forme dans le Canvas!");
+            Console.ResetColor();
+            throw new Exception("L'id donné: " + id + " ne correspond a aucune Forme dans le Canvas!");
+        }
+
     }
 }

@@ -13,14 +13,15 @@ namespace CEGEP_Student
         static void Main(string[] args)
         {
 
-            // 0 -> démo séquenciel
+            // 0 -> tests bords séquentiel
             // 1 -> démo OOP
             // 2 -> sequenciel rotation
             // 3 -> opp rotation
             // 4 -> reverse Y axis test
             // 5 -> car demo
+            // 6 -> test pour les id
 
-            int test = 0;
+            int test = 5;
 
             switch (test)
             {
@@ -39,15 +40,19 @@ namespace CEGEP_Student
                             i.DessinerEllipse(posX, posY + 250, 20, 50);
                         }*/
 
-                        //i.DessinerLosange(320, 540, 640, 360);
-                        //i.DessinerLosange(960, 540, 640, 360);
-                        //i.DessinerLosange(320, 180, 640, 360);
-                        //i.DessinerLosange(960, 180, 640, 360);
-                        //i.DessinerEllipse(631, 380, 1262, 680);
-                        //i.DessinerCercle(640, 360, 720);
-                        i.DessinerLosange(632, 340, 1264, 680);
-                        //i.DessinerLosange(640, 360, 1280, 720);
-                        //i.DessinerEtoile(640, 360, 180, 360, 8);
+                        //IN
+                        i.DessinerLosange(316, 170, 632, 340); //Bas-Gauche
+                        i.DessinerEtoile(316, 510, 170, 340, 8); //Haut-Gauche
+                        i.DessinerEllipse(948, 170, 632, 340); //Bas-Droite       
+                        i.DessinerTriangle(948, 510, 170); // Haut-Droite
+                        //OUT
+                        //i.DessinerLosange(315, 170, 632, 340); //Bas-Gauche
+                        //i.DessinerEtoile(316, 512, 170, 340, 8); //Bas-Gauche
+                        //i.DessinerEllipse(949, 170, 632, 340); //Bas-Droite
+                        //i.DessinerEtoile(948, 512, 170, 340, 8); //Haut-Droite
+                        //i.DessinerTriangle(948, 510, 172); // Haut-Droite
+
+
 
                         i.Afficher();
                         i.Pause();
@@ -183,6 +188,26 @@ namespace CEGEP_Student
                         }
 
                         i.Afficher();
+                        i.Pause();
+                        break;
+                    }
+
+                case 6:
+                    {
+                        Console.WriteLine("------ ID Form Test -------");
+                        ModeSequentiel i = new ModeSequentiel();
+
+                        int posX = 0;
+                        int posY = 0;
+
+                        int rectangle = i.DessinerCarre(50 + posX, 50 + posY, 100);
+                        int cercle = i.DessinerCercle(posX + 100, posY + 100, 50);
+
+                        i.Afficher();
+                         
+                        int r2 = i.Dupliquer(rectangle, 125, 125);
+                        i.Colorier(r2,255,0,0);// Doit sortir une Exeception
+
                         i.Pause();
                         break;
                     }
