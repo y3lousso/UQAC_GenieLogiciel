@@ -27,6 +27,7 @@ namespace AMCP
 
         //public abstract void Supprimer();
 
+        // TODO : les méthodes doivent être en Pascal
         public int getId()
         {
             return Id;
