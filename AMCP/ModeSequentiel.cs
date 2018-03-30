@@ -126,7 +126,8 @@ namespace AMCP
             {
                 Forme copy = origin.Dupliquer(positionX, positionY);
                 return copy.getId();
-            }else
+            }
+            else
             {
                 return -1;
             }
@@ -166,6 +167,7 @@ namespace AMCP
 
         public virtual Boolean EstDehors(float positionX, float positionY, float coteX, float coteY)
         {
+            // TODO : casser cette condition trop longue avec des ruptures de ligne
             if (positionX - coteX / 2 < 0 || positionX + coteX / 2 > Canvas.Graphic.VisibleClipBounds.Width || positionY - coteY / 2 < 0 || positionY + coteY / 2 > Canvas.Graphic.VisibleClipBounds.Height)
             {
                 return true;
