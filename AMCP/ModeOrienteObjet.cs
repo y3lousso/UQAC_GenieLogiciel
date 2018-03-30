@@ -23,7 +23,7 @@ namespace AMCP
             return p;
         }
 
-        public virtual  Polygone DessinerRectangle(int positionX, int positionY, int largeur, int hauteur )
+        public virtual Polygone DessinerRectangle(int positionX, int positionY, int largeur, int hauteur)
         {
             Polygone p = new Polygone();
             p.SetRectangle(new Point(positionX, positionY), largeur, hauteur);
