@@ -57,7 +57,7 @@ namespace AMCP.Formes
             double angleRadian = angle * Math.PI / 180f;
             Point rotationAxe = this.Points[0];
             Point tmpPoint;
-
+            //TODO portée indicatrice non respectée
             for (int i = 1; i < Points.Count; i++)
             {
                 int X = this.Points[i].X - rotationAxe.X;
