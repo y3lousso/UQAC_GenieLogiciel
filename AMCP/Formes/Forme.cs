@@ -36,7 +36,7 @@ namespace AMCP
             if (positionX - tailleX / 2 < 0
                 || positionX + tailleX / 2 > Canvas.instance.Graphic.VisibleClipBounds.Width
                 || positionY - tailleY / 2 < 0
-                || positionY + tailleX / 2 > Canvas.instance.Graphic.VisibleClipBounds.Height)
+                || positionY + tailleY / 2 > Canvas.instance.Graphic.VisibleClipBounds.Height)
             {
                 return true;
             }

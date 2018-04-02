@@ -21,7 +21,7 @@ namespace CEGEP_Student
             // 5 -> car demo
             // 6 -> test pour les id
 
-            int test = 0;
+            int test = 1;
 
             switch (test)
             {
@@ -77,10 +77,29 @@ namespace CEGEP_Student
                         }*/
 
                         //IN
-                        i.DessinerLosange(316, 170, 632, 340); //Bas-Gauche
-                        i.DessinerEtoile(316, 510, 170, 340, 8); //Haut-Gauche
-                        i.DessinerEllipse(948, 170, 632, 340); //Bas-Droite       
-                        i.DessinerTriangle(948, 510, 170); // Haut-Droite
+                        /* Forme losa = i.DessinerLosange(316, 170, 632, 340); //Bas-Gauche
+                        losa.Deplacer(316, 510);
+                        losa.Deplacer(948, 510);
+                        losa.Deplacer(948, 170);
+                        losa.Deplacer(950, 170);*/ //Deplacement en dehors
+
+                        /*Forme elli = i.DessinerEllipse(948, 170, 632, 340);
+                        elli.Deplacer(316, 170);
+                        elli.Deplacer(316, 510);
+                        elli.Deplacer(948, 510);
+                        elli.Deplacer(949, 510);*/ //Deplacement en dehors
+
+                        Forme cer = i.DessinerCercle(948, 170, 340);
+                        cer.Deplacer(316, 170);
+                        cer.Deplacer(316, 510);
+                        cer.Deplacer(948, 510);
+                        cer.Deplacer(948, 510); //Deplacement en dehors
+
+
+
+                        //i.DessinerEtoile(316, 510, 170, 340); //Haut-Gauche
+                        //i.DessinerEllipse(948, 170, 632, 340); //Bas-Droite       
+                        //i.DessinerTriangle(948, 510, 170); // Haut-Droite
                         //OUT
                         //i.DessinerLosange(315, 170, 632, 340); //Bas-Gauche
                         //i.DessinerEtoile(316, 512, 170, 340, 8); //Bas-Gauche

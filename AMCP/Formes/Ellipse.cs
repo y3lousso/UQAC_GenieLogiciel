@@ -69,7 +69,10 @@ namespace AMCP
         public override void Deplacer(int positionX, int positionY)
         {
             Point center = new Point(positionX - this.PetitRayon / 2, positionY - this.GrandRayon / 2);
-            this.Position = center;
+            if (!EstDehors(positionX, positionY, this.PetitRayon, this.GrandRayon))
+                this.Position = center;
+            else
+                Console.WriteLine("Déplacement impossible");
         }
 
         public override void Dimensionner(float taille)
