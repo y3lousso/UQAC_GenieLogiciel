@@ -77,5 +77,7 @@ namespace AMCP
             this.PetitRayon = (int)(this.PetitRayon * taille);
             this.GrandRayon = (int)(this.GrandRayon * taille);
         }
+        
+
     }
 }

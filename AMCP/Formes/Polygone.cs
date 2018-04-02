@@ -141,6 +141,7 @@ namespace AMCP
                 this.Points.Add(v2);
             }
         }
+        
     }
 }
 

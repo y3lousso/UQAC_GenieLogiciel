@@ -21,14 +21,50 @@ namespace CEGEP_Student
             // 5 -> car demo
             // 6 -> test pour les id
 
-            int test = 2;
+            int test = 0;
 
             switch (test)
             {
                 case 0:
                     {
-                        Console.WriteLine("------ Sequenciel -------");
+                        Console.WriteLine("------ Sequentiel -------");
                         ModeSequentiel i = new ModeSequentiel();
+
+                        /*for (int x = 0; x < 5; x++)
+                        {
+                            int posX = 20 * x + 80;
+                            int posY = (20 * x) + x + 80;
+                            i.DessinerRectangle(posX, posY, 50, 70);
+                            i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
+                            i.DessinerCercle(100 + posX, posY, 20);
+                            i.DessinerEllipse(posX, posY + 250, 20, 50);
+                        }*/
+
+                        //IN
+                        int form;
+                        i.DessinerLosange(316, 170, 632, 340); //Bas-Gauche
+                        //i.DessinerEtoile(316, 510, 170, 340, 8); //Haut-Gauche
+                        form=i.DessinerEllipse(948, 170, 632, 340); //Bas-Droite       
+                        i.DessinerTriangle(948, 510, 170); // Haut-Droite
+                        i.Deplacer(form, 316, 510);
+                        //OUT
+                        //i.DessinerLosange(315, 170, 632, 340); //Bas-Gauche
+                        //i.DessinerEtoile(316, 512, 170, 340, 8); //Bas-Gauche
+                        //i.DessinerEllipse(949, 170, 632, 340); //Bas-Droite
+                        //i.DessinerEtoile(948, 512, 170, 340, 8); //Haut-Droite
+                        //i.DessinerTriangle(948, 510, 172); // Haut-Droite
+
+
+
+                        i.Afficher();
+                        i.Pause();
+                        break;
+                    }
+
+                case 1:
+                    {
+                        Console.WriteLine("------ OOP -------");
+                        ModeOrienteObjet i = new ModeOrienteObjet();
 
                         /*for (int x = 0; x < 5; x++)
                         {
@@ -51,28 +87,6 @@ namespace CEGEP_Student
                         //i.DessinerEllipse(949, 170, 632, 340); //Bas-Droite
                         //i.DessinerEtoile(948, 512, 170, 340, 8); //Haut-Droite
                         //i.DessinerTriangle(948, 510, 172); // Haut-Droite
-
-
-
-                        i.Afficher();
-                        i.Pause();
-                        break;
-                    }
-
-                case 1:
-                    {
-                        Console.WriteLine("------ OOP -------");
-                        ModeOrienteObjet i = new ModeOrienteObjet();
-
-                        for (int x = 0; x < 5; x++)
-                        {
-                            int posX = 20 * x + 80;
-                            int posY = (20 * x) + x + 80;
-                            i.DessinerRectangle(posX, posY, 50, 70);
-                            i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
-                            i.DessinerCercle(100 + posX, posY, 20);
-                            i.DessinerEllipse(posX, posY + 250, 20, 50);
-                        }
 
                         i.Afficher();
                         i.Pause();
