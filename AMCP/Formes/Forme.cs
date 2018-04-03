@@ -27,9 +27,23 @@ namespace AMCP
 
         //public abstract void Supprimer();
 
-        public int getId()
+        public int GetId()
         {
             return Id;
+        }
+        internal Boolean EstDehors(float positionX, float positionY, float tailleX, float tailleY)
+        {
+            if (positionX - tailleX / 2 < 0
+                || positionX + tailleX / 2 > Canvas.instance.Graphic.VisibleClipBounds.Width
+                || positionY - tailleY / 2 < 0
+                || positionY + tailleY / 2 > Canvas.instance.Graphic.VisibleClipBounds.Height)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

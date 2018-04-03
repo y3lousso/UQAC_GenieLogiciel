@@ -21,13 +21,13 @@ namespace CEGEP_Student
             // 5 -> car demo
             // 6 -> test pour les id
 
-            int test = 5;
+            int test = 1;
 
             switch (test)
             {
                 case 0:
                     {
-                        Console.WriteLine("------ Sequenciel -------");
+                        Console.WriteLine("------ Sequentiel -------");
                         ModeSequentiel i = new ModeSequentiel();
 
                         /*for (int x = 0; x < 5; x++)
@@ -41,10 +41,12 @@ namespace CEGEP_Student
                         }*/
 
                         //IN
+                        int form;
                         i.DessinerLosange(316, 170, 632, 340); //Bas-Gauche
-                        i.DessinerEtoile(316, 510, 170, 340, 8); //Haut-Gauche
-                        i.DessinerEllipse(948, 170, 632, 340); //Bas-Droite       
+                        //i.DessinerEtoile(316, 510, 170, 340, 8); //Haut-Gauche
+                        form=i.DessinerEllipse(948, 170, 632, 340); //Bas-Droite       
                         i.DessinerTriangle(948, 510, 170); // Haut-Droite
+                        i.Deplacer(form, 316, 510);
                         //OUT
                         //i.DessinerLosange(315, 170, 632, 340); //Bas-Gauche
                         //i.DessinerEtoile(316, 512, 170, 340, 8); //Bas-Gauche
@@ -64,7 +66,7 @@ namespace CEGEP_Student
                         Console.WriteLine("------ OOP -------");
                         ModeOrienteObjet i = new ModeOrienteObjet();
 
-                        for (int x = 0; x < 5; x++)
+                        /*for (int x = 0; x < 5; x++)
                         {
                             int posX = 20 * x + 80;
                             int posY = (20 * x) + x + 80;
@@ -72,7 +74,38 @@ namespace CEGEP_Student
                             i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
                             i.DessinerCercle(100 + posX, posY, 20);
                             i.DessinerEllipse(posX, posY + 250, 20, 50);
-                        }
+                        }*/
+
+                        //IN
+                        /* Forme losa = i.DessinerLosange(316, 170, 632, 340); //Bas-Gauche
+                        losa.Deplacer(316, 510);
+                        losa.Deplacer(948, 510);
+                        losa.Deplacer(948, 170);
+                        losa.Deplacer(950, 170);*/ //Deplacement en dehors
+
+                        /*Forme elli = i.DessinerEllipse(948, 170, 632, 340);
+                        elli.Deplacer(316, 170);
+                        elli.Deplacer(316, 510);
+                        elli.Deplacer(948, 510);
+                        elli.Deplacer(949, 510);*/ //Deplacement en dehors
+
+                        Forme cer = i.DessinerCercle(948, 170, 340);
+                        cer.Deplacer(316, 170);
+                        cer.Deplacer(316, 510);
+                        cer.Deplacer(948, 510);
+                        cer.Deplacer(948, 510); //Deplacement en dehors
+
+
+
+                        //i.DessinerEtoile(316, 510, 170, 340); //Haut-Gauche
+                        //i.DessinerEllipse(948, 170, 632, 340); //Bas-Droite       
+                        //i.DessinerTriangle(948, 510, 170); // Haut-Droite
+                        //OUT
+                        //i.DessinerLosange(315, 170, 632, 340); //Bas-Gauche
+                        //i.DessinerEtoile(316, 512, 170, 340, 8); //Bas-Gauche
+                        //i.DessinerEllipse(949, 170, 632, 340); //Bas-Droite
+                        //i.DessinerEtoile(948, 512, 170, 340, 8); //Haut-Droite
+                        //i.DessinerTriangle(948, 510, 172); // Haut-Droite
 
                         i.Afficher();
                         i.Pause();

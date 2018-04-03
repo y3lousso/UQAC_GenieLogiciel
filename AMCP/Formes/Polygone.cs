@@ -85,7 +85,28 @@ namespace AMCP
 
         public override void Deplacer(int positionX, int positionY)
         {
-            this.Position = new Point(positionX, positionY);
+            if (this.Points.Count == 4) // Rectangle ou losange
+            {
+
+                if (!EstDehors(positionX, positionY, 2 * this.Points[2].X, 2 * this.Points[1].Y))
+                {
+
+
+                    this.Position = new Point(positionX, positionY);
+                }
+                else
+                    Console.WriteLine("Déplacement impossible");
+
+            }
+            else if (this.Points.Count == 3) //Triangle
+            {
+                if (!EstDehors(positionX, positionY, 2 * this.Points[2].X, 2 * this.Points[2].X))
+                    this.Position = new Point(positionX, positionY);
+                else
+                    Console.WriteLine("Déplacement impossible");
+            }
+            else; //TODO : Etoile
+
         }
 
         public override void Dimensionner(float taille)
@@ -144,6 +165,7 @@ namespace AMCP
                 this.Points.Add(v2);
             }
         }
+        
     }
 }
 
