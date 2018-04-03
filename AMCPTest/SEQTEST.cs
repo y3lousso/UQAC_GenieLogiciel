@@ -247,10 +247,25 @@ namespace AMCPTest
             testPolygone = i.DessinerTriangle(posXMid, posYMid, 20);
             Assert.AreNotEqual(-1, testPolygone);
             int polygoneDuplique = i.Dupliquer(testPolygone, posXMid + 30, posYMid + 30);
-            Assert.AreNotEqual(0, polygoneDuplique);
             Assert.AreNotEqual(testPolygone, polygoneDuplique);
             i.Afficher(displayTime);
         }
+
+        [TestMethod]
+        public void SEQDupliquerEllipse()
+        {
+            i = new ModeSequentiel();
+            int testCercle = -1;
+            testCercle = i.DessinerCercle(posXMid, posYMid, 20);
+            Assert.AreNotEqual(-1, testCercle);
+            int cercleDuplique = i.Dupliquer(testCercle, posXMid + 30, posYMid + 30);
+            Assert.AreNotEqual(testCercle, cercleDuplique);
+            i.Afficher(displayTime);
+        }
+
+        /************************************************************************************************************
+         * ************************************** Nettoyer/Reinitialiser Canvas ***********************************************************
+         * *********************************************************************************************************/
 
 
         [TestMethod]

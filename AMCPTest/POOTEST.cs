@@ -240,12 +240,38 @@ namespace AMCPTest
             i.Afficher(displayTime);
         }
 
+        /************************************************************************************************************
+         * ************************************** Dupliquer ***********************************************************
+         * *********************************************************************************************************/
+
+
         [TestMethod]
         public void POODupliquerPolygone()
         {
             i = new ModeOrienteObjet();
-            throw new Exception("Pas encore développé");
+            Polygone testPolygone = i.DessinerTriangle(posXMid, posYMid, 20);
+            Assert.AreNotEqual(-1, testPolygone.GetId());
+            Forme polygoneDuplique = testPolygone.Dupliquer(posXMid + 30, posYMid + 30);
+            Assert.AreNotEqual(-1, polygoneDuplique.GetId());
+            Assert.AreNotSame(testPolygone, polygoneDuplique);
+            i.Afficher(displayTime);
         }
+
+        [TestMethod]
+        public void POODupliquerEllipse()
+        {
+            i = new ModeOrienteObjet();
+            Ellipse testCercle = i.DessinerCercle(posXMid, posYMid, 20);
+            Assert.AreNotEqual(-1, testCercle.GetId());
+            Forme cercleDuplique = testCercle.Dupliquer(posXMid + 30, posYMid + 30);
+            Assert.AreNotEqual(-1, cercleDuplique.GetId());
+            Assert.AreNotSame(testCercle, cercleDuplique);
+            i.Afficher(displayTime);
+        }
+
+        /************************************************************************************************************
+         * ************************************** Nettoyer/Reinitialiser Canvas ***********************************************************
+         * *********************************************************************************************************/
 
         [TestMethod]
         public void POONettoyerCanvas()
