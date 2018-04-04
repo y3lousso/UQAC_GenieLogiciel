@@ -13,15 +13,17 @@ namespace CEGEP_Student
         static void Main(string[] args)
         {
 
-            // 0 -> tests bords séquentiel
-            // 1 -> démo OOP
-            // 2 -> sequenciel rotation
-            // 3 -> opp rotation
-            // 4 -> reverse Y axis test
-            // 5 -> car demo
-            // 6 -> test pour les id
-
-            int test = 1;
+            Console.WriteLine("************ DEMO ***********");
+            Console.WriteLine("0 -> tests bords séquentiel");
+            Console.WriteLine("1 -> démo OOP"); 
+            Console.WriteLine("2 -> sequenciel rotation"); 
+            Console.WriteLine("3 -> opp rotation");
+            Console.WriteLine("4 -> reverse Y axis test"); 
+            Console.WriteLine("5 -> car demo");
+            Console.WriteLine("6 -> test pour les id"); 
+            Console.WriteLine("*****************************\n");
+            Console.Write("Votre choix : ");
+            int test = int.Parse(Console.ReadLine());
 
             switch (test)
             {
