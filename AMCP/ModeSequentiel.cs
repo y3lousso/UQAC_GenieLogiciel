@@ -16,8 +16,8 @@ namespace AMCP
             {
                 p.SetRectangle(new Point(positionX, positionY), taille, taille);
                 Canvas.Formes.Add(p);
-                Console.WriteLine("Le carré " + p.GetId() +  " a été dessiné.");
-                return p.GetId();
+                Console.WriteLine("Le carré " + p.Id +  " a été dessiné.");
+                return p.Id;
             }
             else
             {
@@ -33,8 +33,8 @@ namespace AMCP
             {
                 p.SetRectangle(new Point(positionX, positionY), largeur, hauteur);
                 Canvas.Formes.Add(p);
-                Console.WriteLine("Le rectangle " + p.GetId() + " a été dessiné.");
-                return p.GetId();
+                Console.WriteLine("Le rectangle " + p.Id + " a été dessiné.");
+                return p.Id;
             }
             else
             {
@@ -49,12 +49,12 @@ namespace AMCP
             if (!p.EstDehors(positionX, positionY, rayon, rayon))
             {
                 Canvas.Formes.Add(p);
-                Console.WriteLine("Le cercle " + p.GetId() + " a été dessinée.");
-                return p.GetId();
+                Console.WriteLine("Le cercle " + p.Id + " a été dessinée.");
+                return p.Id;
             }
             else
             {
-                Console.WriteLine("Le cercle " + p.GetId() + " est hors du canvas.");
+                Console.WriteLine("Le cercle " + p.Id + " est hors du canvas.");
                 return -1;
             }
         }
@@ -65,9 +65,9 @@ namespace AMCP
             if (!p.EstDehors(positionX, positionY, taille*2, taille*2))
             {
                 p.SetTriangle(new Point(positionX, positionY), taille);
-                Console.WriteLine("Le triangle " + p.GetId() + " a été dessiné.");
+                Console.WriteLine("Le triangle " + p.Id + " a été dessiné.");
                 Canvas.Formes.Add(p);
-                return p.GetId();
+                return p.Id;
             }
             else
             {
@@ -82,9 +82,9 @@ namespace AMCP
             if (!p.EstDehors(positionX, positionY, largeur, hauteur))
             {
                 p.SetLosange(new Point(positionX, positionY), largeur, hauteur);
-                Console.WriteLine("Le losange " + p.GetId() + " a été dessiné.");
+                Console.WriteLine("Le losange " + p.Id + " a été dessiné.");
                 Canvas.Formes.Add(p);
-                return p.GetId();
+                return p.Id;
             }
             else
             {
@@ -100,8 +100,8 @@ namespace AMCP
             {
                 p.SetEtoile(new Point(positionX, positionY), rayonInterieur/2, rayonExterieur/2, nbSommet);
                 Canvas.Formes.Add(p);
-                Console.WriteLine("L'étoile " + p.GetId() + " a été dessinée.");
-                return p.GetId();
+                Console.WriteLine("L'étoile " + p.Id + " a été dessinée.");
+                return p.Id;
             }
             else
             {
@@ -116,8 +116,8 @@ namespace AMCP
             if (!p.EstDehors(positionX, positionY, rayon1, rayon2 / 2))
             {
                 Canvas.Formes.Add(p);
-                Console.WriteLine("L'ellipse " + p.GetId() + " a été dessinée.");
-                return p.GetId();
+                Console.WriteLine("L'ellipse " + p.Id + " a été dessinée.");
+                return p.Id;
             }
             else
             {
@@ -132,7 +132,7 @@ namespace AMCP
             if (origin != null)
             {
                 Forme copy = origin.Dupliquer(positionX, positionY);
-                return copy.GetId();
+                return copy.Id;
             }else
             {
                 return -1;
@@ -208,7 +208,7 @@ namespace AMCP
         protected virtual Forme IdentifierForme(int id)
         {
             foreach (Forme f in Canvas.Formes) {
-                if (f.GetId() == id)
+                if (f.Id == id)
                 {
                     return f;
                 }

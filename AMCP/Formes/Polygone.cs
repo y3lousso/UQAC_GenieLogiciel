@@ -15,11 +15,13 @@ namespace AMCP
 
         internal Polygone()
         {
+            this.Id = Canvas.prochain_id();
             this.Color = Color.Black;
         }
 
         internal Polygone (List<Point> points)
         {
+            this.Id = Canvas.prochain_id();
             this.Color = Color.Black;
             this.Points = points;
         }

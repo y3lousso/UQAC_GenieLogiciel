@@ -16,6 +16,7 @@ namespace AMCP
 
         internal List<Forme> Formes { get; set; }
 
+        private static int dernier_id;
         public Canvas(int sizeX, int sizeY)
         {
             if (instance == null)
@@ -26,7 +27,7 @@ namespace AMCP
                 this.Graphic.SmoothingMode = SmoothingMode.AntiAlias;
                 this.Graphic.Clear(Color.White);
                 this.CenterToScreen();
-
+                dernier_id = 0;// On set les id a 0.
                 this.Graphic.ScaleTransform(1, -1);
                 // TODO : trouver un fix à ce truc de merde :)
                 this.Graphic.TranslateTransform(0, -Height+39);
@@ -48,6 +49,11 @@ namespace AMCP
         public void ChargerImage(string cheminImage, int positionX, int positionY)
         {
 
+        }
+
+        public static int prochain_id()
+        {
+            return dernier_id++;
         }
     }
 }

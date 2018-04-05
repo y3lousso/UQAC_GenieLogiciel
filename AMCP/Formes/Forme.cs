@@ -9,7 +9,7 @@ namespace AMCP
 {
     public abstract class Forme
     {
-        int Id { get; set; }
+        public int Id { get; protected set; }
         public Point Position { get; internal set; }
         public Color Color { get; internal set; }
 
@@ -27,10 +27,6 @@ namespace AMCP
 
         //public abstract void Supprimer();
 
-        public int GetId()
-        {
-            return Id;
-        }
         internal Boolean EstDehors(float positionX, float positionY, float tailleX, float tailleY)
         {
             if (positionX - tailleX / 2 < 0
