@@ -12,11 +12,12 @@ namespace AMCP
         public virtual int DessinerCarre(int positionX, int positionY, int taille)
         {
             Polygone p = new Polygone();
-            if (!EstDehors(positionX, positionY, taille, taille))
+            if (!p.EstDehors(positionX, positionY, taille, taille))
             {
                 p.SetRectangle(new Point(positionX, positionY), taille, taille);
                 Canvas.Formes.Add(p);
-                return p.getId();
+                Console.WriteLine("Le carré " + p.GetId() +  " a été dessiné.");
+                return p.GetId();
             }
             else
             {
@@ -28,11 +29,12 @@ namespace AMCP
         public virtual int DessinerRectangle(int positionX, int positionY, int largeur, int hauteur)
         {
             Polygone p = new Polygone();
-            if (!EstDehors(positionX, positionY, largeur, hauteur))
+            if (!p.EstDehors(positionX, positionY, largeur, hauteur))
             {
                 p.SetRectangle(new Point(positionX, positionY), largeur, hauteur);
                 Canvas.Formes.Add(p);
-                return p.getId();
+                Console.WriteLine("Le rectangle " + p.GetId() + " a été dessiné.");
+                return p.GetId();
             }
             else
             {
@@ -43,15 +45,16 @@ namespace AMCP
 
         public virtual int DessinerCercle(int positionX, int positionY, int rayon)
         {
-            if (!EstDehors(positionX, positionY, rayon, rayon))
+            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon);
+            if (!p.EstDehors(positionX, positionY, rayon, rayon))
             {
-                Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon);
                 Canvas.Formes.Add(p);
-                return p.getId();
+                Console.WriteLine("Le cercle " + p.GetId() + " a été dessinée.");
+                return p.GetId();
             }
             else
             {
-                Console.WriteLine("Le cercle est hors du canvas.");
+                Console.WriteLine("Le cercle " + p.GetId() + " est hors du canvas.");
                 return -1;
             }
         }
@@ -59,11 +62,12 @@ namespace AMCP
         public virtual int DessinerTriangle(int positionX, int positionY, int taille)
         {
             Polygone p = new Polygone();
-            if (!EstDehors(positionX, positionY, taille*2, taille*2))
+            if (!p.EstDehors(positionX, positionY, taille*2, taille*2))
             {
                 p.SetTriangle(new Point(positionX, positionY), taille);
+                Console.WriteLine("Le triangle " + p.GetId() + " a été dessiné.");
                 Canvas.Formes.Add(p);
-                return p.getId();
+                return p.GetId();
             }
             else
             {
@@ -75,11 +79,12 @@ namespace AMCP
         public virtual int DessinerLosange(int positionX, int positionY, int largeur, int hauteur)
         {
             Polygone p = new Polygone();
-            if (!EstDehors(positionX, positionY, largeur, hauteur))
+            if (!p.EstDehors(positionX, positionY, largeur, hauteur))
             {
                 p.SetLosange(new Point(positionX, positionY), largeur, hauteur);
+                Console.WriteLine("Le losange " + p.GetId() + " a été dessiné.");
                 Canvas.Formes.Add(p);
-                return p.getId();
+                return p.GetId();
             }
             else
             {
@@ -91,11 +96,12 @@ namespace AMCP
         public virtual int DessinerEtoile(int positionX, int positionY, int rayonInterieur, int rayonExterieur, int nbSommet)
         {
             Polygone p = new Polygone();
-            if (!EstDehors(positionX, positionY, rayonExterieur/2, rayonExterieur))
+            if (!p.EstDehors(positionX, positionY, rayonExterieur/2, rayonExterieur))
             {
                 p.SetEtoile(new Point(positionX, positionY), rayonInterieur/2, rayonExterieur/2, nbSommet);
                 Canvas.Formes.Add(p);
-                return p.getId();
+                Console.WriteLine("L'étoile " + p.GetId() + " a été dessinée.");
+                return p.GetId();
             }
             else
             {
@@ -107,10 +113,11 @@ namespace AMCP
         public virtual int DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
         {
             Ellipse p = new Ellipse(new Point(positionX, positionY), rayon1, rayon2);
-            if (!EstDehors(positionX, positionY, rayon1, rayon2 / 2))
+            if (!p.EstDehors(positionX, positionY, rayon1, rayon2 / 2))
             {
                 Canvas.Formes.Add(p);
-                return p.getId();
+                Console.WriteLine("L'ellipse " + p.GetId() + " a été dessinée.");
+                return p.GetId();
             }
             else
             {
@@ -125,7 +132,7 @@ namespace AMCP
             if (origin != null)
             {
                 Forme copy = origin.Dupliquer(positionX, positionY);
-                return copy.getId();
+                return copy.GetId();
             }else
             {
                 return -1;
@@ -182,7 +189,10 @@ namespace AMCP
 
         public virtual Boolean EstDehors(float positionX, float positionY, float coteX, float coteY)
         {
-            if (positionX - coteX / 2 < 0 || positionX + coteX / 2 > Canvas.Graphic.VisibleClipBounds.Width || positionY - coteY / 2 < 0 || positionY + coteY / 2 > Canvas.Graphic.VisibleClipBounds.Height)
+            if (positionX - coteX / 2 < 0 
+                || positionX + coteX / 2 > Canvas.Graphic.VisibleClipBounds.Width 
+                || positionY - coteY / 2 < 0 
+                || positionY + coteY / 2 > Canvas.Graphic.VisibleClipBounds.Height)
             {
                 return true;
             }
@@ -198,7 +208,7 @@ namespace AMCP
         protected virtual Forme IdentifierForme(int id)
         {
             foreach (Forme f in Canvas.Formes) {
-                if (f.getId() == id)
+                if (f.GetId() == id)
                 {
                     return f;
                 }
