@@ -56,7 +56,7 @@ namespace AMCP
 
         public void LeverPointeur()
         {
-            Points.Add(new Point(this.Position.X - StartPosition.X, this.Position.Y - StartPosition.Y));
+            Points.Add(new Point(this.Position.X, this.Position.Y));
             IsWriting = false;
         }
 
@@ -77,7 +77,9 @@ namespace AMCP
             }
             else
             {
-                throw new Exception("Le stylo doit être descendu pour utiliser 'Avancer'.");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Le stylo doit être descendu pour utiliser 'Avancer'.");
+                Console.ResetColor();
             }
         }
 
@@ -85,12 +87,14 @@ namespace AMCP
         {
             if (IsWriting)
             {
-                Points.Add(new Point(this.Position.X - StartPosition.X, this.Position.Y - StartPosition.Y));
+                Points.Add(new Point(this.Position.X, this.Position.Y));
                 this.Orientation += angle;
             }
             else
             {
-                throw new Exception("Le stylo doit être descendu pour utiliser 'Tourner'.");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Le stylo doit être descendu pour utiliser 'Tourner'.");
+                Console.ResetColor();
             }
         }
 
@@ -102,7 +106,9 @@ namespace AMCP
             }
             else
             {
-                throw new Exception("Le stylo doit être levé pour utiliser 'Tourner'.");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Le stylo doit être levé pour utiliser 'Déplacer'.");
+                Console.ResetColor();
             }
         }
     }

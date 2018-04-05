@@ -239,13 +239,10 @@ namespace CEGEP_Student
                         int cercle3 = i.Dupliquer(cercle2, posX + 100, posY + 100);
                         int rectangle = i.DessinerCarre(50 + posX, 50 + posY, 100);
                         
-                        i.Afficher();
-                        Console.WriteLine(cercle);
-                        Console.WriteLine(cercle2);
-                        Console.WriteLine(cercle3);
-                        Console.WriteLine(rectangle);
+
                         int r2 = i.Dupliquer(rectangle, 125, 125);
-                        //i.Colorier(r2,255,0,0);// Doit sortir une Exeception
+                        i.Colorier(-1,255,0,0);
+                        i.Afficher();
 
                         i.Pause();
                         break;

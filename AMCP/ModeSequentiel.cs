@@ -216,7 +216,7 @@ namespace AMCP
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("L'id donné: " + id + " ne correspond a aucune Forme dans le Canvas!");
             Console.ResetColor();
-            throw new Exception("L'id donné: " + id + " ne correspond a aucune Forme dans le Canvas!");
+            return null;
         }
 
     }
