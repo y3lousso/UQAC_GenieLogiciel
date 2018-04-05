@@ -154,6 +154,22 @@ namespace AMCPTest
 
         }
 
+        [TestMethod]
+        public void SEQDessinerTriangleLibre()
+        {
+            i = new ModeSequentiel();
+            int testTriangleLibre = -1;
+            i.Stylo.DescendrePointeur();
+            i.Stylo.Avancer(50);
+            i.Stylo.Tourner(30);
+            i.Stylo.Avancer(50);
+            i.Stylo.Tourner(30);
+            i.Stylo.Avancer(50);
+            i.Stylo.LeverPointeur();
+
+            throw new Exception("Dessin libre pas encore implémenté");
+        }
+
         /************************************************************************************************************
          * ************************************** Hors Canvas *******************************************************
          * *********************************************************************************************************/

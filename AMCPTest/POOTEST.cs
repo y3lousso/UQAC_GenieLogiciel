@@ -41,7 +41,6 @@ namespace AMCPTest
         public void POOAvancerPointeurDe50()
         {
             i = new ModeOrienteObjet();
-            i.Stylo = new Stylo(new Point(posXMid, posYMid), 30, 0, Color.Black);
             i.Stylo.DescendrePointeur();
             i.Stylo.Avancer(50);
             i.Stylo.LeverPointeur();
@@ -61,7 +60,6 @@ namespace AMCPTest
         public void POOTournerPointeurDe90()
         {
             i = new ModeOrienteObjet();
-            i.Stylo = new Stylo(new Point(posXMid, posYMid), 30, 0, Color.Black);
             i.Stylo.DescendrePointeur();
             i.Stylo.Avancer(50);
             i.Stylo.Tourner(90);
@@ -76,7 +74,6 @@ namespace AMCPTest
         public void POOTournerPointeurDe450()
         {
             i = new ModeOrienteObjet();
-            i.Stylo = new Stylo(new Point(posXMid, posYMid), 30, 0, Color.Black);
             i.Stylo.DescendrePointeur();
             i.Stylo.Avancer(50);
             i.Stylo.Tourner(450);
@@ -91,7 +88,7 @@ namespace AMCPTest
         public void POOChangerCouleurPointeur()
         {
             i = new ModeOrienteObjet();
-            i.Stylo = new Stylo(new Point(posXMid, posYMid), 30, 0, Color.Red);
+            i.Stylo = new Stylo(new Point(posXMid, posYMid), 10, 0, Color.Red);
             i.Stylo.DescendrePointeur();
             i.Stylo.Avancer(50);
             i.Stylo.LeverPointeur();
@@ -161,6 +158,22 @@ namespace AMCPTest
             Polygone testPolygone = null;
             testPolygone = i.DessinerTriangle(posXMid, posYMid, 20);
             Assert.AreNotEqual(null, testPolygone);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POODessinerTriangleLibre()
+        {
+            i = new ModeOrienteObjet();
+            i.Stylo.DescendrePointeur();
+            i.Stylo.Avancer(50);
+            i.Stylo.Tourner(30);
+            i.Stylo.Avancer(50);
+            i.Stylo.Tourner(30);
+            i.Stylo.Avancer(50);
+            i.Stylo.LeverPointeur();
+            AMCP.Formes.FormeLibre testTriangleLibre = i.Stylo.Dessiner();
+            Assert.AreNotEqual(null, testTriangleLibre);
             i.Afficher(displayTime);
         }
 
