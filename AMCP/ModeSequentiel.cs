@@ -144,23 +144,39 @@ namespace AMCP
         
         public virtual void Tourner(int idForme, int angle)
         {
-            if(Canvas.Formes[idForme] is Polygone)
+            if(IdentifierForme(idForme) is Polygone)
             {
-                ((Polygone)Canvas.Formes[idForme]).Tourner(angle);
+                ((Polygone)IdentifierForme(idForme)).Tourner(angle);
             }
-            else if (Canvas.Formes[idForme] is Ellipse)
+            else if (IdentifierForme(idForme) is Ellipse)
             {
-
+                ((Ellipse)IdentifierForme(idForme)).Tourner(angle);
             }
         }
 
         public virtual void Deplacer(int idForme, int positionX, int positionY)
         {
+            if (IdentifierForme(idForme) is Polygone)
+            {
+                ((Polygone)IdentifierForme(idForme)).Deplacer(positionX,positionY);
+            }
+            else if (IdentifierForme(idForme) is Ellipse)
+            {
+                ((Ellipse)IdentifierForme(idForme)).Deplacer(positionX,positionY);
+            }
 
         }
 
         public virtual void Dimensionner(int idForme, float taille)
         {
+            if (IdentifierForme(idForme) is Polygone)
+            {
+                ((Polygone)IdentifierForme(idForme)).Dimensionner(taille);
+            }
+            else if (IdentifierForme(idForme) is Ellipse)
+            {
+                ((Ellipse)IdentifierForme(idForme)).Dimensionner(taille);
+            }
 
         }
 
