@@ -44,40 +44,42 @@ namespace AMCP
             {
                 FormeLibre forme = new FormeLibre(this.Points, this.Taille, this.Couleur);
                 Canvas.instance.Formes.Add(forme);
-                Points = null;
+                this.Points = null;
                 return forme;
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Abaisser le pointeur pour commencer a dessiner");
+                Console.ResetColor();
                 return null;
             }
         }
 
         public void LeverPointeur()
         {
-            Points.Add(new Point(this.Position.X, this.Position.Y));
-            IsWriting = false;
+            this.Points.Add(new Point(this.Position.X, this.Position.Y));
+            this.IsWriting = false;
         }
 
         public void DescendrePointeur()
         {
-            StartPosition = this.Position;
-            Points = new List<Point>();
-            Points.Add(StartPosition);
-            IsWriting = true;
+            this.StartPosition = this.Position;
+            this.Points = new List<Point>();
+            this.Points.Add(this.StartPosition);
+            this.IsWriting = true;
         }
 
         public void Avancer(int pas)
         {
-            if (IsWriting)
+            if (this.IsWriting)
             {
                 double angleRadian = Orientation * Math.PI / 180f;
                 this.Position = new Point((int)(this.Position.X + pas * Math.Cos(angleRadian)), (int)(this.Position.Y + pas * Math.Sin(angleRadian)));
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Le stylo doit être descendu pour utiliser 'Avancer'.");
                 Console.ResetColor();
             }
@@ -85,14 +87,14 @@ namespace AMCP
 
         public void Tourner(int angle)
         {
-            if (IsWriting)
+            if (this.IsWriting)
             {
-                Points.Add(new Point(this.Position.X, this.Position.Y));
+                this.Points.Add(new Point(this.Position.X, this.Position.Y));
                 this.Orientation += angle;
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Le stylo doit être descendu pour utiliser 'Tourner'.");
                 Console.ResetColor();
             }
@@ -100,13 +102,13 @@ namespace AMCP
 
         public void Deplacer(int positionX, int positionY)
         {
-            if (!IsWriting)
+            if (!this.IsWriting)
             {
                 this.Position = new Point(positionX, positionY);
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Le stylo doit être levé pour utiliser 'Déplacer'.");
                 Console.ResetColor();
             }

@@ -20,12 +20,14 @@ namespace AMCP
             if(instance == null)
             {
                 instance = this;
-                Canvas = new Canvas(1280, 720);
-                Stylo = new Stylo();
+                this.Canvas = new Canvas(1280, 720);
+                this.Stylo = new Stylo();
             }
             else
             {
-                throw new Exception("Can't create multiple instance of IMode");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Impossible de créer plusieurs instances de IMode!");
+                Console.ResetColor();
             }
         }
 
@@ -49,7 +51,7 @@ namespace AMCP
         /// </summary>
         public virtual void Afficher()
         {
-            foreach (Forme f in Canvas.Formes)
+            foreach (Forme f in this.Canvas.Formes)
             {
                 f.Afficher();
             }
@@ -61,7 +63,7 @@ namespace AMCP
         /// <param name="pasDeTemps"></param>
         public virtual void Afficher(int temps)
         {
-            foreach(Forme f in Canvas.Formes)
+            foreach(Forme f in this.Canvas.Formes)
             {             
                 System.Windows.Forms.Application.DoEvents();
                 f.Afficher();
@@ -83,7 +85,7 @@ namespace AMCP
         /// </summary>
         public virtual void NettoyerEcran()
         {
-            Canvas.instance.Graphic.Clear(Color.White);
+            this.Canvas.Graphic.Clear(Color.White);
         }
 
         /// <summary>

@@ -69,7 +69,7 @@ namespace AMCP.Formes
                 tmpPoint.X = (int)(rotationAxe.X + X * Math.Cos(angleRadian) - Y * Math.Sin(angleRadian));
                 tmpPoint.Y = (int)(rotationAxe.X + X * Math.Sin(angleRadian) + Y * Math.Cos(angleRadian));
 
-                Points[i] = tmpPoint;
+                this.Points[i] = tmpPoint;
             }
         }
 
