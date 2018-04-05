@@ -11,17 +11,17 @@ namespace AMCP
 {
     public class Stylo
     {
-        private int Id { get; set; }
-        private Point Position { get; set; }
-        private float Orientation { get; set; }
-        private int Taille { get; set; }
+        private int Id { get; set; } // TODO : Les abréviations sont en UPPER
+        private Point Position { get; set; } // TODO : Les private sont en Camel
+        private float Orientation { get; set; } // TODO : Les private sont en Camel
+        private int Taille { get; set; } // TODO : Les private sont en Camel
 
-        private Color Couleur { get; set; }
-        private Boolean IsWriting { get; set; }
+        private Color Couleur { get; set; } // TODO : Les private sont en Camel
+        private Boolean IsWriting { get; set; } // TODO : Les private sont en Camel
 
-        private Point StartPosition { get; set; }
-        private List<Point> Points { get; set; }
-        
+        private Point StartPosition { get; set; } // TODO : Les private sont en Camel
+        private List<Point> Points { get; set; } // TODO : Les private sont en Camel
+
         public Stylo()
         {
             this.Position = new Point(Canvas.instance.Width / 2, Canvas.instance.Height / 2);

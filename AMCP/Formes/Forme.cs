@@ -9,7 +9,7 @@ namespace AMCP
 {
     public abstract class Forme
     {
-        int Id { get; set; }
+        int Id { get; set; } // TODO : Les abréviations sont en UPPER
         public Point Position { get; internal set; }
         public Color Color { get; internal set; }
 
