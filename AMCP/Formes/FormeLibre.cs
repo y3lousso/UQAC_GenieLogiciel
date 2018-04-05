@@ -14,6 +14,7 @@ namespace AMCP.Formes
 
         internal FormeLibre(List<Point> points, int taille)
         {
+            this.Id = Canvas.prochain_id();
             this.Position = points[0];
             this.Points = points;
             this.Color = Color.Black;
@@ -22,6 +23,7 @@ namespace AMCP.Formes
 
         internal FormeLibre(List<Point> points, int taille, Color color )
         {
+            this.Id = Canvas.prochain_id();
             this.Points = points;
             this.Color = color;
             this.TailleStylo = taille;

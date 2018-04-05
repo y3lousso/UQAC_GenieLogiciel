@@ -15,6 +15,7 @@ namespace AMCP
         internal Ellipse(Point position, int rayon1, int rayon2)
         {
             Point center = new Point(position.X - rayon1 / 2, position.Y - rayon2 / 2);
+            this.Id = Canvas.prochain_id();
             this.Position = center;
 
             this.PetitRayon = rayon1;
@@ -24,6 +25,7 @@ namespace AMCP
 
         internal Ellipse(Point position, int rayon1, int rayon2, int r, int g, int b)
         {
+            this.Id = Canvas.prochain_id();
             this.Position = position;
             this.PetitRayon = rayon1;
             this.GrandRayon = rayon2;

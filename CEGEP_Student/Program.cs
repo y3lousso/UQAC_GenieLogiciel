@@ -21,7 +21,7 @@ namespace CEGEP_Student
             // 5 -> car demo
             // 6 -> test pour les id
 
-            int test = 1;
+            int test = 6;
 
             switch (test)
             {
@@ -233,13 +233,19 @@ namespace CEGEP_Student
                         int posX = 0;
                         int posY = 0;
 
-                        int rectangle = i.DessinerCarre(50 + posX, 50 + posY, 100);
+                      
                         int cercle = i.DessinerCercle(posX + 100, posY + 100, 50);
-
+                        int cercle2 = i.DessinerCercle(posX + 100, posY + 100, 50);
+                        int cercle3 = i.Dupliquer(cercle2, posX + 100, posY + 100);
+                        int rectangle = i.DessinerCarre(50 + posX, 50 + posY, 100);
+                        
                         i.Afficher();
-                         
+                        Console.WriteLine(cercle);
+                        Console.WriteLine(cercle2);
+                        Console.WriteLine(cercle3);
+                        Console.WriteLine(rectangle);
                         int r2 = i.Dupliquer(rectangle, 125, 125);
-                        i.Colorier(r2,255,0,0);// Doit sortir une Exeception
+                        //i.Colorier(r2,255,0,0);// Doit sortir une Exeception
 
                         i.Pause();
                         break;

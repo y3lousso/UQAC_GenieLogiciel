@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Runtime.CompilerServices;
 
 namespace AMCP
 {
@@ -53,7 +54,8 @@ namespace AMCP
 
         public static int prochain_id()
         {
-            return dernier_id++;
+            dernier_id += 1;
+            return dernier_id;
         }
     }
 }
