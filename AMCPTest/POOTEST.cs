@@ -304,7 +304,7 @@ namespace AMCPTest
  * *********************************************************************************************************/
 
         [TestMethod]
-        public void POORotationPolygone()
+        public void POORotationPolygoneRectangle()
         {
             i = new ModeOrienteObjet();
             Polygone testPolygone = null;
@@ -316,11 +316,35 @@ namespace AMCPTest
         }
 
         [TestMethod]
-        public void POORotationPolygone2()
+        public void POORotationPolygoneTriangle()
         {
             i = new ModeOrienteObjet();
             Polygone testPolygone = null;
             testPolygone = i.DessinerTriangle(posXMid, posYMid, 30);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testPolygone.Tourner(40);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POORotationPolygoneEtoile()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerEtoile(posXMid, posYMid, 30, 50, 5);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testPolygone.Tourner(40);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POORotationPolygoneLosange()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerLosange(posXMid, posYMid, 30,50);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             testPolygone.Tourner(40);
@@ -340,7 +364,7 @@ namespace AMCPTest
         }
 
         [TestMethod]
-        public void POOTranslationPolygone()
+        public void POOTranslationPolygoneRectangle()
         {
             i = new ModeOrienteObjet();
             Polygone testPolygone = null;
@@ -348,6 +372,42 @@ namespace AMCPTest
             i.Afficher(displayTime);
             i.NettoyerEcran();
             testPolygone.Deplacer(200,200);
+            i.Afficher(displayTime);
+
+        }
+        [TestMethod]
+        public void POOTranslationPolygoneTriangle()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerTriangle(posXMid, posYMid, 30);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testPolygone.Deplacer(200, 200);
+            i.Afficher(displayTime);
+
+        }
+        [TestMethod]
+        public void POOTranslationPolygoneEtoile()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerEtoile(posXMid, posYMid, 30, 50, 5);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testPolygone.Deplacer(200, 200);
+            i.Afficher(displayTime);
+
+        }
+        [TestMethod]
+        public void POOTranslationPolygoneLosange()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerLosange(posXMid, posYMid, 30, 50);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testPolygone.Deplacer(200, 200);
             i.Afficher(displayTime);
 
         }
@@ -365,11 +425,47 @@ namespace AMCPTest
         }
 
         [TestMethod]
-        public void POOHomothetiePolygone()
+        public void POOHomothetiePolygoneRectangle()
         {
             i = new ModeOrienteObjet();
             Polygone testPolygone = null;
             testPolygone = i.DessinerRectangle(posXMid, posYMid, 100, 100);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testPolygone.Dimensionner(2);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POOHomothetiePolygoneTriangle()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerTriangle(posXMid, posYMid, 30);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testPolygone.Dimensionner(2);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POOHomothetiePolygoneEtoile()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerEtoile(posXMid, posYMid, 30, 50, 5);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testPolygone.Dimensionner(2);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POOHomothetiePolygoneLosange()
+        {
+            i = new ModeOrienteObjet();
+            Polygone testPolygone = null;
+            testPolygone = i.DessinerLosange(posXMid, posYMid, 30, 50);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             testPolygone.Dimensionner(2);
