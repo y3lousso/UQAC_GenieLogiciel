@@ -47,14 +47,14 @@ namespace AMCP.Formes
             matrix.RotateAt(-this.Orientation, new PointF(Position.X + PetitRayon/2, Position.Y + GrandRayon/2));
             Canvas.instance.Graphic.Transform = matrix;
 
-            if (this.PetitRayon == this.GrandRayon)
+            /*if (this.PetitRayon == this.GrandRayon)
             {
                 Console.WriteLine("Un cercle a été dessiné.");
             }
             else
             {
                 Console.WriteLine("Une ellipse a été dessiné.");
-            }
+            }*/
         }
 
         public override Forme Dupliquer(int positionX, int positionY)

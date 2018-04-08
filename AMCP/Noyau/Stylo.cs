@@ -15,6 +15,7 @@ namespace AMCP.Noyau
 
         private Color Couleur { get; set; } // TODO : Les private sont en Camel
         private Boolean IsWriting { get; set; } // TODO : Les private sont en Camel
+        private Boolean CanDraw { get; set; }
 
         private Point StartPosition { get; set; } // TODO : Les private sont en Camel
         private List<Point> Points { get; set; } // TODO : Les private sont en Camel
@@ -39,10 +40,20 @@ namespace AMCP.Noyau
         {
             if (Points != null)
             {
-                FormeLibre forme = new FormeLibre(this.Points, this.Taille, this.Couleur);
-                Canvas.instance.Formes.Add(forme);
-                this.Points = null;
-                return forme;
+                if (CanDraw)
+                {
+                    FormeLibre forme = new FormeLibre(this.Points, this.Taille, this.Couleur);
+                    Canvas.instance.Formes.Add(forme);
+                    this.Points = null;
+                    return forme;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("On ne peut pas dessiner en dehors du Canvas");
+                    Console.ResetColor();
+                    return null;
+                }
             }
             else
             {
@@ -55,8 +66,11 @@ namespace AMCP.Noyau
 
         public void LeverPointeur()
         {
-            this.Points.Add(new Point(this.Position.X, this.Position.Y));
-            this.IsWriting = false;
+            if (this.IsWriting)
+            {
+                this.Points.Add(new Point(this.Position.X, this.Position.Y));
+                this.IsWriting = false;
+            }
         }
 
         public void DescendrePointeur()
@@ -72,7 +86,16 @@ namespace AMCP.Noyau
             if (this.IsWriting)
             {
                 double angleRadian = Orientation * Math.PI / 180f;
-                this.Position = new Point((int)(this.Position.X + pas * Math.Cos(angleRadian)), (int)(this.Position.Y + pas * Math.Sin(angleRadian)));
+                if (!this.EstDehors(this.Position.X, this.Position.Y))
+                {
+                    this.Position = new Point((int)(this.Position.X + pas * Math.Cos(angleRadian)), (int)(this.Position.Y + pas * Math.Sin(angleRadian)));
+                    this.CanDraw = true;
+                }
+                else
+                {
+                    this.CanDraw = false;
+                }
+                    
             }
             else
             {
@@ -108,6 +131,20 @@ namespace AMCP.Noyau
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Le stylo doit être levé pour utiliser 'Déplacer'.");
                 Console.ResetColor();
+            }
+        }
+        internal Boolean EstDehors(int positionX, int positionY)
+        {
+            if (positionX < 0
+                || positionX > Canvas.instance.Graphic.VisibleClipBounds.Width
+                || positionY < 0
+                || positionY > Canvas.instance.Graphic.VisibleClipBounds.Height)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

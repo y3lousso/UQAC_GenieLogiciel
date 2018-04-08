@@ -23,7 +23,7 @@ namespace CEGEP_Student
             // 7 -> rotate ellipse
             // 8 -> text
 
-            int test = 8;
+            int test = 5; 
 
             switch (test)
             {
@@ -44,11 +44,12 @@ namespace CEGEP_Student
 
                         //IN
                         int form;
-                        i.DessinerLosange(316, 170, 632, 340); //Bas-Gauche
-                        //i.DessinerEtoile(316, 510, 170, 340, 8); //Haut-Gauche
-                        form=i.DessinerEllipse(948, 170, 632, 340); //Bas-Droite       
-                        i.DessinerTriangle(948, 510, 170); // Haut-Droite
-                        i.Deplacer(form, 316, 510);
+                        //i.CreerLosange(600, 170, 632, 340); //Bas-Gauche
+                        //i.CreerEtoile(316, 490, 170, 340, 8); //Haut-Gauche
+                        //form=i.CreerEllipse(1000, 170, 632, 340); //Bas-Droite
+                        //i.CreerCercle(1000, 170, 500);
+                        i.CreerTriangle(948, 510, 170); // Haut-Droite
+                        //i.Deplacer(form, 316, 530);
                         //OUT
                         //i.DessinerLosange(315, 170, 632, 340); //Bas-Gauche
                         //i.DessinerEtoile(316, 512, 170, 340, 8); //Bas-Gauche
@@ -79,11 +80,11 @@ namespace CEGEP_Student
                         }*/
 
                         //IN
-                        /* Forme losa = i.DessinerLosange(316, 170, 632, 340); //Bas-Gauche
-                        losa.Deplacer(316, 510);
-                        losa.Deplacer(948, 510);
+                         Forme losa = i.CreerLosange(316, 490, 632, 340); //Bas-Gauche
+                        //losa.Deplacer(316, 490);
+                        /*losa.Deplacer(948, 510);
                         losa.Deplacer(948, 170);
-                        losa.Deplacer(950, 170);*/ //Deplacement en dehors
+                        losa.Deplacer(950, 170); //Deplacement en dehors*/
 
                         /*Forme elli = i.DessinerEllipse(948, 170, 632, 340);
                         elli.Deplacer(316, 170);
@@ -91,11 +92,11 @@ namespace CEGEP_Student
                         elli.Deplacer(948, 510);
                         elli.Deplacer(949, 510);*/ //Deplacement en dehors
 
-                        Forme cer = i.DessinerCercle(948, 170, 340);
-                        cer.Deplacer(316, 170);
-                        cer.Deplacer(316, 510);
-                        cer.Deplacer(948, 510);
-                        cer.Deplacer(948, 510); //Deplacement en dehors
+                        //Forme cer = i.CreerCercle(948, 170, 340);
+                        //cer.Deplacer(316, 170);
+                        //cer.Deplacer(316, 510);
+                        //cer.Deplacer(948, 510);
+                        //cer.Deplacer(948, 510); //Deplacement en dehors
 
 
 
@@ -125,7 +126,7 @@ namespace CEGEP_Student
                         int posX = 250;
                         int posY = 250;
 
-                        int etoileId = i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
+                        int etoileId = i.CreerEtoile(posX, posY + 100, 40, 80, 5);
 
                         for (int j = 0; j < 100; j++)
                         {
@@ -149,7 +150,7 @@ namespace CEGEP_Student
 
                         int posX = 250;
                         int posY = 250;
-                        Forme p1 = i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
+                        Forme p1 = i.CreerEtoile(posX, posY + 100, 40, 80, 5);
                         for (int j = 0; j < 100; j++)
                         {                       
                             p1.Tourner(20);
@@ -169,8 +170,8 @@ namespace CEGEP_Student
                         int posX = 0;
                         int posY = 0;
 
-                        Forme rectangle = i.DessinerCarre(50+posX, 50+posY, 100);
-                        Forme cercle = i.DessinerCercle(posX+100, posY+100, 50);
+                        Forme rectangle = i.CreerCarre(50+posX, 50+posY, 100);
+                        Forme cercle = i.CreerCercle(posX+100, posY+100, 50);
 
                         i.Afficher();
                         i.Pause();
@@ -182,24 +183,24 @@ namespace CEGEP_Student
                         Console.WriteLine("------ Car demo -------");
                         ModeOrienteObjet i = new ModeOrienteObjet();
 
-                        int posX = 100;
-                        int posY = 100;
+                        int posX = 200;
+                        int posY = 120;
 
-                        i.Pause();
+                        //i.Pause();
 
-                        Forme background = i.DessinerRectangle(600, 600, 1500, 1500);
+                        Forme background = i.CreerRectangle(592, 330, 1184, 660);
                         background.Colorier(0,255, 255);                       
-                        Forme road = i.DessinerRectangle(600, 25, 1500, 50);
+                        Forme road = i.CreerRectangle(592, 25, 1184, 50);
                         road.Colorier(50, 50, 50);
-                        Forme car = i.DessinerRectangle(posX, posY, 200, 50);
+                        Forme car = i.CreerRectangle(posX, posY, 200, 50);
                         car.Colorier(255, 0, 0);
-                        Forme wheel1 = i.DessinerCercle(posX - 85, posY - 50, 50);
+                        Forme wheel1 = i.CreerCercle(posX - 85, posY - 50, 50);
                         wheel1.Colorier(0, 0, 0);
                         Forme wheel2 = wheel1.Dupliquer(posX + 85, posY - 50);
                         wheel2.Colorier(0, 0, 0);
 
                         // Toit de la voiture
-                        i.Stylo.Deplacer(posX-50, posY+20);
+                        i.Stylo.Deplacer(posX-200, posY-120);
                         i.Stylo.DescendrePointeur();
                         i.Stylo.Tourner(45);
                         i.Stylo.Avancer(50);
@@ -236,10 +237,10 @@ namespace CEGEP_Student
                         int posY = 0;
 
                       
-                        int cercle = i.DessinerCercle(posX + 100, posY + 100, 50);
-                        int cercle2 = i.DessinerCercle(posX + 100, posY + 100, 50);
+                        int cercle = i.CreerCercle(posX + 100, posY + 100, 50);
+                        int cercle2 = i.CreerCercle(posX + 100, posY + 100, 50);
                         int cercle3 = i.Dupliquer(cercle2, posX + 100, posY + 100);
-                        int rectangle = i.DessinerCarre(50 + posX, 50 + posY, 100);
+                        int rectangle = i.CreerCarre(50 + posX, 50 + posY, 100);
                         
 
                         int r2 = i.Dupliquer(rectangle, 125, 125);
@@ -255,11 +256,11 @@ namespace CEGEP_Student
                         Console.WriteLine("------ OOP -------");
                         ModeOrienteObjet i = new ModeOrienteObjet();
 
-                        Forme p = i.DessinerRectangle(450,500,100,200);
+                        Forme p = i.CreerRectangle(450,500,100,200);
                         p.Colorier(50, 50, 50);
-                        Forme e = i.DessinerEllipse(450, 300, 500, 400);
+                        Forme e = i.CreerEllipse(450, 300, 500, 400);
                         e.Colorier(0, 150, 0);
-                        Forme e1 = i.DessinerEllipse(600, 300, 100, 200);
+                        Forme e1 = i.CreerEllipse(600, 300, 100, 200);
                         Forme e2 = e1.Dupliquer(300, 300);
 
                         for (int x = 0; x < 50; x++)
@@ -282,7 +283,7 @@ namespace CEGEP_Student
                         Console.WriteLine("------ OOP -------");
                         ModeOrienteObjet i = new ModeOrienteObjet();
 
-                        Forme title = i.DessinerTexte(400, 300, 80, "ACMP");
+                        Forme title = i.CreerTexte(400, 300, 80, "ACMP");
 
                         for (int x = 0; x < 50; x++)
                         {
@@ -297,7 +298,6 @@ namespace CEGEP_Student
 
                         break;
                     }
-
                 default:
                     Console.WriteLine("Select a correct test");
                     break;

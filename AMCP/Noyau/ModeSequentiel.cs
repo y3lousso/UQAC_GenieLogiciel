@@ -10,138 +10,74 @@ namespace AMCP.Noyau
 {
     public class ModeSequentiel : IMode
     {
-        public virtual int DessinerCarre(int positionX, int positionY, int taille)
+        public virtual int CreerCarre(int positionX, int positionY, int taille)
         {
             Polygone p = new Polygone();
-            if (!p.EstDehors(positionX, positionY, taille, taille))
-            {
-                p.SetRectangle(new Point(positionX, positionY), taille, taille);
-                Canvas.Formes.Add(p);
-                Console.WriteLine("Le carré " + p.ID +  " a été dessiné.");
-                return p.ID;
-            }
-            else
-            {
-                Console.WriteLine("Le carré est hors du canvas.");
-                return -1;
-            }
+            p.SetRectangle(new Point(positionX, positionY), taille, taille);
+            Canvas.Formes.Add(p);
+            Console.WriteLine("Le carré " + p.ID +  " a été crée.");
+            return p.ID;
         }
 
-        public virtual int DessinerRectangle(int positionX, int positionY, int largeur, int hauteur)
+        public virtual int CreerRectangle(int positionX, int positionY, int largeur, int hauteur)
         {
             Polygone p = new Polygone();
-            if (!p.EstDehors(positionX, positionY, largeur, hauteur))
-            {
-                p.SetRectangle(new Point(positionX, positionY), largeur, hauteur);
-                Canvas.Formes.Add(p);
-                Console.WriteLine("Le rectangle " + p.ID + " a été dessiné.");
-                return p.ID;
-            }
-            else
-            {
-                Console.WriteLine("Le rectangle est hors du canvas.");
-                return -1;
-            }
+            p.SetRectangle(new Point(positionX, positionY), largeur, hauteur);
+            Canvas.Formes.Add(p);
+            Console.WriteLine("Le rectangle " + p.ID + " a été crée.");
+            return p.ID;
         }
 
-        public virtual int DessinerCercle(int positionX, int positionY, int rayon)
+        public virtual int CreerCercle(int positionX, int positionY, int rayon)
         {
             Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon); // TODO : renommer ellipse "p"
-            if (!p.EstDehors(positionX, positionY, rayon, rayon))
-            {
-                Canvas.Formes.Add(p);
-                Console.WriteLine("Le cercle " + p.ID + " a été dessinée.");
-                return p.ID;
-            }
-            else
-            {
-                Console.WriteLine("Le cercle " + p.ID + " est hors du canvas.");
-                return -1;
-            }
+            Canvas.Formes.Add(p);
+            Console.WriteLine("Le cercle " + p.ID + " a été crée.");
+            return p.ID;
         }
 
-        public virtual int DessinerTriangle(int positionX, int positionY, int taille)
+        public virtual int CreerTriangle(int positionX, int positionY, int taille)
         {
             Polygone p = new Polygone();
-            if (!p.EstDehors(positionX, positionY, taille * 2, taille * 2))
-            {
-                p.SetTriangle(new Point(positionX, positionY), taille);
-                Console.WriteLine("Le triangle " + p.ID + " a été dessiné.");
-                Canvas.Formes.Add(p);
-                return p.ID;
-            }
-            else
-            {
-                Console.WriteLine("Le triangle est hors du canvas.");
-                return -1;
-            }
+            p.SetTriangle(new Point(positionX, positionY), taille);
+            Console.WriteLine("Le triangle " + p.ID + " a été crée.");
+            Canvas.Formes.Add(p);
+            return p.ID;
         }
 
-        public virtual int DessinerLosange(int positionX, int positionY, int largeur, int hauteur)
+        public virtual int CreerLosange(int positionX, int positionY, int largeur, int hauteur)
         {
             Polygone p = new Polygone();
-            if (!p.EstDehors(positionX, positionY, largeur, hauteur))
-            {
-                p.SetLosange(new Point(positionX, positionY), largeur, hauteur);
-                Console.WriteLine("Le losange " + p.ID + " a été dessiné.");
-                Canvas.Formes.Add(p);
-                return p.ID;
-            }
-            else
-            {
-                Console.WriteLine("Le losange est hors du canvas.");
-                return -1;
-            }
+            p.SetLosange(new Point(positionX, positionY), largeur, hauteur);
+            Console.WriteLine("Le losange " + p.ID + " a été crée.");
+            Canvas.Formes.Add(p);
+            return p.ID;           
         }
 
-        public virtual int DessinerEtoile(int positionX, int positionY, int rayonInterieur, int rayonExterieur, int nbSommet)
+        public virtual int CreerEtoile(int positionX, int positionY, int rayonInterieur, int rayonExterieur, int nbSommet)
         {
             Polygone p = new Polygone();
-            if (!p.EstDehors(positionX, positionY, rayonExterieur/2, rayonExterieur))
-            {
-                p.SetEtoile(new Point(positionX, positionY), rayonInterieur/2, rayonExterieur/2, nbSommet);
-                Canvas.Formes.Add(p);
-                Console.WriteLine("L'étoile " + p.ID + " a été dessinée.");
-                return p.ID;
-            }
-            else
-            {
-                Console.WriteLine("L'étoile est hors du canvas.");
-                return -1;
-            }
+            p.SetEtoile(new Point(positionX, positionY), rayonInterieur/2, rayonExterieur/2, nbSommet);
+            Canvas.Formes.Add(p);
+            Console.WriteLine("L'étoile " + p.ID + " a été créee.");
+            return p.ID;
         }
 
-        public virtual int DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
+        public virtual int CreerEllipse(int positionX, int positionY, int rayon1, int rayon2)
         {
             Ellipse p = new Ellipse(new Point(positionX, positionY), rayon1, rayon2); // TODO : renommer ellipse "p"
-            if (!p.EstDehors(positionX, positionY, rayon1, rayon2 / 2))
-            {
-                Canvas.Formes.Add(p);
-                Console.WriteLine("L'ellipse " + p.ID + " a été dessinée.");
-                return p.ID;
-            }
-            else
-            {
-                Console.WriteLine("L'ellipse est hors du canvas.");
-                return -1;
-            }
+            Canvas.Formes.Add(p);
+            Console.WriteLine("L'ellipse " + p.ID + " a été créee.");
+            return p.ID;
         }
 
-        public virtual int DessinerTexte(int positionX, int positionY, int taillePolice, string contenu)
+        public virtual int CreerTexte(int positionX, int positionY, int taillePolice, string contenu)
         {
             Texte t = new Texte(new Point(positionX, positionY), taillePolice, contenu);
+            Canvas.Formes.Add(t);
+            Console.WriteLine("Le texte " + t.ID + " a été crée.");
+            return t.ID;
 
-            if (!t.EstDehors(positionX, positionY, 1, 1))
-            {
-                Canvas.Formes.Add(t);
-                Console.WriteLine("Le texte " + t.ID + " a été dessinée.");
-                return t.ID;
-            }
-            else
-            {
-                Console.WriteLine("Le texte est hors du canvas.");
-                return -1;
-            }
         }
 
         public virtual int Dupliquer(int idForme, int positionX, int positionY)
@@ -203,21 +139,6 @@ namespace AMCP.Noyau
                 ((Ellipse)IdentifierForme(idForme)).Dimensionner(taille);
             }
 
-        }
-
-        public virtual Boolean EstDehors(float positionX, float positionY, float coteX, float coteY)
-        {
-            if (positionX - coteX / 2 < 0 
-                || positionX + coteX / 2 > Canvas.Graphic.VisibleClipBounds.Width 
-                || positionY - coteY / 2 < 0 
-                || positionY + coteY / 2 > Canvas.Graphic.VisibleClipBounds.Height)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         ///<summary>

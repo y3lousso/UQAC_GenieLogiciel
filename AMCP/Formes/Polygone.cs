@@ -28,29 +28,36 @@ namespace AMCP.Formes
         {
             Point point1;
             Point point2;
+            Boolean canDraw = true;
             for (int i = 0; i < Points.Count - 1; i++)
             {
                 point1 = new Point(this.Position.X + this.Points[i].X, this.Position.Y + this.Points[i].Y);
                 point2 = new Point(this.Position.X + this.Points[i + 1].X, this.Position.Y + this.Points[i + 1].Y);
-                Canvas.instance.Graphic.DrawLine(new Pen(this.Color), point1, point2);
+                if (EstDehors(point2.X,point2.Y, 0, 0))
+                {
+                    canDraw = false;
+                }               
             }
-            // Close the Polygone
-            point1 = new Point(this.Position.X + this.Points[this.Points.Count - 1].X, this.Position.Y + this.Points[this.Points.Count - 1].Y);
-            point2 = new Point(this.Position.X + this.Points[0].X, this.Position.Y + this.Points[0].Y);
-            Canvas.instance.Graphic.DrawLine(new Pen(this.Color), point1, point2);
-
-            // Create solid brush.
-            SolidBrush brush = new SolidBrush(this.Color);
-            GraphicsPath graphPath = new GraphicsPath();
-
-            List<Point> absolutePoints = new List<Point>();
-            foreach(Point p in Points)
+            if (canDraw)
             {
-                absolutePoints.Add(new Point(this.Position.X + p.X, this.Position.Y + p.Y));
-            }
+                // Close the Polygone
+                point1 = new Point(this.Position.X + this.Points[this.Points.Count - 1].X, this.Position.Y + this.Points[this.Points.Count - 1].Y);
+                point2 = new Point(this.Position.X + this.Points[0].X, this.Position.Y + this.Points[0].Y);
+                Canvas.instance.Graphic.DrawLine(new Pen(this.Color), point1, point2);
 
-            graphPath.AddPolygon(absolutePoints.ToArray());
-            Canvas.instance.Graphic.FillPath(brush, graphPath);
+                // Create solid brush.
+                SolidBrush brush = new SolidBrush(this.Color);
+                GraphicsPath graphPath = new GraphicsPath();
+
+                List<Point> absolutePoints = new List<Point>();
+                foreach(Point p in Points)
+                {
+                    absolutePoints.Add(new Point(this.Position.X + p.X, this.Position.Y + p.Y));
+                }
+
+                graphPath.AddPolygon(absolutePoints.ToArray());
+                Canvas.instance.Graphic.FillPath(brush, graphPath);
+            }
         }
 
         public override Forme Dupliquer(int positionX, int positionY)
