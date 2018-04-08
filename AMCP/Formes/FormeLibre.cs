@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AMCP.InterfaceUtilisateur;
 
 namespace AMCP.Formes
 {
-    public class FormeLibre : Forme
+    internal class FormeLibre : Forme
     {
         List<Point> Points { get; set; } = new List<Point>(); // TODO : Camel case
         int TailleStylo { get; set; } // TODO : Camel case
@@ -55,7 +53,7 @@ namespace AMCP.Formes
 
         public override void Tourner(int angle)
         {
-
+            this.Orientation += angle;
             double angleRadian = angle * Math.PI / 180f;
             Point rotationAxe = this.Points[0];
             Point tmpPoint;

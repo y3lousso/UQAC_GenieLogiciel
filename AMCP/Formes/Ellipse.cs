@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AMCP.InterfaceUtilisateur;
 
-namespace AMCP
+namespace AMCP.Formes
 {
-    public class Ellipse : Forme
+    internal class Ellipse : Forme
     {
         int PetitRayon { get; set; } 
         int GrandRayon { get; set; } 
-        int Orientation { get; set; }
 
         internal Ellipse(Point position, int rayon1, int rayon2)
         {
@@ -40,7 +36,7 @@ namespace AMCP
             Matrix matrix = new Matrix();
 
             //Rotate the graphics object the required amount around this point
-            matrix.RotateAt(this.Orientation, new PointF(Position.X+ PetitRayon/2, Position.Y+ GrandRayon/2));
+            matrix.RotateAt(this.Orientation, new PointF(Position.X + PetitRayon/2, Position.Y+ GrandRayon/2));
             Canvas.instance.Graphic.Transform = matrix;
 
             //Draw the rotated ellipse

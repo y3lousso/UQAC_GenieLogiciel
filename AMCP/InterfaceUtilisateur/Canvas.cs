@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using AMCP.Formes;
 
-namespace AMCP
+namespace AMCP.InterfaceUtilisateur
 {
     public class Canvas : Form
     {
@@ -29,9 +30,11 @@ namespace AMCP
                 this.Graphic.Clear(Color.White);
                 this.CenterToScreen();
                 dernierID = 0;// On set les id a 0.
-                this.Graphic.ScaleTransform(1, -1);
+
+                /*this.Graphic.ScaleTransform(1, -1);
                 // TODO : trouver un fix à ce truc de merde :)
-                this.Graphic.TranslateTransform(0, -Height+39);
+                this.Graphic.TranslateTransform(0, -Height + 39);*/
+
                 Console.WriteLine("la surface dessinable est : " + this.Graphic.VisibleClipBounds);
                 this.Formes = new List<Forme>();
                 this.Show();

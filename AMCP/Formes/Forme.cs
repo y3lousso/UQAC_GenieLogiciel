@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AMCP.InterfaceUtilisateur;
 
-namespace AMCP
+namespace AMCP.Formes
 {
     public abstract class Forme
     {
         public int ID { get; protected set; }
+
         public Point Position { get; internal set; }
+
+        public int Orientation { get; internal set; }
         public Color Color { get; internal set; }
 
         internal abstract void Afficher();

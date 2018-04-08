@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AMCP.InterfaceUtilisateur;
 
-namespace AMCP
+namespace AMCP.Formes
 {
-    public class Polygone : Forme
+    internal class Polygone : Forme
     {
         // local position of each point
         List<Point> Points { get; set; } = new List<Point>(); // TODO : Camel case
@@ -70,6 +68,7 @@ namespace AMCP
 
         public override void Tourner(int angle)
         {
+            this.Orientation += angle;
             double angleRadian = angle * Math.PI / 180f;
             double v00 = Math.Cos(angleRadian); double v01 = Math.Sin(-angleRadian);
             double v10 = Math.Sin(angleRadian); double v11 = Math.Cos(angleRadian);
@@ -88,11 +87,8 @@ namespace AMCP
         {
             if (this.Points.Count == 4) // Rectangle ou losange
             {
-
                 if (!EstDehors(positionX, positionY, 2 * this.Points[2].X, 2 * this.Points[1].Y))
                 {
-
-
                     this.Position = new Point(positionX, positionY);
                 }
                 else

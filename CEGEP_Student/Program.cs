@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using AMCP;
-
+using AMCP.Noyau;
+using AMCP.Formes;
 
 namespace CEGEP_Student
 {
@@ -21,8 +21,9 @@ namespace CEGEP_Student
             // 5 -> car demo
             // 6 -> test pour les id
             // 7 -> rotate ellipse
+            // 8 -> text
 
-            int test = 7;
+            int test = 8;
 
             switch (test)
             {
@@ -265,6 +266,27 @@ namespace CEGEP_Student
                         {
                             e1.Tourner(5);
                             e2.Tourner(-5);
+                            i.Afficher();
+                            i.Attendre(.1f);
+                            i.NettoyerEcran();
+                        }
+
+                        i.Afficher();
+                        i.Pause();
+
+                        break;
+                    }
+
+                case 8:
+                    {
+                        Console.WriteLine("------ OOP -------");
+                        ModeOrienteObjet i = new ModeOrienteObjet();
+
+                        Forme title = i.DessinerTexte(400, 300, 80, "ACMP");
+
+                        for (int x = 0; x < 50; x++)
+                        {
+                            title.Tourner(5);
                             i.Afficher();
                             i.Attendre(.1f);
                             i.NettoyerEcran();

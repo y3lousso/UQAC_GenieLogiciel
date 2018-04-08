@@ -4,8 +4,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AMCP.Formes;
 
-namespace AMCP
+namespace AMCP.Noyau
 {
     public class ModeSequentiel : IMode
     {
@@ -62,7 +63,7 @@ namespace AMCP
         public virtual int DessinerTriangle(int positionX, int positionY, int taille)
         {
             Polygone p = new Polygone();
-            if (!p.EstDehors(positionX, positionY, taille*2, taille*2))
+            if (!p.EstDehors(positionX, positionY, taille * 2, taille * 2))
             {
                 p.SetTriangle(new Point(positionX, positionY), taille);
                 Console.WriteLine("Le triangle " + p.ID + " a été dessiné.");
@@ -122,6 +123,23 @@ namespace AMCP
             else
             {
                 Console.WriteLine("L'ellipse est hors du canvas.");
+                return -1;
+            }
+        }
+
+        public virtual int DessinerTexte(int positionX, int positionY, int taillePolice, string contenu)
+        {
+            Texte t = new Texte(new Point(positionX, positionY), taillePolice, contenu);
+
+            if (!t.EstDehors(positionX, positionY, 1, 1))
+            {
+                Canvas.Formes.Add(t);
+                Console.WriteLine("Le texte " + t.ID + " a été dessinée.");
+                return t.ID;
+            }
+            else
+            {
+                Console.WriteLine("Le texte est hors du canvas.");
                 return -1;
             }
         }

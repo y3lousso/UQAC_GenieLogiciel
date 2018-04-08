@@ -1,13 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AMCP;
 using AMCP.Formes;
+using AMCP.InterfaceUtilisateur;
 
-namespace AMCP
+namespace AMCP.Noyau
 {
     public class Stylo
     {
@@ -38,7 +35,7 @@ namespace AMCP
             this.Couleur = color;
         }
 
-        public FormeLibre Dessiner()
+        public Forme Dessiner()
         {
             if (Points != null)
             {

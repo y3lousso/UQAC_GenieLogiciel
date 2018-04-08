@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Threading;
+using AMCP.InterfaceUtilisateur;
+using AMCP.Formes;
 
-namespace AMCP
+namespace AMCP.Noyau
 {
     public abstract class IMode
     {
@@ -20,7 +22,7 @@ namespace AMCP
             if(instance == null)
             {
                 instance = this;
-                this.Canvas = new Canvas(1280, 720);
+                this.Canvas = new Canvas(1200, 700);
                 this.Stylo = new Stylo();
             }
             else

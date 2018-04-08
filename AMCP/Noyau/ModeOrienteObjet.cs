@@ -1,11 +1,12 @@
-﻿using System;
+﻿using AMCP.Formes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AMCP
+namespace AMCP.Noyau
 {
     public class ModeOrienteObjet : IMode
     {
@@ -15,7 +16,7 @@ namespace AMCP
         /// <param name="positionX"></param>
         /// <param name="positionY"></param>
         /// <param name="taille"></param>
-        public virtual Polygone DessinerCarre(int positionX, int positionY, int taille)
+        public virtual Forme DessinerCarre(int positionX, int positionY, int taille)
         {
             Polygone p = new Polygone();
             p.SetRectangle(new Point(positionX, positionY), taille, taille);
@@ -33,7 +34,7 @@ namespace AMCP
             }
         }
 
-        public virtual  Polygone DessinerRectangle(int positionX, int positionY, int largeur, int hauteur )
+        public virtual Forme DessinerRectangle(int positionX, int positionY, int largeur, int hauteur )
         {
             Polygone p = new Polygone();
             if (!p.EstDehors(positionX, positionY, largeur, hauteur))
@@ -50,7 +51,7 @@ namespace AMCP
             }
         }
 
-        public virtual Ellipse DessinerCercle(int positionX, int positionY, int rayon)
+        public virtual Forme DessinerCercle(int positionX, int positionY, int rayon)
         {
             Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon); // TODO : renommer ellipse "p"
             if (!p.EstDehors(positionX, positionY, rayon, rayon))
@@ -65,7 +66,7 @@ namespace AMCP
             }
         }
 
-        public virtual Polygone DessinerTriangle(int positionX, int positionY, int taille)
+        public virtual Forme DessinerTriangle(int positionX, int positionY, int taille)
         {
             Polygone p = new Polygone();
             if (!p.EstDehors(positionX, positionY, taille * 2, taille * 2))
@@ -82,7 +83,7 @@ namespace AMCP
             }
         }
 
-        public virtual Polygone DessinerLosange(int positionX, int positionY, int largeur, int hauteur)
+        public virtual Forme DessinerLosange(int positionX, int positionY, int largeur, int hauteur)
         {
             Polygone p = new Polygone();
             if (!p.EstDehors(positionX, positionY, largeur, hauteur))
@@ -99,7 +100,7 @@ namespace AMCP
             }
         }
 
-        public virtual Polygone DessinerEtoile(int positionX, int positionY,int rayonInterieur, int rayonExterieur, int nbSommet)
+        public virtual Forme DessinerEtoile(int positionX, int positionY,int rayonInterieur, int rayonExterieur, int nbSommet)
         {
             Polygone p = new Polygone();
             if (!p.EstDehors(positionX, positionY, rayonExterieur / 2, rayonExterieur))
@@ -116,7 +117,7 @@ namespace AMCP
             }
         }
 
-        public virtual Ellipse DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
+        public virtual Forme DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
         {
             Ellipse p = new Ellipse(new Point(positionX, positionY), rayon1, rayon2); // TODO : renommer ellipse "p"
             if (!p.EstDehors(positionX, positionY, rayon1, rayon2 / 2))
@@ -129,6 +130,23 @@ namespace AMCP
                 Console.WriteLine("L'ellipse est hors du canvas.");
                 return null;
             }
+        }
+
+        public virtual Forme DessinerTexte(int positionX, int positionY, int taillePolice, string contenu)
+        {
+            Texte t = new Texte(new Point(positionX, positionY), taillePolice, contenu);
+
+            if (!t.EstDehors(positionX, positionY, 1,1))
+            {
+                Canvas.Formes.Add(t);
+                Console.WriteLine("Le texte '" + t.Contenu +"' a été dessinée.");
+                return t;
+            }
+            else
+            {
+                Console.WriteLine("Le texte est hors du canvas.");
+                return null;
+            }            
         }
 
     }
