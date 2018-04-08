@@ -11,17 +11,17 @@ namespace AMCP
     public class Polygone : Forme
     {
         // local position of each point
-        List<Point> Points { get; set; } = new List<Point>();
+        List<Point> Points { get; set; } = new List<Point>(); // TODO : Camel case
 
         internal Polygone()
         {
-            this.Id = Canvas.prochain_id();
+            this.ID = Canvas.prochainID();
             this.Color = Color.Black;
         }
 
         internal Polygone (List<Point> points)
         {
-            this.Id = Canvas.prochain_id();
+            this.ID = Canvas.prochainID();
             this.Color = Color.Black;
             this.Points = points;
         }

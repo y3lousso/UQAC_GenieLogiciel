@@ -20,8 +20,9 @@ namespace CEGEP_Student
             // 4 -> reverse Y axis test
             // 5 -> car demo
             // 6 -> test pour les id
+            // 7 -> rotate ellipse
 
-            int test = 6;
+            int test = 7;
 
             switch (test)
             {
@@ -245,6 +246,33 @@ namespace CEGEP_Student
                         i.Afficher();
 
                         i.Pause();
+                        break;
+                    }
+
+                case 7:
+                    {
+                        Console.WriteLine("------ OOP -------");
+                        ModeOrienteObjet i = new ModeOrienteObjet();
+
+                        Forme p = i.DessinerRectangle(450,500,100,200);
+                        p.Colorier(50, 50, 50);
+                        Forme e = i.DessinerEllipse(450, 300, 500, 400);
+                        e.Colorier(0, 150, 0);
+                        Forme e1 = i.DessinerEllipse(600, 300, 100, 200);
+                        Forme e2 = e1.Dupliquer(300, 300);
+
+                        for (int x = 0; x < 50; x++)
+                        {
+                            e1.Tourner(5);
+                            e2.Tourner(-5);
+                            i.Afficher();
+                            i.Attendre(.1f);
+                            i.NettoyerEcran();
+                        }
+
+                        i.Afficher();
+                        i.Pause();
+
                         break;
                     }
 

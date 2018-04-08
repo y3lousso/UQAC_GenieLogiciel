@@ -9,12 +9,12 @@ namespace AMCP.Formes
 {
     public class FormeLibre : Forme
     {
-        List<Point> Points { get; set; } = new List<Point>();
-        int TailleStylo { get; set; }
+        List<Point> Points { get; set; } = new List<Point>(); // TODO : Camel case
+        int TailleStylo { get; set; } // TODO : Camel case
 
         internal FormeLibre(List<Point> points, int taille)
         {
-            this.Id = Canvas.prochain_id();
+            this.ID = Canvas.prochainID();
             this.Position = points[0];
             this.Points = points;
             this.Color = Color.Black;
@@ -23,7 +23,7 @@ namespace AMCP.Formes
 
         internal FormeLibre(List<Point> points, int taille, Color color )
         {
-            this.Id = Canvas.prochain_id();
+            this.ID = Canvas.prochainID();
             this.Points = points;
             this.Color = color;
             this.TailleStylo = taille;

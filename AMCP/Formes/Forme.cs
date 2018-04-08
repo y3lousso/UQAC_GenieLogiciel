@@ -9,7 +9,7 @@ namespace AMCP
 {
     public abstract class Forme
     {
-        public int Id { get; protected set; }
+        public int ID { get; protected set; }
         public Point Position { get; internal set; }
         public Color Color { get; internal set; }
 

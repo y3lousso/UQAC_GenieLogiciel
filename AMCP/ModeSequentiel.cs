@@ -16,8 +16,8 @@ namespace AMCP
             {
                 p.SetRectangle(new Point(positionX, positionY), taille, taille);
                 Canvas.Formes.Add(p);
-                Console.WriteLine("Le carré " + p.Id +  " a été dessiné.");
-                return p.Id;
+                Console.WriteLine("Le carré " + p.ID +  " a été dessiné.");
+                return p.ID;
             }
             else
             {
@@ -33,8 +33,8 @@ namespace AMCP
             {
                 p.SetRectangle(new Point(positionX, positionY), largeur, hauteur);
                 Canvas.Formes.Add(p);
-                Console.WriteLine("Le rectangle " + p.Id + " a été dessiné.");
-                return p.Id;
+                Console.WriteLine("Le rectangle " + p.ID + " a été dessiné.");
+                return p.ID;
             }
             else
             {
@@ -45,16 +45,16 @@ namespace AMCP
 
         public virtual int DessinerCercle(int positionX, int positionY, int rayon)
         {
-            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon);
+            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon); // TODO : renommer ellipse "p"
             if (!p.EstDehors(positionX, positionY, rayon, rayon))
             {
                 Canvas.Formes.Add(p);
-                Console.WriteLine("Le cercle " + p.Id + " a été dessinée.");
-                return p.Id;
+                Console.WriteLine("Le cercle " + p.ID + " a été dessinée.");
+                return p.ID;
             }
             else
             {
-                Console.WriteLine("Le cercle " + p.Id + " est hors du canvas.");
+                Console.WriteLine("Le cercle " + p.ID + " est hors du canvas.");
                 return -1;
             }
         }
@@ -65,9 +65,9 @@ namespace AMCP
             if (!p.EstDehors(positionX, positionY, taille*2, taille*2))
             {
                 p.SetTriangle(new Point(positionX, positionY), taille);
-                Console.WriteLine("Le triangle " + p.Id + " a été dessiné.");
+                Console.WriteLine("Le triangle " + p.ID + " a été dessiné.");
                 Canvas.Formes.Add(p);
-                return p.Id;
+                return p.ID;
             }
             else
             {
@@ -82,9 +82,9 @@ namespace AMCP
             if (!p.EstDehors(positionX, positionY, largeur, hauteur))
             {
                 p.SetLosange(new Point(positionX, positionY), largeur, hauteur);
-                Console.WriteLine("Le losange " + p.Id + " a été dessiné.");
+                Console.WriteLine("Le losange " + p.ID + " a été dessiné.");
                 Canvas.Formes.Add(p);
-                return p.Id;
+                return p.ID;
             }
             else
             {
@@ -100,8 +100,8 @@ namespace AMCP
             {
                 p.SetEtoile(new Point(positionX, positionY), rayonInterieur/2, rayonExterieur/2, nbSommet);
                 Canvas.Formes.Add(p);
-                Console.WriteLine("L'étoile " + p.Id + " a été dessinée.");
-                return p.Id;
+                Console.WriteLine("L'étoile " + p.ID + " a été dessinée.");
+                return p.ID;
             }
             else
             {
@@ -112,12 +112,12 @@ namespace AMCP
 
         public virtual int DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
         {
-            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon1, rayon2);
+            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon1, rayon2); // TODO : renommer ellipse "p"
             if (!p.EstDehors(positionX, positionY, rayon1, rayon2 / 2))
             {
                 Canvas.Formes.Add(p);
-                Console.WriteLine("L'ellipse " + p.Id + " a été dessinée.");
-                return p.Id;
+                Console.WriteLine("L'ellipse " + p.ID + " a été dessinée.");
+                return p.ID;
             }
             else
             {
@@ -132,7 +132,7 @@ namespace AMCP
             if (origin != null)
             {
                 Forme copy = origin.Dupliquer(positionX, positionY);
-                return copy.Id;
+                return copy.ID;
             }else
             {
                 return -1;
@@ -208,7 +208,7 @@ namespace AMCP
         protected virtual Forme IdentifierForme(int id)
         {
             foreach (Forme f in Canvas.Formes) {
-                if (f.Id == id)
+                if (f.ID == id)
                 {
                     return f;
                 }

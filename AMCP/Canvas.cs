@@ -12,11 +12,12 @@ namespace AMCP
     public class Canvas : Form
     {
         internal static Canvas instance;
-        internal Graphics Graphic { get; set; }
+        internal Graphics Graphic { get; set; } // TODO : Les internal sont en Camel
 
-        internal List<Forme> Formes { get; set; }
+        internal List<Forme> Formes { get; set; } // TODO : Les internal sont en Camel
 
-        private static int dernier_id;
+        private static int dernierID;
+
         public Canvas(int sizeX, int sizeY)
         {
             if (instance == null)
@@ -27,7 +28,7 @@ namespace AMCP
                 this.Graphic.SmoothingMode = SmoothingMode.AntiAlias;
                 this.Graphic.Clear(Color.White);
                 this.CenterToScreen();
-                dernier_id = 0;// On set les id a 0.
+                dernierID = 0;// On set les id a 0.
                 this.Graphic.ScaleTransform(1, -1);
                 // TODO : trouver un fix à ce truc de merde :)
                 this.Graphic.TranslateTransform(0, -Height+39);
@@ -51,10 +52,10 @@ namespace AMCP
 
         }
 
-        public static int prochain_id()
+        public static int prochainID()
         {
-            dernier_id += 1;
-            return dernier_id;
+            dernierID += 1;
+            return dernierID;
         }
     }
 }
