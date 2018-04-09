@@ -36,44 +36,21 @@ namespace AMCP.Noyau
             this.Couleur = color;
         }
 
-        public Forme Dessiner()
+        public Forme LeverStylo()
         {
-            if (Points != null)
+            if (IsWriting)
             {
-                if (CanDraw)
-                {
-                    FormeLibre forme = new FormeLibre(this.Points, this.Taille, this.Couleur);
-                    Canvas.instance.Formes.Add(forme);
-                    this.Points = null;
-                    return forme;
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("On ne peut pas dessiner en dehors du Canvas");
-                    Console.ResetColor();
-                    return null;
-                }
+                Console.WriteLine("Stylo : Descendre le stylo pour commencer.");
             }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Abaisser le pointeur pour commencer a dessiner");
-                Console.ResetColor();
-                return null;
-            }
+            this.Points.Add(new Point(this.Position.X, this.Position.Y));
+            FormeLibre forme = new FormeLibre(this.Points, this.Taille, this.Couleur);
+            Canvas.instance.Formes.Add(forme);
+            this.Points = null;
+            this.IsWriting = false;
+            return forme;
         }
 
-        public void LeverPointeur()
-        {
-            if (this.IsWriting)
-            {
-                this.Points.Add(new Point(this.Position.X, this.Position.Y));
-                this.IsWriting = false;
-            }
-        }
-
-        public void DescendrePointeur()
+        public void DescendreStylo()
         {
             this.StartPosition = this.Position;
             this.Points = new List<Point>();

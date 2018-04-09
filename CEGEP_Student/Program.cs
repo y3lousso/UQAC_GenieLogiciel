@@ -55,15 +55,14 @@ namespace CEGEP_Student
 
                         // Toit de la voiture
                         i.Stylo.Deplacer(100, 100);
-                        i.Stylo.DescendrePointeur();
+                        i.Stylo.DescendreStylo();
                         i.Stylo.Tourner(45);
                         i.Stylo.Avancer(100);
                         i.Stylo.Tourner(-45);
                         i.Stylo.Avancer(100);
                         i.Stylo.Tourner(-45);
                         i.Stylo.Avancer(100);
-                        i.Stylo.LeverPointeur();
-                        Forme toit = i.Stylo.Dessiner();
+                        Forme toit = i.Stylo.LeverStylo();
 
                         for (int j = 0; j < 100; j++)
                         {
@@ -97,33 +96,36 @@ namespace CEGEP_Student
                         Console.WriteLine("------ Car demo -------");
                         ModeOrienteObjet i = new ModeOrienteObjet();
 
-                        int posX = 200;
-                        int posY = 120;
+                        i.ChangerDimension(1000, 500);
 
-                        //i.Pause();
-
-                        Forme background = i.CreerRectangle(592, 330, 1184, 660);
+                        int posX = 100;
+                        int posY = 350;
+                        
+                        Forme background = i.CreerRectangle(500, 250, 1000, 500);
                         background.Colorier(0, 255, 255);
-                        Forme road = i.CreerRectangle(592, 25, 1184, 50);
+                        Forme road = i.CreerRectangle(500, 450, 1000, 100);
                         road.Colorier(50, 50, 50);
+
                         Forme car = i.CreerRectangle(posX, posY, 200, 50);
                         car.Colorier(255, 0, 0);
-                        Forme wheel1 = i.CreerCercle(posX - 85, posY - 50, 50);
+                        Forme wheel1 = i.CreerCercle(posX - 85, posY + 50, 50);
                         wheel1.Colorier(0, 0, 0);
-                        Forme wheel2 = wheel1.Dupliquer(posX + 85, posY - 50);
+                        Forme wheel2 = wheel1.Dupliquer(posX + 85, posY + 50);
                         wheel2.Colorier(0, 0, 0);
 
+                        Forme p = i.CreerCarre(1, 1, 5);
+                        p.Colorier(255, 0, 0);
+
                         // Toit de la voiture
-                        i.Stylo.Deplacer(posX - 200, posY - 120);
-                        i.Stylo.DescendrePointeur();
+                        i.Stylo.Deplacer(posX - 200, posY - 200);
+                        i.Stylo.DescendreStylo();
+                        i.Stylo.Tourner(-45);
+                        i.Stylo.Avancer(50);
                         i.Stylo.Tourner(45);
                         i.Stylo.Avancer(50);
-                        i.Stylo.Tourner(-45);
+                        i.Stylo.Tourner(45);
                         i.Stylo.Avancer(50);
-                        i.Stylo.Tourner(-45);
-                        i.Stylo.Avancer(50);
-                        i.Stylo.LeverPointeur();
-                        Forme toit = i.Stylo.Dessiner();
+                        Forme toit = i.Stylo.LeverStylo();
 
                         for (int j = 0; j < 50; j++)
                         {
@@ -131,9 +133,10 @@ namespace CEGEP_Student
                             i.Attendre(0.1f);
                             posX += 10;
                             car.Deplacer(posX, posY);
-                            wheel1.Deplacer(posX - 85, posY - 50);
-                            wheel2.Deplacer(posX + 85, posY - 50);
-                            toit.Deplacer(posX - 50, posY + 20);
+                            p.Deplacer(posX - 85, posY + 50);
+                            wheel1.Deplacer(posX - 85, posY + 50);
+                            wheel2.Deplacer(posX + 85, posY + 50);
+                            toit.Deplacer(posX - 50, posY - 20);
                             i.NettoyerEcran();
                         }
 
@@ -168,6 +171,7 @@ namespace CEGEP_Student
                         Console.WriteLine("------ OOP -------");
                         ModeOrienteObjet i = new ModeOrienteObjet();
 
+                        
                         Forme p = i.CreerRectangle(450, 500, 100, 200);
                         p.Colorier(50, 50, 50);
                         Forme e = i.CreerEllipse(450, 300, 500, 400);
@@ -175,8 +179,11 @@ namespace CEGEP_Student
                         Forme e1 = i.CreerEllipse(600, 300, 100, 200);
                         Forme e2 = e1.Dupliquer(300, 300);
 
+                        Forme c = i.CreerCarre(450, 500, 5);
+                        c.Colorier(255, 0, 0);
+
                         for (int x = 0; x < 50; x++)
-                        {
+                        {                            
                             e1.Tourner(5);
                             e2.Tourner(-5);
                             i.Afficher();

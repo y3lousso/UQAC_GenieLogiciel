@@ -48,6 +48,12 @@ namespace AMCP.Noyau
             Console.WriteLine("---------- Assurance Qualitée ------------");
         }
 
+        public void ChangerDimension(int x, int y)
+        {
+            Canvas.instance.Size = new Size(x, y);
+            Canvas.instance.Graphic = Canvas.instance.CreateGraphics();
+        }
+
         /// <summary>
         /// Permet d'afficher toutes les formes précédements créer.
         /// </summary>

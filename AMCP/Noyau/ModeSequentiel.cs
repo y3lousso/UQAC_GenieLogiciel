@@ -99,45 +99,21 @@ namespace AMCP.Noyau
             {
                 f.Colorier(r, g, b);
             }
-
         }
         
         public virtual void Tourner(int idForme, int angle)
         {
-            if(IdentifierForme(idForme) is Polygone)
-            {
-                ((Polygone)IdentifierForme(idForme)).Tourner(angle);
-            }
-            else if (IdentifierForme(idForme) is Ellipse)
-            {
-                ((Ellipse)IdentifierForme(idForme)).Tourner(angle);
-            }
+            IdentifierForme(idForme).Tourner(angle);
         }
 
         public virtual void Deplacer(int idForme, int positionX, int positionY)
         {
-            if (IdentifierForme(idForme) is Polygone)
-            {
-                ((Polygone)IdentifierForme(idForme)).Deplacer(positionX,positionY);
-            }
-            else if (IdentifierForme(idForme) is Ellipse)
-            {
-                ((Ellipse)IdentifierForme(idForme)).Deplacer(positionX,positionY);
-            }
-
+            IdentifierForme(idForme).Deplacer(positionX,positionY);
         }
 
         public virtual void Dimensionner(int idForme, float taille)
         {
-            if (IdentifierForme(idForme) is Polygone)
-            {
-                ((Polygone)IdentifierForme(idForme)).Dimensionner(taille);
-            }
-            else if (IdentifierForme(idForme) is Ellipse)
-            {
-                ((Ellipse)IdentifierForme(idForme)).Dimensionner(taille);
-            }
-
+            IdentifierForme(idForme).Dimensionner(taille);
         }
 
         ///<summary>
