@@ -19,6 +19,15 @@ namespace AMCP.Formes
             this.PetitRayon = rayon1;
             this.GrandRayon = rayon2;
             this.Color = Color.Black;
+
+            if(GrandRayon == PetitRayon)
+            {
+                this.Type = "Cercle";
+            }
+            else
+            {
+                this.Type = "Ellipse";
+            }
         }
 
         internal Ellipse(Point position, int rayon1, int rayon2, int r, int g, int b)
@@ -29,32 +38,40 @@ namespace AMCP.Formes
             this.PetitRayon = rayon1;
             this.GrandRayon = rayon2;
             this.Color = Color.FromArgb(255, r, g, b);
+
+            if (GrandRayon == PetitRayon)
+            {
+                this.Type = "Cercle";
+            }
+            else
+            {
+                this.Type = "Ellipse";
+            }
         }
 
         internal override void Afficher()
         {
-            Matrix matrix = new Matrix();
+            if (!EstDehors(this.Position.X, this.Position.Y, 0, 0))  
+            { 
+                Matrix matrix = new Matrix();
 
-            //Rotate the graphics object the required amount around this point
-            matrix.RotateAt(this.Orientation, new PointF(Position.X + PetitRayon/2, Position.Y+ GrandRayon/2));
-            Canvas.instance.Graphic.Transform = matrix;
+                //Rotate the graphics object the required amount around this point
+                matrix.RotateAt(this.Orientation, new PointF(Position.X + PetitRayon / 2, Position.Y + GrandRayon / 2));
+                Canvas.instance.Graphic.Transform = matrix;
 
-            //Draw the rotated ellipse
-            Rectangle r = new Rectangle(Position.X, Position.Y, PetitRayon, GrandRayon);
-            Canvas.instance.Graphic.FillEllipse(new SolidBrush(this.Color), r);
+                //Draw the rotated ellipse
+                Rectangle r = new Rectangle(Position.X, Position.Y, PetitRayon, GrandRayon);
+                Canvas.instance.Graphic.FillEllipse(new SolidBrush(this.Color), r);
+                Console.WriteLine(Type + " " + ID + " : Affichage effectué.");
 
-            //Rotate back to normal around the same point</pre>
-            matrix.RotateAt(-this.Orientation, new PointF(Position.X + PetitRayon/2, Position.Y + GrandRayon/2));
-            Canvas.instance.Graphic.Transform = matrix;
-
-            /*if (this.PetitRayon == this.GrandRayon)
-            {
-                Console.WriteLine("Un cercle a été dessiné.");
+                //Rotate back to normal around the same point</pre>
+                matrix.RotateAt(-this.Orientation, new PointF(Position.X + PetitRayon / 2, Position.Y + GrandRayon / 2));
+                Canvas.instance.Graphic.Transform = matrix;
             }
             else
             {
-                Console.WriteLine("Une ellipse a été dessiné.");
-            }*/
+                Console.WriteLine(Type + " " + ID + " : Hors canvas.");
+            }
         }
 
         public override Forme Dupliquer(int positionX, int positionY)
@@ -63,34 +80,15 @@ namespace AMCP.Formes
             forme.Color = this.Color;
             forme.Orientation = this.Orientation;
             Canvas.instance.Formes.Add(forme);
+            Console.WriteLine(Type + " " + ID + " : Duplication réussie.");
             return forme;
-        }
-
-        public override void Colorier(int r, int g, int b)
-        {
-            this.Color = Color.FromArgb(255, r, g, b);
-        }
-
-        public override void Tourner(int angle)
-        {
-            Orientation += angle;
-        }
-
-        public override void Deplacer(int positionX, int positionY)
-        {
-            Point center = new Point(positionX - this.PetitRayon / 2, positionY - this.GrandRayon / 2);
-            if (!EstDehors(positionX, positionY, this.PetitRayon, this.GrandRayon))
-                this.Position = center;
-            else
-                Console.WriteLine("Déplacement impossible");
         }
 
         public override void Dimensionner(float taille)
         {
             this.PetitRayon = (int)(this.PetitRayon * taille);
             this.GrandRayon = (int)(this.GrandRayon * taille);
+            Console.WriteLine(Type + " " + ID + " : Dimensionnement par un facteur " + taille + " effectué.");
         }
-        
-
     }
 }

@@ -31,28 +31,19 @@ namespace AMCP.InterfaceUtilisateur
                 this.CenterToScreen();
                 dernierID = 0;// On set les id a 0.
 
-                /*this.Graphic.ScaleTransform(1, -1);
-                // TODO : trouver un fix à ce truc de merde :)
-                this.Graphic.TranslateTransform(0, -Height + 39);*/
-
-                Console.WriteLine("la surface dessinable est : " + this.Graphic.VisibleClipBounds);
+                Console.WriteLine("Surface dessinable : " + this.Graphic.VisibleClipBounds);
                 this.Formes = new List<Forme>();
                 this.Show();
             }
             else
             {
-                throw new Exception("Can't create multiple instance of Canvas");
+                throw new Exception("Impossible de créer plusieurs instances du Canvas !");
             }
         }
 
         public void ChangerDimension(int sizeX, int sizeY)
         {
             this.Size = new Size(sizeX, sizeY);
-        }
-        
-        public void ChargerImage(string cheminImage, int positionX, int positionY)
-        {
-
         }
 
         public static int prochainID()

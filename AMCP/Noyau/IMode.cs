@@ -28,7 +28,7 @@ namespace AMCP.Noyau
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Impossible de créer plusieurs instances de IMode!");
+                Console.WriteLine("Impossible de créer plusieurs instances de type Mode !");
                 Console.ResetColor();
             }
         }
@@ -40,12 +40,12 @@ namespace AMCP.Noyau
 
         public void ListerContributeur()
         {
-
-        }
-
-        public void ChargerImage(string chemin, int positionX, int positionY)
-        {
-
+            Console.Clear();
+            Console.WriteLine("////////////////// AMCP //////////////////");
+            Console.WriteLine("-------- Analyse fonctionnelle -----------");
+            Console.WriteLine("-------------- Conception ----------------");
+            Console.WriteLine("------------- Développement --------------");
+            Console.WriteLine("---------- Assurance Qualitée ------------");
         }
 
         /// <summary>
@@ -95,9 +95,8 @@ namespace AMCP.Noyau
         /// </summary>
         public virtual void Pause()
         {
-            Console.WriteLine("Press any key to continue ...");
+            Console.WriteLine("Appuyez sur une touche pour continuer...");
             Console.ReadLine();
-            Console.WriteLine("Starting");
         }
 
     }

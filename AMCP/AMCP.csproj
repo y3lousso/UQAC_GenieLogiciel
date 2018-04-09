@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formes\Image.cs" />
     <Compile Include="InterfaceUtilisateur\Canvas.cs">
       <SubType>Form</SubType>
     </Compile>

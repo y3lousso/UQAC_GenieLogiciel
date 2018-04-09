@@ -8,17 +8,17 @@ namespace AMCP.Noyau
 {
     public class Stylo
     {
-        private int ID { get; set; } // TODO : Les abréviations sont en UPPER
-        private Point Position { get; set; } // TODO : Les private sont en Camel
-        private float Orientation { get; set; } // TODO : Les private sont en Camel
-        private int Taille { get; set; } // TODO : Les private sont en Camel
+        private int ID { get; set; } 
+        private Point Position { get; set; } 
+        private float Orientation { get; set; } 
+        private int Taille { get; set; }
 
-        private Color Couleur { get; set; } // TODO : Les private sont en Camel
-        private Boolean IsWriting { get; set; } // TODO : Les private sont en Camel
+        private Color Couleur { get; set; } 
+        private Boolean IsWriting { get; set; }
         private Boolean CanDraw { get; set; }
 
-        private Point StartPosition { get; set; } // TODO : Les private sont en Camel
-        private List<Point> Points { get; set; } // TODO : Les private sont en Camel
+        private Point StartPosition { get; set; } 
+        private List<Point> Points { get; set; }
 
         public Stylo()
         {
@@ -86,16 +86,8 @@ namespace AMCP.Noyau
             if (this.IsWriting)
             {
                 double angleRadian = Orientation * Math.PI / 180f;
-                if (!this.EstDehors(this.Position.X, this.Position.Y))
-                {
-                    this.Position = new Point((int)(this.Position.X + pas * Math.Cos(angleRadian)), (int)(this.Position.Y + pas * Math.Sin(angleRadian)));
-                    this.CanDraw = true;
-                }
-                else
-                {
-                    this.CanDraw = false;
-                }
-                    
+                this.Position = new Point((int)(this.Position.X + pas * Math.Cos(angleRadian)), (int)(this.Position.Y + pas * Math.Sin(angleRadian)));
+                this.CanDraw = true;               
             }
             else
             {
@@ -133,19 +125,6 @@ namespace AMCP.Noyau
                 Console.ResetColor();
             }
         }
-        internal Boolean EstDehors(int positionX, int positionY)
-        {
-            if (positionX < 0
-                || positionX > Canvas.instance.Graphic.VisibleClipBounds.Width
-                || positionY < 0
-                || positionY > Canvas.instance.Graphic.VisibleClipBounds.Height)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+
     }
 }

@@ -12,72 +12,71 @@ namespace AMCP.Noyau
     {
         public virtual int CreerCarre(int positionX, int positionY, int taille)
         {
-            Polygone p = new Polygone();
-            p.SetRectangle(new Point(positionX, positionY), taille, taille);
-            Canvas.Formes.Add(p);
-            Console.WriteLine("Le carré " + p.ID +  " a été crée.");
-            return p.ID;
+            Polygone f = new Polygone(new Point(positionX, positionY));
+            f.SetRectangle(taille, taille);
+            Canvas.Formes.Add(f);
+            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            return f.ID;
         }
 
         public virtual int CreerRectangle(int positionX, int positionY, int largeur, int hauteur)
         {
-            Polygone p = new Polygone();
-            p.SetRectangle(new Point(positionX, positionY), largeur, hauteur);
-            Canvas.Formes.Add(p);
-            Console.WriteLine("Le rectangle " + p.ID + " a été crée.");
-            return p.ID;
+            Polygone f = new Polygone(new Point(positionX, positionY));
+            f.SetRectangle(largeur, hauteur);
+            Canvas.Formes.Add(f);
+            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            return f.ID;
         }
-
-        public virtual int CreerCercle(int positionX, int positionY, int rayon)
-        {
-            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon); // TODO : renommer ellipse "p"
-            Canvas.Formes.Add(p);
-            Console.WriteLine("Le cercle " + p.ID + " a été crée.");
-            return p.ID;
-        }
-
+      
         public virtual int CreerTriangle(int positionX, int positionY, int taille)
         {
-            Polygone p = new Polygone();
-            p.SetTriangle(new Point(positionX, positionY), taille);
-            Console.WriteLine("Le triangle " + p.ID + " a été crée.");
-            Canvas.Formes.Add(p);
-            return p.ID;
+            Polygone f = new Polygone(new Point(positionX, positionY));
+            f.SetTriangle(taille);
+            Canvas.Formes.Add(f);
+            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            return f.ID;
         }
 
         public virtual int CreerLosange(int positionX, int positionY, int largeur, int hauteur)
         {
-            Polygone p = new Polygone();
-            p.SetLosange(new Point(positionX, positionY), largeur, hauteur);
-            Console.WriteLine("Le losange " + p.ID + " a été crée.");
-            Canvas.Formes.Add(p);
-            return p.ID;           
+            Polygone f = new Polygone(new Point(positionX, positionY));
+            f.SetLosange(largeur, hauteur);
+            Canvas.Formes.Add(f);
+            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            return f.ID;
         }
 
         public virtual int CreerEtoile(int positionX, int positionY, int rayonInterieur, int rayonExterieur, int nbSommet)
         {
-            Polygone p = new Polygone();
-            p.SetEtoile(new Point(positionX, positionY), rayonInterieur/2, rayonExterieur/2, nbSommet);
-            Canvas.Formes.Add(p);
-            Console.WriteLine("L'étoile " + p.ID + " a été créee.");
-            return p.ID;
+            Polygone f = new Polygone(new Point(positionX, positionY));
+            f.SetEtoile(rayonInterieur/2, rayonExterieur/2, nbSommet);
+            Canvas.Formes.Add(f);
+            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            return f.ID;
+        }
+
+        public virtual int CreerCercle(int positionX, int positionY, int rayon)
+        {
+            Ellipse f = new Ellipse(new Point(positionX, positionY), rayon, rayon); // TODO : renommer ellipse "p"
+            Canvas.Formes.Add(f);
+            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            return f.ID;
         }
 
         public virtual int CreerEllipse(int positionX, int positionY, int rayon1, int rayon2)
         {
-            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon1, rayon2); // TODO : renommer ellipse "p"
-            Canvas.Formes.Add(p);
-            Console.WriteLine("L'ellipse " + p.ID + " a été créee.");
-            return p.ID;
+            Ellipse f = new Ellipse(new Point(positionX, positionY), rayon1, rayon2); // TODO : renommer ellipse "p"
+            Canvas.Formes.Add(f);
+            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            return f.ID;
         }
 
         public virtual int CreerTexte(int positionX, int positionY, int taillePolice, string contenu)
         {
-            Texte t = new Texte(new Point(positionX, positionY), taillePolice, contenu);
-            Canvas.Formes.Add(t);
-            Console.WriteLine("Le texte " + t.ID + " a été crée.");
-            return t.ID;
-
+            Texte f = new Texte(new Point(positionX, positionY), taillePolice, contenu);
+            Canvas.Formes.Add(f);
+            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            return f.ID;
         }
 
         public virtual int Dupliquer(int idForme, int positionX, int positionY)

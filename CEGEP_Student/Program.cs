@@ -10,113 +10,18 @@ namespace CEGEP_Student
 {
     class Program
     {
-        static void Main(string[] args)
+        static void PlayTest(int id)
         {
-
-            // 0 -> tests bords séquentiel
-            // 1 -> démo OOP
-            // 2 -> sequenciel rotation
-            // 3 -> opp rotation
-            // 4 -> reverse Y axis test
-            // 5 -> car demo
-            // 6 -> test pour les id
-            // 7 -> rotate ellipse
-            // 8 -> text
-
-            int test = 5; 
-
-            switch (test)
+            switch (id)
             {
                 case 0:
                     {
-                        Console.WriteLine("------ Sequentiel -------");
                         ModeSequentiel i = new ModeSequentiel();
-
-                        /*for (int x = 0; x < 5; x++)
-                        {
-                            int posX = 20 * x + 80;
-                            int posY = (20 * x) + x + 80;
-                            i.DessinerRectangle(posX, posY, 50, 70);
-                            i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
-                            i.DessinerCercle(100 + posX, posY, 20);
-                            i.DessinerEllipse(posX, posY + 250, 20, 50);
-                        }*/
-
-                        //IN
-                        int form;
-                        //i.CreerLosange(600, 170, 632, 340); //Bas-Gauche
-                        //i.CreerEtoile(316, 490, 170, 340, 8); //Haut-Gauche
-                        //form=i.CreerEllipse(1000, 170, 632, 340); //Bas-Droite
-                        //i.CreerCercle(1000, 170, 500);
-                        i.CreerTriangle(948, 510, 170); // Haut-Droite
-                        //i.Deplacer(form, 316, 530);
-                        //OUT
-                        //i.DessinerLosange(315, 170, 632, 340); //Bas-Gauche
-                        //i.DessinerEtoile(316, 512, 170, 340, 8); //Bas-Gauche
-                        //i.DessinerEllipse(949, 170, 632, 340); //Bas-Droite
-                        //i.DessinerEtoile(948, 512, 170, 340, 8); //Haut-Droite
-                        //i.DessinerTriangle(948, 510, 172); // Haut-Droite
-
-
-
-                        i.Afficher();
+                        i.ListerContributeur();
                         i.Pause();
                         break;
                     }
-
                 case 1:
-                    {
-                        Console.WriteLine("------ OOP -------");
-                        ModeOrienteObjet i = new ModeOrienteObjet();
-
-                        /*for (int x = 0; x < 5; x++)
-                        {
-                            int posX = 20 * x + 80;
-                            int posY = (20 * x) + x + 80;
-                            i.DessinerRectangle(posX, posY, 50, 70);
-                            i.DessinerEtoile(posX, posY + 100, 40, 80, 5);
-                            i.DessinerCercle(100 + posX, posY, 20);
-                            i.DessinerEllipse(posX, posY + 250, 20, 50);
-                        }*/
-
-                        //IN
-                         Forme losa = i.CreerLosange(316, 490, 632, 340); //Bas-Gauche
-                        //losa.Deplacer(316, 490);
-                        /*losa.Deplacer(948, 510);
-                        losa.Deplacer(948, 170);
-                        losa.Deplacer(950, 170); //Deplacement en dehors*/
-
-                        /*Forme elli = i.DessinerEllipse(948, 170, 632, 340);
-                        elli.Deplacer(316, 170);
-                        elli.Deplacer(316, 510);
-                        elli.Deplacer(948, 510);
-                        elli.Deplacer(949, 510);*/ //Deplacement en dehors
-
-                        //Forme cer = i.CreerCercle(948, 170, 340);
-                        //cer.Deplacer(316, 170);
-                        //cer.Deplacer(316, 510);
-                        //cer.Deplacer(948, 510);
-                        //cer.Deplacer(948, 510); //Deplacement en dehors
-
-
-
-                        //i.DessinerEtoile(316, 510, 170, 340); //Haut-Gauche
-                        //i.DessinerEllipse(948, 170, 632, 340); //Bas-Droite       
-                        //i.DessinerTriangle(948, 510, 170); // Haut-Droite
-                        //OUT
-                        //i.DessinerLosange(315, 170, 632, 340); //Bas-Gauche
-                        //i.DessinerEtoile(316, 512, 170, 340, 8); //Bas-Gauche
-                        //i.DessinerEllipse(949, 170, 632, 340); //Bas-Droite
-                        //i.DessinerEtoile(948, 512, 170, 340, 8); //Haut-Droite
-                        //i.DessinerTriangle(948, 510, 172); // Haut-Droite
-
-                        i.Afficher();
-                        i.Pause();
-
-                        break;
-                    }
-
-                case 2:
                     {
                         Console.WriteLine("------ Sequentiel : rotation -------");
                         ModeSequentiel i = new ModeSequentiel();
@@ -128,7 +33,7 @@ namespace CEGEP_Student
 
                         int etoileId = i.CreerEtoile(posX, posY + 100, 40, 80, 5);
 
-                        for (int j = 0; j < 100; j++)
+                        for (int j = 0; j < 20; j++)
                         {
                             i.Tourner(etoileId, 20);
                             i.Afficher();
@@ -137,32 +42,42 @@ namespace CEGEP_Student
                         }
 
                         i.Pause();
-
                         break;
                     }
-
-                case 3:
+                case 2:
                     {
                         Console.WriteLine("------ OOP : rotation -------");
                         ModeOrienteObjet i = new ModeOrienteObjet();
 
                         i.Pause();
 
-                        int posX = 250;
-                        int posY = 250;
-                        Forme p1 = i.CreerEtoile(posX, posY + 100, 40, 80, 5);
+                        Forme p1 = i.CreerEtoile(100, 100, 40, 80, 5);
+
+                        // Toit de la voiture
+                        i.Stylo.Deplacer(100, 100);
+                        i.Stylo.DescendrePointeur();
+                        i.Stylo.Tourner(45);
+                        i.Stylo.Avancer(100);
+                        i.Stylo.Tourner(-45);
+                        i.Stylo.Avancer(100);
+                        i.Stylo.Tourner(-45);
+                        i.Stylo.Avancer(100);
+                        i.Stylo.LeverPointeur();
+                        Forme toit = i.Stylo.Dessiner();
+
                         for (int j = 0; j < 100; j++)
-                        {                       
-                            p1.Tourner(20);
+                        {
+                            p1.Tourner(5);
+                            toit.Tourner(5);
                             i.Afficher();
                             i.Attendre(0.1f);
                             i.NettoyerEcran();
-                        } 
+                        }
 
                         i.Pause();
                         break;
                     }
-                case 4:
+                case 3:
                     {
                         Console.WriteLine("------ Reverse Y Axis Test -------");
                         ModeOrienteObjet i = new ModeOrienteObjet();
@@ -170,15 +85,14 @@ namespace CEGEP_Student
                         int posX = 0;
                         int posY = 0;
 
-                        Forme rectangle = i.CreerCarre(50+posX, 50+posY, 100);
-                        Forme cercle = i.CreerCercle(posX+100, posY+100, 50);
+                        Forme rectangle = i.CreerCarre(50 + posX, 50 + posY, 100);
+                        Forme cercle = i.CreerCercle(posX + 100, posY + 100, 50);
 
                         i.Afficher();
                         i.Pause();
                         break;
                     }
-
-                case 5:
+                case 4:
                     {
                         Console.WriteLine("------ Car demo -------");
                         ModeOrienteObjet i = new ModeOrienteObjet();
@@ -189,7 +103,7 @@ namespace CEGEP_Student
                         //i.Pause();
 
                         Forme background = i.CreerRectangle(592, 330, 1184, 660);
-                        background.Colorier(0,255, 255);                       
+                        background.Colorier(0, 255, 255);
                         Forme road = i.CreerRectangle(592, 25, 1184, 50);
                         road.Colorier(50, 50, 50);
                         Forme car = i.CreerRectangle(posX, posY, 200, 50);
@@ -200,7 +114,7 @@ namespace CEGEP_Student
                         wheel2.Colorier(0, 0, 0);
 
                         // Toit de la voiture
-                        i.Stylo.Deplacer(posX-200, posY-120);
+                        i.Stylo.Deplacer(posX - 200, posY - 120);
                         i.Stylo.DescendrePointeur();
                         i.Stylo.Tourner(45);
                         i.Stylo.Avancer(50);
@@ -219,7 +133,7 @@ namespace CEGEP_Student
                             car.Deplacer(posX, posY);
                             wheel1.Deplacer(posX - 85, posY - 50);
                             wheel2.Deplacer(posX + 85, posY - 50);
-                            toit.Deplacer(posX-50, posY + 20);
+                            toit.Deplacer(posX - 50, posY + 20);
                             i.NettoyerEcran();
                         }
 
@@ -227,8 +141,7 @@ namespace CEGEP_Student
                         i.Pause();
                         break;
                     }
-
-                case 6:
+                case 5:
                     {
                         Console.WriteLine("------ ID Form Test -------");
                         ModeSequentiel i = new ModeSequentiel();
@@ -236,27 +149,26 @@ namespace CEGEP_Student
                         int posX = 0;
                         int posY = 0;
 
-                      
+
                         int cercle = i.CreerCercle(posX + 100, posY + 100, 50);
                         int cercle2 = i.CreerCercle(posX + 100, posY + 100, 50);
                         int cercle3 = i.Dupliquer(cercle2, posX + 100, posY + 100);
                         int rectangle = i.CreerCarre(50 + posX, 50 + posY, 100);
-                        
+
 
                         int r2 = i.Dupliquer(rectangle, 125, 125);
-                        i.Colorier(-1,255,0,0);
+                        i.Colorier(-1, 255, 0, 0);
                         i.Afficher();
 
                         i.Pause();
                         break;
                     }
-
-                case 7:
+                case 6:
                     {
                         Console.WriteLine("------ OOP -------");
                         ModeOrienteObjet i = new ModeOrienteObjet();
 
-                        Forme p = i.CreerRectangle(450,500,100,200);
+                        Forme p = i.CreerRectangle(450, 500, 100, 200);
                         p.Colorier(50, 50, 50);
                         Forme e = i.CreerEllipse(450, 300, 500, 400);
                         e.Colorier(0, 150, 0);
@@ -277,8 +189,7 @@ namespace CEGEP_Student
 
                         break;
                     }
-
-                case 8:
+                case 7:
                     {
                         Console.WriteLine("------ OOP -------");
                         ModeOrienteObjet i = new ModeOrienteObjet();
@@ -298,12 +209,55 @@ namespace CEGEP_Student
 
                         break;
                     }
+                case 8:
+                    {
+                        Console.WriteLine("------ OOP -------");
+                        ModeOrienteObjet i = new ModeOrienteObjet();
+
+                        
+                        Forme img = i.CreerImage(400, 300, "C:/dotnetlogo.png");
+                        img.Dimensionner(.5f);
+
+                        i.Pause();
+
+                        for (int x = 0; x < 50; x++)
+                        {
+                            img.Tourner(5);
+                            img.Deplacer(img.Position.X + 20, img.Position.Y);
+                            i.Afficher();
+                            i.Attendre(.1f);
+                            i.NettoyerEcran();
+                        }
+
+                        i.Afficher();
+                        i.Pause();
+
+                        break;
+                    }
                 default:
                     Console.WriteLine("Select a correct test");
                     break;
             }
-            
         }
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("************ DEMO ***********");
+            Console.WriteLine("0 -> Lister contributeurs");
+            Console.WriteLine("1 -> sequenciel rotation");
+            Console.WriteLine("2 -> opp rotation");
+            Console.WriteLine("3 -> reverse Y axis test");
+            Console.WriteLine("4 -> car demo");
+            Console.WriteLine("5 -> test pour les id");
+            Console.WriteLine("6 ->rotate ellipse");
+            Console.WriteLine("7 -> text");
+            Console.WriteLine("8 -> image");
+            Console.WriteLine("*****************************\n");
+            Console.Write("Votre choix : ");
+            int testID = int.Parse(Console.ReadLine());
+            PlayTest(testID);      
+        }
+     
     }
 }
 
