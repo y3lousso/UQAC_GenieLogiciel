@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="StyleCop, Version=5.0.0.0, Culture=neutral, PublicKeyToken=f904653c63bc2738, processorArchitecture=MSIL">
-      <HintPath>packages\StyleCop.5.0.0\lib\net40\StyleCop.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -50,24 +47,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Canvas.cs">
+    <Compile Include="Formes\Image.cs" />
+    <Compile Include="InterfaceUtilisateur\Canvas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formes\Ellipse.cs" />
     <Compile Include="Formes\Forme.cs" />
     <Compile Include="Formes\FormeLibre.cs" />
-    <Compile Include="ModeOrienteObjet.cs" />
-    <Compile Include="ModeSequentiel.cs" />
-    <Compile Include="IMode.cs" />
+    <Compile Include="Formes\Texte.cs" />
+    <Compile Include="Noyau\ModeOrienteObjet.cs" />
+    <Compile Include="Noyau\ModeSequentiel.cs" />
+    <Compile Include="Noyau\IMode.cs" />
     <Compile Include="Formes\Polygone.cs" />
-    <Compile Include="Stylo.cs" />
+    <Compile Include="Noyau\Stylo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Canvas.resx">
+    <EmbeddedResource Include="InterfaceUtilisateur\Canvas.resx">
       <DependentUpon>Canvas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

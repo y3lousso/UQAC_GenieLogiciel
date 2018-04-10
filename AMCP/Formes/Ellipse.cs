@@ -1,86 +1,100 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing.Drawing2D;
+using AMCP.InterfaceUtilisateur;
 
-namespace AMCP
+namespace AMCP.Formes
 {
-    public class Ellipse : Forme
+    internal class Ellipse : Forme
     {
-        int PetitRayon { get; set; }
-        int GrandRayon { get; set; }
-            
-        internal Ellipse(Point position, int rayon1, int rayon2)
-        {
-            Point center = new Point(position.X - rayon1 / 2, position.Y - rayon2 / 2);
-            this.Position = center;
+        int Largeur { get; set; } 
+        int Hauteur { get; set; } 
 
-            this.PetitRayon = rayon1;
-            this.GrandRayon = rayon2;
+        internal Ellipse(Point position, int largeur, int hauteur)
+        {
+            Point center = new Point(position.X - largeur / 2, position.Y - hauteur / 2);
+            this.ID = Canvas.prochainID();
+            this.Position = center;
+            this.Orientation = 0;
+            this.Largeur = largeur;
+            this.Hauteur = hauteur;
             this.Color = Color.Black;
+
+            if(Largeur == Hauteur)
+            {
+                this.Type = "Cercle";
+            }
+            else
+            {
+                this.Type = "Ellipse";
+            }
         }
 
         internal Ellipse(Point position, int rayon1, int rayon2, int r, int g, int b)
         {
+            this.ID = Canvas.prochainID();
             this.Position = position;
-            this.PetitRayon = rayon1;
-            this.GrandRayon = rayon2;
+            this.Orientation = 0;
+            this.Largeur = rayon1;
+            this.Hauteur = rayon2;
             this.Color = Color.FromArgb(255, r, g, b);
+
+            if (Largeur == Hauteur)
+            {
+                this.Type = "Cercle";
+            }
+            else
+            {
+                this.Type = "Ellipse";
+            }
         }
 
         internal override void Afficher()
         {
-            Canvas.instance.Graphic.DrawEllipse(new Pen(this.Color), this.Position.X, this.Position.Y, this.PetitRayon, this.GrandRayon);
+            if (!EstDehors(this.Position.X, this.Position.Y, 0, 0))  
+            { 
+                Matrix matrix = new Matrix();
 
-            // Fill with this.Color
-            SolidBrush brush = new SolidBrush(this.Color);
-            Canvas.instance.Graphic.FillEllipse(brush, this.Position.X, this.Position.Y, this.PetitRayon, this.GrandRayon);
+                //Rotate the graphics object the required amount around this point
+                matrix.RotateAt(this.Orientation, new PointF(Position.X + Largeur / 2, Position.Y + Hauteur / 2));
+                Canvas.instance.Graphic.Transform = matrix;
 
-            if (this.PetitRayon == this.GrandRayon)
-            {
-                Console.WriteLine("Un cercle a été dessiné.");
+                //Draw the rotated ellipse
+                Rectangle r = new Rectangle(Position.X, Position.Y, Largeur, Hauteur);
+                Canvas.instance.Graphic.FillEllipse(new SolidBrush(this.Color), r);
+                Console.WriteLine(Type + " " + ID + " : Affichage effectué.");
+
+                //Rotate back to normal around the same point</pre>
+                matrix.RotateAt(-this.Orientation, new PointF(Position.X + Largeur / 2, Position.Y + Hauteur / 2));
+                Canvas.instance.Graphic.Transform = matrix;
             }
             else
             {
-                Console.WriteLine("Une ellipse a été dessiné.");
+                Console.WriteLine(Type + " " + ID + " : Hors canvas.");
             }
         }
 
         public override Forme Dupliquer(int positionX, int positionY)
         {
-            Ellipse forme = new Ellipse(new Point(positionX, positionY), this.PetitRayon, this.GrandRayon);
+            Ellipse forme = new Ellipse(new Point(positionX, positionY), this.Largeur, this.Hauteur);
             forme.Color = this.Color;
+            forme.Orientation = this.Orientation;
             Canvas.instance.Formes.Add(forme);
+            Console.WriteLine(Type + " " + ID + " : Duplication réussie.");
             return forme;
-        }
-
-        public override void Colorier(int r, int g, int b)
-        {
-            this.Color = Color.FromArgb(255, r, g, b);
-        }
-
-        public override void Tourner(int angle)
-        {
-            // Different from other shape
         }
 
         public override void Deplacer(int positionX, int positionY)
         {
-            Point center = new Point(positionX - this.PetitRayon / 2, positionY - this.GrandRayon / 2);
-            if (!EstDehors(positionX, positionY, this.PetitRayon, this.GrandRayon))
-                this.Position = center;
-            else
-                Console.WriteLine("Déplacement impossible");
+            this.Position = new Point(positionX- Largeur/2, positionY- Hauteur/2);
+            Console.WriteLine(Type + " " + ID + " : Déplacement de (" + Position.X + ", " + Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué.");
         }
 
         public override void Dimensionner(float taille)
         {
-            this.PetitRayon = (int)(this.PetitRayon * taille);
-            this.GrandRayon = (int)(this.GrandRayon * taille);
+            this.Largeur = (int)(this.Largeur * taille);
+            this.Hauteur = (int)(this.Hauteur * taille);
+            Console.WriteLine(Type + " " + ID + " : Dimensionnement par un facteur " + taille + " effectué.");
         }
-        
-
     }
 }

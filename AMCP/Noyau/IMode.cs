@@ -5,14 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Threading;
+using AMCP.InterfaceUtilisateur;
+using AMCP.Formes;
 
-namespace AMCP
+namespace AMCP.Noyau
 {
     public abstract class IMode
     {
         private static IMode instance;
-        protected Canvas Canvas { get; set; } 
-        protected bool HistoriqueActions { get; set; }  
+        protected Canvas Canvas { get; set; } // TODO : Les variables protected sont en Camel
+        protected bool HistoriqueActions { get; set; }  // TODO : Les variables protected sont en Camel
         public Stylo Stylo { get; set; } 
 
         public IMode()
@@ -20,12 +22,14 @@ namespace AMCP
             if(instance == null)
             {
                 instance = this;
-                Canvas = new Canvas(1280, 720);
-                Stylo = new Stylo();
+                this.Canvas = new Canvas(1200, 700);
+                this.Stylo = new Stylo();
             }
             else
             {
-                throw new Exception("Can't create multiple instance of IMode");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Impossible de créer plusieurs instances de type Mode !");
+                Console.ResetColor();
             }
         }
 
@@ -36,12 +40,18 @@ namespace AMCP
 
         public void ListerContributeur()
         {
-
+            Console.Clear();
+            Console.WriteLine("////////////////// AMCP //////////////////");
+            Console.WriteLine("-------- Analyse fonctionnelle -----------");
+            Console.WriteLine("-------------- Conception ----------------");
+            Console.WriteLine("------------- Développement --------------");
+            Console.WriteLine("---------- Assurance Qualitée ------------");
         }
 
-        public void ChargerImage(string chemin, int positionX, int positionY)
+        public void ChangerDimension(int x, int y)
         {
-
+            Canvas.instance.Size = new Size(x, y);
+            Canvas.instance.Graphic = Canvas.instance.CreateGraphics();
         }
 
         /// <summary>
@@ -49,7 +59,7 @@ namespace AMCP
         /// </summary>
         public virtual void Afficher()
         {
-            foreach (Forme f in Canvas.Formes)
+            foreach (Forme f in this.Canvas.Formes)
             {
                 f.Afficher();
             }
@@ -61,7 +71,7 @@ namespace AMCP
         /// <param name="pasDeTemps"></param>
         public virtual void Afficher(int temps)
         {
-            foreach(Forme f in Canvas.Formes)
+            foreach(Forme f in this.Canvas.Formes)
             {             
                 System.Windows.Forms.Application.DoEvents();
                 f.Afficher();
@@ -83,7 +93,7 @@ namespace AMCP
         /// </summary>
         public virtual void NettoyerEcran()
         {
-            Canvas.instance.Graphic.Clear(Color.White);
+            this.Canvas.Graphic.Clear(Color.White);
         }
 
         /// <summary>
@@ -91,9 +101,8 @@ namespace AMCP
         /// </summary>
         public virtual void Pause()
         {
-            Console.WriteLine("Press any key to continue ...");
+            Console.WriteLine("Appuyez sur une touche pour continuer...");
             Console.ReadLine();
-            Console.WriteLine("Starting");
         }
 
     }
