@@ -8,7 +8,7 @@ namespace AMCP.Formes
 {
     internal class FormeLibre : Forme
     {
-        List<Point> Points { get; set; } = new List<Point>(); 
+        List<Point> Points { get; set; } = new List<Point>();
         int TailleStylo { get; set; }
 
         internal FormeLibre(List<Point> points, int taille)
@@ -16,7 +16,7 @@ namespace AMCP.Formes
             this.ID = Canvas.prochainID();
             this.Position = points[0];
             // Put all the points in the local base
-            foreach(Point p in points) 
+            foreach (Point p in points)
             {
                 this.Points.Add(new Point(p.X - Position.X, p.Y - Position.Y));
             }
@@ -26,7 +26,7 @@ namespace AMCP.Formes
             this.Type = "Forme    ";
         }
 
-        internal FormeLibre(List<Point> points, int taille, Color color )
+        internal FormeLibre(List<Point> points, int taille, Color color)
         {
             this.ID = Canvas.prochainID();
             this.Position = points[0];
@@ -79,32 +79,9 @@ namespace AMCP.Formes
             return forme;
         }
 
-        public override void Tourner(int angle)
+        public override void Dimensionner(float taille)
         {
-
-            double angleRadian = angle * Math.PI / 180f;
-            Point rotationAxe = this.Points[0];
-            Point tmpPoint;
-
-            for (int i = 1; i < Points.Count; i++)
-            {
-                int X = this.Points[i].X - rotationAxe.X;
-                int Y = this.Points[i].Y - rotationAxe.Y;
-
-                tmpPoint = new Point();
-                tmpPoint.X = (int)(rotationAxe.X + X * Math.Cos(angleRadian) - Y * Math.Sin(angleRadian));
-                tmpPoint.Y = (int)(rotationAxe.X + X * Math.Sin(angleRadian) + Y * Math.Cos(angleRadian));
-
-                Points[i] = tmpPoint;
-            }
-        }
-
-        internal override void Afficher()
-        {
-            Pen pen = new Pen(this.Color, this.TailleStylo);
-            Point point1;
-            Point point2;
-            for (int i = 0; i < this.Points.Count-1; i++)
+            for (int i = 0; i < Points.Count; i++)
             {
                 Point newPoint = new Point((int)(this.Points[i].X * taille), (int)(this.Points[i].Y * taille));
                 this.Points[i] = newPoint;

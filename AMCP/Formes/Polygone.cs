@@ -19,7 +19,7 @@ namespace AMCP.Formes
             this.Type = "Polygone";
         }
 
-        internal Polygone (Point position, List<Point> points, string type)
+        internal Polygone(Point position, List<Point> points, string type)
         {
             this.ID = Canvas.prochainID();
             this.Position = position;
@@ -30,9 +30,7 @@ namespace AMCP.Formes
 
         internal override void Afficher()
         {
-            Point point1;
-            Point point2;
-            for (int i = 0; i < Points.Count - 1; i++)
+            if (!EstDehors(this.Position.X, this.Position.Y, 0, 0))
             {
                 Matrix matrix = new Matrix();
 
@@ -61,7 +59,7 @@ namespace AMCP.Formes
             else
             {
                 Console.WriteLine(Type + " " + ID + " : Hors canvas.");
-            }            
+            }
         }
 
         public override Forme Dupliquer(int positionX, int positionY)
@@ -69,19 +67,13 @@ namespace AMCP.Formes
             Forme forme = new Polygone(this.Position, this.Points, this.Type);
             forme.Color = this.Color;
             forme.Orientation = this.Orientation;
-            Canvas.instance.Formes.Add(forme);           
+            Canvas.instance.Formes.Add(forme);
             Console.WriteLine(Type + " " + ID + " : Duplication réussie.");
             return forme;
-        }    
+        }
 
         public override void Dimensionner(float taille)
         {
-            double angleRadian = angle * Math.PI / 180f;
-            double v00 = Math.Cos(angleRadian); double v01 = Math.Sin(-angleRadian);
-            double v10 = Math.Sin(angleRadian); double v11 = Math.Cos(angleRadian);
-
-            Point tmpPoint = new Point();
-
             for (int i = 0; i < Points.Count; i++)
             {
                 Point newPoint = new Point((int)(this.Points[i].X * taille), (int)(this.Points[i].Y * taille));
@@ -98,27 +90,8 @@ namespace AMCP.Formes
             }
             else
             {
-                if (!EstDehors(positionX, positionY, 2 * this.Points[2].X, 2 * this.Points[2].X))
-                    this.Position = new Point(positionX, positionY);
-                else
-                    Console.WriteLine("Déplacement impossible");
+                this.Type = "Rectangle";
             }
-            else; //TODO : Etoile
-
-        }
-
-        public override void Dimensionner(float taille)
-        {
-            for (int i = 0; i < Points.Count; i++)
-            {
-                Point newPoint = new Point((int)(this.Points[i].X * taille), (int)(this.Points[i].Y * taille));
-                this.Points[i] = newPoint;
-            }
-        }
-
-        internal void SetRectangle(Point position, int largeur, int hauteur)
-        {
-            this.Position = position;
             this.Points.Add(new Point(-largeur / 2, -hauteur / 2)); // bottom left
             this.Points.Add(new Point(-largeur / 2, hauteur / 2));  // top left
             this.Points.Add(new Point(largeur / 2, hauteur / 2));   // top right
@@ -128,9 +101,9 @@ namespace AMCP.Formes
         internal void SetTriangle(int taille)
         {
             Type = "Triangle ";
-            this.Points.Add(new Point(-taille  , -taille )); // bottom left
+            this.Points.Add(new Point(-taille, -taille)); // bottom left
             this.Points.Add(new Point(0, taille));            // top
-            this.Points.Add(new Point(taille , -taille));   // bottom right
+            this.Points.Add(new Point(taille, -taille));   // bottom right
         }
 
         internal void SetLosange(int largeur, int hauteur)
@@ -144,7 +117,7 @@ namespace AMCP.Formes
 
         internal void SetEtoile(int rayonInterieur, int rayonExterieur, int nbSommet)
         {
-            this.Position = position;
+            Type = "Etoile   ";
             for (int i = 0; i < nbSommet; i++)
             {
                 double halfAngle = 2 * Math.PI / (2 * nbSommet); // the angle between outside and inside Points
@@ -161,7 +134,6 @@ namespace AMCP.Formes
                 this.Points.Add(v2);
             }
         }
-        
+
     }
 }
-
