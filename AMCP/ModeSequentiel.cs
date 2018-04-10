@@ -45,7 +45,7 @@ namespace AMCP
 
         public virtual int DessinerCercle(int positionX, int positionY, int rayon)
         {
-            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon);
+            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon, rayon); // TODO : renommer ellipse "p"
             if (!p.EstDehors(positionX, positionY, rayon, rayon))
             {
                 Canvas.Formes.Add(p);
@@ -112,7 +112,7 @@ namespace AMCP
 
         public virtual int DessinerEllipse(int positionX, int positionY, int rayon1, int rayon2)
         {
-            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon1, rayon2);
+            Ellipse p = new Ellipse(new Point(positionX, positionY), rayon1, rayon2); // TODO : renommer ellipse "p"
             if (!p.EstDehors(positionX, positionY, rayon1, rayon2 / 2))
             {
                 Canvas.Formes.Add(p);
