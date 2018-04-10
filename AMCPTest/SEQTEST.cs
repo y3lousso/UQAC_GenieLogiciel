@@ -1,5 +1,7 @@
 ﻿using System;
 using AMCP;
+using AMCP.InterfaceUtilisateur;
+using AMCP.Noyau;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AMCPTest
@@ -20,69 +22,69 @@ namespace AMCPTest
         }
 
         /************************************************************************************************************
-         * ********************************************* Pointeur ***************************************************
+         * ********************************************* Stylo ***************************************************
          * *********************************************************************************************************/
 
         [TestMethod]
-        public void SEQBaisserLeverPointeur()
+        public void SEQBaisserLeverStylo()
         {
             i = new ModeSequentiel();
             int testFormeLibre = -1;
-            i.Stylo.DescendrePointeur();
-            i.Stylo.LeverPointeur();
+            i.Stylo.DescendreStylo();
+            i.Stylo.LeverStylo();
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
 
         [TestMethod]
-        public void SEQAvancerPointeurDe50()
+        public void SEQAvancerStyloDe50()
         {
             i = new ModeSequentiel();
             int testFormeLibre = -1;
-            i.Stylo.DescendrePointeur();
+            i.Stylo.DescendreStylo();
             i.Stylo.Avancer(50);
-            i.Stylo.LeverPointeur();
+            i.Stylo.LeverStylo();
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
 
         [TestMethod]
-        public void SEQAvancerPointeurDe50SansBaisser()
+        public void SEQAvancerStyloDe50SansBaisser()
         {
             i = new ModeSequentiel();
             i.Stylo.Avancer(50);
         }
 
         [TestMethod]
-        public void SEQTournerPointeurDe90()
+        public void SEQTournerStyloDe90()
         {
             i = new ModeSequentiel();
             int testFormeLibre = -1;
-            i.Stylo.DescendrePointeur();
+            i.Stylo.DescendreStylo();
             i.Stylo.Avancer(50);
             i.Stylo.Tourner(90);
             i.Stylo.Avancer(50);
-            i.Stylo.LeverPointeur();
+            i.Stylo.LeverStylo();
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
 
         [TestMethod]
-        public void SEQTournerPointeurDe450()
+        public void SEQTournerStyloDe450()
         {
             i = new ModeSequentiel();
             int testFormeLibre = -1;
-            i.Stylo.DescendrePointeur();
+            i.Stylo.DescendreStylo();
             i.Stylo.Avancer(50);
             i.Stylo.Tourner(450);
             i.Stylo.Avancer(50);
-            i.Stylo.LeverPointeur();
+            i.Stylo.LeverStylo();
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
 
         [TestMethod]
-        public void SEQChangerCouleurPointeur()
+        public void SEQChangerCouleurStylo()
         {
             throw new Exception("Pas encore implémenté");
         }
@@ -96,7 +98,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testEllipse = -1;
-            testEllipse = i.DessinerRectangle(posXMid, posYMid, 100, 100);
+            testEllipse = i.CreerRectangle(posXMid, posYMid, 100, 100);
             Assert.AreNotEqual(-1, testEllipse);
             i.Afficher(displayTime);
         }
@@ -106,7 +108,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testEllipse = -1;
-            testEllipse = i.DessinerCercle(posXMid, posYMid, 20);
+            testEllipse = i.CreerCercle(posXMid, posYMid, 20);
             Assert.AreNotEqual(-1, testEllipse);
             i.Afficher(displayTime);
         }
@@ -116,7 +118,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerRectangle(posXMid, posYMid, 50, 100);
+            testPolygone = i.CreerRectangle(posXMid, posYMid, 50, 100);
             i.Afficher(displayTime);
             Assert.AreNotEqual(-1, testPolygone);
             i.Afficher(displayTime); // Pourquoi l'afficher deux fois ?
@@ -127,7 +129,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerEtoile(posXMid, posYMid, 40, 80, 5);
+            testPolygone = i.CreerEtoile(posXMid, posYMid, 40, 80, 5);
             i.Afficher(displayTime);
             Assert.AreNotEqual(-1, testPolygone);
             i.Afficher(displayTime); // Pourquoi l'afficher deux fois ?
@@ -138,7 +140,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testEllipse = -1;
-            testEllipse = i.DessinerEllipse(posXMid, posYMid, 50, 80);
+            testEllipse = i.CreerEllipse(posXMid, posYMid, 50, 80);
             Assert.AreNotEqual(-1, testEllipse);
             i.Afficher(displayTime);
         }
@@ -148,7 +150,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerTriangle(posXMid, posYMid, 20);
+            testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
             Assert.AreNotEqual(-1, testPolygone);
             i.Afficher(displayTime);
 
@@ -159,13 +161,13 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testTriangleLibre = -1;
-            i.Stylo.DescendrePointeur();
+            i.Stylo.DescendreStylo();
             i.Stylo.Avancer(50);
             i.Stylo.Tourner(30);
             i.Stylo.Avancer(50);
             i.Stylo.Tourner(30);
             i.Stylo.Avancer(50);
-            i.Stylo.LeverPointeur();
+            i.Stylo.LeverStylo();
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
@@ -179,7 +181,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testEllipse = -1;
-            testEllipse = i.DessinerRectangle(posXMid, posYMid, 10000, 10000);
+            testEllipse = i.CreerRectangle(posXMid, posYMid, 10000, 10000);
             Assert.AreEqual(-1, testEllipse);
             i.Afficher(displayTime);
         }
@@ -189,7 +191,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testEllipse = -1;
-            testEllipse = i.DessinerCercle(posXMid, posYMid, 200000);
+            testEllipse = i.CreerCercle(posXMid, posYMid, 200000);
             Assert.AreEqual(-1, testEllipse);
             i.Afficher(displayTime);
         }
@@ -199,7 +201,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerRectangle(posXMid, posYMid, 500000, 10000000);
+            testPolygone = i.CreerRectangle(posXMid, posYMid, 500000, 10000000);
             i.Afficher(displayTime);
             Assert.AreEqual(-1, testPolygone);
             i.Afficher(displayTime);
@@ -210,7 +212,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerEtoile(posXMid, posYMid, 40000, 80000, 5);
+            testPolygone = i.CreerEtoile(posXMid, posYMid, 40000, 80000, 5);
             i.Afficher(displayTime);
             Assert.AreEqual(-1, testPolygone);
             i.Afficher(displayTime);
@@ -221,7 +223,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testEllipse = -1;
-            testEllipse = i.DessinerEllipse(posXMid, posYMid, 50000, 80000);
+            testEllipse = i.CreerEllipse(posXMid, posYMid, 50000, 80000);
             Assert.AreEqual(-1, testEllipse);
             i.Afficher(displayTime);
         }
@@ -232,7 +234,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerTriangle(posXMid, posYMid, 200000);
+            testPolygone = i.CreerTriangle(posXMid, posYMid, 200000);
             Assert.AreEqual(-1, testPolygone);
             i.Afficher(displayTime);
 
@@ -243,9 +245,9 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testFormeLibre = -1;
-            i.Stylo.DescendrePointeur();
+            i.Stylo.DescendreStylo();
             i.Stylo.Avancer(20000);
-            i.Stylo.LeverPointeur();
+            i.Stylo.LeverStylo();
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
@@ -260,7 +262,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerTriangle(posXMid, posYMid, 20);
+            testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
             Assert.AreNotEqual(-1, testPolygone);
             int polygoneDuplique = i.Dupliquer(testPolygone, posXMid + 30, posYMid + 30);
             Assert.AreNotEqual(testPolygone, polygoneDuplique);
@@ -272,7 +274,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testCercle = -1;
-            testCercle = i.DessinerCercle(posXMid, posYMid, 20);
+            testCercle = i.CreerCercle(posXMid, posYMid, 20);
             Assert.AreNotEqual(-1, testCercle);
             int cercleDuplique = i.Dupliquer(testCercle, posXMid + 30, posYMid + 30);
             Assert.AreNotEqual(testCercle, cercleDuplique);
@@ -289,7 +291,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerTriangle(posXMid, posYMid, 20);
+            testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
             Assert.AreNotEqual(-1, testPolygone);
             i.Afficher(displayTime);
             i.NettoyerEcran();
@@ -311,7 +313,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerRectangle(posXMid, posYMid, 100, 100);
+            testPolygone = i.CreerRectangle(posXMid, posYMid, 100, 100);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Tourner(testPolygone, -300000);
@@ -324,7 +326,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerTriangle(posXMid, posYMid, 20);
+            testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Tourner(testPolygone, 30);
@@ -337,7 +339,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerEtoile(posXMid, posYMid, 30, 50, 5);
+            testPolygone = i.CreerEtoile(posXMid, posYMid, 30, 50, 5);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Tourner(testPolygone, -300000);
@@ -350,7 +352,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerLosange(posXMid, posYMid, 30, 50);
+            testPolygone = i.CreerLosange(posXMid, posYMid, 30, 50);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Tourner(testPolygone, -300000);
@@ -363,7 +365,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testEllipse = -1;
-            testEllipse = i.DessinerEllipse(posXMid, posYMid, 50, 80);
+            testEllipse = i.CreerEllipse(posXMid, posYMid, 50, 80);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Tourner(testEllipse, -30);
@@ -375,7 +377,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerRectangle(posXMid, posYMid, 100, 100);
+            testPolygone = i.CreerRectangle(posXMid, posYMid, 100, 100);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Deplacer(testPolygone, 200, 200);
@@ -387,7 +389,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerTriangle(posXMid, posYMid, 20);
+            testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Deplacer(testPolygone, 200, 200);
@@ -399,7 +401,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerEtoile(posXMid, posYMid, 30, 50, 5);
+            testPolygone = i.CreerEtoile(posXMid, posYMid, 30, 50, 5);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Deplacer(testPolygone, 200, 200);
@@ -411,7 +413,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerLosange(posXMid, posYMid, 30, 50);
+            testPolygone = i.CreerLosange(posXMid, posYMid, 30, 50);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Deplacer(testPolygone, 200, 200);
@@ -423,7 +425,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testEllipse = -1;
-            testEllipse = i.DessinerEllipse(posXMid, posYMid, 50, 80);
+            testEllipse = i.CreerEllipse(posXMid, posYMid, 50, 80);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Deplacer(testEllipse, 200, 200);
@@ -435,7 +437,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerRectangle(posXMid, posYMid, 100, 100);
+            testPolygone = i.CreerRectangle(posXMid, posYMid, 100, 100);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Dimensionner(testPolygone, 2);
@@ -447,7 +449,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerTriangle(posXMid, posYMid, 90);
+            testPolygone = i.CreerTriangle(posXMid, posYMid, 90);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Dimensionner(testPolygone, 2);
@@ -459,7 +461,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerEtoile(posXMid, posYMid, 30, 50, 5);
+            testPolygone = i.CreerEtoile(posXMid, posYMid, 30, 50, 5);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Dimensionner(testPolygone, 2);
@@ -471,7 +473,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.DessinerLosange(posXMid, posYMid, 30, 50);
+            testPolygone = i.CreerLosange(posXMid, posYMid, 30, 50);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Dimensionner(testPolygone, 2);
@@ -484,7 +486,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testEllipse = -1;
-            testEllipse = i.DessinerEllipse(posXMid, posYMid, 50, 80);
+            testEllipse = i.CreerEllipse(posXMid, posYMid, 50, 80);
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.Dimensionner(testEllipse, 2);
