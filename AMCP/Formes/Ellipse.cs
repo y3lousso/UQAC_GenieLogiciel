@@ -22,11 +22,11 @@ namespace AMCP.Formes
 
             if(Largeur == Hauteur)
             {
-                this.Type = "Cercle";
+                this.Type = "Cercle   ";
             }
             else
             {
-                this.Type = "Ellipse";
+                this.Type = "Ellipse  ";
             }
         }
 
@@ -41,11 +41,11 @@ namespace AMCP.Formes
 
             if (Largeur == Hauteur)
             {
-                this.Type = "Cercle";
+                this.Type = "Cercle   ";
             }
             else
             {
-                this.Type = "Ellipse";
+                this.Type = "Ellipse  ";
             }
         }
 

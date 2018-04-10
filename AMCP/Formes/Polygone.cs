@@ -84,7 +84,14 @@ namespace AMCP.Formes
 
         internal void SetRectangle(int largeur, int hauteur)
         {
-            Type = "Rectangle";
+            if (largeur == hauteur)
+            {
+                this.Type = "Carre    ";
+            }
+            else
+            {
+                this.Type = "Rectangle";
+            }
             this.Points.Add(new Point(-largeur / 2, -hauteur / 2)); // bottom left
             this.Points.Add(new Point(-largeur / 2, hauteur / 2));  // top left
             this.Points.Add(new Point(largeur / 2, hauteur / 2));   // top right
@@ -93,7 +100,7 @@ namespace AMCP.Formes
 
         internal void SetTriangle(int taille)
         {
-            Type = "Triangle";
+            Type = "Triangle ";
             this.Points.Add(new Point(-taille  , -taille )); // bottom left
             this.Points.Add(new Point(0, taille));            // top
             this.Points.Add(new Point(taille , -taille));   // bottom right
@@ -101,7 +108,7 @@ namespace AMCP.Formes
 
         internal void SetLosange(int largeur, int hauteur)
         {
-            Type = "Losange";
+            Type = "Losange  ";
             this.Points.Add(new Point(-largeur / 2, 0)); // left
             this.Points.Add(new Point(0, hauteur / 2));  // top
             this.Points.Add(new Point(largeur / 2, 0));   // right
@@ -110,7 +117,7 @@ namespace AMCP.Formes
 
         internal void SetEtoile(int rayonInterieur, int rayonExterieur, int nbSommet)
         {
-            Type = "Etoile";
+            Type = "Etoile   ";
             for (int i = 0; i < nbSommet; i++)
             {
                 double halfAngle = 2 * Math.PI / (2 * nbSommet); // the angle between outside and inside Points

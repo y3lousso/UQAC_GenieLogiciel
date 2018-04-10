@@ -18,7 +18,7 @@ namespace AMCP.Formes
             this.Color = Color.Black;
             this.TaillePolice = taillePolice;
             this.Contenu = contenu;
-            this.Type = "Texte";
+            this.Type = "Texte    ";
         }
 
         internal override void Afficher()

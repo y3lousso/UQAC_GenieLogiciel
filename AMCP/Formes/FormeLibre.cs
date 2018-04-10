@@ -23,7 +23,7 @@ namespace AMCP.Formes
             this.Points = points;
             this.Color = Color.Black;
             this.TailleStylo = taille;
-            this.Type = "Forme libre";
+            this.Type = "Forme    ";
         }
 
         internal FormeLibre(List<Point> points, int taille, Color color )
@@ -36,7 +36,7 @@ namespace AMCP.Formes
             }
             this.Color = color;
             this.TailleStylo = taille;
-            this.Type = "Forme libre";
+            this.Type = "Forme    ";
         }
 
         internal override void Afficher()

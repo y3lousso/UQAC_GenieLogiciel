@@ -16,14 +16,14 @@ namespace AMCP.Formes
             this.Position = position;
             this.ImageName = imageName;
             this.CurrentImage = (Bitmap)System.Drawing.Image.FromFile(this.ImageName);
-            this.Type = "Image"; 
+            this.Type = "Image    "; 
         }
 
         internal override void Afficher()
         {
             if(CurrentImage == null)
             {
-                Console.WriteLine("Image "+ ID + " : Chargement de l'image erroné.");
+                Console.WriteLine(Type + " " + ID + " : Chargement de l'image erroné.");
             }
             else if(!EstDehors(Position.X,Position.Y, 0, 0)) // TODO : centrer l'image sur la position
             {
@@ -59,7 +59,7 @@ namespace AMCP.Formes
         public override void Colorier(int r, int g, int b)
         {
             base.Colorier(r, g, b);
-            Console.WriteLine("Image "+ ID + " : Impossible d'appliquer un filtre de couleur. (Non implémenté)");
+            Console.WriteLine(Type + " " + ID + " : Impossible d'appliquer un filtre de couleur. (Non implémenté)");
         }
 
         public override void Dimensionner(float taille)
