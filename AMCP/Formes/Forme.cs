@@ -1,36 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AMCP.InterfaceUtilisateur;
 
-namespace AMCP
+namespace AMCP.Formes
 {
     public abstract class Forme
     {
-        int Id { get; set; } // TODO : Les abréviations sont en UPPER
+        public int ID { get; protected set; }
         public Point Position { get; internal set; }
+        public int Orientation { get; internal set; }
         public Color Color { get; internal set; }
+        public string Type { get; set; } = "Forme";
 
         internal abstract void Afficher();
 
         public abstract Forme Dupliquer(int positionX, int positionY);
 
-        public abstract void Colorier(int r, int g, int b);
+        public virtual void Colorier(int r, int g, int b)
+        {
+            this.Color = Color.FromArgb(255, r, g, b);
+            Console.WriteLine(Type + " " + ID + " : Couleur changée.");
+        }
 
-        public abstract void Deplacer(int positionX, int positionY);
+        public virtual void Deplacer(int positionX, int positionY)
+        {
+            this.Position = new Point(positionX, positionY);
+            Console.WriteLine(Type + " " + ID + " : Déplacement de (" + Position.X + ", " + Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué.");
+        }
 
         public abstract void Dimensionner(float taille);
 
-        public abstract void Tourner(int angle);
-
-        //public abstract void Supprimer();
-
-        public int GetId()
+        public virtual void Tourner(int angle)
         {
-            return Id;
+            this.Orientation += angle;
+            Console.WriteLine(Type + " " + ID + " : Rotation d'un angle de " + angle + "(degrées) effectuée.");
         }
+
         internal Boolean EstDehors(float positionX, float positionY, float tailleX, float tailleY)
         {
             if (positionX - tailleX / 2 < 0
