@@ -14,8 +14,8 @@ namespace AMCPTest
     {
         ModeOrienteObjet i;
         Int32 displayTime = 2;
-        int posXMid = 1280 / 2;
-        int posYMid = 720 / 2;
+        int posXMid = 1200 / 2;
+        int posYMid = 700 / 2;
 
         [TestInitialize()]
         public void Initialize()
@@ -182,9 +182,9 @@ namespace AMCPTest
         {
             i = new ModeOrienteObjet();
             AMCP.Formes.Forme testPolygone = null;
-            testPolygone = i.CreerRectangle(posXMid, posYMid, 10000, 10000);
-            Assert.AreEqual(null, testPolygone);
+            testPolygone = i.CreerRectangle(posXMid+1000, posYMid+1000, 10000, 10000);
             i.Afficher(displayTime);
+            Assert.AreEqual(null, testPolygone);
         }
 
         [TestMethod]
@@ -192,9 +192,9 @@ namespace AMCPTest
         {
             i = new ModeOrienteObjet();
             AMCP.Formes.Forme testEllipse = null;
-            testEllipse = i.CreerCercle(posXMid, posYMid, 20000);
-            Assert.AreEqual(null, testEllipse);
+            testEllipse = i.CreerCercle(posXMid + 1000, posYMid + 1000, 20000);
             i.Afficher(displayTime);
+            Assert.AreEqual(null, testEllipse);
         }
 
         [TestMethod]
@@ -202,9 +202,9 @@ namespace AMCPTest
         {
             i = new ModeOrienteObjet();
             AMCP.Formes.Forme testPolygone = null;
-            testPolygone = i.CreerRectangle(posXMid, posYMid, 50000, 100000);
-            Assert.AreEqual(null, testPolygone);
+            testPolygone = i.CreerRectangle(posXMid + 1000, posYMid + 1000, 50000, 100000);
             i.Afficher(displayTime);
+            Assert.AreEqual(null, testPolygone);
         }
 
         [TestMethod]
@@ -212,9 +212,9 @@ namespace AMCPTest
         {
             i = new ModeOrienteObjet();
             AMCP.Formes.Forme testPolygone = null;
-            testPolygone = i.CreerEtoile(posXMid, posYMid, 40000, 80000, 5);
-            Assert.AreEqual(null, testPolygone);
+            testPolygone = i.CreerEtoile(posXMid + 1000, posYMid + 1000, 40000, 80000, 5);
             i.Afficher(displayTime);
+            Assert.AreEqual(null, testPolygone);
         }
 
         [TestMethod]
@@ -222,9 +222,9 @@ namespace AMCPTest
         {
             i = new ModeOrienteObjet();
             AMCP.Formes.Forme testEllipse = null;
-            testEllipse = i.CreerEllipse(posXMid, posYMid, 50000, 80000);
-            Assert.AreEqual(null, testEllipse);
+            testEllipse = i.CreerEllipse(posXMid + 1000, posYMid + 1000, 50000, 80000);
             i.Afficher(displayTime);
+            Assert.AreEqual(null, testEllipse);
         }
 
         [TestMethod]
@@ -232,9 +232,9 @@ namespace AMCPTest
         {
             i = new ModeOrienteObjet();
             AMCP.Formes.Forme testPolygone = null;
-            testPolygone = i.CreerTriangle(posXMid, posYMid, 20000);
-            Assert.AreEqual(null, testPolygone);
+            testPolygone = i.CreerTriangle(posXMid + 1000, posYMid + 1000, 20000);
             i.Afficher(displayTime);
+            Assert.AreEqual(null, testPolygone);
         }
 
         [TestMethod]
@@ -244,8 +244,8 @@ namespace AMCPTest
             i.Stylo.DescendreStylo();
             i.Stylo.Avancer(20000);
             AMCP.Formes.Forme testFormeLibre = i.Stylo.LeverStylo();
-            Assert.AreEqual(null, testFormeLibre);
             i.Afficher(displayTime);
+            Assert.AreEqual(null, testFormeLibre);
         }
 
         /************************************************************************************************************

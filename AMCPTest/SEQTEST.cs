@@ -11,8 +11,8 @@ namespace AMCPTest
     {
         ModeSequentiel i;
         Int32 displayTime = 2;
-        int posXMid = 1280 / 2;
-        int posYMid = 720 / 2;
+        int posXMid = 1200 / 2;
+        int posYMid = 700 / 2;
 
         [TestInitialize()]
         public void Initialize()
@@ -181,9 +181,9 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testEllipse = -1;
-            testEllipse = i.CreerRectangle(posXMid, posYMid, 10000, 10000);
-            Assert.AreEqual(-1, testEllipse);
+            testEllipse = i.CreerRectangle(posXMid + 1000, posYMid + 1000, 10000, 10000);
             i.Afficher(displayTime);
+            Assert.AreEqual(-1, testEllipse);
         }
 
         [TestMethod]
@@ -191,9 +191,9 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testEllipse = -1;
-            testEllipse = i.CreerCercle(posXMid, posYMid, 200000);
-            Assert.AreEqual(-1, testEllipse);
+            testEllipse = i.CreerCercle(posXMid + 1000, posYMid + 1000, 200000);
             i.Afficher(displayTime);
+            Assert.AreEqual(-1, testEllipse);
         }
 
         [TestMethod]
@@ -201,10 +201,9 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.CreerRectangle(posXMid, posYMid, 500000, 10000000);
+            testPolygone = i.CreerRectangle(posXMid + 1000, posYMid + 1000, 500000, 10000000);
             i.Afficher(displayTime);
             Assert.AreEqual(-1, testPolygone);
-            i.Afficher(displayTime);
         }
 
         [TestMethod]
@@ -212,10 +211,9 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.CreerEtoile(posXMid, posYMid, 40000, 80000, 5);
+            testPolygone = i.CreerEtoile(posXMid + 1000, posYMid + 1000, 40000, 80000, 5);
             i.Afficher(displayTime);
             Assert.AreEqual(-1, testPolygone);
-            i.Afficher(displayTime);
         }
 
         [TestMethod]
@@ -223,9 +221,9 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testEllipse = -1;
-            testEllipse = i.CreerEllipse(posXMid, posYMid, 50000, 80000);
-            Assert.AreEqual(-1, testEllipse);
+            testEllipse = i.CreerEllipse(posXMid + 1000, posYMid + 1000, 50000, 80000);
             i.Afficher(displayTime);
+            Assert.AreEqual(-1, testEllipse);
         }
 
         // Pas développée
@@ -234,9 +232,9 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testPolygone = -1;
-            testPolygone = i.CreerTriangle(posXMid, posYMid, 200000);
-            Assert.AreEqual(-1, testPolygone);
+            testPolygone = i.CreerTriangle(posXMid + 1000, posYMid + 1000, 200000);
             i.Afficher(displayTime);
+            Assert.AreEqual(-1, testPolygone);
 
         }
 
