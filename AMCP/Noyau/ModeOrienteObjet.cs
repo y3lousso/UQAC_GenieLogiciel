@@ -60,7 +60,8 @@ namespace AMCP.Noyau
             Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
             return f;
         }
-
+        
+        //TODO : La forme ne s'affiche pas lorsquelle est centrée sur le canvas avec un rayon de 20000
         public virtual Forme CreerCercle(int positionX, int positionY, int rayon)
         {
             Forme f = new Ellipse(new Point(positionX, positionY), rayon, rayon);
@@ -68,7 +69,8 @@ namespace AMCP.Noyau
             Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
             return f;
         }
-
+        
+        //TODO : La forme ne s'affiche pas lorsquelle est centrée sur le canvas avec un rayon1 de 50000 et rayon2 de 80000
         public virtual Forme CreerEllipse(int positionX, int positionY, int rayon1, int rayon2)
         {
             Forme f = new Ellipse(new Point(positionX, positionY), rayon1, rayon2); // TODO : renommer ellipse "p"
