@@ -261,7 +261,7 @@ namespace AMCPTest
             i = new ModeSequentiel();
             int testPolygone = -1;
             testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
-            Assert.AreNotEqual(-1, testPolygone);
+            Assert.IsTrue(testPolygone > 0);
             int polygoneDuplique = i.Dupliquer(testPolygone, posXMid + 30, posYMid + 30);
             Assert.AreNotEqual(testPolygone, polygoneDuplique);
             i.Afficher(displayTime);
@@ -273,31 +273,38 @@ namespace AMCPTest
             i = new ModeSequentiel();
             int testCercle = -1;
             testCercle = i.CreerCercle(posXMid, posYMid, 20);
-            Assert.AreNotEqual(-1, testCercle);
+            Assert.IsTrue(testCercle > 0);
             int cercleDuplique = i.Dupliquer(testCercle, posXMid + 30, posYMid + 30);
             Assert.AreNotEqual(testCercle, cercleDuplique);
             i.Afficher(displayTime);
         }
 
         /************************************************************************************************************
-         * ************************************** Nettoyer/Reinitialiser Canvas ***********************************************************
+         * ************************************** Reinitialiser Canvas ***********************************************************
          * *********************************************************************************************************/
-
-
-        [TestMethod]
-        public void SEQNettoyerCanvas()
-        {
-            i = new ModeSequentiel();
-            int testPolygone = -1;
-            testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
-            Assert.AreNotEqual(-1, testPolygone);
-            i.Afficher(displayTime);
-            i.NettoyerEcran();
-            i.Attendre(displayTime);
-        }
 
         [TestMethod]
         public void SEQReinitialiserCanvas()
+        {
+            throw new Exception("Pas encore développé");
+        }
+
+
+        /************************************************************************************************************
+         * ************************************** Ecrire Texte/Importer Image ***********************************************************
+         * *********************************************************************************************************/
+
+        [TestMethod]
+        public void SEQEcrireTexte()
+        {
+            i = new ModeSequentiel();
+            int texte = i.CreerTexte(posXMid, posYMid, 60, "THIS IS A TEST");
+            Assert.IsTrue(texte > 0);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void SEQImporterImage()
         {
             throw new Exception("Pas encore développé");
         }

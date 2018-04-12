@@ -1,4 +1,6 @@
 ﻿using System;
+using AMCP.InterfaceUtilisateur;
+using AMCP.Noyau;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AMCPTest
@@ -6,16 +8,38 @@ namespace AMCPTest
     [TestClass]
     public class COMTEST
     {
+        ModeSequentiel i;
+        Int32 displayTime = 2;
+        int posXMid = 1200 / 2;
+        int posYMid = 700 / 2;
+
+        [TestInitialize()]
+        public void Initialize()
+        {
+            new PrivateType(typeof(IMode)).SetStaticField("instance", null);
+            new PrivateType(typeof(Canvas)).SetStaticField("instance", null);
+        }
+
+
         [TestMethod]
         public void COMListerContributeur()
         {
             throw new Exception("Pas encore développé");
         }
 
+
         [TestMethod]
-        public void COMEcrireTexte()
+        public void COMNettoyerCanvas()
         {
-            throw new Exception("Pas encore développé");
+            i = new ModeSequentiel();
+            int testPolygone = -1;
+            testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
+            Assert.IsTrue(testPolygone > 0);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            i.Attendre(displayTime);
         }
     }
+
+
 }
