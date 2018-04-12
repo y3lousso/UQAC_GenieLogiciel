@@ -10,6 +10,8 @@ namespace AMCP.Noyau
 {
     public class ModeSequentiel : IMode
     {
+        //TODO : Manque EffacerForme(int id) et CouleurStylo(int rouge, int vert, int bleu)
+        
         public virtual int CreerCarre(int positionX, int positionY, int taille)
         {
             Polygone f = new Polygone(new Point(positionX, positionY));
