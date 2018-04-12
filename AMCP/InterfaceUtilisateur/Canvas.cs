@@ -40,7 +40,9 @@ namespace AMCP.InterfaceUtilisateur
                 throw new Exception("Impossible de créer plusieurs instances du Canvas !");
             }
         }
-
+        
+        //TODO : Manque NettoyerCanvas() et EffacerForme(int index)
+        
         public void ChangerDimension(int sizeX, int sizeY)
         {
             this.Size = new Size(sizeX, sizeY);
