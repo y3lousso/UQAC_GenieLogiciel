@@ -9,7 +9,7 @@ namespace AMCP.Formes
     internal class Polygone : Forme
     {
         // local position of each point
-        List<Point> Points { get; set; } = new List<Point>();
+        List<Point> Points { get; set; } = new List<Point>(); // TODO : Déplacer le commentaire ici (cf 4.2)
 
         internal Polygone(Point position)
         {
@@ -50,7 +50,7 @@ namespace AMCP.Formes
 
                 graphPath.AddPolygon(absolutePoints.ToArray());
                 Canvas.instance.Graphic.FillPath(brush, graphPath);
-                Console.WriteLine(Type + " " + ID + " : Affichage effectué.");
+                Console.WriteLine(Type + " " + ID + " : Affichage effectué."); // TODO : this
 
                 //Rotate back to normal around the same point</pre>
                 matrix.RotateAt(-this.Orientation, new PointF(Position.X, Position.Y));
@@ -68,7 +68,7 @@ namespace AMCP.Formes
             forme.Color = this.Color;
             forme.Orientation = this.Orientation;
             Canvas.instance.Formes.Add(forme);           
-            Console.WriteLine(Type + " " + ID + " : Duplication réussie.");
+            Console.WriteLine(Type + " " + ID + " : Duplication réussie."); // TODO : this
             return forme;
         }    
 
@@ -79,7 +79,7 @@ namespace AMCP.Formes
                 Point newPoint = new Point((int)(this.Points[i].X * taille), (int)(this.Points[i].Y * taille));
                 this.Points[i] = newPoint;
             }
-            Console.WriteLine(Type + " " + ID + " : Dimensionnement par un facteur " + taille + " effectué.");
+            Console.WriteLine(Type + " " + ID + " : Dimensionnement par un facteur " + taille + " effectué."); // TODO : this
         }
 
         internal void SetRectangle(int largeur, int hauteur)
@@ -100,7 +100,7 @@ namespace AMCP.Formes
 
         internal void SetTriangle(int taille)
         {
-            Type = "Triangle ";
+            Type = "Triangle "; // TODO : this.Type
             this.Points.Add(new Point(-taille  , -taille )); // bottom left
             this.Points.Add(new Point(0, taille));            // top
             this.Points.Add(new Point(taille , -taille));   // bottom right
@@ -108,7 +108,7 @@ namespace AMCP.Formes
 
         internal void SetLosange(int largeur, int hauteur)
         {
-            Type = "Losange  ";
+            Type = "Losange  "; // TODO : this.Type
             this.Points.Add(new Point(-largeur / 2, 0)); // left
             this.Points.Add(new Point(0, hauteur / 2));  // top
             this.Points.Add(new Point(largeur / 2, 0));   // right
@@ -117,7 +117,7 @@ namespace AMCP.Formes
 
         internal void SetEtoile(int rayonInterieur, int rayonExterieur, int nbSommet)
         {
-            Type = "Etoile   ";
+            Type = "Etoile   "; // TODO : this.Type
             for (int i = 0; i < nbSommet; i++)
             {
                 double halfAngle = 2 * Math.PI / (2 * nbSommet); // the angle between outside and inside Points

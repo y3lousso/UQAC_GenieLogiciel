@@ -13,8 +13,8 @@ namespace AMCP.Noyau
     public abstract class IMode
     {
         private static IMode instance;
-        protected Canvas Canvas { get; set; } // TODO : Les variables protected sont en Camel
-        protected bool HistoriqueActions { get; set; }  // TODO : Les variables protected sont en Camel
+        protected Canvas Canvas { get; set; } 
+        protected bool HistoriqueActions { get; set; } 
         public Stylo Stylo { get; set; } 
 
         public IMode()

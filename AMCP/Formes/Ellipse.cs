@@ -62,7 +62,7 @@ namespace AMCP.Formes
                 //Draw the rotated ellipse
                 Rectangle r = new Rectangle(Position.X-Largeur/2, Position.Y-Hauteur/2, Largeur, Hauteur);
                 Canvas.instance.Graphic.FillEllipse(new SolidBrush(this.Color), r);
-                Console.WriteLine(Type + " " + ID + " : Affichage effectué.");
+                Console.WriteLine(Type + " " + ID + " : Affichage effectué."); // TODO : this
 
                 //Rotate back to normal around the same point</pre>
                 matrix.RotateAt(-this.Orientation, new PointF(Position.X, Position.Y));
@@ -70,7 +70,7 @@ namespace AMCP.Formes
             }
             else
             {
-                Console.WriteLine(Type + " " + ID + " : Hors canvas.");
+                Console.WriteLine(Type + " " + ID + " : Hors canvas."); // TODO : this
             }
         }
 
@@ -80,21 +80,21 @@ namespace AMCP.Formes
             forme.Color = this.Color;
             forme.Orientation = this.Orientation;
             Canvas.instance.Formes.Add(forme);
-            Console.WriteLine(Type + " " + ID + " : Duplication réussie.");
+            Console.WriteLine(Type + " " + ID + " : Duplication réussie."); // TODO : this
             return forme;
         }
 
         public override void Deplacer(int positionX, int positionY)
         {
             this.Position = new Point(positionX, positionY);
-            Console.WriteLine(Type + " " + ID + " : Déplacement de (" + Position.X + ", " + Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué.");
+            Console.WriteLine(Type + " " + ID + " : Déplacement de (" + Position.X + ", " + Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué."); // TODO : this
         }
 
         public override void Dimensionner(float taille)
         {
             this.Largeur = (int)(this.Largeur * taille);
             this.Hauteur = (int)(this.Hauteur * taille);
-            Console.WriteLine(Type + " " + ID + " : Dimensionnement par un facteur " + taille + " effectué.");
+            Console.WriteLine(Type + " " + ID + " : Dimensionnement par un facteur " + taille + " effectué."); // TODO : this
         }
     }
 }

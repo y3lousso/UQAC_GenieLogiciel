@@ -19,13 +19,13 @@ namespace AMCP.Formes
         public virtual void Colorier(int r, int g, int b)
         {
             this.Color = Color.FromArgb(255, r, g, b);
-            Console.WriteLine(Type + " " + ID + " : Couleur changée.");
+            Console.WriteLine(Type + " " + ID + " : Couleur changée."); // TODO : this
         }
 
         public virtual void Deplacer(int positionX, int positionY)
         {
             this.Position = new Point(positionX, positionY);
-            Console.WriteLine(Type + " " + ID + " : Déplacement de (" + Position.X + ", " + Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué.");
+            Console.WriteLine(Type + " " + ID + " : Déplacement de (" + Position.X + ", " + Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué."); // TODO : this
         }
 
         public abstract void Dimensionner(float taille);
@@ -33,7 +33,7 @@ namespace AMCP.Formes
         public virtual void Tourner(int angle)
         {
             this.Orientation += angle;
-            Console.WriteLine(Type + " " + ID + " : Rotation d'un angle de " + angle + "(degrées) effectuée.");
+            Console.WriteLine(Type + " " + ID + " : Rotation d'un angle de " + angle + "(degrées) effectuée."); // TODO : this
         }
 
         internal Boolean EstDehors(float positionX, float positionY, float tailleX, float tailleY)

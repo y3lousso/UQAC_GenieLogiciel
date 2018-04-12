@@ -67,7 +67,7 @@ namespace AMCP.Formes
             int newWidth = (int)(this.CurrentImage.Width * taille);
             int newHeight = (int)(this.CurrentImage.Height * taille);
             this.CurrentImage = new Bitmap(this.CurrentImage, new Size(newWidth, newHeight) );
-            Console.WriteLine(Type + " " + ID + " : Dimensionnement par un facteur " + taille + " effectué.");
+            Console.WriteLine(Type + " " + ID + " : Dimensionnement par un facteur " + taille + " effectué."); // TODO : this
         }
     }
 }

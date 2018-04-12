@@ -13,9 +13,9 @@ namespace AMCP.InterfaceUtilisateur
     public class Canvas : Form
     {
         internal static Canvas instance;
-        internal Graphics Graphic { get; set; } // TODO : Les internal sont en Camel
+        internal Graphics Graphic { get; set; } 
 
-        internal List<Forme> Formes { get; set; } // TODO : Les internal sont en Camel
+        internal List<Forme> Formes { get; set; } 
 
         private static int dernierID;
 
