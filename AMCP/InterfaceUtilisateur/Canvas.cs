@@ -19,7 +19,7 @@ namespace AMCP.InterfaceUtilisateur
 
         private static int dernierID;
 
-        public Canvas(int sizeX, int sizeY)
+        internal Canvas(int sizeX, int sizeY)
         {
             if (instance == null)
             {
@@ -40,15 +40,23 @@ namespace AMCP.InterfaceUtilisateur
                 throw new Exception("Impossible de créer plusieurs instances du Canvas !");
             }
         }
+
+        internal void NettoyerCanvas()
+        {
+            this.Graphic.Clear(Color.White);
+        }
+
+        internal void EffacerForme(int index)
+        {
+            Formes.RemoveAll(f => f.ID == index);
+        }
         
-        //TODO : Manque NettoyerCanvas() et EffacerForme(int index)
-        
-        public void ChangerDimension(int sizeX, int sizeY)
+        internal void ChangerDimension(int sizeX, int sizeY)
         {
             this.Size = new Size(sizeX, sizeY);
         }
 
-        public static int prochainID()
+        internal static int prochainID()
         {
             dernierID += 1;
             return dernierID;

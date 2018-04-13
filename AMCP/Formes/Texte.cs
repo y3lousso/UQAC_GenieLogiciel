@@ -37,7 +37,7 @@ namespace AMCP.Formes
 
                 //Draw the rotated ellipse
                 Canvas.instance.Graphic.DrawString(this.Contenu, font, solidBrush, this.Position);
-                Console.WriteLine(Type + " " + ID + " : Affichage effectué."); // TODO : this
+                Console.WriteLine(this.Type + " " + this.ID + " : Affichage effectué.");
 
                 //Rotate back to normal around the same point</pre>
                 matrix.RotateAt(-this.Orientation, new PointF(Position.X, Position.Y));
@@ -47,7 +47,7 @@ namespace AMCP.Formes
             }
             else
             {
-                Console.WriteLine(Type + " " + ID + " : Hors canvas."); // TODO : this
+                Console.WriteLine(this.Type + " " + this.ID + " : Hors canvas.");
             }
             
         }
@@ -58,14 +58,14 @@ namespace AMCP.Formes
             forme.Color = this.Color;
             forme.Orientation = this.Orientation;
             Canvas.instance.Formes.Add(forme);
-            Console.WriteLine(Type + " " + ID + " : Duplication réussie."); // TODO : this
+            Console.WriteLine(this.Type + " " + this.ID + " : Duplication réussie.");
             return forme;
         }
 
         public override void Dimensionner(float taille)
         {
             TaillePolice = (int)taille * TaillePolice;
-            Console.WriteLine(Type + " " + ID + " : Dimensionnement par un facteur " + taille + " effectué."); // TODO : this
+            Console.WriteLine(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.");
         }
     }
 }

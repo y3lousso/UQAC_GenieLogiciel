@@ -95,7 +95,7 @@ namespace CEGEP_Student
                     {
                         Console.WriteLine("------ Car demo -------");
                         ModeOrienteObjet i = new ModeOrienteObjet();
-
+                        
                         i.ChangerDimension(1000, 500);
 
                         int posX = 100;
@@ -220,7 +220,6 @@ namespace CEGEP_Student
                     {
                         Console.WriteLine("------ OOP -------");
                         ModeOrienteObjet i = new ModeOrienteObjet();
-
                         
                         Forme img = i.CreerImage(400, 300, "C:/dotnetlogo.png");
                         img.Dimensionner(.5f);

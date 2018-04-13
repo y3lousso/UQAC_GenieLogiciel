@@ -13,14 +13,14 @@ namespace AMCP.Noyau
         private float Orientation { get; set; } 
         private int Taille { get; set; }
 
-        private Color Couleur { get; set; } 
+        public Color Couleur { get; set; } 
         private Boolean IsWriting { get; set; }
         private Boolean CanDraw { get; set; }
 
         private Point StartPosition { get; set; } 
         private List<Point> Points { get; set; }
 
-        public Stylo()
+        internal Stylo()
         {
             this.Position = new Point(Canvas.instance.Width / 2, Canvas.instance.Height / 2);
             this.Taille = 10;
@@ -28,7 +28,7 @@ namespace AMCP.Noyau
             this.Orientation = 0;
         }
 
-        public Stylo(Point position, int size, int orientation, Color color)
+        internal Stylo(Point position, int size, int orientation, Color color)
         {
             this.Position = position;
             this.Taille = size;
@@ -36,6 +36,10 @@ namespace AMCP.Noyau
             this.Couleur = color;
         }
 
+        /// <summary>
+        /// Permet d'arreter l'écriture avec le stylo et de créer la forme en même temps.
+        /// </summary>
+        /// <returns></returns>
         public Forme LeverStylo()
         {
             if (IsWriting)
@@ -50,6 +54,9 @@ namespace AMCP.Noyau
             return forme;
         }
 
+        /// <summary>
+        /// Permet de commencer l'écriture avec le stylo.
+        /// </summary>
         public void DescendreStylo()
         {
             this.StartPosition = this.Position;
@@ -58,6 +65,10 @@ namespace AMCP.Noyau
             this.IsWriting = true;
         }
 
+        /// <summary>
+        /// Permet de faire avancer le stylo pendant la phase d'écriture.
+        /// </summary>
+        /// <param name="pas"></param>
         public void Avancer(int pas)
         {
             if (this.IsWriting)
@@ -74,6 +85,10 @@ namespace AMCP.Noyau
             }
         }
 
+        /// <summary>
+        /// Permet de tourner le stylo pendant la phase d'écriture.
+        /// </summary>
+        /// <param name="angle"></param>
         public void Tourner(int angle)
         {
             if (this.IsWriting)
@@ -89,6 +104,11 @@ namespace AMCP.Noyau
             }
         }
 
+        /// <summary>
+        /// Permet de déplacer le stylo en dehors de la phase d'écriture.
+        /// </summary>
+        /// <param name="positionX"></param>
+        /// <param name="positionY"></param>
         public void Deplacer(int positionX, int positionY)
         {
             if (!this.IsWriting)

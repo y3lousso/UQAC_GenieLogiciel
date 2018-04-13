@@ -23,26 +23,27 @@ namespace AMCP.Formes
         {
             if(CurrentImage == null)
             {
-                Console.WriteLine(Type + " " + ID + " : Chargement de l'image erroné.");
+                Console.WriteLine(this.Type + " " + this.ID + " : Chargement de l'image erroné.");
             }
-            else if(!EstDehors(Position.X,Position.Y, 0, 0)) // TODO : centrer l'image sur la position
+            else if(!EstDehors(this.Position.X, this.Position.Y, 0, 0))
             {
                 Matrix matrix = new Matrix();
 
                 //Rotate the graphics object the required amount around this point
-                matrix.RotateAt(this.Orientation, new PointF(Position.X + CurrentImage.Width / 2, Position.Y + CurrentImage.Height / 2));
+                matrix.RotateAt(this.Orientation, new PointF(Position.X, Position.Y));
                 Canvas.instance.Graphic.Transform = matrix;
-                
-                Canvas.instance.Graphic.DrawImage(this.CurrentImage, this.Position);
-                Console.WriteLine(Type + " " + ID + " : Affichage effectué.");
+
+                Point centerTweaker = new Point(this.Position.X - this.CurrentImage.Width/2, this.Position.Y - this.CurrentImage.Height/2);
+                Canvas.instance.Graphic.DrawImage(this.CurrentImage, centerTweaker);
+                Console.WriteLine(this.Type + " " + this.ID + " : Affichage effectué.");
 
                 //Rotate back to normal around the same point</pre>
-                matrix.RotateAt(-this.Orientation, new PointF(Position.X + CurrentImage.Width / 2, Position.Y + CurrentImage.Height / 2));
+                matrix.RotateAt(-this.Orientation, new PointF(this.Position.X, this.Position.Y));
                 Canvas.instance.Graphic.Transform = matrix;
             }
             else
             {
-                Console.WriteLine(Type + " " + ID + " : Hors canvas.");
+                Console.WriteLine(this.Type + " " + this.ID + " : Hors canvas.");
             }
         }
 
@@ -59,7 +60,7 @@ namespace AMCP.Formes
         public override void Colorier(int r, int g, int b)
         {
             base.Colorier(r, g, b);
-            Console.WriteLine(Type + " " + ID + " : Impossible d'appliquer un filtre de couleur. (Non implémenté)");
+            Console.WriteLine(this.Type + " " + this.ID + " : Impossible d'appliquer un filtre de couleur. (Non implémenté)");
         }
 
         public override void Dimensionner(float taille)
@@ -67,7 +68,7 @@ namespace AMCP.Formes
             int newWidth = (int)(this.CurrentImage.Width * taille);
             int newHeight = (int)(this.CurrentImage.Height * taille);
             this.CurrentImage = new Bitmap(this.CurrentImage, new Size(newWidth, newHeight) );
-            Console.WriteLine(Type + " " + ID + " : Dimensionnement par un facteur " + taille + " effectué."); // TODO : this
+            Console.WriteLine(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.");
         }
     }
 }

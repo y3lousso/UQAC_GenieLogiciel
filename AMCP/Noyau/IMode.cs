@@ -15,9 +15,9 @@ namespace AMCP.Noyau
         private static IMode instance;
         protected Canvas Canvas { get; set; } 
         protected bool HistoriqueActions { get; set; } 
-        public Stylo Stylo { get; set; } 
+        public Stylo Stylo { get; set; }  //TODO : en attente d'une réponse de l'ATI
 
-        public IMode()
+        protected IMode()
         {
             if(instance == null)
             {
@@ -33,21 +33,53 @@ namespace AMCP.Noyau
             }
         }
 
-        public void ListerFonction()
-        {
+        public abstract void ListerFonctions();
 
-        }
-
-        public void ListerContributeur()
+        /// <summary>
+        /// Permet de lister les noms de tous les contributeurs de cette application.
+        /// </summary>
+        public void ListerContributeurs()
         {
             Console.Clear();
             Console.WriteLine("////////////////// AMCP //////////////////");
             Console.WriteLine("-------- Analyse fonctionnelle -----------");
+            Console.WriteLine("BERTHET Maxime");
+            Console.WriteLine("DELEMOTTE David");
+            Console.WriteLine("FALLON Blandine");
+            Console.WriteLine("JOLY Corentin");
+            Console.WriteLine("MARTIN Gaetan");
+            Console.WriteLine("MAROUN Marc-Yves");
+            Console.WriteLine("MORICE Renald");
             Console.WriteLine("-------------- Conception ----------------");
+            Console.WriteLine("ESSIMMOU Assil");
+            Console.WriteLine("GALL Antoine");
+            Console.WriteLine("LARGE Erwann");
+            Console.WriteLine("LASCHKAR Benjamin");
+            Console.WriteLine("LEBLEU Anthony");
+            Console.WriteLine("RIEUF Ianis");
+            Console.WriteLine("SAKHI Faical");
             Console.WriteLine("------------- Développement --------------");
+            Console.WriteLine("LOUSSOUARN Yannick");
+            Console.WriteLine("MANZANILLA Francis Andre");
+            Console.WriteLine("NGOY-WESSESSI Brice Cesar");
+            Console.WriteLine("RAZAFINDRAHAINGO Iry Fanevan'ny Aina");
+            Console.WriteLine("RIVAULT Nicolas");
+            Console.WriteLine("RYCKAERT Guillaume");
+            Console.WriteLine("SANOU Yves Patrick Albert");
             Console.WriteLine("---------- Assurance Qualitée ------------");
+            Console.WriteLine("BATTISTON Aurelie");
+            Console.WriteLine("COMBETTE Elise");
+            Console.WriteLine("LE BAIL Loick");
+            Console.WriteLine("LUCE-LUCAS Mathilde");
+            Console.WriteLine("MESNY Alexandre");
+            Console.WriteLine("VANMARCKE Romain");            
         }
 
+        /// <summary>
+        /// Permet de changer la dimension de la zone de dessin. (Canvas)
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public void ChangerDimension(int x, int y)
         {
             Canvas.instance.Size = new Size(x, y);
@@ -55,7 +87,7 @@ namespace AMCP.Noyau
         }
 
         /// <summary>
-        /// Permet d'afficher toutes les formes précédements créer.
+        /// Permet d'afficher toutes les formes précédements créées.
         /// </summary>
         public virtual void Afficher()
         {
@@ -93,7 +125,7 @@ namespace AMCP.Noyau
         /// </summary>
         public virtual void NettoyerEcran()
         {
-            this.Canvas.Graphic.Clear(Color.White);
+            this.Canvas.NettoyerCanvas();
         }
 
         /// <summary>
