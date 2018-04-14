@@ -166,9 +166,9 @@ namespace AMCPTest
             i = new ModeOrienteObjet();
             i.Stylo.DescendreStylo();
             i.Stylo.Avancer(50);
-            i.Stylo.Tourner(30);
+            i.Stylo.Tourner(120);
             i.Stylo.Avancer(50);
-            i.Stylo.Tourner(30);
+            i.Stylo.Tourner(120);
             i.Stylo.Avancer(50);
             Forme testTriangleLibre = i.Stylo.LeverStylo();
             Assert.AreNotEqual(null, testTriangleLibre);
@@ -243,11 +243,21 @@ namespace AMCPTest
         public void POODessinerFormeLibreHorsCanvas()
         {
             i = new ModeOrienteObjet();
+            i.Stylo.Deplacer(-2000, 300);
             i.Stylo.DescendreStylo();
-            i.Stylo.Avancer(20000);
+            i.Stylo.Avancer(2000);
             Forme testFormeLibre = i.Stylo.LeverStylo();
-            i.Afficher(displayTime);
-            Assert.AreEqual(null, testFormeLibre);
+            i.Afficher(displayTime); // Ne doit rien afficher
+        }
+
+        [TestMethod]
+        public void POODessinerFormeLibreDepasseHorsCanvas()
+        {
+            i = new ModeOrienteObjet();
+            i.Stylo.DescendreStylo();
+            i.Stylo.Avancer(2000);
+            Forme testFormeLibre = i.Stylo.LeverStylo();
+            i.Afficher(displayTime); // Doit afficher
         }
 
         /************************************************************************************************************

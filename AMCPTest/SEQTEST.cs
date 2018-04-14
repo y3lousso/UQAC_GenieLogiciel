@@ -53,6 +53,8 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             i.Stylo.Avancer(50);
+
+            throw new Exception("Dessin libre pas encore implémenté");
         }
 
         [TestMethod]
@@ -163,9 +165,9 @@ namespace AMCPTest
             int testTriangleLibre = -1;
             i.Stylo.DescendreStylo();
             i.Stylo.Avancer(50);
-            i.Stylo.Tourner(30);
+            i.Stylo.Tourner(120);
             i.Stylo.Avancer(50);
-            i.Stylo.Tourner(30);
+            i.Stylo.Tourner(120);
             i.Stylo.Avancer(50);
             i.Stylo.LeverStylo();
 
@@ -243,9 +245,22 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testFormeLibre = -1;
+            i.Stylo.Deplacer(-2000, 300);
             i.Stylo.DescendreStylo();
-            i.Stylo.Avancer(20000);
+            i.Stylo.Avancer(2000);
+            i.Stylo.LeverStylo(); // Ne doit rien afficher
+
+            throw new Exception("Dessin libre pas encore implémenté");
+        }
+
+        [TestMethod]
+        public void SEQDessinerFormeLibreDepasseHorsCanvas()
+        {
+            i = new ModeSequentiel();
+            i.Stylo.DescendreStylo();
+            i.Stylo.Avancer(2000);
             i.Stylo.LeverStylo();
+            i.Afficher(displayTime); // Doit afficher
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
@@ -254,7 +269,7 @@ namespace AMCPTest
          * ************************************** Dupliquer ***********************************************************
          * *********************************************************************************************************/
 
-        
+
         [TestMethod]
         public void SEQDupliquerPolygone()
         {
