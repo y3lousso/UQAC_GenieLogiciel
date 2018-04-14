@@ -34,7 +34,7 @@ namespace AMCP.Formes
                 Matrix matrix = new Matrix();
 
                 //Rotate the graphics object the required amount around this point
-                matrix.RotateAt(this.Orientation, new PointF(Position.X, Position.Y)); // TODO: this
+                matrix.RotateAt(this.Orientation, new PointF(this.Position.X, this.Position.Y));
                 Canvas.instance.Graphic.Transform = matrix;
 
                 // Create solid brush.
@@ -42,7 +42,7 @@ namespace AMCP.Formes
                 GraphicsPath graphPath = new GraphicsPath();
 
                 List<Point> absolutePoints = new List<Point>();
-                foreach (Point p in Points) // TODO: this
+                foreach (Point p in this.Points)
                 {
                     absolutePoints.Add(new Point(this.Position.X + p.X, this.Position.Y + p.Y));
                 }
@@ -52,7 +52,7 @@ namespace AMCP.Formes
                 Console.WriteLine(this.Type + " " + this.ID + " : Affichage effectué.");
 
                 //Rotate back to normal around the same point</pre>
-                matrix.RotateAt(-this.Orientation, new PointF(Position.X, Position.Y)); // TODO: this
+                matrix.RotateAt(-this.Orientation, new PointF(this.Position.X, this.Position.Y));
                 Canvas.instance.Graphic.Transform = matrix;
             }
             else
@@ -73,7 +73,7 @@ namespace AMCP.Formes
 
         public override void Dimensionner(float taille)
         {
-            for (int i = 0; i < Points.Count; i++) // TODO: foreach plutôt que for
+            for (int i = 0; i < this.Points.Count; i++)
             {
                 Point newPoint = new Point((int)(this.Points[i].X * taille), (int)(this.Points[i].Y * taille));
                 this.Points[i] = newPoint;

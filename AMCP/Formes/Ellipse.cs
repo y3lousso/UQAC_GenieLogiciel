@@ -19,7 +19,7 @@ namespace AMCP.Formes
             this.Hauteur = hauteur;
             this.Color = Color.Black;
 
-            if(Largeur == Hauteur) // TODO: this
+            if(this.Largeur == this.Hauteur)
             {
                 this.Type = "Cercle   ";
             }
@@ -38,7 +38,7 @@ namespace AMCP.Formes
             this.Hauteur = hauteur;
             this.Color = Color.FromArgb(255, r, g, b);
 
-            if (Largeur == Hauteur) // TODO: this
+            if (this.Largeur == this.Hauteur)
             {
                 this.Type = "Cercle   ";
             }
@@ -55,16 +55,16 @@ namespace AMCP.Formes
                 Matrix matrix = new Matrix();
 
                 //Rotate the graphics object the required amount around this point
-                matrix.RotateAt(this.Orientation, new PointF(Position.X, Position.Y)); // TODO: this
+                matrix.RotateAt(this.Orientation, new PointF(this.Position.X, this.Position.Y));
                 Canvas.instance.Graphic.Transform = matrix;
 
                 //Draw the rotated ellipse
-                Rectangle r = new Rectangle(Position.X-Largeur/2, Position.Y-Hauteur/2, Largeur, Hauteur); // TODO: this
+                Rectangle r = new Rectangle(this.Position.X- this.Largeur /2, this.Position.Y- this.Hauteur /2, this.Largeur, this.Hauteur);
                 Canvas.instance.Graphic.FillEllipse(new SolidBrush(this.Color), r);
                 Console.WriteLine(this.Type + " " + this.ID + " : Affichage effectué.");
 
                 //Rotate back to normal around the same point</pre>
-                matrix.RotateAt(-this.Orientation, new PointF(Position.X, Position.Y)); // TODO: this
+                matrix.RotateAt(-this.Orientation, new PointF(this.Position.X, this.Position.Y));
                 Canvas.instance.Graphic.Transform = matrix;
             }
             else

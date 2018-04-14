@@ -32,7 +32,7 @@ namespace AMCP.Formes
                 Matrix matrix = new Matrix();
 
                 //Rotate the graphics object the required amount around this point
-                matrix.RotateAt(this.Orientation, new PointF(Position.X, Position.Y)); // TODO: this
+                matrix.RotateAt(this.Orientation, new PointF(this.Position.X, this.Position.Y));
                 Canvas.instance.Graphic.Transform = matrix;
 
                 //Draw the rotated ellipse
@@ -40,7 +40,7 @@ namespace AMCP.Formes
                 Console.WriteLine(this.Type + " " + this.ID + " : Affichage effectué.");
 
                 //Rotate back to normal around the same point</pre>
-                matrix.RotateAt(-this.Orientation, new PointF(Position.X, Position.Y)); // TODO: this
+                matrix.RotateAt(-this.Orientation, new PointF(this.Position.X, this.Position.Y));
                 Canvas.instance.Graphic.Transform = matrix;
 
                 Canvas.instance.Graphic.TextRenderingHint = TextRenderingHint.AntiAlias;
@@ -64,7 +64,7 @@ namespace AMCP.Formes
 
         public override void Dimensionner(float taille)
         {
-            TaillePolice = (int)taille * TaillePolice; // TODO: this
+            TaillePolice = (int)taille * this.TaillePolice;
             Console.WriteLine(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.");
         }
     }

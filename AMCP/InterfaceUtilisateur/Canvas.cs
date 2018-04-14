@@ -29,7 +29,7 @@ namespace AMCP.InterfaceUtilisateur
                 this.Graphic.SmoothingMode = SmoothingMode.AntiAlias;
                 this.Graphic.Clear(Color.White);
                 this.CenterToScreen();
-                dernierID = 0;// On set les id a 0. // TODO: this
+                dernierID = 0;// On set les id a 0.
 
                 Console.WriteLine("Surface dessinable : " + this.Graphic.VisibleClipBounds);
                 this.Formes = new List<Forme>();
@@ -48,7 +48,7 @@ namespace AMCP.InterfaceUtilisateur
 
         internal void EffacerForme(int index)
         {
-            Formes.RemoveAll(f => f.ID == index); // TODO: this
+            this.Formes.RemoveAll(f => f.ID == index);
         }
         
         internal void ChangerDimension(int sizeX, int sizeY)
@@ -58,8 +58,8 @@ namespace AMCP.InterfaceUtilisateur
 
         public static int ProchainID()
         {
-            dernierID += 1; // TODO: this
-            return dernierID; // TODO: this
+            dernierID += 1;
+            return dernierID;
         }
     }
 }

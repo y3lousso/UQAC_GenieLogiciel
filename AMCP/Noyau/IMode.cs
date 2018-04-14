@@ -15,15 +15,13 @@ namespace AMCP.Noyau
         private static IMode instance;
         protected Canvas Canvas { get; set; } 
         protected bool HistoriqueActions { get; set; } 
-        public Stylo Stylo { get; set; }  //TODO : en attente d'une réponse de l'ATI
-
+        
         protected IMode()
         {
             if(instance == null)
             {
                 instance = this;
                 this.Canvas = new Canvas(1200, 700);
-                this.Stylo = new Stylo();
             }
             else
             {
