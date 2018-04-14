@@ -6,13 +6,13 @@ namespace AMCP.Formes
 {
     public abstract class Forme
     {
-        internal int ID { get; set; }
-        public Point Position { get; internal set; }
-        public int Orientation { get; internal set; }
-        public Color Color { get; internal set; }
-        internal string Type { get; set; } = "Forme";
+        public int ID { get; set; }
+        public Point Position { get; set; }
+        public int Orientation { get; set; }
+        public Color Color { get; set; }
+        public string Type { get; set; } = "Forme";
 
-        internal abstract void Afficher();
+        public abstract void Afficher();
 
         /// <summary>
         /// Permet créer une forme, image, texte à partir de l'id d'un objet existant.
@@ -70,7 +70,7 @@ namespace AMCP.Formes
             Console.WriteLine(this.Type + " " + this.ID + " : Suppression effectuée.");
         }
 
-        internal Boolean EstDehors(float positionX, float positionY, float tailleX, float tailleY)
+        public Boolean EstDehors(float positionX, float positionY, float tailleX, float tailleY)
         {
             if (positionX - tailleX / 2 < 0
                 || positionX + tailleX / 2 > Canvas.instance.Graphic.VisibleClipBounds.Width

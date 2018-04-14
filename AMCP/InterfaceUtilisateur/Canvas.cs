@@ -12,10 +12,10 @@ namespace AMCP.InterfaceUtilisateur
 {
     public class Canvas : Form
     {
-        internal static Canvas instance;
-        internal Graphics Graphic { get; set; } 
+        public static Canvas instance;
+        public Graphics Graphic { get; set; } 
 
-        internal List<Forme> Formes { get; set; } 
+        public List<Forme> Formes { get; set; } 
 
         private static int dernierID;
 
@@ -56,7 +56,7 @@ namespace AMCP.InterfaceUtilisateur
             this.Size = new Size(sizeX, sizeY);
         }
 
-        internal static int prochainID()
+        public static int ProchainID()
         {
             dernierID += 1;
             return dernierID;

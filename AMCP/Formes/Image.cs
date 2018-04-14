@@ -12,14 +12,14 @@ namespace AMCP.Formes
 
         internal Image(Point position, string imageName)
         {
-            this.ID = Canvas.prochainID();
+            this.ID = Canvas.ProchainID();
             this.Position = position;
             this.ImageName = imageName;
             this.CurrentImage = (Bitmap)System.Drawing.Image.FromFile(this.ImageName);
             this.Type = "Image    "; 
         }
 
-        internal override void Afficher()
+        public override void Afficher()
         {
             if(CurrentImage == null)
             {

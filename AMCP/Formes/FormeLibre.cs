@@ -13,7 +13,7 @@ namespace AMCP.Formes
 
         internal FormeLibre(List<Point> points, int taille)
         {
-            this.ID = Canvas.prochainID();
+            this.ID = Canvas.ProchainID();
             this.Position = points[0];
             // Put all the points in the local base
             foreach(Point p in points) 
@@ -28,7 +28,7 @@ namespace AMCP.Formes
 
         internal FormeLibre(List<Point> points, int taille, Color color )
         {
-            this.ID = Canvas.prochainID();
+            this.ID = Canvas.ProchainID();
             this.Position = points[0];
             foreach (Point p in points)
             {
@@ -39,7 +39,7 @@ namespace AMCP.Formes
             this.Type = "Forme    ";
         }
 
-        internal override void Afficher()
+        public override void Afficher()
         {
             if (!EstDehors(this.Position.X, this.Position.Y, 0, 0))
             {

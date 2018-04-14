@@ -12,7 +12,7 @@ namespace AMCP.Formes
 
         internal Ellipse(Point position, int largeur, int hauteur)
         {
-            this.ID = Canvas.prochainID();
+            this.ID = Canvas.ProchainID();
             this.Position = position;
             this.Orientation = 0;
             this.Largeur = largeur;
@@ -31,7 +31,7 @@ namespace AMCP.Formes
 
         internal Ellipse(Point position, int largeur, int hauteur, int r, int g, int b)
         {
-            this.ID = Canvas.prochainID();
+            this.ID = Canvas.ProchainID();
             this.Position = position;
             this.Orientation = 0;
             this.Largeur = largeur;
@@ -48,9 +48,8 @@ namespace AMCP.Formes
             }
         }
 
-        internal override void Afficher()
+        public override void Afficher()
         {
-            Console.WriteLine(Position + " : " + EstDehors(this.Position.X, this.Position.Y, 0, 0));
             if (!EstDehors(this.Position.X, this.Position.Y, 0, 0))  
             { 
                 Matrix matrix = new Matrix();

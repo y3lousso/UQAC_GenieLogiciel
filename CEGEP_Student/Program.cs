@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using AMCP.Noyau;
+using AMCP.Noyau; 
+using AMCP_ExtraModule.Formes;
+using AMCP_ExtraModule.NoyauOverlay;
 using AMCP.Formes;
 
 namespace CEGEP_Student
@@ -17,7 +19,7 @@ namespace CEGEP_Student
                 case 0:
                     {
                         ModeSequentiel i = new ModeSequentiel();
-                        i.ListerContributeur();
+                        i.ListerContributeurs();
                         i.Pause();
                         break;
                     }
@@ -35,7 +37,7 @@ namespace CEGEP_Student
 
                         for (int j = 0; j < 20; j++)
                         {
-                            i.Tourner(etoileId, 20);
+                            i.TournerForme(etoileId, 20);
                             i.Afficher();
                             i.Attendre(0.1f);
                             i.NettoyerEcran();
@@ -155,12 +157,12 @@ namespace CEGEP_Student
 
                         int cercle = i.CreerCercle(posX + 100, posY + 100, 50);
                         int cercle2 = i.CreerCercle(posX + 100, posY + 100, 50);
-                        int cercle3 = i.Dupliquer(cercle2, posX + 100, posY + 100);
+                        int cercle3 = i.DupliquerForme(cercle2, posX + 100, posY + 100);
                         int rectangle = i.CreerCarre(50 + posX, 50 + posY, 100);
 
 
-                        int r2 = i.Dupliquer(rectangle, 125, 125);
-                        i.Colorier(-1, 255, 0, 0);
+                        int r2 = i.DupliquerForme(rectangle, 125, 125);
+                        i.ColorierForme(-1, 255, 0, 0);
                         i.Afficher();
 
                         i.Pause();
@@ -240,6 +242,27 @@ namespace CEGEP_Student
 
                         break;
                     }
+                case 9:
+                    {
+                        Console.WriteLine("------ OOP -------");
+                        ModeOrienteObjetBoosted i = new ModeOrienteObjetBoosted();
+
+                        Forme voiture = i.CreerVoiture(200, 200);
+
+                        for (int x = 0; x < 100; x++)
+                        {
+                            voiture.Tourner(5);
+                            voiture.Deplacer(voiture.Position.X + 5, voiture.Position.Y);
+                            i.Afficher();
+                            i.Attendre(.1f);
+                            i.NettoyerEcran();
+                        }
+
+                        i.Afficher();   
+                        i.Pause();
+
+                        break;
+                    }
                 default:
                     Console.WriteLine("Select a correct test");
                     break;
@@ -258,6 +281,7 @@ namespace CEGEP_Student
             Console.WriteLine("6 ->rotate ellipse");
             Console.WriteLine("7 -> text");
             Console.WriteLine("8 -> image");
+            Console.WriteLine("9 -> Extra DLL : voiture");
             Console.WriteLine("*****************************\n");
             Console.Write("Votre choix : ");
             int testID = int.Parse(Console.ReadLine());

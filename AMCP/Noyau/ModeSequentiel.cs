@@ -167,7 +167,6 @@ namespace AMCP.Noyau
         }
         #endregion
 
-
         #region Forme Methodes
         /// <summary>
         /// Permet créer une forme, image, texte à partir de l'id d'un objet existant.

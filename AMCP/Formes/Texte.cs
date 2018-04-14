@@ -13,7 +13,7 @@ namespace AMCP.Formes
 
         internal Texte(Point position, int taillePolice, string contenu)
         {
-            this.ID = Canvas.prochainID();
+            this.ID = Canvas.ProchainID();
             this.Position = position;
             this.Color = Color.Black;
             this.TaillePolice = taillePolice;
@@ -21,7 +21,7 @@ namespace AMCP.Formes
             this.Type = "Texte    ";
         }
 
-        internal override void Afficher()
+        public override void Afficher()
         {
             if (!EstDehors(Position.X, Position.Y, 0, 0))
             { 

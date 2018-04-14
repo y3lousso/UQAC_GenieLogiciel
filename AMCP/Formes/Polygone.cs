@@ -12,7 +12,7 @@ namespace AMCP.Formes
 
         internal Polygone(Point position)
         {
-            this.ID = Canvas.prochainID();
+            this.ID = Canvas.ProchainID();
             this.Position = position;
             this.Color = Color.Black;
             this.Type = "Polygone";
@@ -20,14 +20,14 @@ namespace AMCP.Formes
 
         internal Polygone (Point position, List<Point> points, string type)
         {
-            this.ID = Canvas.prochainID();
+            this.ID = Canvas.ProchainID();
             this.Position = position;
             this.Color = Color.Black;
             this.Points = points;
             this.Type = type;
         }
 
-        internal override void Afficher()
+        public override void Afficher()
         {
             if (!EstDehors(this.Position.X, this.Position.Y, 0, 0))
             {
