@@ -10,15 +10,37 @@ namespace AMCP.Noyau
 {
     public class ModeSequentiel : IMode
     {
-        #region Createurs
-
         /// <summary>
         /// Permets de lister toutes les fonctions disponibles dans ce mode.
         /// </summary>
         public override void ListerFonctions()
         {
-            Console.WriteLine(">>>>>>>>>> Mode Séquentiel <<<<<<<<<<<");
+            Console.WriteLine(">>>>>>>>>> Mode Sequentiel <<<<<<<<<<<");
+            Console.WriteLine("ModeOSequentiel");
+            Console.WriteLine("   int <- CreerCarre()");
+            Console.WriteLine("   int <- CreerRectangle()");
+            Console.WriteLine("   int <- CreerTriangle()");
+            Console.WriteLine("   int <- CreerLosange()");
+            Console.WriteLine("   int <- CreerEtoile()");
+            Console.WriteLine("   int <- CreerCercle()");
+            Console.WriteLine("   int <- CreerEllipse()");
+            Console.WriteLine("   int <- CreerTexte()");
+            Console.WriteLine("   int <- CreerImage()");
+            Console.WriteLine("   int <- DupliquerForme()");
+            Console.WriteLine("   void <- ColorierForme()");
+            Console.WriteLine("   void <- TournerForme()");
+            Console.WriteLine("   void <- DeplacerForme()");
+            Console.WriteLine("   void <- DimensionnerForme()");
+            Console.WriteLine("   void <- SupprimerForme()");
+            Console.WriteLine("   int <- LeverStylo()");
+            Console.WriteLine("   void <- DescendreStylo()");
+            Console.WriteLine("   void <- AvancerStylo()");
+            Console.WriteLine("   void <- TournerStylo()");
+            Console.WriteLine("   void <- DeplacerStylo()");
+            Console.WriteLine("   void <- ColorierStylo()");
         }
+
+        #region Createurs
 
         /// <summary>
         /// Permet de créer un carré.
