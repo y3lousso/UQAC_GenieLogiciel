@@ -73,7 +73,7 @@ namespace AMCP.Formes
 
         public override void Dimensionner(float taille)
         {
-            for (int i = 0; i < Points.Count; i++) // TODO: this
+            for (int i = 0; i < Points.Count; i++) // TODO: foreach plutôt que for
             {
                 Point newPoint = new Point((int)(this.Points[i].X * taille), (int)(this.Points[i].Y * taille));
                 this.Points[i] = newPoint;
