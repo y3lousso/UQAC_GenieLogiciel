@@ -18,7 +18,7 @@ namespace AMCP.Formes
             // Put all the points in the local base
             foreach(Point p in points) 
             {
-                this.Points.Add(new Point(p.X - Position.X, p.Y - Position.Y));
+                this.Points.Add(new Point(p.X - Position.X, p.Y - Position.Y));  // TODO: this
             }
             this.Points = points;
             this.Color = Color.Black;
@@ -32,7 +32,7 @@ namespace AMCP.Formes
             this.Position = points[0];
             foreach (Point p in points)
             {
-                this.Points.Add(new Point(p.X - Position.X, p.Y - Position.Y));
+                this.Points.Add(new Point(p.X - Position.X, p.Y - Position.Y)); // TODO: this
             }
             this.Color = color;
             this.TailleStylo = taille;
@@ -52,7 +52,7 @@ namespace AMCP.Formes
                 matrix.RotateAt(this.Orientation, new PointF(Position.X, Position.Y));
                 Canvas.instance.Graphic.Transform = matrix;
 
-                for (int i = 0; i < this.Points.Count - 1; i++)
+                for (int i = 0; i < this.Points.Count - 1; i++) // TODO: foreach plutôt que for
                 {
                     point1 = new Point(this.Position.X + this.Points[i].X, this.Position.Y + this.Points[i].Y);
                     point2 = new Point(this.Position.X + this.Points[i + 1].X, this.Position.Y + this.Points[i + 1].Y);
@@ -61,7 +61,7 @@ namespace AMCP.Formes
                 Console.WriteLine(this.Type + " " + this.ID + " : Affichage effectué.");
 
                 //Rotate back to normal around the same point</pre>
-                matrix.RotateAt(-this.Orientation, new PointF(Position.X, Position.Y));
+                matrix.RotateAt(-this.Orientation, new PointF(Position.X, Position.Y)); // TODO: this
                 Canvas.instance.Graphic.Transform = matrix;
             }
             else
