@@ -261,6 +261,53 @@ namespace AMCP.Noyau
         }
         #endregion
 
+        #region Stylo
+
+        /// <summary>
+        /// Permet d'arreter l'écriture avec le stylo et de créer la forme en même temps.
+        /// </summary>
+        /// <returns></returns>
+        public virtual int LeverStylo()
+        {
+            return this.Stylo.LeverStylo().ID;
+        }
+
+        /// <summary>
+        /// Permet de commencer l'écriture avec le stylo.
+        /// </summary>
+        public virtual void DescendreStylo()
+        {
+            this.Stylo.DescendreStylo();
+        }
+
+        /// <summary>
+        /// Permet de faire avancer le stylo pendant la phase d'écriture.
+        /// </summary>
+        /// <param name="pas"></param>
+        public virtual void AvancerStylo(int pas)
+        {
+            this.Stylo.Avancer(pas);
+        }
+
+        /// <summary>
+        /// Permet de tourner le stylo pendant la phase d'écriture.
+        /// </summary>
+        /// <param name="angle"></param>
+        public virtual void TournerStylo(int angle)
+        {
+            this.Stylo.Tourner(angle);
+        }
+
+        /// <summary>
+        /// Permet de déplacer le stylo en dehors de la phase d'écriture.
+        /// </summary>
+        /// <param name="positionX"></param>
+        /// <param name="positionY"></param>
+        public virtual void DeplacerStylo(int positionX, int positionY)
+        {
+            this.Stylo.Deplacer(positionX, positionY);
+        }
+
         /// <summary>
         /// Permet de changer la couleur du stylo.
         /// </summary>
@@ -271,6 +318,8 @@ namespace AMCP.Noyau
         {
             this.Stylo.Couleur = Color.FromArgb(r, g, b);
         }
+
+        #endregion
 
         /// <summary>
         /// Retourne une forme a partir de son id. Retourne null si la forme correspondante n'a pas été trouvée.

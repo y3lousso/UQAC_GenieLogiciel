@@ -34,8 +34,11 @@ namespace AMCP.Noyau
             Console.WriteLine("   void <- Tourner()");
             Console.WriteLine("   void <- Supprimer()");
             Console.WriteLine("Stylo");
-            Console.WriteLine("   Forme <- Dupliquer()");
-
+            Console.WriteLine("   Forme <- LeverStylo()");
+            Console.WriteLine("   void <- DescendreStylo()");
+            Console.WriteLine("   void <- Avancer()");
+            Console.WriteLine("   void <- Tourner()");
+            Console.WriteLine("   void <- Deplacer()");
         }
 
         #region Createurs
