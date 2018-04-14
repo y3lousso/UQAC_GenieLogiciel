@@ -51,7 +51,7 @@ namespace AMCP.Noyau
         {
             Polygone f = new Polygone(new Point(positionX, positionY));
             f.SetRectangle(taille, taille);
-            Canvas.Formes.Add(f);
+            Canvas.Formes.Add(f); // TODO: this
             Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
             return f;
         }
@@ -68,7 +68,7 @@ namespace AMCP.Noyau
         {
             Polygone f = new Polygone(new Point(positionX, positionY));
             f.SetRectangle(largeur, hauteur);
-            Canvas.Formes.Add(f);
+            Canvas.Formes.Add(f); // TODO: this
             Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
             return f;
         }
@@ -84,7 +84,7 @@ namespace AMCP.Noyau
         {
             Polygone f = new Polygone(new Point(positionX, positionY));
             f.SetTriangle(taille);
-            Canvas.Formes.Add(f);
+            Canvas.Formes.Add(f); // TODO: this
             Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
             return f;
         }
@@ -101,7 +101,7 @@ namespace AMCP.Noyau
         {
             Polygone f = new Polygone(new Point(positionX, positionY));
             f.SetLosange(largeur, hauteur);
-            Canvas.Formes.Add(f);
+            Canvas.Formes.Add(f); // TODO: this
             Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
             return f;
         }
@@ -119,7 +119,7 @@ namespace AMCP.Noyau
         {
             Polygone f = new Polygone(new Point(positionX, positionY));
             f.SetEtoile(rayonInterieur / 2, rayonExterieur / 2, nbSommet);
-            Canvas.Formes.Add(f);
+            Canvas.Formes.Add(f); // TODO: this
             Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
             return f;
         }
@@ -134,7 +134,7 @@ namespace AMCP.Noyau
         public virtual Forme CreerCercle(int positionX, int positionY, int rayon)
         {
             Forme f = new Ellipse(new Point(positionX, positionY), rayon, rayon);
-            Canvas.Formes.Add(f);
+            Canvas.Formes.Add(f); // TODO: this
             Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
             return f;
         }
@@ -150,7 +150,7 @@ namespace AMCP.Noyau
         public virtual Forme CreerEllipse(int positionX, int positionY, int rayon1, int rayon2)
         {
             Forme f = new Ellipse(new Point(positionX, positionY), rayon1, rayon2);
-            Canvas.Formes.Add(f);
+            Canvas.Formes.Add(f); // TODO: this
             Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
             return f;
         }
@@ -166,7 +166,7 @@ namespace AMCP.Noyau
         public virtual Forme CreerTexte(int positionX, int positionY, int taillePolice, string contenu)
         {
             Forme f = new Texte(new Point(positionX, positionY), taillePolice, contenu);
-            Canvas.Formes.Add(f);
+            Canvas.Formes.Add(f); // TODO: this
             Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
             return f;
         }
@@ -181,7 +181,7 @@ namespace AMCP.Noyau
         public virtual Forme CreerImage(int positionX, int positionY, string imageName)
         {
             Forme f = new Formes.Image(new Point(positionX, positionY), imageName);
-            Canvas.Formes.Add(f);
+            Canvas.Formes.Add(f); // TODO: this
             Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
             return f;
         }
