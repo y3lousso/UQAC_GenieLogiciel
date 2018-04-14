@@ -127,6 +127,14 @@ namespace AMCP.Noyau
         }
 
         /// <summary>
+        /// Permet d'enlever toutes les formes précédement créées en mémoire.
+        /// </summary>
+        public virtual void ReinitialiserCanvas()
+        {
+            this.Canvas.Formes.Clear();
+        }
+
+        /// <summary>
         /// Permet de mettre en pause l'execution du programme, appuyez sur une touche pour relancer.
         /// </summary>
         public virtual void Pause()
