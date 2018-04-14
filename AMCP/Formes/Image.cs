@@ -21,7 +21,7 @@ namespace AMCP.Formes
 
         public override void Afficher()
         {
-            if(CurrentImage == null)
+            if(CurrentImage == null) // TODO: this
             {
                 Console.WriteLine(this.Type + " " + this.ID + " : Chargement de l'image erroné.");
             }
@@ -30,7 +30,7 @@ namespace AMCP.Formes
                 Matrix matrix = new Matrix();
 
                 //Rotate the graphics object the required amount around this point
-                matrix.RotateAt(this.Orientation, new PointF(Position.X, Position.Y));
+                matrix.RotateAt(this.Orientation, new PointF(Position.X, Position.Y)); // TODO: this
                 Canvas.instance.Graphic.Transform = matrix;
 
                 Point centerTweaker = new Point(this.Position.X - this.CurrentImage.Width/2, this.Position.Y - this.CurrentImage.Height/2);
