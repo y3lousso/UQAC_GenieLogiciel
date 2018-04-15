@@ -292,6 +292,30 @@ namespace AMCPTest
             i.Afficher(displayTime);
         }
 
+        [TestMethod]
+        public void SEQDupliquerPolygoneHorsCanvas()
+        {
+            i = new ModeSequentiel();
+            int testPolygone = -1;
+            testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
+            Assert.IsTrue(testPolygone > 0);
+            int polygoneDuplique = i.DupliquerForme(testPolygone, posXMid + 3000, posYMid - 17000);
+            Assert.AreNotEqual(testPolygone, polygoneDuplique);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void SEQDupliquerEllipseHorsCanvas()
+        {
+            i = new ModeSequentiel();
+            int testCercle = -1;
+            testCercle = i.CreerCercle(posXMid, posYMid, 20);
+            Assert.IsTrue(testCercle > 0);
+            int cercleDuplique = i.DupliquerForme(testCercle, posXMid + 3000, posYMid + 3000);
+            Assert.AreNotEqual(testCercle, cercleDuplique);
+            i.Afficher(displayTime);
+        }
+
         #endregion
 
         /************************************************************************************************************

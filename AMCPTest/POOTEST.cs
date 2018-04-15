@@ -286,6 +286,30 @@ namespace AMCPTest
             i.Afficher(displayTime);
         }
 
+        [TestMethod]
+        public void POODupliquerPolygoneHorsCanvas()
+        {
+            i = new ModeOrienteObjet();
+            Forme testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
+            Assert.IsTrue(testPolygone.ID > 0);
+            Forme polygoneDuplique = testPolygone.Dupliquer(posXMid + 6060, posYMid - 4075);
+            Assert.IsTrue(polygoneDuplique.ID > 0);
+            Assert.AreNotSame(testPolygone, polygoneDuplique);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POODupliquerEllipseHorsCanvas()
+        {
+            i = new ModeOrienteObjet();
+            Forme testCercle = i.CreerCercle(posXMid, posYMid, 20);
+            Assert.IsTrue(testCercle.ID > 0);
+            Forme cercleDuplique = testCercle.Dupliquer(posXMid + 3000, posYMid + 3000);
+            Assert.IsTrue(cercleDuplique.ID > 0);
+            Assert.AreNotSame(testCercle, cercleDuplique);
+            i.Afficher(displayTime);
+        }
+
         #endregion
 
         /************************************************************************************************************

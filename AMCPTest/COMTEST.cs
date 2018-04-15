@@ -49,12 +49,14 @@ namespace AMCPTest
             i = new ModeSequentiel();
             int testPolygone = -1;
             testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
+            i.CreerCarre(posXMid-40, posYMid, 20);
             Assert.IsTrue(testPolygone > 0);
             i.Afficher(displayTime);
-            i.NettoyerEcran();
             i.ReinitialiserCanvas();
-            i.Attendre(displayTime);
-            i.Afficher(displayTime); // Aucune forme ne doit s'afficher 
+
+            i.DimensionnerForme(testPolygone, 2f); // Doit renvoyer : "L'id donné: 1 ne correspond a aucune Forme dans le Canvas!"
+            i.CreerTexte(posXMid, posYMid, 20, "Reset done");
+            i.Afficher(displayTime); // Aucune forme ne doit s'afficher mis à part le texte
         }
         #endregion
 
