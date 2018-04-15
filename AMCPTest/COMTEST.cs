@@ -54,7 +54,11 @@ namespace AMCPTest
             i.Afficher(displayTime);
             i.ReinitialiserCanvas();
 
-            i.DimensionnerForme(testPolygone, 2f); // Doit renvoyer : "L'id donné: 1 ne correspond a aucune Forme dans le Canvas!"
+            // Use a private object to access to protected method : IdentifierForme
+            PrivateObject iPrivate = new PrivateObject(i);
+            var retVal = iPrivate.Invoke("IdentifierForme", testPolygone);
+            Assert.IsNull(retVal); 
+
             i.CreerTexte(posXMid, posYMid, 20, "Reset done");
             i.Afficher(displayTime); // Aucune forme ne doit s'afficher mis à part le texte
         }
