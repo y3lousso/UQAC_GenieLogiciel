@@ -132,6 +132,7 @@ namespace AMCP.Noyau
         public virtual void ReinitialiserCanvas()
         {
             this.Canvas.Formes.Clear();
+            NettoyerEcran();
         }
 
         /// <summary>
