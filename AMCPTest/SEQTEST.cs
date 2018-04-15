@@ -349,6 +349,32 @@ namespace AMCPTest
         #endregion
 
         /************************************************************************************************************
+        * ************************************** Récupérer forme ***********************************************************
+        * *********************************************************************************************************/
+        #region Recuperer forme
+        public class TestRecupererForme : ModeSequentiel
+        {
+            public Forme IdentifierFormeTest(int id)
+            {
+                return this.IdentifierForme(id);
+            }
+        }
+
+        [TestMethod]
+        public void SEQRecupererFormeAvecId()
+        {
+            TestRecupererForme j = new TestRecupererForme();
+            int testPolygone = -1;
+            testPolygone = j.CreerRectangle(posXMid, posYMid, 100, 100);
+
+            Forme testIdReturn = j.IdentifierFormeTest(testPolygone);
+
+            Assert.AreNotEqual(null, testIdReturn);
+            j.Afficher(displayTime);
+        }
+        #endregion
+
+        /************************************************************************************************************
          * ************************************** Ecrire Texte/Importer Image ***********************************************************
          * *********************************************************************************************************/
         #region Ecrire Texte/Importer Image
