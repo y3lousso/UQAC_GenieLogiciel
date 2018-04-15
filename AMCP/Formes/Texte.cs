@@ -13,7 +13,7 @@ namespace AMCP.Formes
 
         internal Texte(Point position, int taillePolice, string contenu)
         {
-            this.ID = Canvas.prochainID();
+            this.ID = Canvas.ProchainID();
             this.Position = position;
             this.Color = Color.Black;
             this.TaillePolice = taillePolice;
@@ -21,7 +21,7 @@ namespace AMCP.Formes
             this.Type = "Texte    ";
         }
 
-        internal override void Afficher()
+        public override void Afficher()
         {
             if (!EstDehors(Position.X, Position.Y, 0, 0))
             { 
@@ -32,22 +32,22 @@ namespace AMCP.Formes
                 Matrix matrix = new Matrix();
 
                 //Rotate the graphics object the required amount around this point
-                matrix.RotateAt(this.Orientation, new PointF(Position.X, Position.Y));
+                matrix.RotateAt(this.Orientation, new PointF(this.Position.X, this.Position.Y));
                 Canvas.instance.Graphic.Transform = matrix;
 
                 //Draw the rotated ellipse
                 Canvas.instance.Graphic.DrawString(this.Contenu, font, solidBrush, this.Position);
-                Console.WriteLine(Type + " " + ID + " : Affichage effectué.");
+                Console.WriteLine(this.Type + " " + this.ID + " : Affichage effectué.");
 
                 //Rotate back to normal around the same point</pre>
-                matrix.RotateAt(-this.Orientation, new PointF(Position.X, Position.Y));
+                matrix.RotateAt(-this.Orientation, new PointF(this.Position.X, this.Position.Y));
                 Canvas.instance.Graphic.Transform = matrix;
 
                 Canvas.instance.Graphic.TextRenderingHint = TextRenderingHint.AntiAlias;
             }
             else
             {
-                Console.WriteLine(Type + " " + ID + " : Hors canvas.");
+                Console.WriteLine(this.Type + " " + this.ID + " : Hors canvas.");
             }
             
         }
@@ -58,14 +58,14 @@ namespace AMCP.Formes
             forme.Color = this.Color;
             forme.Orientation = this.Orientation;
             Canvas.instance.Formes.Add(forme);
-            Console.WriteLine(Type + " " + ID + " : Duplication réussie.");
+            Console.WriteLine(this.Type + " " + this.ID + " : Duplication réussie.");
             return forme;
         }
 
         public override void Dimensionner(float taille)
         {
-            TaillePolice = (int)taille * TaillePolice;
-            Console.WriteLine(Type + " " + ID + " : Dimensionnement par un facteur " + taille + " effectué.");
+            TaillePolice = (int)taille * this.TaillePolice;
+            Console.WriteLine(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.");
         }
     }
 }

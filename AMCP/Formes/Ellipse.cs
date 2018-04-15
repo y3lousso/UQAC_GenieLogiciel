@@ -12,15 +12,14 @@ namespace AMCP.Formes
 
         internal Ellipse(Point position, int largeur, int hauteur)
         {
-            Point center = new Point(position.X - largeur / 2, position.Y - hauteur / 2);
-            this.ID = Canvas.prochainID();
-            this.Position = center;
+            this.ID = Canvas.ProchainID();
+            this.Position = position;
             this.Orientation = 0;
             this.Largeur = largeur;
             this.Hauteur = hauteur;
             this.Color = Color.Black;
 
-            if(Largeur == Hauteur)
+            if(this.Largeur == this.Hauteur)
             {
                 this.Type = "Cercle   ";
             }
@@ -30,16 +29,16 @@ namespace AMCP.Formes
             }
         }
 
-        internal Ellipse(Point position, int rayon1, int rayon2, int r, int g, int b)
+        internal Ellipse(Point position, int largeur, int hauteur, int r, int g, int b)
         {
-            this.ID = Canvas.prochainID();
+            this.ID = Canvas.ProchainID();
             this.Position = position;
             this.Orientation = 0;
-            this.Largeur = rayon1;
-            this.Hauteur = rayon2;
+            this.Largeur = largeur;
+            this.Hauteur = hauteur;
             this.Color = Color.FromArgb(255, r, g, b);
 
-            if (Largeur == Hauteur)
+            if (this.Largeur == this.Hauteur)
             {
                 this.Type = "Cercle   ";
             }
@@ -49,28 +48,28 @@ namespace AMCP.Formes
             }
         }
 
-        internal override void Afficher()
+        public override void Afficher()
         {
             if (!EstDehors(this.Position.X, this.Position.Y, 0, 0))  
             { 
                 Matrix matrix = new Matrix();
 
                 //Rotate the graphics object the required amount around this point
-                matrix.RotateAt(this.Orientation, new PointF(Position.X + Largeur / 2, Position.Y + Hauteur / 2));
+                matrix.RotateAt(this.Orientation, new PointF(this.Position.X, this.Position.Y));
                 Canvas.instance.Graphic.Transform = matrix;
 
                 //Draw the rotated ellipse
-                Rectangle r = new Rectangle(Position.X, Position.Y, Largeur, Hauteur);
+                Rectangle r = new Rectangle(this.Position.X- this.Largeur /2, this.Position.Y- this.Hauteur /2, this.Largeur, this.Hauteur);
                 Canvas.instance.Graphic.FillEllipse(new SolidBrush(this.Color), r);
-                Console.WriteLine(Type + " " + ID + " : Affichage effectué.");
+                Console.WriteLine(this.Type + " " + this.ID + " : Affichage effectué.");
 
                 //Rotate back to normal around the same point</pre>
-                matrix.RotateAt(-this.Orientation, new PointF(Position.X + Largeur / 2, Position.Y + Hauteur / 2));
+                matrix.RotateAt(-this.Orientation, new PointF(this.Position.X, this.Position.Y));
                 Canvas.instance.Graphic.Transform = matrix;
             }
             else
             {
-                Console.WriteLine(Type + " " + ID + " : Hors canvas.");
+                Console.WriteLine(this.Type + " " + this.ID + " : Hors canvas.");
             }
         }
 
@@ -80,21 +79,21 @@ namespace AMCP.Formes
             forme.Color = this.Color;
             forme.Orientation = this.Orientation;
             Canvas.instance.Formes.Add(forme);
-            Console.WriteLine(Type + " " + ID + " : Duplication réussie.");
+            Console.WriteLine(this.Type + " " + this.ID + " : Duplication réussie.");
             return forme;
         }
 
         public override void Deplacer(int positionX, int positionY)
         {
-            this.Position = new Point(positionX- Largeur/2, positionY- Hauteur/2);
-            Console.WriteLine(Type + " " + ID + " : Déplacement de (" + Position.X + ", " + Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué.");
+            this.Position = new Point(positionX, positionY);
+            Console.WriteLine(this.Type + " " + this.ID + " : Déplacement de (" + this.Position.X + ", " + this.Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué.");
         }
 
         public override void Dimensionner(float taille)
         {
             this.Largeur = (int)(this.Largeur * taille);
             this.Hauteur = (int)(this.Hauteur * taille);
-            Console.WriteLine(Type + " " + ID + " : Dimensionnement par un facteur " + taille + " effectué.");
+            Console.WriteLine(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.");
         }
     }
 }

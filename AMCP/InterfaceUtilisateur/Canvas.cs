@@ -12,14 +12,14 @@ namespace AMCP.InterfaceUtilisateur
 {
     public class Canvas : Form
     {
-        internal static Canvas instance;
-        internal Graphics Graphic { get; set; } // TODO : Les internal sont en Camel
+        public static Canvas instance;
+        public Graphics Graphic { get; set; } 
 
-        internal List<Forme> Formes { get; set; } // TODO : Les internal sont en Camel
+        public List<Forme> Formes { get; set; } 
 
         private static int dernierID;
 
-        public Canvas(int sizeX, int sizeY)
+        internal Canvas(int sizeX, int sizeY)
         {
             if (instance == null)
             {
@@ -41,12 +41,22 @@ namespace AMCP.InterfaceUtilisateur
             }
         }
 
-        public void ChangerDimension(int sizeX, int sizeY)
+        internal void NettoyerCanvas()
+        {
+            this.Graphic.Clear(Color.White);
+        }
+
+        internal void EffacerForme(int index)
+        {
+            this.Formes.RemoveAll(f => f.ID == index);
+        }
+        
+        internal void ChangerDimension(int sizeX, int sizeY)
         {
             this.Size = new Size(sizeX, sizeY);
         }
 
-        public static int prochainID()
+        public static int ProchainID()
         {
             dernierID += 1;
             return dernierID;
