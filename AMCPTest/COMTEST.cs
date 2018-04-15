@@ -39,6 +39,15 @@ namespace AMCPTest
             i.NettoyerEcran();
             i.Attendre(displayTime);
         }
+
+        [TestMethod]
+        public void COMChangerDimensionCanvas()
+        {
+            i = new ModeSequentiel();
+            i.Attendre(displayTime);
+            i.ChangerDimension(100, 200);
+            i.Attendre(displayTime);
+        }
     }
 
 
