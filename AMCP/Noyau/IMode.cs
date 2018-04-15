@@ -121,7 +121,7 @@ namespace AMCP.Noyau
         /// <summary>
         /// Permet d'enlever tous les dessins de l'écran.
         /// </summary>
-        public virtual void NettoyerEcran() // TODO : Ne devrait il pas etre dans ModeSequentiel en accord avec le CON ?
+        public virtual void NettoyerEcran() 
         {
             this.Canvas.NettoyerCanvas();
         }

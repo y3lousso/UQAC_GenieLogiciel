@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using AMCP;
+using AMCP.Formes;
 using AMCP.InterfaceUtilisateur;
 using AMCP.Noyau;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -24,14 +26,14 @@ namespace AMCPTest
         /************************************************************************************************************
          * ********************************************* Stylo ***************************************************
          * *********************************************************************************************************/
-
+        #region Stylo
         [TestMethod]
         public void SEQBaisserLeverStylo()
         {
             i = new ModeSequentiel();
             int testFormeLibre = -1;
-            i.Stylo.DescendreStylo();
-            i.Stylo.LeverStylo();
+            i.DescendreStylo();
+            i.LeverStylo();
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
@@ -41,9 +43,9 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testFormeLibre = -1;
-            i.Stylo.DescendreStylo();
-            i.Stylo.Avancer(50);
-            i.Stylo.LeverStylo();
+            i.DescendreStylo();
+            i.AvancerStylo(50);
+            i.LeverStylo();
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
@@ -52,7 +54,7 @@ namespace AMCPTest
         public void SEQAvancerStyloDe50SansBaisser()
         {
             i = new ModeSequentiel();
-            i.Stylo.Avancer(50);
+            i.AvancerStylo(50);
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
@@ -62,11 +64,11 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testFormeLibre = -1;
-            i.Stylo.DescendreStylo();
-            i.Stylo.Avancer(50);
-            i.Stylo.Tourner(90);
-            i.Stylo.Avancer(50);
-            i.Stylo.LeverStylo();
+            i.DescendreStylo();
+            i.AvancerStylo(50);
+            i.TournerStylo(90);
+            i.AvancerStylo(50);
+            i.LeverStylo();
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
@@ -76,11 +78,11 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testFormeLibre = -1;
-            i.Stylo.DescendreStylo();
-            i.Stylo.Avancer(50);
-            i.Stylo.Tourner(450);
-            i.Stylo.Avancer(50);
-            i.Stylo.LeverStylo();
+            i.DescendreStylo();
+            i.AvancerStylo(50);
+            i.TournerStylo(450);
+            i.AvancerStylo(50);
+            i.LeverStylo();
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
@@ -90,11 +92,12 @@ namespace AMCPTest
         {
             throw new Exception("Pas encore implémenté");
         }
+        #endregion
 
         /************************************************************************************************************
          * ************************************** Dessiner Formes ***************************************************
          * *********************************************************************************************************/
-
+        #region Dessiner Formes
         [TestMethod]
         public void SEQDessinerCarree100x100()
         {
@@ -163,21 +166,22 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testTriangleLibre = -1;
-            i.Stylo.DescendreStylo();
-            i.Stylo.Avancer(50);
-            i.Stylo.Tourner(120);
-            i.Stylo.Avancer(50);
-            i.Stylo.Tourner(120);
-            i.Stylo.Avancer(50);
-            i.Stylo.LeverStylo();
+            i.DescendreStylo();
+            i.AvancerStylo(50);
+            i.TournerStylo(120);
+            i.AvancerStylo(50);
+            i.TournerStylo(120);
+            i.AvancerStylo(50);
+            i.LeverStylo();
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
+        #endregion
 
         /************************************************************************************************************
          * ************************************** Hors Canvas *******************************************************
          * *********************************************************************************************************/
-
+        #region Dessiner Hors Canvas
         [TestMethod]
         public void SEQDessinerCarreeHorsCanvas()
         {
@@ -239,10 +243,10 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testFormeLibre = -1;
-            i.Stylo.Deplacer(-2000, 300);
-            i.Stylo.DescendreStylo();
-            i.Stylo.Avancer(2000);
-            i.Stylo.LeverStylo(); // Ne doit rien afficher
+            i.DeplacerForme(testFormeLibre,-2000, 300);
+            i.DescendreStylo();
+            i.AvancerStylo(2000);
+            i.LeverStylo(); // Ne doit rien afficher
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
@@ -251,19 +255,43 @@ namespace AMCPTest
         public void SEQDessinerFormeLibreDepasseHorsCanvas()
         {
             i = new ModeSequentiel();
-            i.Stylo.DescendreStylo();
-            i.Stylo.Avancer(2000);
-            i.Stylo.LeverStylo();
+            i.DescendreStylo();
+            i.AvancerStylo(2000);
+            i.LeverStylo();
             i.Afficher(displayTime); // Doit afficher
 
             throw new Exception("Dessin libre pas encore implémenté");
         }
 
+        [TestMethod]
+        public void SEQEcrireTexteHorsCanvas()
+        {
+            i = new ModeSequentiel();
+            int texte = i.CreerTexte(posXMid+2000, posYMid-2000, 60, "THIS IS A TEST");
+            Assert.IsTrue(texte > 0);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void SEQImporterImageHorsCanvas()
+        {
+            i = new ModeSequentiel();
+            string fileName = "pikachu.png";
+            string rootPath = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+            string path = Path.Combine(rootPath, @"assets\", fileName);
+            int img = i.CreerImage(2000, 6000, path);
+            i.DimensionnerForme(img, .5f);
+            Assert.IsTrue(img > 0);
+            i.Afficher(displayTime);
+        }
+
+        #endregion
+
         /************************************************************************************************************
          * ************************************** Dupliquer ***********************************************************
          * *********************************************************************************************************/
 
-
+        #region Dupliquer
         [TestMethod]
         public void SEQDupliquerPolygone()
         {
@@ -271,7 +299,7 @@ namespace AMCPTest
             int testPolygone = -1;
             testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
             Assert.IsTrue(testPolygone > 0);
-            int polygoneDuplique = i.Dupliquer(testPolygone, posXMid + 30, posYMid + 30);
+            int polygoneDuplique = i.DupliquerForme(testPolygone, posXMid + 30, posYMid + 30);
             Assert.AreNotEqual(testPolygone, polygoneDuplique);
             i.Afficher(displayTime);
         }
@@ -283,26 +311,16 @@ namespace AMCPTest
             int testCercle = -1;
             testCercle = i.CreerCercle(posXMid, posYMid, 20);
             Assert.IsTrue(testCercle > 0);
-            int cercleDuplique = i.Dupliquer(testCercle, posXMid + 30, posYMid + 30);
+            int cercleDuplique = i.DupliquerForme(testCercle, posXMid + 30, posYMid + 30);
             Assert.AreNotEqual(testCercle, cercleDuplique);
             i.Afficher(displayTime);
         }
-
-        /************************************************************************************************************
-         * ************************************** Reinitialiser Canvas ***********************************************************
-         * *********************************************************************************************************/
-
-        [TestMethod]
-        public void SEQReinitialiserCanvas()
-        {
-            throw new Exception("Pas encore développé");
-        }
-
+        #endregion
 
         /************************************************************************************************************
          * ************************************** Ecrire Texte/Importer Image ***********************************************************
          * *********************************************************************************************************/
-
+        #region Ecrire Texte/Importer Image
         [TestMethod]
         public void SEQEcrireTexte()
         {
@@ -315,13 +333,22 @@ namespace AMCPTest
         [TestMethod]
         public void SEQImporterImage()
         {
-            throw new Exception("Pas encore développé");
+            i = new ModeSequentiel();
+            string fileName = "pikachu.png";
+            string rootPath = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+            string path = Path.Combine(rootPath, @"assets\", fileName);
+            int img = i.CreerImage(100, 100, path);
+            i.DimensionnerForme(img, .5f);
+            Assert.IsTrue(img > 0);
+            i.Afficher(displayTime);
         }
+        #endregion
 
         /************************************************************************************************************
-* ************************************** Rotation/translation/homothétie d'une forme *******************************************************
-* *********************************************************************************************************/
+        * ************************************** Rotation/translation/homothétie d'une forme *******************************************************
+        * *********************************************************************************************************/
 
+        #region Rotation/translation/homothétie d'une forme
         [TestMethod]
         public void SEQRotationPolygoneRectangle()
         {
@@ -330,7 +357,7 @@ namespace AMCPTest
             testPolygone = i.CreerRectangle(posXMid, posYMid, 100, 100);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Tourner(testPolygone, -300000);
+            i.TournerForme(testPolygone, -300000);
             i.Afficher(displayTime);
 
         }
@@ -343,7 +370,7 @@ namespace AMCPTest
             testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Tourner(testPolygone, 30);
+            i.TournerForme(testPolygone, 30);
             i.Afficher(displayTime);
 
         }
@@ -356,7 +383,7 @@ namespace AMCPTest
             testPolygone = i.CreerEtoile(posXMid, posYMid, 30, 50, 5);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Tourner(testPolygone, -300000);
+            i.TournerForme(testPolygone, -300000);
             i.Afficher(displayTime);
 
         }
@@ -369,7 +396,7 @@ namespace AMCPTest
             testPolygone = i.CreerLosange(posXMid, posYMid, 30, 50);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Tourner(testPolygone, -300000);
+            i.TournerForme(testPolygone, -300000);
             i.Afficher(displayTime);
 
         }
@@ -382,7 +409,7 @@ namespace AMCPTest
             testEllipse = i.CreerEllipse(posXMid, posYMid, 50, 80);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Tourner(testEllipse, -30);
+            i.TournerForme(testEllipse, -30);
             i.Afficher(displayTime);
         }
 
@@ -394,7 +421,7 @@ namespace AMCPTest
             testPolygone = i.CreerRectangle(posXMid, posYMid, 100, 100);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Deplacer(testPolygone, 200, 200);
+            i.DeplacerForme(testPolygone, 200, 200);
             i.Afficher(displayTime);
         }
 
@@ -406,7 +433,7 @@ namespace AMCPTest
             testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Deplacer(testPolygone, 200, 200);
+            i.DeplacerForme(testPolygone, 200, 200);
             i.Afficher(displayTime);
         }
 
@@ -418,7 +445,7 @@ namespace AMCPTest
             testPolygone = i.CreerEtoile(posXMid, posYMid, 30, 50, 5);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Deplacer(testPolygone, 200, 200);
+            i.DeplacerForme(testPolygone, 200, 200);
             i.Afficher(displayTime);
         }
 
@@ -430,7 +457,7 @@ namespace AMCPTest
             testPolygone = i.CreerLosange(posXMid, posYMid, 30, 50);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Deplacer(testPolygone, 200, 200);
+            i.DeplacerForme(testPolygone, 200, 200);
             i.Afficher(displayTime);
         }
 
@@ -442,7 +469,7 @@ namespace AMCPTest
             testEllipse = i.CreerEllipse(posXMid, posYMid, 50, 80);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Deplacer(testEllipse, 200, 200);
+            i.DeplacerForme(testEllipse, 200, 200);
             i.Afficher(displayTime);
         }
 
@@ -454,7 +481,7 @@ namespace AMCPTest
             testPolygone = i.CreerRectangle(posXMid, posYMid, 100, 100);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Dimensionner(testPolygone, 2);
+            i.DimensionnerForme(testPolygone, 2);
             i.Afficher(displayTime);
         }
 
@@ -466,7 +493,7 @@ namespace AMCPTest
             testPolygone = i.CreerTriangle(posXMid, posYMid, 90);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Dimensionner(testPolygone, 2);
+            i.DimensionnerForme(testPolygone, 2);
             i.Afficher(displayTime);
         }
 
@@ -478,7 +505,7 @@ namespace AMCPTest
             testPolygone = i.CreerEtoile(posXMid, posYMid, 30, 50, 5);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Dimensionner(testPolygone, 2);
+            i.DimensionnerForme(testPolygone, 2);
             i.Afficher(displayTime);
         }
 
@@ -490,7 +517,7 @@ namespace AMCPTest
             testPolygone = i.CreerLosange(posXMid, posYMid, 30, 50);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Dimensionner(testPolygone, 2);
+            i.DimensionnerForme(testPolygone, 2);
             i.Afficher(displayTime);
         }
 
@@ -503,9 +530,10 @@ namespace AMCPTest
             testEllipse = i.CreerEllipse(posXMid, posYMid, 50, 80);
             i.Afficher(displayTime);
             i.NettoyerEcran();
-            i.Dimensionner(testEllipse, 2);
+            i.DimensionnerForme(testEllipse, 2);
             i.Afficher(displayTime);
         }
+        #endregion
     }
 }
  

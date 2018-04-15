@@ -24,9 +24,11 @@ namespace AMCPTest
         [TestMethod]
         public void COMListerContributeur()
         {
-            throw new Exception("Pas encore développé");
+            i = new ModeSequentiel();
+            i.ListerContributeurs();
         }
 
+        #region Nettoyer_Reinitialiser_Canvas
 
         [TestMethod]
         public void COMNettoyerCanvas()
@@ -35,10 +37,26 @@ namespace AMCPTest
             int testPolygone = -1;
             testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
             Assert.IsTrue(testPolygone > 0);
-            i.Afficher(displayTime);
+            i.Afficher(displayTime); 
             i.NettoyerEcran();
             i.Attendre(displayTime);
+            i.Afficher(displayTime); // Les formes doivent s'afficher à nouveau 
         }
+
+        [TestMethod]
+        public void COMReinitialiserCanvas()
+        {
+            i = new ModeSequentiel();
+            int testPolygone = -1;
+            testPolygone = i.CreerTriangle(posXMid, posYMid, 20);
+            Assert.IsTrue(testPolygone > 0);
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            i.ReinitialiserCanvas();
+            i.Attendre(displayTime);
+            i.Afficher(displayTime); // Aucune forme ne doit s'afficher 
+        }
+        #endregion
 
         [TestMethod]
         public void COMChangerDimensionCanvas()

@@ -29,7 +29,7 @@ namespace AMCPTest
         /************************************************************************************************************
          * ********************************************* Stylo ***************************************************
          * *********************************************************************************************************/
-
+        #region Stylo
         [TestMethod]
         public void POOBaisserLeverStylo()
         {
@@ -88,18 +88,19 @@ namespace AMCPTest
         public void POOChangerCouleurStylo()
         {
             i = new ModeOrienteObjet();
-            i.Stylo = new Stylo(new Point(posXMid, posYMid), 10, 0, Color.Red);
+            i.Stylo.Couleur = Color.Red;
             i.Stylo.DescendreStylo();
             i.Stylo.Avancer(50);
             Forme testFormeLibre = i.Stylo.LeverStylo();
             Assert.AreNotEqual(null, testFormeLibre);
             i.Afficher(displayTime);
         }
+        #endregion
 
         /************************************************************************************************************
          * ************************************** Dessiner Formes ***************************************************
          * *********************************************************************************************************/
-
+        #region Dessiner Formes
         [TestMethod]
         public void POODessinerCarree100x100()
         {
@@ -174,11 +175,13 @@ namespace AMCPTest
             Assert.AreNotEqual(null, testTriangleLibre);
             i.Afficher(displayTime);
         }
+        #endregion
 
         /************************************************************************************************************
          * ************************************** Hors Canvas *******************************************************
          * *********************************************************************************************************/
 
+        #region Dessiner Hors Canvas
         [TestMethod]
         public void POODessinerCarreeHorsCanvas()
         {
@@ -254,11 +257,35 @@ namespace AMCPTest
             i.Afficher(displayTime); // Doit afficher
         }
 
+        [TestMethod]
+        public void POOEcrireTexteHorsCanvas()
+        {
+            i = new ModeOrienteObjet();
+            Forme texte = i.CreerTexte(posXMid+2000, posYMid+25000, 60, "THIS IS A TEST");
+            Assert.IsTrue(texte.ID > 0);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POOImporterImageHorsCanvas()
+        {
+            i = new ModeOrienteObjet();
+            string fileName = "pikachu.png";
+            string rootPath = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName;
+            string path = Path.Combine(rootPath, @"assets\", fileName);
+            Forme img = i.CreerImage(4500, -47588, path);
+            img.Dimensionner(.5f);
+            Assert.IsTrue(img.ID > 0);
+            i.Afficher(displayTime);
+        }
+
+        #endregion
+
         /************************************************************************************************************
          * ************************************** Dupliquer ***********************************************************
          * *********************************************************************************************************/
 
-
+        #region Dupliquer
         [TestMethod]
         public void POODupliquerPolygone()
         {
@@ -282,24 +309,13 @@ namespace AMCPTest
             Assert.AreNotSame(testCercle, cercleDuplique);
             i.Afficher(displayTime);
         }
-
-
-        /************************************************************************************************************
-         * ************************************** Reinitialiser Canvas ***********************************************************
-         * *********************************************************************************************************/
-
-        [TestMethod]
-        public void POOReinitialiserCanvas()
-        {
-            throw new Exception("Pas encore développé");
-        }
-
+        #endregion
 
         /************************************************************************************************************
          * ************************************** Ecrire Texte/Importer Image ***********************************************************
          * *********************************************************************************************************/
 
-
+        #region Ecrire Texte/Importer Image
         [TestMethod]
         public void POOEcrireTexte()
         {
@@ -321,11 +337,12 @@ namespace AMCPTest
             Assert.IsTrue(img.ID > 0);
             i.Afficher(displayTime);
         }
+        #endregion
 
         /************************************************************************************************************
- * ************************************** Rotation/translation/homothétie d'une forme *******************************************************
- * *********************************************************************************************************/
-
+         * ************************************** Rotation/translation/homothétie d'une forme *******************************************************
+         * *********************************************************************************************************/
+        #region Rotation/translation/homothétie d'une forme
         [TestMethod]
         public void POORotationPolygoneRectangle()
         {
@@ -506,5 +523,6 @@ namespace AMCPTest
             testEllipse.Dimensionner(2);
             i.Afficher(displayTime);
         }
+        #endregion
     }
 }
