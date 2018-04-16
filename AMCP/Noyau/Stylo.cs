@@ -53,8 +53,10 @@ namespace AMCP.Noyau
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Stylo : Descendre le stylo pour commencer.");
-                return null;
+                Console.ResetColor();
+                return new FormeLibre(null, this.Taille, this.Couleur);
             }
         }
 
@@ -72,7 +74,9 @@ namespace AMCP.Noyau
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Stylo : Le stylo est déja descendu et prêt à écrire.");
+                Console.ResetColor();
             }
         }
 

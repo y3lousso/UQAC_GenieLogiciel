@@ -81,13 +81,14 @@ namespace CEGEP_Student
                 case 3:
                     {
                         Console.WriteLine("------ Reverse Y Axis Test -------");
-                        ModeOrienteObjet i = new ModeOrienteObjet();
+                        ModeSequentiel i = new ModeSequentiel();
 
-                        int posX = 0;
-                        int posY = 0;
-
-                        Forme rectangle = i.CreerCarre(50 + posX, 50 + posY, 100);
-                        Forme cercle = i.CreerCercle(posX + 100, posY + 100, 50);
+                        i.DeplacerStylo(50, 50);
+                        i.DescendreStylo();
+                        i.AvancerStylo(50);
+                        i.TournerStylo(20);
+                        i.AvancerStylo(50);
+                        i.LeverStylo();
 
                         i.Afficher();
                         i.Pause();
@@ -275,8 +276,8 @@ namespace CEGEP_Student
             Console.WriteLine("0 -> Lister contributeurs");
             Console.WriteLine("1 -> sequenciel rotation");
             Console.WriteLine("2 -> opp rotation");
-            Console.WriteLine("3 -> reverse Y axis test");
-            Console.WriteLine("4 -> car demo");
+            Console.WriteLine("3 -> stylo seq");
+            Console.WriteLine("4 -> car demo poo");
             Console.WriteLine("5 -> test pour les id");
             Console.WriteLine("6 ->rotate ellipse");
             Console.WriteLine("7 -> text");

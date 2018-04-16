@@ -10,6 +10,7 @@ namespace AMCP.Formes
     {
         List<Point> Points { get; set; } = new List<Point>();
         int TailleStylo { get; set; }
+        private bool IsValid = false;
 
         internal FormeLibre(List<Point> points, int taille)
         {
@@ -24,6 +25,7 @@ namespace AMCP.Formes
             this.Color = Color.Black;
             this.TailleStylo = taille;
             this.Type = "Forme    ";
+            IsValid = true;
         }
 
         internal FormeLibre(List<Point> points, int taille, Color color)
@@ -37,6 +39,7 @@ namespace AMCP.Formes
             this.Color = color;
             this.TailleStylo = taille;
             this.Type = "Forme    ";
+            IsValid = true;
         }
 
         public override void Afficher()

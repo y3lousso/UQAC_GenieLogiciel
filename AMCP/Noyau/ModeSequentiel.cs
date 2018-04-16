@@ -298,7 +298,13 @@ namespace AMCP.Noyau
         /// <returns></returns>
         public virtual int LeverStylo()
         {
-            return this.Stylo.LeverStylo().ID;
+            try{
+                return this.Stylo.LeverStylo().ID;
+            }
+            catch
+            {
+                return -1;
+            }            
         }
 
         /// <summary>
