@@ -44,14 +44,18 @@ namespace AMCP.Noyau
         {
             if (IsWriting)
             {
-                Console.WriteLine("Stylo : Descendre le stylo pour commencer.");
+                this.Points.Add(new Point(this.Position.X, this.Position.Y));
+                FormeLibre forme = new FormeLibre(this.Points, this.Taille, this.Couleur);
+                Canvas.instance.Formes.Add(forme);
+                this.Points = null;
+                this.IsWriting = false;
+                return forme;              
             }
-            this.Points.Add(new Point(this.Position.X, this.Position.Y));
-            FormeLibre forme = new FormeLibre(this.Points, this.Taille, this.Couleur);
-            Canvas.instance.Formes.Add(forme);
-            this.Points = null;
-            this.IsWriting = false;
-            return forme;
+            else
+            {
+                Console.WriteLine("Stylo : Descendre le stylo pour commencer.");
+                return null;
+            }
         }
 
         /// <summary>
@@ -59,10 +63,17 @@ namespace AMCP.Noyau
         /// </summary>
         public void DescendreStylo()
         {
-            this.StartPosition = this.Position;
-            this.Points = new List<Point>();
-            this.Points.Add(this.StartPosition);
-            this.IsWriting = true;
+            if (!IsWriting)
+            {
+                this.StartPosition = this.Position;
+                this.Points = new List<Point>();
+                this.Points.Add(this.StartPosition);
+                this.IsWriting = true;
+            }
+            else
+            {
+                Console.WriteLine("Stylo : Le stylo est déja descendu et prêt à écrire.");
+            }
         }
 
         /// <summary>
