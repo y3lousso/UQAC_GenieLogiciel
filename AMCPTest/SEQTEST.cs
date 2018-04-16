@@ -40,9 +40,17 @@ namespace AMCPTest
             i = new ModeSequentiel();
             int testFormeLibre = -1;
             i.DescendreStylo();
-            i.LeverStylo();
+            testFormeLibre = i.LeverStylo();
+            Assert.AreNotEqual(-1, testFormeLibre);
+            i.Afficher(displayTime);
+        }
 
-            throw new Exception("Dessin libre pas encore implémenté");
+        [TestMethod]
+        public void SEQLeverStyloSansBaisser()
+        {
+            i = new ModeSequentiel();
+            i.LeverStylo();
+            i.Afficher(displayTime);
         }
 
         [TestMethod]
@@ -52,9 +60,9 @@ namespace AMCPTest
             int testFormeLibre = -1;
             i.DescendreStylo();
             i.AvancerStylo(50);
-            i.LeverStylo();
-
-            throw new Exception("Dessin libre pas encore implémenté");
+            testFormeLibre = i.LeverStylo();
+            Assert.AreNotEqual(-1, testFormeLibre);
+            i.Afficher(displayTime);
         }
 
         [TestMethod]
@@ -62,8 +70,7 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             i.AvancerStylo(50);
-
-            throw new Exception("Dessin libre pas encore implémenté");
+            i.Afficher(displayTime);
         }
 
         [TestMethod]
@@ -75,9 +82,9 @@ namespace AMCPTest
             i.AvancerStylo(50);
             i.TournerStylo(90);
             i.AvancerStylo(50);
-            i.LeverStylo();
-
-            throw new Exception("Dessin libre pas encore implémenté");
+            testFormeLibre = i.LeverStylo();
+            Assert.AreNotEqual(-1, testFormeLibre);
+            i.Afficher(displayTime);
         }
 
         [TestMethod]
@@ -89,15 +96,22 @@ namespace AMCPTest
             i.AvancerStylo(50);
             i.TournerStylo(450);
             i.AvancerStylo(50);
-            i.LeverStylo();
-
-            throw new Exception("Dessin libre pas encore implémenté");
+            testFormeLibre = i.LeverStylo();
+            Assert.AreNotEqual(-1, testFormeLibre);
+            i.Afficher(displayTime);
         }
 
         [TestMethod]
         public void SEQChangerCouleurStylo()
         {
-            throw new Exception("Pas encore implémenté");
+            i = new ModeSequentiel();
+            int testFormeLibre = -1;
+            i.ColorierStylo(255, 0, 0);
+            i.DescendreStylo();
+            i.AvancerStylo(50);
+            testFormeLibre = i.LeverStylo();
+            Assert.AreNotEqual(-1, testFormeLibre);
+            i.Afficher(displayTime);
         }
         #endregion
 
@@ -179,9 +193,9 @@ namespace AMCPTest
             i.AvancerStylo(50);
             i.TournerStylo(120);
             i.AvancerStylo(50);
-            i.LeverStylo();
-
-            throw new Exception("Dessin libre pas encore implémenté");
+            testTriangleLibre = i.LeverStylo();
+            Assert.AreNotEqual(-1, testTriangleLibre);
+            i.Afficher(displayTime);
         }
         #endregion
 
@@ -250,24 +264,24 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             int testFormeLibre = -1;
-            i.DeplacerForme(testFormeLibre,-2000, 300);
+            i.DeplacerStylo(-2000, 300);
             i.DescendreStylo();
             i.AvancerStylo(2000);
-            i.LeverStylo(); // Ne doit rien afficher
-
-            throw new Exception("Dessin libre pas encore implémenté");
+            testFormeLibre = i.LeverStylo(); // Ne doit rien afficher
+            Assert.AreNotEqual(-1, testFormeLibre);
+            i.Afficher(displayTime);
         }
 
         [TestMethod]
         public void SEQDessinerFormeLibreDepasseHorsCanvas()
         {
             i = new ModeSequentiel();
+            int testFormeLibre = -1;
             i.DescendreStylo();
             i.AvancerStylo(2000);
-            i.LeverStylo();
-            i.Afficher(displayTime); // Doit afficher
-
-            throw new Exception("Dessin libre pas encore implémenté");
+            testFormeLibre = i.LeverStylo(); // Doit afficher
+            Assert.AreNotEqual(-1, testFormeLibre);
+            i.Afficher(displayTime);
         }
 
         [TestMethod]
@@ -471,6 +485,20 @@ namespace AMCPTest
         }
 
         [TestMethod]
+        public void SEQRotationFormeLibre()
+        {
+            i = new ModeSequentiel();
+            int testFormeLibre = -1;
+            i.DescendreStylo();
+            i.AvancerStylo(50);
+            testFormeLibre = i.LeverStylo();
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            i.TournerForme(testFormeLibre, -30);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
         public void SEQTranslationPolygoneRectangle()
         {
             i = new ModeSequentiel();
@@ -527,6 +555,20 @@ namespace AMCPTest
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.DeplacerForme(testEllipse, 200, 200);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void SEQTranslationFormeLibre()
+        {
+            i = new ModeSequentiel();
+            int testFormeLibre = -1;
+            i.DescendreStylo();
+            i.AvancerStylo(50);
+            testFormeLibre = i.LeverStylo();
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            i.DeplacerForme(testFormeLibre, 200, 200);
             i.Afficher(displayTime);
         }
 
@@ -588,6 +630,20 @@ namespace AMCPTest
             i.Afficher(displayTime);
             i.NettoyerEcran();
             i.DimensionnerForme(testEllipse, 2);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void SEQHomothétieFormeLibre()
+        {
+            i = new ModeSequentiel();
+            int testFormeLibre = -1;
+            i.DescendreStylo();
+            i.AvancerStylo(50);
+            testFormeLibre = i.LeverStylo();
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            i.DimensionnerForme(testFormeLibre, 2);
             i.Afficher(displayTime);
         }
         #endregion

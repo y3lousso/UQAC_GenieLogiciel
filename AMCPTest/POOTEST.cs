@@ -48,6 +48,14 @@ namespace AMCPTest
         }
 
         [TestMethod]
+        public void POOLeverStyloSansBaisser()
+        {
+            i = new ModeOrienteObjet();
+            i.Stylo.LeverStylo();
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
         public void POOAvancerStyloDe50()
         {
             i = new ModeOrienteObjet();
@@ -435,6 +443,20 @@ namespace AMCPTest
         }
 
         [TestMethod]
+        public void POORotationFormeLibre()
+        {
+            i = new ModeOrienteObjet();
+            Forme testFormeLibre = null;
+            i.Stylo.DescendreStylo();
+            i.Stylo.Avancer(50);
+            testFormeLibre = i.Stylo.LeverStylo();
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testFormeLibre.Tourner(-30);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
         public void POOTranslationPolygoneRectangle()
         {
             i = new ModeOrienteObjet();
@@ -496,6 +518,20 @@ namespace AMCPTest
         }
 
         [TestMethod]
+        public void POOTranslationFormeLibre()
+        {
+            i = new ModeOrienteObjet();
+            Forme testFormeLibre = null;
+            i.Stylo.DescendreStylo();
+            i.Stylo.Avancer(50);
+            testFormeLibre = i.Stylo.LeverStylo();
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testFormeLibre.Deplacer(200, 200);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
         public void POOHomothetiePolygoneRectangle()
         {
             i = new ModeOrienteObjet();
@@ -552,6 +588,20 @@ namespace AMCPTest
             i.Afficher(displayTime);
             i.NettoyerEcran();
             testEllipse.Dimensionner(2);
+            i.Afficher(displayTime);
+        }
+
+        [TestMethod]
+        public void POOHomothethieFormeLibre()
+        {
+            i = new ModeOrienteObjet();
+            Forme testFormeLibre = null;
+            i.Stylo.DescendreStylo();
+            i.Stylo.Avancer(50);
+            testFormeLibre = i.Stylo.LeverStylo();
+            i.Afficher(displayTime);
+            i.NettoyerEcran();
+            testFormeLibre.Dimensionner(2);
             i.Afficher(displayTime);
         }
         #endregion
