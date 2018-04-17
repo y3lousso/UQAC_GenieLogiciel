@@ -56,6 +56,10 @@ namespace AMCP.InterfaceUtilisateur
             this.Size = new Size(sizeX, sizeY);
         }
 
+        /// <summary>
+        /// A utiliser uniquement lors de la création de nouvelles DLL.
+        /// </summary>
+        /// <returns></returns>
         public static int ProchainID()
         {
             dernierID += 1;

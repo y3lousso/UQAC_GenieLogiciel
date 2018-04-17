@@ -12,6 +12,9 @@ namespace AMCP.Noyau
     {
         private  Stylo Stylo { get; set; }
 
+        /// <summary>
+        /// Permet de créer une instance du mode séquentiel.
+        /// </summary>
         public ModeSequentiel()
         {
             this.Stylo = new Stylo();

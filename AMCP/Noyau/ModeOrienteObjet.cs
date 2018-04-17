@@ -12,6 +12,9 @@ namespace AMCP.Noyau
     {
         public Stylo Stylo { get; set; }
 
+        /// <summary>
+        /// Permet de créer une instance du mode orientée objet.
+        /// </summary>
         public ModeOrienteObjet()
         {
             this.Stylo = new Stylo();
