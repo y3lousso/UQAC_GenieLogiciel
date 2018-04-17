@@ -35,7 +35,7 @@ namespace AMCP.Formes
         }
 
         /// <summary>
-        /// Permet de tourner une forme.
+        /// Permet de déplacer une forme.
         /// </summary>
         /// <param name="positionX"></param>
         /// <param name="positionY"></param>
@@ -46,13 +46,13 @@ namespace AMCP.Formes
         }
 
         /// <summary>
-        /// Permet de déplacer une forme.
+        /// Permet de changer la taille d'une forme.
         /// </summary>
         /// <param name="taille"></param>
         public abstract void Dimensionner(float taille);
 
         /// <summary>
-        /// Permet de changer la taille d'une forme.
+        /// Permet de tourner une forme.
         /// </summary>
         /// <param name="angle"></param>
         public virtual void Tourner(int angle)
