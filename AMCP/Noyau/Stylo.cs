@@ -56,7 +56,7 @@ namespace AMCP.Noyau
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Stylo : Descendre le stylo pour commencer.");
                 Console.ResetColor();
-                return new FormeLibre(null, this.Taille, this.Couleur);
+                return new FormeLibre();
             }
         }
 

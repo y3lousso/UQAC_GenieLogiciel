@@ -12,6 +12,11 @@ namespace AMCP.Formes
         int TailleStylo { get; set; }
         private bool IsValid = false;
 
+        internal FormeLibre()
+        {
+            IsValid = false;
+        }
+
         internal FormeLibre(List<Point> points, int taille)
         {
             this.ID = Canvas.ProchainID();
