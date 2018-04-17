@@ -64,7 +64,11 @@ namespace AMCP.Formes
 
         public override void Dimensionner(float taille)
         {
-            TaillePolice = (int)taille * this.TaillePolice;
+            this.TaillePolice = (int)(taille * this.TaillePolice);
+            if (this.TaillePolice < 1)
+            {
+                this.TaillePolice = 1;
+            }
             Console.WriteLine(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.");
         }
     }

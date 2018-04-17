@@ -209,6 +209,7 @@ namespace CEGEP_Student
                         for (int x = 0; x < 50; x++)
                         {
                             title.Tourner(5);
+                            title.Dimensionner(0.9f);
                             i.Afficher();
                             i.Attendre(.1f);
                             i.NettoyerEcran();
