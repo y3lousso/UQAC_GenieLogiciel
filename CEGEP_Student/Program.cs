@@ -265,6 +265,27 @@ namespace CEGEP_Student
 
                         break;
                     }
+                case 10:
+                    {
+                        Console.WriteLine("------ OOP -------");
+                        ModeOrienteObjetBoosted i = new ModeOrienteObjetBoosted();
+
+                        Forme voiture = i.CreerVoiture(200, 200);
+
+                        for (int x = 0; x < 100; x++)
+                        {
+                            voiture.Tourner(5);
+                            voiture.Deplacer(voiture.Position.X + 5, voiture.Position.Y);
+                            i.Afficher();
+                            i.Attendre(.1f);
+                            i.NettoyerEcran();
+                        }
+
+                        i.Afficher();
+                        i.Pause();
+
+                        break;
+                    }
                 default:
                     Console.WriteLine("Select a correct test");
                     break;
@@ -283,6 +304,7 @@ namespace CEGEP_Student
             Console.WriteLine("6 ->rotate ellipse");
             Console.WriteLine("7 -> text");
             Console.WriteLine("8 -> image");
+            Console.WriteLine("9 -> Extra DLL : voiture");
             Console.WriteLine("9 -> Extra DLL : voiture");
             Console.WriteLine("*****************************\n");
             Console.Write("Votre choix : ");

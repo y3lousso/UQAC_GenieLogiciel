@@ -63,7 +63,7 @@ namespace AMCP.Formes
 
         public override Forme Dupliquer(int positionX, int positionY)
         {
-            Forme forme = new Polygone(this.Position, this.Points, this.Type);
+            Forme forme = new Polygone(new Point(positionX,positionY), this.Points, this.Type);
             forme.Color = this.Color;
             forme.Orientation = this.Orientation;
             Canvas.instance.Formes.Add(forme);           
