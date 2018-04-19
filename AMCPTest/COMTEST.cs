@@ -16,7 +16,7 @@ namespace AMCPTest
         [TestInitialize()]
         public void Initialize()
         {
-            new PrivateType(typeof(IMode)).SetStaticField("instance", null);
+            new PrivateType(typeof(IMode)).SetStaticFieldOrProperty("instance", null);
             new PrivateType(typeof(Canvas)).SetStaticField("instance", null);
         }
 
@@ -73,6 +73,4 @@ namespace AMCPTest
             i.Attendre(displayTime);
         }
     }
-
-
 }

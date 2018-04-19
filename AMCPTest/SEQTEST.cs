@@ -19,7 +19,7 @@ namespace AMCPTest
         [TestInitialize()]
         public void Initialize()
         {
-            new PrivateType(typeof(IMode)).SetStaticField("instance", null);
+            new PrivateType(typeof(IMode)).SetStaticFieldOrProperty("instance", null);
             new PrivateType(typeof(Canvas)).SetStaticField("instance", null);
         }
 
@@ -28,6 +28,30 @@ namespace AMCPTest
         {
             i = new ModeSequentiel();
             i.ListerFonctions();
+        }
+
+        [TestMethod]
+        public void SEQLogON()
+        {
+            i = new ModeSequentiel();
+            //i.AfficherHistoriqueActions(true);
+            int testEllipse = -1;
+            testEllipse = i.CreerRectangle(posXMid, posYMid, 100, 100);
+            i.Afficher();
+            i.TournerForme(testEllipse, 50);
+            i.Afficher();
+        }
+
+        [TestMethod]
+        public void SEQLogOFF()
+        {
+            i = new ModeSequentiel();
+            i.AfficherHistoriqueActions(false);
+            int testEllipse = -1;
+            testEllipse = i.CreerRectangle(posXMid, posYMid, 100, 100);
+            i.Afficher();
+            i.TournerForme(testEllipse,50);
+            i.Afficher();
         }
 
         /************************************************************************************************************

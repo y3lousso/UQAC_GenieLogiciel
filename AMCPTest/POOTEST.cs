@@ -22,7 +22,7 @@ namespace AMCPTest
         [TestInitialize()]
         public void Initialize()
         {
-            new PrivateType(typeof(IMode)).SetStaticField("instance", null);
+            new PrivateType(typeof(IMode)).SetStaticFieldOrProperty("instance", null);
             new PrivateType(typeof(Canvas)).SetStaticField("instance", null);
         }
 
@@ -31,6 +31,30 @@ namespace AMCPTest
         {
             i = new ModeOrienteObjet();
             i.ListerFonctions();
+        }
+
+        [TestMethod]
+        public void POOLogON()
+        {
+            i = new ModeOrienteObjet();
+            //i.AfficherHistoriqueActions(true);
+            Forme testPolygone = null;
+            testPolygone = i.CreerRectangle(posXMid, posYMid, 100, 100);
+            i.Afficher();
+            testPolygone.Tourner(50);
+            i.Afficher();
+        }
+
+        [TestMethod]
+        public void POOLogOFF()
+        {
+            i = new ModeOrienteObjet();
+            i.AfficherHistoriqueActions(false);
+            Forme testPolygone = null;
+            testPolygone = i.CreerRectangle(posXMid, posYMid, 100, 100);
+            i.Afficher();
+            testPolygone.Tourner(50);
+            i.Afficher();
         }
 
         /************************************************************************************************************
