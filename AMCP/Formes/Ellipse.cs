@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using AMCP.InterfaceUtilisateur;
+using AMCP.Noyau;
 
 namespace AMCP.Formes
 {
@@ -61,7 +62,7 @@ namespace AMCP.Formes
                 //Draw the rotated ellipse
                 Rectangle r = new Rectangle(this.Position.X- this.Largeur /2, this.Position.Y- this.Hauteur /2, this.Largeur, this.Hauteur);
                 Canvas.instance.Graphic.FillEllipse(new SolidBrush(this.Color), r);
-                Console.WriteLine(this.Type + " " + this.ID + " : Affichage effectué.");
+                IMode.instance.Logger(this.Type + " " + this.ID + " : Affichage effectué.", ConsoleColor.Green);
 
                 //Rotate back to normal around the same point</pre>
                 matrix.RotateAt(-this.Orientation, new PointF(this.Position.X, this.Position.Y));
@@ -69,7 +70,7 @@ namespace AMCP.Formes
             }
             else
             {
-                Console.WriteLine(this.Type + " " + this.ID + " : Hors canvas.");
+                IMode.instance.Logger(this.Type + " " + this.ID + " : Hors canvas.", ConsoleColor.Yellow);
             }
         }
 
@@ -79,21 +80,21 @@ namespace AMCP.Formes
             forme.Color = this.Color;
             forme.Orientation = this.Orientation;
             Canvas.instance.Formes.Add(forme);
-            Console.WriteLine(this.Type + " " + this.ID + " : Duplication réussie.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Duplication réussie.", ConsoleColor.Green);
             return forme;
         }
 
         public override void Deplacer(int positionX, int positionY)
         {
             this.Position = new Point(positionX, positionY);
-            Console.WriteLine(this.Type + " " + this.ID + " : Déplacement de (" + this.Position.X + ", " + this.Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Déplacement de (" + this.Position.X + ", " + this.Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué.", ConsoleColor.Green);
         }
 
         public override void Dimensionner(float taille)
         {
             this.Largeur = (int)(this.Largeur * taille);
             this.Hauteur = (int)(this.Hauteur * taille);
-            Console.WriteLine(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.", ConsoleColor.Green);
         }
     }
 }

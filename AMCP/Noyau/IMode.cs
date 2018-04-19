@@ -12,7 +12,7 @@ namespace AMCP.Noyau
 {
     public abstract class IMode
     {
-        private static IMode instance;
+        internal static IMode instance;
         protected Canvas Canvas { get; set; } 
         protected bool HistoriqueActions { get; set; } 
         
@@ -25,9 +25,7 @@ namespace AMCP.Noyau
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Impossible de créer plusieurs instances de type Mode !");
-                Console.ResetColor();
+                Logger("Impossible de créer plusieurs instances de type Mode !", ConsoleColor.Red);
             }
         }
 
@@ -39,38 +37,38 @@ namespace AMCP.Noyau
         public void ListerContributeurs()
         {
             Console.Clear();
-            Console.WriteLine("////////////////// AMCP //////////////////");
-            Console.WriteLine("-------- Analyse fonctionnelle -----------");
-            Console.WriteLine("BERTHET Maxime");
-            Console.WriteLine("DELEMOTTE David");
-            Console.WriteLine("FALLON Blandine");
-            Console.WriteLine("JOLY Corentin");
-            Console.WriteLine("MARTIN Gaetan");
-            Console.WriteLine("MAROUN Marc-Yves");
-            Console.WriteLine("MORICE Renald");
-            Console.WriteLine("-------------- Conception ----------------");
-            Console.WriteLine("ESSIMMOU Assil");
-            Console.WriteLine("GALL Antoine");
-            Console.WriteLine("LARGE Erwann");
-            Console.WriteLine("LASCHKAR Benjamin");
-            Console.WriteLine("LEBLEU Anthony");
-            Console.WriteLine("RIEUF Ianis");
-            Console.WriteLine("SAKHI Faical");
-            Console.WriteLine("------------- Développement --------------");
-            Console.WriteLine("LOUSSOUARN Yannick");
-            Console.WriteLine("MANZANILLA Francis Andre");
-            Console.WriteLine("NGOY-WESSESSI Brice Cesar");
-            Console.WriteLine("RAZAFINDRAHAINGO Iry Fanevan'ny Aina");
-            Console.WriteLine("RIVAULT Nicolas");
-            Console.WriteLine("RYCKAERT Guillaume");
-            Console.WriteLine("SANOU Yves Patrick Albert");
-            Console.WriteLine("---------- Assurance Qualitée ------------");
-            Console.WriteLine("BATTISTON Aurelie");
-            Console.WriteLine("COMBETTE Elise");
-            Console.WriteLine("LE BAIL Loick");
-            Console.WriteLine("LUCE-LUCAS Mathilde");
-            Console.WriteLine("MESNY Alexandre");
-            Console.WriteLine("VANMARCKE Romain");            
+            Logger("////////////////// AMCP //////////////////", ConsoleColor.White);
+            Logger("-------- Analyse fonctionnelle -----------", ConsoleColor.Red);
+            Logger("BERTHET Maxime" ,ConsoleColor.Gray);
+            Logger("DELEMOTTE David" ,ConsoleColor.Gray);
+            Logger("FALLON Blandine" ,ConsoleColor.Gray);
+            Logger("JOLY Corentin" ,ConsoleColor.Gray);
+            Logger("MARTIN Gaetan" ,ConsoleColor.Gray);
+            Logger("MAROUN Marc-Yves" ,ConsoleColor.Gray);
+            Logger("MORICE Renald" ,ConsoleColor.Gray);
+            Logger("-------------- Conception ----------------" ,ConsoleColor.Yellow);
+            Logger("ESSIMMOU Assil" ,ConsoleColor.Gray);
+            Logger("GALL Antoine" ,ConsoleColor.Gray);
+            Logger("LARGE Erwann" ,ConsoleColor.Gray);
+            Logger("LASCHKAR Benjamin" ,ConsoleColor.Gray);
+            Logger("LEBLEU Anthony" ,ConsoleColor.Gray);
+            Logger("RIEUF Ianis" ,ConsoleColor.Gray);
+            Logger("SAKHI Faical" ,ConsoleColor.Gray);
+            Logger("------------- Développement --------------" ,ConsoleColor.Blue);
+            Logger("LOUSSOUARN Yannick" ,ConsoleColor.Gray);
+            Logger("MANZANILLA Francis Andre" ,ConsoleColor.Gray);
+            Logger("NGOY-WESSESSI Brice Cesar" ,ConsoleColor.Gray);
+            Logger("RAZAFINDRAHAINGO Iry Fanevan'ny Aina" ,ConsoleColor.Gray);
+            Logger("RIVAULT Nicolas" ,ConsoleColor.Gray);
+            Logger("RYCKAERT Guillaume" ,ConsoleColor.Gray);
+            Logger("SANOU Yves Patrick Albert" ,ConsoleColor.Gray);
+            Logger("---------- Assurance Qualitée ------------" ,ConsoleColor.Green);
+            Logger("BATTISTON Aurelie" ,ConsoleColor.Gray);
+            Logger("COMBETTE Elise" ,ConsoleColor.Gray);
+            Logger("LE BAIL Loick" ,ConsoleColor.Gray);
+            Logger("LUCE-LUCAS Mathilde" ,ConsoleColor.Gray);
+            Logger("MESNY Alexandre" ,ConsoleColor.Gray);
+            Logger("VANMARCKE Romain" ,ConsoleColor.Gray);            
         }
 
         /// <summary>
@@ -140,8 +138,16 @@ namespace AMCP.Noyau
         /// </summary>
         public virtual void Pause()
         {
-            Console.WriteLine("Appuyez sur une touche pour continuer...");
+            Logger("", ConsoleColor.Gray);
+            Logger("Appuyez sur une touche pour continuer...", ConsoleColor.Gray);
             Console.ReadLine();
+        }
+
+        public void Logger(string texte, ConsoleColor couleur)
+        {
+            Console.ForegroundColor = couleur;
+            Console.WriteLine(texte);
+            Console.ResetColor();
         }
 
     }

@@ -25,30 +25,30 @@ namespace AMCP.Noyau
         /// </summary>
         public override void ListerFonctions()
         {
-            Console.WriteLine(">>>>>>>>>> Mode Orienté Objet <<<<<<<<<<<");
-            Console.WriteLine("ModeOrienteObjet");
-            Console.WriteLine("   Forme <- CreerCarre()");
-            Console.WriteLine("   Forme <- CreerRectangle()");
-            Console.WriteLine("   Forme <- CreerTriangle()");
-            Console.WriteLine("   Forme <- CreerLosange()");
-            Console.WriteLine("   Forme <- CreerEtoile()");
-            Console.WriteLine("   Forme <- CreerCercle()");
-            Console.WriteLine("   Forme <- CreerEllipse()");
-            Console.WriteLine("   Forme <- CreerTexte()");
-            Console.WriteLine("   Forme <- CreerImage()");
-            Console.WriteLine("Forme");
-            Console.WriteLine("   Forme <- Dupliquer()");
-            Console.WriteLine("   void <- Colorier()");
-            Console.WriteLine("   void <- Deplacer()");
-            Console.WriteLine("   void <- Dimensionner()");
-            Console.WriteLine("   void <- Tourner()");
-            Console.WriteLine("   void <- Supprimer()");
-            Console.WriteLine("Stylo");
-            Console.WriteLine("   Forme <- LeverStylo()");
-            Console.WriteLine("   void <- DescendreStylo()");
-            Console.WriteLine("   void <- Avancer()");
-            Console.WriteLine("   void <- Tourner()");
-            Console.WriteLine("   void <- Deplacer()");
+            IMode.instance.Logger(">>>>>>>>>> Mode Orienté Objet <<<<<<<<<<<", ConsoleColor.Gray);
+            IMode.instance.Logger("ModeOrienteObjet", ConsoleColor.Gray);
+            IMode.instance.Logger("   Forme <- CreerCarre()", ConsoleColor.Gray);
+            IMode.instance.Logger("   Forme <- CreerRectangle()", ConsoleColor.Gray);
+            IMode.instance.Logger("   Forme <- CreerTriangle()", ConsoleColor.Gray);
+            IMode.instance.Logger("   Forme <- CreerLosange()", ConsoleColor.Gray);
+            IMode.instance.Logger("   Forme <- CreerEtoile()", ConsoleColor.Gray);
+            IMode.instance.Logger("   Forme <- CreerCercle()", ConsoleColor.Gray);
+            IMode.instance.Logger("   Forme <- CreerEllipse()", ConsoleColor.Gray);
+            IMode.instance.Logger("   Forme <- CreerTexte()", ConsoleColor.Gray);
+            IMode.instance.Logger("   Forme <- CreerImage()", ConsoleColor.Gray);
+            IMode.instance.Logger("Forme", ConsoleColor.Gray);
+            IMode.instance.Logger("   Forme <- Dupliquer()", ConsoleColor.Gray);
+            IMode.instance.Logger("   void <- Colorier()", ConsoleColor.Gray);
+            IMode.instance.Logger("   void <- Deplacer()", ConsoleColor.Gray);
+            IMode.instance.Logger("   void <- Dimensionner()", ConsoleColor.Gray);
+            IMode.instance.Logger("   void <- Tourner()", ConsoleColor.Gray);
+            IMode.instance.Logger("   void <- Supprimer()", ConsoleColor.Gray);
+            IMode.instance.Logger("Stylo", ConsoleColor.Gray);
+            IMode.instance.Logger("   Forme <- LeverStylo()", ConsoleColor.Gray);
+            IMode.instance.Logger("   void <- DescendreStylo()", ConsoleColor.Gray);
+            IMode.instance.Logger("   void <- Avancer()", ConsoleColor.Gray);
+            IMode.instance.Logger("   void <- Tourner()", ConsoleColor.Gray);
+            IMode.instance.Logger("   void <- Deplacer()", ConsoleColor.Gray);
         }
 
         #region Createurs
@@ -65,7 +65,7 @@ namespace AMCP.Noyau
             Polygone f = new Polygone(new Point(positionX, positionY));
             f.SetRectangle(taille, taille);
             this.Canvas.Formes.Add(f);
-            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            IMode.instance.Logger(f.Type + " " + f.ID + " : Création effectuée.", ConsoleColor.Green);
             return f;
         }
 
@@ -82,7 +82,7 @@ namespace AMCP.Noyau
             Polygone f = new Polygone(new Point(positionX, positionY));
             f.SetRectangle(largeur, hauteur);
             this.Canvas.Formes.Add(f);
-            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            IMode.instance.Logger(f.Type + " " + f.ID + " : Création effectuée.", ConsoleColor.Green);
             return f;
         }
 
@@ -98,7 +98,7 @@ namespace AMCP.Noyau
             Polygone f = new Polygone(new Point(positionX, positionY));
             f.SetTriangle(taille);
             this.Canvas.Formes.Add(f);
-            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            IMode.instance.Logger(f.Type + " " + f.ID + " : Création effectuée.", ConsoleColor.Green);
             return f;
         }
 
@@ -115,7 +115,7 @@ namespace AMCP.Noyau
             Polygone f = new Polygone(new Point(positionX, positionY));
             f.SetLosange(largeur, hauteur);
             this.Canvas.Formes.Add(f);
-            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            IMode.instance.Logger(f.Type + " " + f.ID + " : Création effectuée.", ConsoleColor.Green);
             return f;
         }
 
@@ -133,7 +133,7 @@ namespace AMCP.Noyau
             Polygone f = new Polygone(new Point(positionX, positionY));
             f.SetEtoile(rayonInterieur / 2, rayonExterieur / 2, nbSommet);
             this.Canvas.Formes.Add(f);
-            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            IMode.instance.Logger(f.Type + " " + f.ID + " : Création effectuée.", ConsoleColor.Green);
             return f;
         }
         
@@ -148,7 +148,7 @@ namespace AMCP.Noyau
         {
             Forme f = new Ellipse(new Point(positionX, positionY), rayon, rayon);
             this.Canvas.Formes.Add(f);
-            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            IMode.instance.Logger(f.Type + " " + f.ID + " : Création effectuée.", ConsoleColor.Green);
             return f;
         }
         
@@ -164,7 +164,7 @@ namespace AMCP.Noyau
         {
             Forme f = new Ellipse(new Point(positionX, positionY), rayon1, rayon2);
             this.Canvas.Formes.Add(f);
-            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            IMode.instance.Logger(f.Type + " " + f.ID + " : Création effectuée.", ConsoleColor.Green);
             return f;
         }
 
@@ -180,7 +180,7 @@ namespace AMCP.Noyau
         {
             Forme f = new Texte(new Point(positionX, positionY), taillePolice, contenu);
             this.Canvas.Formes.Add(f);
-            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            IMode.instance.Logger(f.Type + " " + f.ID + " : Création effectuée.", ConsoleColor.Green);
             return f;
         }
 
@@ -195,7 +195,7 @@ namespace AMCP.Noyau
         {
             Forme f = new Formes.Image(new Point(positionX, positionY), imageName);
             this.Canvas.Formes.Add(f);
-            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            IMode.instance.Logger(f.Type + " " + f.ID + " : Création effectuée.", ConsoleColor.Green);
             return f;
         }
         #endregion

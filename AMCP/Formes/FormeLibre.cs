@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using AMCP.InterfaceUtilisateur;
+using AMCP.Noyau;
 
 namespace AMCP.Formes
 {
@@ -66,7 +67,7 @@ namespace AMCP.Formes
                     point2 = new Point(this.Position.X + this.Points[i + 1].X, this.Position.Y + this.Points[i + 1].Y);
                     Canvas.instance.Graphic.DrawLine(pen, point1, point2);
                 }
-                Console.WriteLine(this.Type + " " + this.ID + " : Affichage effectué.");
+                IMode.instance.Logger(this.Type + " " + this.ID + " : Affichage effectué.", ConsoleColor.Green);
 
                 //Rotate back to normal around the same point</pre>
                 matrix.RotateAt(-this.Orientation, new PointF(this.Position.X, this.Position.Y));
@@ -74,7 +75,7 @@ namespace AMCP.Formes
             }
             else
             {
-                Console.WriteLine(this.Type + " " + this.ID + " : Hors canvas.");
+                IMode.instance.Logger(this.Type + " " + this.ID + " : Hors canvas.", ConsoleColor.Yellow);
             }
         }
 
@@ -83,7 +84,7 @@ namespace AMCP.Formes
             Forme forme = new FormeLibre(new List<Point>(this.Points), this.TailleStylo, this.Color);
             forme.Deplacer(positionX, positionY);
             Canvas.instance.Formes.Add(forme);
-            Console.WriteLine(this.Type + " " + this.ID + " : Duplication réussie.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Duplication réussie.", ConsoleColor.Green);
             return forme;
         }
 
@@ -94,7 +95,7 @@ namespace AMCP.Formes
                 Point newPoint = new Point((int)(this.Points[i].X * taille), (int)(this.Points[i].Y * taille));
                 this.Points[i] = newPoint;
             }
-            Console.WriteLine(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.", ConsoleColor.Green);
         }
     }
 }

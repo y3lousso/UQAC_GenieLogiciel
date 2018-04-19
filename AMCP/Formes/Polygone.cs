@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using AMCP.InterfaceUtilisateur;
+using AMCP.Noyau;
 
 namespace AMCP.Formes
 {
@@ -49,7 +50,7 @@ namespace AMCP.Formes
 
                 graphPath.AddPolygon(absolutePoints.ToArray());
                 Canvas.instance.Graphic.FillPath(brush, graphPath);
-                Console.WriteLine(this.Type + " " + this.ID + " : Affichage effectué.");
+                IMode.instance.Logger(this.Type + " " + this.ID + " : Affichage effectué.", ConsoleColor.Green);
 
                 //Rotate back to normal around the same point</pre>
                 matrix.RotateAt(-this.Orientation, new PointF(this.Position.X, this.Position.Y));
@@ -57,7 +58,7 @@ namespace AMCP.Formes
             }
             else
             {
-                Console.WriteLine(this.Type + " " + this.ID + " : Hors canvas.");
+                IMode.instance.Logger(this.Type + " " + this.ID + " : Hors canvas.", ConsoleColor.Green);
             }            
         }
 
@@ -67,7 +68,7 @@ namespace AMCP.Formes
             forme.Color = this.Color;
             forme.Orientation = this.Orientation;
             Canvas.instance.Formes.Add(forme);           
-            Console.WriteLine(this.Type + " " + this.ID + " : Duplication réussie.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Duplication réussie.", ConsoleColor.Green);
             return forme;
         }
 
@@ -78,7 +79,7 @@ namespace AMCP.Formes
                 Point newPoint = new Point((int)(this.Points[i].X * taille), (int)(this.Points[i].Y * taille));
                 this.Points[i] = newPoint;
             }
-            Console.WriteLine(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.", ConsoleColor.Green);
         }
 
         internal void SetRectangle(int largeur, int hauteur)

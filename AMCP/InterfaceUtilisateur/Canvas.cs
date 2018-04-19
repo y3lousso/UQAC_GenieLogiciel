@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using AMCP.Formes;
+using AMCP.Noyau;
 
 namespace AMCP.InterfaceUtilisateur
 {
@@ -31,7 +32,7 @@ namespace AMCP.InterfaceUtilisateur
                 this.CenterToScreen();
                 dernierID = 0;// On set les id a 0.
 
-                Console.WriteLine("Surface dessinable : " + this.Graphic.VisibleClipBounds);
+                IMode.instance.Logger("Surface dessinable : " + this.Graphic.VisibleClipBounds, ConsoleColor.Gray);
                 this.Formes = new List<Forme>();
                 this.Show();
             }

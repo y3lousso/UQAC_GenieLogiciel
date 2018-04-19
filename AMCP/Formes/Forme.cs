@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using AMCP.InterfaceUtilisateur;
+using AMCP.Noyau;
 
 namespace AMCP.Formes
 {
@@ -31,7 +32,7 @@ namespace AMCP.Formes
         public virtual void Colorier(int r, int g, int b)
         {
             this.Color = Color.FromArgb(255, r, g, b);
-            Console.WriteLine(this.Type + " " + this.ID + " : Couleur changée.");
+            Console.WriteLine(this.Type + " " + this.ID + " : Couleur changée.", ConsoleColor.Green);
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace AMCP.Formes
         public virtual void Deplacer(int positionX, int positionY)
         {
             this.Position = new Point(positionX, positionY);
-            Console.WriteLine(this.Type + " " + this.ID + " : Déplacement de (" + this.Position.X + ", " + this.Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué."); 
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Déplacement de (" + this.Position.X + ", " + this.Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué.", ConsoleColor.Green); 
         }
 
         /// <summary>
@@ -58,7 +59,7 @@ namespace AMCP.Formes
         public virtual void Tourner(int angle)
         {
             this.Orientation += angle;
-            Console.WriteLine(this.Type + " " + this.ID + " : Rotation d'un angle de " + angle + "(degrées) effectuée.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Rotation d'un angle de " + angle + "(degrées) effectuée.", ConsoleColor.Green);
         }
 
         /// <summary>
@@ -67,7 +68,7 @@ namespace AMCP.Formes
         public virtual void Supprimer()
         {
             Canvas.instance.Formes.Remove(this);
-            Console.WriteLine(this.Type + " " + this.ID + " : Suppression effectuée.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Suppression effectuée.", ConsoleColor.Green);
         }
 
         public Boolean EstDehors(float positionX, float positionY, float tailleX, float tailleY)

@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using AMCP.InterfaceUtilisateur;
+using AMCP.Noyau;
 
 namespace AMCP.Formes
 {
@@ -23,7 +24,7 @@ namespace AMCP.Formes
         {
             if(this.CurrentImage == null)
             {
-                Console.WriteLine(this.Type + " " + this.ID + " : Chargement de l'image erroné.");
+                IMode.instance.Logger(this.Type + " " + this.ID + " : Chargement de l'image erroné.", ConsoleColor.Red);
             }
             else if(!EstDehors(this.Position.X, this.Position.Y, 0, 0))
             {
@@ -35,7 +36,7 @@ namespace AMCP.Formes
 
                 Point centerTweaker = new Point(this.Position.X - this.CurrentImage.Width/2, this.Position.Y - this.CurrentImage.Height/2);
                 Canvas.instance.Graphic.DrawImage(this.CurrentImage, centerTweaker);
-                Console.WriteLine(this.Type + " " + this.ID + " : Affichage effectué.");
+                IMode.instance.Logger(this.Type + " " + this.ID + " : Affichage effectué.", ConsoleColor.Green);
 
                 //Rotate back to normal around the same point</pre>
                 matrix.RotateAt(-this.Orientation, new PointF(this.Position.X, this.Position.Y));
@@ -43,7 +44,7 @@ namespace AMCP.Formes
             }
             else
             {
-                Console.WriteLine(this.Type + " " + this.ID + " : Hors canvas.");
+                IMode.instance.Logger(this.Type + " " + this.ID + " : Hors canvas.", ConsoleColor.Yellow);
             }
         }
 
@@ -53,14 +54,14 @@ namespace AMCP.Formes
             forme.Color = this.Color;
             forme.Orientation = this.Orientation;
             Canvas.instance.Formes.Add(forme);
-            Console.WriteLine(Type + " " + ID + " : Duplication réussie.");
+            IMode.instance.Logger(Type + " " + ID + " : Duplication réussie.", ConsoleColor.Green);
             return new Image(new Point(positionX, positionY), this.ImageName);
         }
 
         public override void Colorier(int r, int g, int b)
         {
             base.Colorier(r, g, b);
-            Console.WriteLine(this.Type + " " + this.ID + " : Impossible d'appliquer un filtre de couleur. (Non implémenté)");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Impossible d'appliquer un filtre de couleur. (Non implémenté)", ConsoleColor.Red);
         }
 
         public override void Dimensionner(float taille)
@@ -68,7 +69,7 @@ namespace AMCP.Formes
             int newWidth = (int)(this.CurrentImage.Width * taille);
             int newHeight = (int)(this.CurrentImage.Height * taille);
             this.CurrentImage = new Bitmap(this.CurrentImage, new Size(newWidth, newHeight) );
-            Console.WriteLine(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Dimensionnement par un facteur " + taille + " effectué.", ConsoleColor.Green);
         }
     }
 }

@@ -53,9 +53,7 @@ namespace AMCP.Noyau
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Stylo : Descendre le stylo pour commencer.");
-                Console.ResetColor();
+                IMode.instance.Logger("Stylo : Descendre le stylo pour commencer.", ConsoleColor.Red);
                 return new FormeLibre();
             }
         }
@@ -75,7 +73,7 @@ namespace AMCP.Noyau
             else
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Stylo : Le stylo est déja descendu et prêt à écrire.");
+                IMode.instance.Logger("Stylo : Le stylo est déja descendu et prêt à écrire.", ConsoleColor.Red);
                 Console.ResetColor();
             }
         }
@@ -95,7 +93,7 @@ namespace AMCP.Noyau
             else
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Le stylo doit être descendu pour utiliser 'Avancer'.");
+                IMode.instance.Logger("Le stylo doit être descendu pour utiliser 'Avancer'.", ConsoleColor.Red);
                 Console.ResetColor();
             }
         }
@@ -114,7 +112,7 @@ namespace AMCP.Noyau
             else
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Le stylo doit être descendu pour utiliser 'Tourner'.");
+                IMode.instance.Logger("Le stylo doit être descendu pour utiliser 'Tourner'.", ConsoleColor.Red);
                 Console.ResetColor();
             }
         }
@@ -133,7 +131,7 @@ namespace AMCP.Noyau
             else
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Le stylo doit être levé pour utiliser 'Déplacer'.");
+                IMode.instance.Logger("Le stylo doit être levé pour utiliser 'Déplacer'.", ConsoleColor.Red);
                 Console.ResetColor();
             }
         }
