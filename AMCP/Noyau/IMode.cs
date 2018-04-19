@@ -12,9 +12,9 @@ namespace AMCP.Noyau
 {
     public abstract class IMode
     {
-        internal static IMode instance;
-        protected Canvas Canvas { get; set; } 
-        protected bool HistoriqueActions { get; set; } 
+        public static IMode instance { get; private set; }
+        protected Canvas Canvas { get; set; }
+        protected bool HistoriqueActions { get; set; } = true;
         
         protected IMode()
         {
@@ -143,11 +143,28 @@ namespace AMCP.Noyau
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Perme d'écrire dans la console.
+        /// </summary>
+        /// <param name="texte"></param>
+        /// <param name="couleur"></param>
         public void Logger(string texte, ConsoleColor couleur)
         {
-            Console.ForegroundColor = couleur;
-            Console.WriteLine(texte);
-            Console.ResetColor();
+            if (HistoriqueActions)
+            {
+                Console.ForegroundColor = couleur;
+                Console.WriteLine(texte);
+                Console.ResetColor();
+            }
+        }
+
+        /// <summary>
+        /// Permet d'activer ou desactiver l'affichage de l'historique des actions dans la console.
+        /// </summary>
+        /// <param name="etat"></param>
+        public void AfficherHistoriqueActions(bool etat)
+        {
+            this.HistoriqueActions = etat;
         }
 
     }

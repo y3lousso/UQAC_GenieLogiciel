@@ -3,6 +3,7 @@ using System.Drawing;
 using AMCP.InterfaceUtilisateur;
 using AMCP.Formes;
 using System.Drawing.Drawing2D;
+using AMCP.Noyau;
 
 namespace AMCP_ExtraModule.Formes
 {
@@ -45,7 +46,7 @@ namespace AMCP_ExtraModule.Formes
                 Canvas.instance.Graphic.FillEllipse(new SolidBrush(Color.Black), rRoueGauche);
                 Canvas.instance.Graphic.FillEllipse(new SolidBrush(Color.Black), rRoueDroite);
 
-                Console.WriteLine(this.Type + " " + this.ID + " : Affichage effectué.");
+                IMode.instance.Logger(this.Type + " " + this.ID + " : Affichage effectué.", ConsoleColor.Green);
 
                 //Rotate back to normal around the same point</pre>
                 matrix.RotateAt(-this.Orientation, new PointF(Position.X, Position.Y));
@@ -53,7 +54,7 @@ namespace AMCP_ExtraModule.Formes
             }
             else
             {
-                Console.WriteLine(this.Type + " " + this.ID + " : Hors canvas.");
+                IMode.instance.Logger(this.Type + " " + this.ID + " : Hors canvas.", ConsoleColor.Yellow);
             }
         }
 
@@ -79,7 +80,7 @@ namespace AMCP_ExtraModule.Formes
         public override void Colorier(int r, int g, int b)
         {
             this.Color = Color.FromArgb(255, r, g, b);
-            Console.WriteLine(this.Type + " " + this.ID + " : Couleur changée.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Couleur changée.", ConsoleColor.Green);
         }
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace AMCP_ExtraModule.Formes
         public override void Deplacer(int positionX, int positionY)
         {
             this.Position = new Point(positionX, positionY);
-            Console.WriteLine(this.Type + " " + this.ID + " : Déplacement de (" + this.Position.X + ", " + this.Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Déplacement de (" + this.Position.X + ", " + this.Position.Y + ") à (" + positionX + ", " + positionY + ")  effectué.", ConsoleColor.Green);
         }
 
         /// <summary>
@@ -109,7 +110,7 @@ namespace AMCP_ExtraModule.Formes
         public override void Tourner(int angle)
         {
             this.Orientation += angle;
-            Console.WriteLine(this.Type + " " + this.ID + " : Rotation d'un angle de " + angle + "(degrées) effectuée.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Rotation d'un angle de " + angle + "(degrées) effectuée.", ConsoleColor.Green);
         }
 
         /// <summary>
@@ -118,7 +119,7 @@ namespace AMCP_ExtraModule.Formes
         public override void Supprimer()
         {
             Canvas.instance.Formes.Remove(this);
-            Console.WriteLine(this.Type + " " + this.ID + " : Suppression effectuée.");
+            IMode.instance.Logger(this.Type + " " + this.ID + " : Suppression effectuée.", ConsoleColor.Green);
         }
     }
 }

@@ -20,10 +20,10 @@ namespace AMCP_ExtraModule.NoyauOverlay
         {
             Voiture f = new Voiture(new Point(positionX, positionY));
             Canvas.Formes.Add(f);
-            Console.WriteLine(f.Type + " " + f.ID + " : Création effectuée.");
+            Logger(f.Type + " " + f.ID + " : Création effectuée.", ConsoleColor.Green);
             return f;
         }
 
         #endregion
-    }
+    }   
 }
